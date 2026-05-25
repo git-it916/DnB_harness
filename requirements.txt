@@ -1,0 +1,40 @@
+# --- Core: Claude API + 멀티모달 PDF 입력 ---
+anthropic>=0.40.0           # Claude SDK (PDF document block, prompt caching, vision)
+python-dotenv>=1.0.1        # ANTHROPIC_API_KEY 등 env 로딩
+
+# --- 구조화 출력 / 스키마 검증 ---
+pydantic>=2.7.0             # Pydantic v2: 응답 스키마 + 검증
+jsonschema>=4.21.0          # JSON Schema 호환 검증 (LLM tool-use 스펙)
+
+# --- PDF 조작 (perturbation 생성, 페이지 수/메타 확인) ---
+pypdf>=4.2.0                # 텍스트 PDF 파싱/병합/분할
+pymupdf>=1.24.0             # 페이지 오버레이/텍스트 redaction (perturbation 핵심)
+pdf2image>=1.17.0           # 스캔 PDF → 이미지 (필요 시 분리 검증용)
+Pillow>=10.3.0              # 이미지 조작
+
+# --- 평가 결과 집계/리포팅 ---
+pandas>=2.2.0               # eval 결과 long-format 집계
+numpy>=1.26.0
+scikit-learn>=1.4.0         # precision/recall/F1, Cohen's kappa (RQ3 IAA)
+matplotlib>=3.8.0           # cost-accuracy 곡선
+seaborn>=0.13.0             # 비교 시각화
+
+# --- CLI / 로깅 / 안정성 ---
+typer>=0.12.0               # 하위 명령어 CLI (run/score/report)
+rich>=13.7.0                # 컬러 로그, 진행 표시, 테이블 출력
+tqdm>=4.66.0
+tenacity>=8.2.0             # API 429/5xx 지수 백오프 재시도
+loguru>=0.7.0               # 구조화 JSON 로깅
+
+# --- 토큰/비용 계산 ---
+tiktoken>=0.7.0             # 기준 토큰 카운트 (Anthropic은 별도지만 sanity check)
+
+# --- 테스트 ---
+pytest>=8.2.0
+pytest-asyncio>=0.23.0
+pytest-cov>=5.0.0
+hypothesis>=6.100.0         # property-based: perturbation 생성 invariant
+
+# --- 노트북 (탐색/리포트) ---
+jupyterlab>=4.1.0
+ipykernel>=6.29.0
