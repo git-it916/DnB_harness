@@ -1,223 +1,135 @@
-# DnB Harness — PLAN
+# 온톨로지 기반 신탁계약서 검증 하네스 — 설계 (PLAN, MVP)
 
-> 한양대 D&B 학술제 7팀 · LLM Due-Diligence Evaluation Harness for Korean Private Placement Funds
-
----
-
-## 0. 한 줄 요약 — 우리는 무엇을 검증하는가
-
-> **"한국 사모펀드 3종 문서 묶음(핵심상품설명서·투자제안서·신탁계약서)을 멀티모달 LLM에 PDF 그대로 던졌을 때, 인간 애널리스트 수준의 Due Diligence를 할 수 있는가?"**
->
-> 더 좁히면 두 가지 능력에 집중한다:
-> 1. **Cross-document 일관성 검증** — 3종 문서가 같은 펀드를 가리키지만 항목(수수료·만기·자산구성·해지·환매·우선순위 등)이 서로 어긋나는 케이스를 찾아내는가.
-> 2. **리스크 조항 식별** — 표준 리스크 체크리스트의 각 항목이 어느 문서·어느 조항에 어떻게 표현되어 있는지 정확히 매핑하는가.
->
-> 이 하네스의 산출물은 **모델 선택 의사결정에 쓸 수 있는 정량 지표**(정확도·비용·지연)와 **재현 가능한 평가 파이프라인**이다. "Claude가 잘하더라"가 아니라 "Sonnet 4.6은 텍스트 PDF에서 일관성 검증 recall 0.91, 스캔 포함 시 0.74, 단가 $0.12/펀드" 같은 수치가 목표.
+> **이 문서 = "무엇을·왜"(설계).** 누가·언제·무엇을(4주 실행·팀 분담)은 → [`실행계획.md`](./실행계획.md).
+> 코드·통계 공식은 뺐다. MVP 스코프(잔가지 제거)로 줄인 버전.
 
 ---
 
-## 1. 검증 대상 질문 (Research Questions)
+## 1. 우리가 만드는 것
 
-| # | 질문 | 측정 방식 | 의사결정 영향 |
-|---|------|-----------|--------------|
-| RQ1 | 각 문서에서 핵심 사실(수수료·만기·운용사·신탁업자·기준가·목표수익률 등)을 정확히 추출하는가? | 앵커 사실 GT 대비 Exact Match / F1 | 단순 추출 태스크에 LLM 충분한지 |
-| RQ2 | 3개 문서 간 모순(예: 수수료 0.7% vs 0.75%, 만기 2030-07 vs 2030-12)을 탐지하는가? | 합성 perturbation에 대한 detection precision/recall, false-alarm rate | 본 하네스의 핵심 능력 검증 |
-| RQ3 | 표준 리스크 체크리스트(15~20개 카테고리)의 각 항목을 정확히 매핑하는가? | 항목별 P/R + Cohen's κ(인간 라벨러 2명 vs LLM) | 리스크 리포트 자동화 가능성 |
-| RQ4 | 스캔본(신탁계약서) 포함 여부에 따른 성능 저하 폭은? | 텍스트-only vs 텍스트+스캔 분리 측정, OCR 사전처리와 비교 | OCR 파이프라인 필요 여부 결정 |
-| RQ5 | 모델별 (Opus 4.7 / Sonnet 4.6 / Haiku 4.5) accuracy-cost-latency tradeoff는? | 동일 eval suite, 모델만 교체, 단가·p50/p95 lat·accuracy | 운영 모델 선정 |
-| RQ6 | Prompt caching이 운영 단가를 충분히 낮추는가? | 캐시 적용 전후 cost/eval, cache hit rate | 펀드당 다중 쿼리 운영 가능성 |
+사모펀드 신탁계약서를 검토할 때 두 가지를 본다.
 
----
+1. **계약서가 제대로 쓰였나** — 필수 개념(당사자·보수·환매조건 등)이 규칙대로 들어있나
+2. **그 내용이 투자제안서(IM)에 정확히 반영됐나** — 계약서엔 보수 0.7%인데 IM엔 0.5%면 사고
 
-## 2. 기본 가설 (Hypotheses)
-
-가설은 **사전 등록(pre-register)** 한다. 실험 결과로 검증/기각하며, 사후 합리화 금지.
-
-- **H1 (추출 정확도)**: Sonnet 4.6은 텍스트 기반 PDF의 앵커 사실에 대해 F1 ≥ 0.95.
-- **H2 (스캔 robustness)**: 스캔 PDF가 포함된 항목의 일관성 탐지 recall은 텍스트-only 대비 10%p 이상 감소.
-- **H3 (캐시 경제성)**: 펀드당 두 번째 쿼리부터 입력 비용 ≥ 90% 절감 (3개 PDF가 캐시 대상).
-- **H4 (모델 격차)**: Risk checklist 매핑에서 Opus가 Haiku 대비 macro-F1 ≥ 5%p 우위, 다만 Haiku 단가가 1/10 미만이면 운영에서는 Haiku 채택이 합리적.
-- **H5 (false-alarm)**: 일관성 탐지에서 perturbation 없는 정상 펀드에 대한 false-positive rate ≤ 0.05 (애널리스트 시간 낭비 방지).
-
----
-
-## 3. 데이터 (Dataset)
-
-### 3.1 현재 보유분
-- **이지스 블랙ON 1호** (1 펀드)
-  - `핵심상품설명서` (텍스트 PDF, 준감필 버전)
-  - `투자제안서` (텍스트 PDF, 준감필 버전)
-  - `제정신탁계약서` (스캔 이미지 PDF, 날인본 2025-07-22)
-- 위치: `database/` (gitignore — 비공개 자료)
-
-### 3.2 확장 계획
-- 목표: 약 10개 펀드. 우선 같은 운용사 시리즈(동질성)로 5개 수집 후, 다른 운용사·자산군으로 다양화.
-- 수집 우선순위:
-  1. 텍스트 PDF + 텍스트 PDF + 스캔(우리 케이스와 동형) — 일반화 검증
-  2. 텍스트 3종 (스캔 변수 통제) — RQ4 비교군
-  3. 스캔 비중 다른 펀드 (강건성)
-
-### 3.3 라벨링
-- 펀드당 **앵커 사실 25~35개** 수기 라벨 (펀드명·운용사·신탁업자·설정일·만기·기준가·수수료 3종·환매조건·해지조건·우선순위·자산구성 5종 등).
-- 라벨러 2명 → 디스크립트 비교 → 불일치 항목 토론으로 합의 (κ 사전 측정).
-- 라벨 포맷: `database/labels/<fund_id>/anchors.yaml`.
-
----
-
-## 4. 평가 컴포넌트 (Eval Components)
-
-5개 우선 항목을 다음과 같이 구성한다.
-
-### 4.1 Anchor Facts Ground Truth
-- 위 3.3에서 만든 YAML을 정답으로, LLM의 구조화 JSON 출력과 항목별 매칭.
-- 매칭 방식: 숫자/날짜/금액은 normalize 후 exact, 자유 텍스트는 BLEU 대신 fuzzy match(타깃 ≥ 0.85)와 인간 spot-check 병용.
-
-### 4.2 Synthetic Perturbation (RQ2 핵심)
-- **목표**: 자연 발생 모순이 드무므로(어차피 같은 펀드 문서니까), 의도적으로 한 문서에 미세 수정을 주입해 "탐지 가능 여부" 평가.
-- **방법**:
-  - 텍스트 PDF: `pymupdf`로 페이지 텍스트 span 찾고 redaction 후 동일 폰트로 변조 텍스트 overlay.
-  - 스캔 PDF: 페이지 이미지에 새 텍스트 박스 합성(흰 배경 사각 + 한글 폰트 렌더).
-- **perturbation 카테고리** (각 5~10개 샘플):
-  1. **숫자 변조** — 수수료 0.7%→0.75%, 만기 2030-07-31→2030-12-31
-  2. **명칭 변조** — 신탁업자 명 1글자 교체
-  3. **조항 누락** — 한 문서에서만 환매제한 조항 1개 삭제
-  4. **조항 추가** — 한 문서에만 비표준 우선순위 조항 추가
-  5. **단위 변조** — 억 ↔ 백만, 연 ↔ 분기
-- **컨트롤**: perturbation 없는 원본도 동일 분량 섞어서 false-alarm 측정.
-- **출력**: `(fund_id, perturbation_id, doc_target, field, original→altered)` 와 LLM 판정 비교.
-
-### 4.3 Risk Checklist (RQ3)
-- 체크리스트는 금감원 사모펀드 설명서 가이드라인 + 표준 약관을 베이스로 자체 정리한 15~20개 항목 (예: 환매 제한, 손실 우선 흡수 구조, 운용보수 변경 조항, 키맨 조항, 자기거래, 이해상충, 보고 의무, 평가 방법 등).
-- 각 항목에 대해 LLM이 `{ exists: bool, evidence: { doc, page, span }, severity: low|med|high }` 반환.
-- 라벨러가 동일 스키마로 GT 작성 → 항목별 P/R + κ.
-
-### 4.4 Structured JSON Output
-- 모든 LLM 호출은 **JSON Schema 또는 Pydantic 스키마**에 묶음 (Anthropic tool-use 또는 prefill).
-- 스키마 위반 = 자동 실패로 집계, 재시도 정책(`tenacity` 2회) 별도 기록.
-- 스키마는 `src/schemas/` 에 버전 관리, 모든 eval 실행에 schema_version 기록(재현성).
-
-### 4.5 Prompt Caching Strategy
-- **레이아웃**: `[system prompt(고정)] + [3개 PDF document blocks(고정, cache_control: ephemeral)] + [태스크별 user message(변동)]`.
-- **타겟**: 펀드당 N개 쿼리(앵커 추출 + 일관성 + 리스크 = 3개 메인 쿼리 + perturbation N개) → 첫 쿼리에서만 PDF full price, 이후 캐시 히트.
-- **측정**: 응답의 `usage.cache_creation_input_tokens`, `cache_read_input_tokens` 로깅, eval당 실효 단가 계산.
-- **운영 한계**: 캐시 5분 TTL — eval 배치 내에서는 한 펀드 쿼리들을 연속으로 묶어 실행(스케줄러 책임).
-
----
-
-## 5. 메트릭 (Metrics)
-
-| 영역 | 메트릭 | 임계치(stretch) |
-|------|--------|---------------|
-| 추출 (RQ1) | macro-F1, EM | F1 ≥ 0.95 (텍스트), ≥ 0.85 (스캔) |
-| 일관성 (RQ2) | detection P/R/F1, false-alarm rate | recall ≥ 0.85, FAR ≤ 0.05 |
-| 리스크 (RQ3) | 항목별 P/R, macro-F1, Cohen's κ (LLM vs human) | κ ≥ 0.70 |
-| 스키마 (4.4) | schema-valid rate, retry rate | ≥ 0.99 |
-| 비용 (RQ6) | $/펀드, $/쿼리, cache hit rate | hit rate ≥ 0.80 (2nd+ query) |
-| 지연 (RQ5) | p50/p95 latency per query | p95 ≤ 30s (Sonnet) |
-
-리포트는 `pandas` long-format → `reports/<run_id>/` 아래 markdown + figures 자동 생성.
-
----
-
-## 6. 아키텍처 (Architecture)
+이걸 AI가 1차로 검증하게 만든다. 단, AI 혼자 두면 ① 없는 조항·수치를 지어내거나 ② 모순을 놓친다. 그래서 AI를 **온톨로지(정답 개념틀)로 그라운딩**하고, 출력을 **가드(안전장치)로 한 번 더 검증**한다.
 
 ```
-DnB_harness/
-├── database/              # PDFs (gitignored) + labels/
-│   └── labels/<fund_id>/  # anchors.yaml, risks.yaml
-├── src/
-│   ├── schemas/           # pydantic 모델: AnchorFacts, ConsistencyReport, RiskAssessment
-│   ├── client/            # anthropic 래퍼 (caching, retry, usage logging)
-│   ├── perturb/           # pymupdf 기반 perturbation 생성기
-│   ├── eval/              # 4.1~4.3 scorer
-│   ├── pipelines/         # 펀드 1개 처리 (load→prompt→parse→score)
-│   └── cli.py             # typer 진입점: run / perturb / score / report
-├── prompts/               # 시스템 프롬프트 + few-shot (버전 관리)
-├── reports/<run_id>/      # 결과물 (자동 생성)
-├── tests/                 # pytest: 스키마, scorer, perturbation invariant
-├── PLAN.md
-├── requirements.txt
-└── .env.example           # ANTHROPIC_API_KEY
+입력:  신탁계약서.pdf + IM.pdf  (+ 핵심상품설명서.pdf)
+출력:  ① 계약서 적정성  : "환매주기 조항 누락 ⚠️", "운용보수 0.7% ✅"
+       ② 교차 일치      : "운용보수 계약서 0.7% vs IM 0.5% → 불일치 🔴"
 ```
 
-**설계 원칙**:
-- 모든 LLM 호출은 `(prompt_version, schema_version, model, fund_id, run_id)` 로 식별 가능.
-- 결정론 확보 안 되는 부분(LLM 출력)은 raw 응답 전체를 `reports/<run_id>/raw/` 에 저장 — 사후 재채점 가능.
-- Scorer는 LLM 호출 없이 순수 함수로 구현 (재현성·테스트 용이).
+핵심은 AI를 만드는 게 아니라 **"이 AI 검증을 얼마나 믿을 수 있는가"를 통계로 증명**하는 것.
 
 ---
 
-## 7. 단계별 마일스톤 (Phased Milestones)
+## 2. 데이터
 
-각 단계는 **검증 가능한 산출물**로 종료한다.
+펀드 1개(**이지스 블랙ON 일반사모투자신탁제1호**) × 문서 3종. 멀티모달 모델에 **PDF 직접 투입**(별도 OCR 없음).
 
-### Phase 0 — 인프라 (1주)
-- [x] conda env `dnb_harness` + requirements.txt
-- [ ] `.env.example` + Anthropic API 연결 smoke test
-- [ ] PDF 3종 로딩 → Claude 1회 호출 → JSON 응답 파싱 end-to-end 동작
-- **DoD**: `python -m src.cli smoke --fund igis_blackon_1` 통과
+| 약칭 | 성격 | 역할 |
+|------|------|------|
+| 신탁계약서 | 스캔본(이미지) | 검증 대상 + 교차검증의 **기준(정답) 문서** |
+| IM(투자제안서) | 디지털 | 검증 대상(반영 여부) + 변조 주입 대상 |
+| 핵심상품설명서 | 디지털 | (선택) 3차 대조 |
 
-### Phase 1 — 단일 펀드 파이프라인 (1~2주)
-- 앵커 사실 라벨 25~35개 (이지스 블랙ON 1호) 수기 작성
-- AnchorFacts/Consistency/Risk 스키마 확정
-- Sonnet 4.6로 베이스라인 측정 (RQ1, RQ3 1차)
-- **DoD**: 베이스라인 리포트 1부 (markdown + figures), schema-valid rate ≥ 0.95
-
-### Phase 2 — Perturbation 프레임워크 (1~2주)
-- `pymupdf` 기반 텍스트 PDF perturbation 생성기 (카테고리 1~5)
-- 스캔 PDF perturbation은 Phase 2.5로 분리 (난이도 높음)
-- 펀드 1개 × perturbation 20~30개 생성, 시각 검증 100%
-- RQ2 1차 측정 (텍스트 PDF만)
-- **DoD**: perturbation set + RQ2 결과 표
-
-### Phase 3 — 모델 비교 & 캐싱 (1주)
-- Opus 4.7 / Sonnet 4.6 / Haiku 4.5 동일 eval suite 실행
-- Prompt caching on/off A/B
-- **DoD**: 모델 × 메트릭 비교표, cost-accuracy 산점도
-
-### Phase 4 — 스케일 (3~4주)
-- 펀드 9개 추가 수집·라벨링
-- 전체 eval 1회 + 분석 리포트
-- 일반화 (펀드 간 variance) 평가
-- **DoD**: 최종 리포트 (학술제 발표 자료 기반)
-
-### Phase 2.5 — 스캔 perturbation (옵션, 시간 허락 시)
-- 스캔본 perturbation으로 RQ4 본격 검증
+> `database/*.pdf`는 git 커밋 금지.
 
 ---
 
-## 8. 리스크 & 가정 (Risks & Assumptions)
+## 3. 온톨로지 (rdflib + pyshacl)
 
-| # | 리스크 | 영향 | 완화 |
-|---|--------|------|------|
-| R1 | 펀드 PDF 수집 난항(비공개·NDA) | Phase 4 지연 | 학회·운용사 네트워크 활용, 공시된 펀드(증권신고서 첨부)로 대체 가능성 |
-| R2 | 스캔 PDF의 한글 폰트 한계로 LLM OCR 정확도 낮음 | RQ4 결론 약화 | 외부 OCR(Naver Clova OCR 등)과 비교 대조군 추가 |
-| R3 | Perturbation이 너무 부자연스러워 LLM이 "조작 흔적"으로 탐지 | RQ2 결과가 양성 편향 | 시각 검증 + 폰트/위치 정렬, blind 인간 spot-check |
-| R4 | Cache 5분 TTL로 배치 외 호출 시 캐시 미스 | 비용 가정 무너짐 | 배치 스케줄러로 펀드별 쿼리 연속 실행 강제 |
-| R5 | 라벨러 1인이라 IAA(κ) 측정 불가 | RQ3 신뢰도 ↓ | 최소 핵심 30 항목은 2인 라벨, 나머지는 spot-check |
-| R6 | Anthropic SDK·모델 사양 변경 | 재현성 ↓ | 모든 run에 `anthropic.__version__`, 모델 id 기록 |
+### 왜 온톨로지인가 (RAG와 다른 점)
+- **RAG**: 관련 문장을 검색해 LLM에 던짐 → 무엇이 *정답 구조*인지는 LLM 머릿속에만 → 빠진 개념을 못 잡음.
+- **온톨로지**: 신탁계약서에 *꼭 있어야 할 개념·규칙*을 명시 모델로 박아둠 → 빠짐·모순을 **결정론적으로** 잡음(규칙 위반 = 불합격).
 
-**가정**:
-- A1: ANTHROPIC_API_KEY 사용 가능, 학술제 기간 동안 충분한 크레딧 확보.
-- A2: 학술제 발표일까지 최소 펀드 3~5개는 확보 가능.
-- A3: 사모펀드 PDF의 외부 공유는 팀 내부에서만, 어떤 리포지토리·외부 서비스에도 업로드하지 않음 (NDA 가정).
+### 코어 4개념 (MVP)
+| 개념 | 주요 값 |
+|------|---------|
+| `Fund` 펀드 기본 | 정식명·유형·설정일·만기 |
+| `Party` 당사자 | 운용사(위탁자)·신탁업자(수탁자)·판매사 |
+| `FeeSchedule` 보수 | 운용보수·신탁보수·판매보수 |
+| `RedemptionTerms` 환매 | 환매가능·락업·환매주기·환매수수료 |
 
----
+### 구성 (파일 2개)
+- `ontology/trust_fund.ttl` — 개념·관계 정의(TBox)
+- `ontology/shapes.ttl` — SHACL 규칙(예: 운용보수 0~5%, 만기 > 설정일, 신탁업자 정확히 1명)
 
-## 9. 산출물 (Deliverables)
-
-1. **재현 가능한 평가 하네스** — `python -m src.cli run --suite all --fund <id>` 한 번에 전체 실행.
-2. **펀드별 리스크 리포트 샘플** — DD 분석가가 그대로 활용 가능한 markdown/PDF.
-3. **모델 선정 가이드** — Opus/Sonnet/Haiku tradeoff 표 + 우리 use-case 추천.
-4. **학술제 발표 자료** — RQ별 결론·한계·후속 연구.
+검증은 `pyshacl`이 추출 결과(ABox)를 규칙(shapes)에 비춰 합격/불합격을 낸다.
 
 ---
 
-## 10. 다음 단계 (Immediate Next Actions)
+## 4. 하네스 파이프라인 + 가드 3종
 
-1. `.env.example` 작성 + API smoke test 스크립트
-2. Pydantic 스키마 v0 (`AnchorFacts`, `ConsistencyReport`, `RiskAssessment`) 초안
-3. 이지스 블랙ON 1호 앵커 사실 라벨링 (스프레드시트 → YAML 변환)
-4. PDF document block + prompt caching 동작하는 최소 호출 코드 (`src/client/anthropic_client.py`)
+```
+PDF 3종 → [추출] AI가 4개념 값을 빈칸(JSON)에 뽑음
+        → [변환] 값을 개념 지도에 끼움(ABox)
+        → [가드 3종] 형식 / 출처 / 제약 검사
+        → [판정] SHACL(계약서 적정성) + 교차검증(계약서값 = IM값?)
+        → [채점] 골든셋 30과 비교 → 점수 → 리포트
+```
 
-> **운영 원칙**: 매 Phase 끝에 PLAN.md를 업데이트(가설 검증/기각 표시), 결과는 `reports/`에 누적. PLAN은 살아있는 문서.
+| 가드 | 무엇을 / 실패 시 |
+|------|------------------|
+| **G1 형식** | AI 답이 정해진 빈칸 형식에 맞나 / 재시도 |
+| **G2 출처** ★ | 인용한 (문서·페이지)가 실재하나(pypdf로 페이지 범위 확인) / 해당 값 reject — **가짜 인용(환각) 차단** |
+| **G3 제약** | 숫자·날짜가 규칙 범위·논리(만기>설정일) 만족하나(SHACL 위임) / reject |
+
+> 가드는 **LLM 호출 없는 결정론 함수**. 켜고/끌 수 있어 실험에서 효과를 측정한다.
+
+---
+
+## 5. 무엇을 증명하나 (통계값)
+
+같은 30문항·같은 모델에 **3조건**을 점층적으로 적용해 불일치 탐지가 좋아지는지 본다.
+
+| 조건 | 설명 | 온톨로지 | 가드 |
+|------|------|:---:|:---:|
+| ① 베이스라인 | "안 맞는 값 찾아줘" 자유 질문 | ✗ | ✗ |
+| ② +온톨로지 | 4개념 구조화 추출 후 값 자동 비교 | ✓ | ✗ |
+| ③ +가드(풀) | ②에 가드 3종 추가 | ✓ | ✓ |
+
+**지표**: 불일치 탐지 **재현율(Recall) 우선**(놓치면 사고) + 정밀도·F1 + 환각률.
+**통계**: **McNemar**(③ vs ① 합격/불합격 차이가 진짜인가) + **부트스트랩 신뢰구간**(점수의 범위).
+
+> 재현율이 정확도보다 중요: 정상 다수에 정확도가 높아 보여도 유일한 불일치를 놓치면 컴플라이언스 실패.
+
+---
+
+## 6. 골든셋 30문항 (정답지)
+
+**마스터 시트 1장** → 컬럼: `개념 | 계약서값 | 계약서쪽 | IM값 | IM쪽 | 정답라벨`.
+
+- **구성**: 정상 18 + **변조 12**(불일치를 일부러 주입 → 재현율 측정용).
+- **변조**: 신탁계약서는 정답 기준 고정, **IM 값만 수동 치환**으로 불일치 생성(스캔본 편집 안 함).
+- **신뢰성**: 두 명(리나+승훈)이 따로 채점 → 일치도 **κ ≥ 0.7** 확인 후 PM 최종 확정.
+
+> 골든셋의 정확성 = 연구 신뢰성. 부실하면 모든 숫자가 무의미.
+
+---
+
+## 7. 기술 스택 (확정)
+
+| 레이어 | 기술 | 용도 |
+|--------|------|------|
+| 언어 | Python 3.11+ | |
+| LLM | anthropic SDK, Claude(멀티모달 PDF + caching) | 추출·판정 |
+| 온톨로지 | **rdflib**(개념 정의) + **pyshacl**(규칙 검증) | 그라운딩·적정성 |
+| 출력 스키마 | pydantic v2 | 구조화 출력(tool-use) 검증 |
+| PDF | pypdf(페이지 확인) + pdf2image(스캔본) | 출처 가드·입력 |
+| 채점·통계 | scikit-learn(P/R/F1·κ) + scipy/statsmodels(McNemar) + numpy(부트스트랩) | 채점·증명 |
+| 리포트 | pandas + matplotlib | 표·그래프 |
+| CLI | typer + rich | 한 줄 실행 |
+| 테스트 | pytest | |
+
+> 신규 의존성: `rdflib`, `pyshacl`, `statsmodels`. 나머지는 기존 `requirements.txt` 유효. (pymupdf·seaborn·hypothesis 등 MVP에선 미사용 — 필요 시 추가)
+
+---
+
+## 8. 한 줄 결론
+
+> 신탁계약서 핵심 4개념을 **온톨로지로 박아두고**, AI가 그 틀을 채우게 한 뒤
+> **(1) 계약서 적정성(SHACL) (2) IM 반영 일치성(교차검증)** 을 판정하고,
+> 그 판정을 **가드로 한 번 더 검증**한 다음, **①→②→③ 3조건 비교**로
+> "온톨로지·가드가 정말 효과 있다"를 **통계(McNemar·부트스트랩)** 로 증명한다.
