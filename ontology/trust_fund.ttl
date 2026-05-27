@@ -1,0 +1,105 @@
+@prefix dnb: <https://dnb-harness.local/ontology#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+dnb:Fund a rdfs:Class ;
+    rdfs:label "펀드"@ko ;
+    rdfs:comment "신탁계약서와 IM에서 비교할 펀드 기본 정보 묶음."@ko .
+
+dnb:Party a rdfs:Class ;
+    rdfs:label "당사자"@ko ;
+    rdfs:comment "운용사, 신탁업자, 판매사 정보를 담는 W1 단순 묶음."@ko .
+
+dnb:FeeSchedule a rdfs:Class ;
+    rdfs:label "보수"@ko ;
+    rdfs:comment "운용보수, 신탁보수, 판매보수 정보를 담는 묶음."@ko .
+
+dnb:RedemptionTerms a rdfs:Class ;
+    rdfs:label "환매 조건"@ko ;
+    rdfs:comment "환매 가능 여부, 락업, 환매 주기, 환매수수료 정보를 담는 묶음."@ko .
+
+dnb:has_party a rdf:Property ;
+    rdfs:label "당사자 정보"@ko ;
+    rdfs:domain dnb:Fund ;
+    rdfs:range dnb:Party .
+
+dnb:has_fee_schedule a rdf:Property ;
+    rdfs:label "보수 정보"@ko ;
+    rdfs:domain dnb:Fund ;
+    rdfs:range dnb:FeeSchedule .
+
+dnb:has_redemption_terms a rdf:Property ;
+    rdfs:label "환매 조건 정보"@ko ;
+    rdfs:domain dnb:Fund ;
+    rdfs:range dnb:RedemptionTerms .
+
+dnb:fund_name a rdf:Property ;
+    rdfs:label "펀드명"@ko ;
+    rdfs:domain dnb:Fund ;
+    rdfs:range xsd:string .
+
+dnb:fund_type a rdf:Property ;
+    rdfs:label "펀드 유형"@ko ;
+    rdfs:domain dnb:Fund ;
+    rdfs:range xsd:string .
+
+dnb:inception_date a rdf:Property ;
+    rdfs:label "설정일"@ko ;
+    rdfs:domain dnb:Fund ;
+    rdfs:range xsd:string .
+
+dnb:maturity_date a rdf:Property ;
+    rdfs:label "만기일"@ko ;
+    rdfs:domain dnb:Fund ;
+    rdfs:range xsd:string .
+
+dnb:asset_manager a rdf:Property ;
+    rdfs:label "운용사"@ko ;
+    rdfs:domain dnb:Party ;
+    rdfs:range xsd:string .
+
+dnb:trustee a rdf:Property ;
+    rdfs:label "신탁업자"@ko ;
+    rdfs:domain dnb:Party ;
+    rdfs:range xsd:string .
+
+dnb:distributor a rdf:Property ;
+    rdfs:label "판매사"@ko ;
+    rdfs:domain dnb:Party ;
+    rdfs:range xsd:string .
+
+dnb:management_fee a rdf:Property ;
+    rdfs:label "운용보수"@ko ;
+    rdfs:domain dnb:FeeSchedule ;
+    rdfs:range xsd:string .
+
+dnb:trust_fee a rdf:Property ;
+    rdfs:label "신탁보수"@ko ;
+    rdfs:domain dnb:FeeSchedule ;
+    rdfs:range xsd:string .
+
+dnb:sales_fee a rdf:Property ;
+    rdfs:label "판매보수"@ko ;
+    rdfs:domain dnb:FeeSchedule ;
+    rdfs:range xsd:string .
+
+dnb:is_redeemable a rdf:Property ;
+    rdfs:label "환매 가능 여부"@ko ;
+    rdfs:domain dnb:RedemptionTerms ;
+    rdfs:range xsd:string .
+
+dnb:lockup_period a rdf:Property ;
+    rdfs:label "락업 기간"@ko ;
+    rdfs:domain dnb:RedemptionTerms ;
+    rdfs:range xsd:string .
+
+dnb:redemption_cycle a rdf:Property ;
+    rdfs:label "환매 주기"@ko ;
+    rdfs:domain dnb:RedemptionTerms ;
+    rdfs:range xsd:string .
+
+dnb:redemption_fee a rdf:Property ;
+    rdfs:label "환매수수료"@ko ;
+    rdfs:domain dnb:RedemptionTerms ;
+    rdfs:range xsd:string .

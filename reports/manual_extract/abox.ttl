@@ -1,0 +1,46 @@
+@prefix data: <https://dnb-harness.local/data#> .
+@prefix dnb: <https://dnb-harness.local/ontology#> .
+
+data:fund_contract a dnb:Fund ;
+    dnb:fund_name "이 집합투자기구는 일반 사모집합투자기구로서 집합투자기구의 명칭은 '이지스블랙 ON 일반사모투자신탁제 1 호'라 한다." ;
+    dnb:fund_type "이 집합투자기구는 다음 각호의 형태를 갖는 집합투자기구로 한다. 1. 투자신탁 2. 폐쇄형 3. 단위형 4. 사모형 5. 혼합자산형 6. 일반 사모집합투자기구" ;
+    dnb:has_fee_schedule data:fee_schedule_contract ;
+    dnb:has_party data:party_contract ;
+    dnb:has_redemption_terms data:redemption_terms_contract ;
+    dnb:inception_date "제 1 조(시행일) 이 신탁계약은 2025 년 7 월 22 일부터 시행한다." ;
+    dnb:maturity_date "이 투자신탁의 계약기간은 투자신탁의 최초설정일로부터 2027 년 7 월 22 일까지로 한다." .
+
+data:fund_im a dnb:Fund ;
+    dnb:fund_name "이지스블랙ON 일반사모투자신탁제1호" ;
+    dnb:fund_type "일반사모집합투자기구, 투자신탁형, 혼합자산형, 단위형, 폐쇄형, 사모형" ;
+    dnb:has_fee_schedule data:fee_schedule_im ;
+    dnb:has_party data:party_im ;
+    dnb:has_redemption_terms data:redemption_terms_im ;
+    dnb:inception_date "펀드설정일(예정) 2025년7월22일" ;
+    dnb:maturity_date "펀드만기 2년 (수익자 동의 하에 조기청산 가능)" .
+
+data:fee_schedule_contract a dnb:FeeSchedule ;
+    dnb:management_fee "집합투자업자보수율 : 연 1,000 분의 8.9" ;
+    dnb:sales_fee "판매회사보수율 : 연 1,000 분의 0.3" ;
+    dnb:trust_fee "신탁업자보수율 : 연 1,000 분의 0.5" .
+
+data:fee_schedule_im a dnb:FeeSchedule ;
+    dnb:management_fee "[운용] 연[ 0.89 ] %" ;
+    dnb:sales_fee "[판매] 연[ 0.03 ] %" ;
+    dnb:trust_fee "[신탁] 연[ 0.05] %" .
+
+data:party_contract a dnb:Party ;
+    dnb:asset_manager "집합투자업자 이지스자산운용 주식회사 서울특별시 영등포구 여의공원로 115, 14 층 대표이사 장 지 영" ;
+    dnb:trustee "신탁업자 엔에이치투자증권 주식회사 서울특별시 영등포구 여의대로 108 파크원 NH 금융타워(타워 2) 대표이사 윤 병 운" .
+
+data:party_im a dnb:Party ;
+    dnb:asset_manager "집합투자업자 이지스지산운용" .
+
+data:redemption_terms_contract a dnb:RedemptionTerms ;
+    dnb:is_redeemable "수익자는 이 투자신탁 수익증권의 환매를 청구할 수 없다." ;
+    dnb:redemption_fee "제36조(환매수수료) (해당사항 없음)" .
+
+data:redemption_terms_im a dnb:RedemptionTerms ;
+    dnb:is_redeemable "본 투자신탁은 만기일 이전에는 환매가 허용되지 않는 폐쇄형 투자신탁입니다." ;
+    dnb:redemption_fee "환매수수료 본 상품은 환매가 불가능한 폐쇄형 상품임" .
+

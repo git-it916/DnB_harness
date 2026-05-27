@@ -48,15 +48,16 @@ PDF 3종 → [추출] → [온톨로지 변환] → [가드 3종] → [SHACL 적
 
 ```bash
 # 1. 환경
-conda create -n dnb_harness python=3.11 -y
-conda activate dnb_harness
-pip install -r requirements.txt
+uv sync --dev
 
 # 2. API 키 (.env, git 커밋 금지)
 echo "ANTHROPIC_API_KEY=sk-ant-..." > .env
 
 # 3. 연결 확인
-python scripts/hello_claude.py
+uv run python scripts/hello_claude.py
+
+# 4. 테스트
+uv run pytest
 ```
 
 > ⚠️ `database/*.pdf`(펀드 자료)와 `.env`는 **절대 커밋·외부 업로드 금지**.

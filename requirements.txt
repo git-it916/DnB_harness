@@ -6,6 +6,10 @@ python-dotenv>=1.0.1        # ANTHROPIC_API_KEY 등 env 로딩
 pydantic>=2.7.0             # Pydantic v2: 응답 스키마 + 검증
 jsonschema>=4.21.0          # JSON Schema 호환 검증 (LLM tool-use 스펙)
 
+# --- 온톨로지 / SHACL 검증 ---
+rdflib>=7.0.0               # Turtle/RDF 온톨로지 로딩
+pyshacl>=0.26.0             # SHACL 규칙 검증
+
 # --- PDF 조작 (perturbation 생성, 페이지 수/메타 확인) ---
 pypdf>=4.2.0                # 텍스트 PDF 파싱/병합/분할
 pymupdf>=1.24.0             # 페이지 오버레이/텍스트 redaction (perturbation 핵심)

@@ -1,0 +1,64 @@
+@prefix dnb: <https://dnb-harness.local/ontology#> .
+@prefix data: <https://dnb-harness.local/data#> .
+@prefix sh: <http://www.w3.org/ns/shacl#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+dnb:FundShape a sh:NodeShape ;
+    sh:targetClass dnb:Fund ;
+    sh:property [
+        sh:path dnb:fund_name ;
+        sh:minCount 1 ;
+        sh:datatype xsd:string ;
+        sh:message "Fund must include fund_name raw_text."@en
+    ] ;
+    sh:property [
+        sh:path dnb:has_party ;
+        sh:minCount 1 ;
+        sh:class dnb:Party ;
+        sh:message "Fund must link to Party."@en
+    ] ;
+    sh:property [
+        sh:path dnb:has_fee_schedule ;
+        sh:minCount 1 ;
+        sh:class dnb:FeeSchedule ;
+        sh:message "Fund must link to FeeSchedule."@en
+    ] ;
+    sh:property [
+        sh:path dnb:has_redemption_terms ;
+        sh:minCount 1 ;
+        sh:class dnb:RedemptionTerms ;
+        sh:message "Fund must link to RedemptionTerms."@en
+    ] .
+
+dnb:ContractPartyShape a sh:NodeShape ;
+    sh:targetNode data:party_contract ;
+    sh:property [
+        sh:path dnb:asset_manager ;
+        sh:minCount 1 ;
+        sh:datatype xsd:string ;
+        sh:message "Contract Party must include asset_manager raw_text."@en
+    ] ;
+    sh:property [
+        sh:path dnb:trustee ;
+        sh:minCount 1 ;
+        sh:datatype xsd:string ;
+        sh:message "Contract Party must include trustee raw_text."@en
+    ] .
+
+dnb:ImPartyShape a sh:NodeShape ;
+    sh:targetNode data:party_im ;
+    sh:property [
+        sh:path dnb:asset_manager ;
+        sh:minCount 1 ;
+        sh:datatype xsd:string ;
+        sh:message "IM Party must include asset_manager raw_text."@en
+    ] .
+
+dnb:FeeScheduleShape a sh:NodeShape ;
+    sh:targetClass dnb:FeeSchedule ;
+    sh:property [
+        sh:path dnb:management_fee ;
+        sh:minCount 1 ;
+        sh:datatype xsd:string ;
+        sh:message "FeeSchedule must include management_fee raw_text."@en
+    ] .
