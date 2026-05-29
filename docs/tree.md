@@ -1,7 +1,7 @@
 # 📂 프로젝트 디렉토리 트리 (한글 주석)
 
-> 한양대 D&B 학술제 7팀 · DnB Harness · 최종 갱신 2026-05-27 (**MVP 스코프**)
-> 설계 [`PLAN.md`](./PLAN.md) + 실행 [`EXECUTION_PLAN.md`](./EXECUTION_PLAN.md) 기준.
+> 한양대 D&B 학술제 7팀 · DnB Harness · 최종 갱신 2026-05-29 (**MVP 스코프**)
+> 설계 [`PLAN.md`](./PLAN.md) + 실행 [`실행계획.md`](./실행계획.md) + 역할 [`역할분담.md`](./역할분담.md) + 골든셋 [`golden_master.md`](./golden_master.md) 기준.
 > 각 파일 옆 표시 — `✅` 이미 있음 / `📝` 곧 만들 것 / `🚫` git 제외 / `🤖` 자동 생성
 
 ---
@@ -13,91 +13,112 @@ DnB_harness/
 │
 ├── .gitignore                                   ✅  PDF·.env·reports/ 등 제외 룰
 ├── LICENSE                                      ✅  라이선스
-├── README.md                                    ✅  프로젝트 한 줄 소개
-├── requirements.txt                             ✅  의존성 (📝 rdflib·pyshacl·statsmodels 추가 필요)
+├── README.md                                    ✅  프로젝트 한 줄 소개 + 팀
+├── pyproject.toml                               ✅  uv 패키지 정의
+├── uv.lock                                      ✅  의존성 락
+├── requirements.txt                             ✅  (참고용 정적 목록)
 ├── .env                                         🚫  ANTHROPIC_API_KEY (각자 작성, gitignore)
-├── .env.example                                 📝  키 템플릿 (승훈)
 │
-├── database/                                    ✅  펀드 PDF + 골든셋 (🚫 외부 공유 금지)
+├── database/                                    ✅  펀드 PDF 원본 (🚫 외부 공유 금지)
 │   ├── 이지스 블랙ON 1호_준감필.pdf              ✅  투자제안서(IM) — 디지털 PDF
-│   ├── 핵심상품설명서_…_준감필.pdf               ✅  핵심상품설명서 — 디지털 PDF
-│   ├── 제정신탁계약서_날인본_…_최종버전.pdf       ✅  신탁계약서 — 스캔 이미지 PDF (교차검증 기준)
-│   └── labels/igis_blackon_1/                   📝  골든셋 (W1~)
-│       ├── golden_master.csv                    📝  ⭐ 30문항 마스터 시트 (리나 라벨 → 승훈 확정)
-│       └── perturbations.csv                    📝  변조 12문항 명세: 무엇을 어떻게 (리나 작성)
+│   └── 제정신탁계약서_날인본_…_최종버전.pdf       ✅  신탁계약서 — 스캔 이미지 PDF (교차검증 기준)
 │
-├── ontology/                                    📝  ⭐ 온톨로지 (rdflib + pyshacl) — 신규
-│   ├── trust_fund.ttl                           📝  코어 4개념 정의: 펀드·당사자·보수·환매 (종현)
-│   └── shapes.ttl                               📝  SHACL 규칙: 보수 0~5%·만기>설정일 등 (종현)
+├── ontology/                                    ✅  온톨로지 (rdflib + pyshacl)
+│   ├── trust_fund.ttl                           ✅  코어 4개념 정의: 펀드·당사자·보수·환매 (종현)
+│   └── shapes.ttl                               ✅  SHACL 규칙 (종현, 📝 보수 0~5% 제약 추가 W2)
 │
 ├── docs/                                        ✅  문서 (살아있는 자산)
-│   ├── REPORT.md                                ✅  상사 보고용 보고서
 │   ├── PLAN.md                                  ✅  설계 — 무엇을·왜 (MVP)
 │   ├── 실행계획.md                               ✅  실행 — 누가·언제 (4주 MVP)
+│   ├── 역할분담.md                               ✅  ⭐ 역할·책임·RACI
+│   ├── golden_master.md                         ✅  ⭐ 골든셋 스펙 (14컬럼·enum·κ 절차)
 │   ├── tree.md                                  ✅  ⭐ 이 파일 — 디렉토리 한글 가이드
-│   ├── labeling_guide.md                        📝  라벨링 가이드·모호 케이스 (승훈, W1)
-│   └── onboarding/                              ✅  멤버별 시작 가이드
-│       ├── README.md                            ✅  공통 셋업 + 운영 룰 + 용어사전
-│       ├── R&R.md                               ✅  역할·RACI (MVP 반영)
-│       ├── 01_lead_harness.md                   ✅  신승훈 (📝 MVP로 갱신 예정)
-│       ├── 02_agent_prompt.md                   ✅  노종현 (📝 갱신 예정)
-│       ├── 03_guards.md                         ✅  조건   (📝 갱신 예정)
-│       ├── 04_pipeline.md                       ✅  한승연 (📝 갱신 예정)
-│       └── 05_docs.md                           ✅  김리나 (📝 갱신 예정)
+│   ├── ontology_pipeline.md                     ✅  파이프라인 현황 (종현)
+│   ├── ontology_prd.md                          ✅  온톨로지 PRD (종현)
+│   └── INTERFACES.md                            📝  manifest·score 스키마 (승훈, W1)
 │
-├── src/                                         📝  소스 코드 (W1~ 점진 추가)
-│   ├── __init__.py                              📝  패키지 표시
-│   ├── cli.py                                   📝  typer 진입점 `python -m src.cli …` (승연)
+├── src/                                         ✅  소스 코드
+│   ├── __init__.py                              ✅  패키지 표시
 │   │
-│   ├── client/                                  📝  Anthropic SDK 래퍼
-│   │   └── anthropic_client.py                  📝  caching·retry·usage 로깅 (건)
+│   ├── client/                                  ✅  Anthropic SDK 래퍼
+│   │   └── anthropic_client.py                  ✅  caching·retry·usage 로깅 (건)
 │   │
-│   ├── schemas/                                 📝  LLM 출력 강제 형식 (Pydantic)
-│   │   └── extraction.py                        📝  4개념 추출 스키마 (종현)
+│   ├── schemas/                                 ✅  LLM 출력 강제 형식 (Pydantic)
+│   │   └── extraction.py                        ✅  4개념 추출 스키마 (종현)
 │   │
-│   ├── ontology/                                📝  온톨로지 로딩·검증 래퍼
-│   │   ├── mapping.py                           📝  추출 JSON → ABox(개념 지도) 변환 (종현)
-│   │   └── validate.py                          📝  pyshacl 적정성 검증 래퍼 (종현)
+│   ├── ontology/                                ✅  온톨로지 로딩·검증 래퍼
+│   │   ├── mapping.py                           ✅  추출 JSON → ABox(개념 지도) 변환 (종현)
+│   │   └── validate.py                          ✅  pyshacl 적정성 검증 래퍼 (종현)
 │   │
-│   ├── pipelines/                               📝  태스크별 흐름
-│   │   ├── extract.py                           📝  추출 — tool-use 구조화 출력 (종현)
-│   │   ├── cross_check.py                       📝  교차검증 — 계약서값 vs IM값 (종현)
-│   │   └── reporter.py                          📝  리포트 markdown 자동 생성 (승연)
+│   ├── pipelines/                               ✅  태스크별 흐름
+│   │   ├── extract.py                           ✅  추출 — tool-use 구조화 출력 (종현)
+│   │   ├── normalize.py                         ✅  단위·표기 정규화 (종현)
+│   │   ├── cross_check.py                       ✅  교차검증 — 계약서값 vs IM값 (종현)
+│   │   └── llm_judge.py                         ✅  의미 동등 판단 LLM 라우터 (종현)
 │   │
-│   ├── guards/                                  📝  가드 3종 — 출력 후처리 검증
+│   ├── guards/                                  📝  ⭐ 가드 3종 — 출력 후처리 검증 (건)
 │   │   ├── registry.py                          📝  가드 ON/OFF 토글 (건)
-│   │   ├── schema_guard.py                      📝  G1 형식 — 빈칸 형식 검증 (건)
+│   │   ├── format_guard.py                      📝  G1 형식 — 빈칸 형식 검증 (건)
 │   │   ├── citation_guard.py                    📝  G2 출처 — 없는 페이지 인용 차단 (건)
 │   │   └── constraint_guard.py                  📝  G3 제약 — 범위·논리 위반 차단 (건)
 │   │
-│   ├── eval/                                    📝  채점 (LLM 호출 없는 순수 함수)
-│   │   └── consistency_scorer.py                📝  불일치 탐지 Precision/Recall/F1 (승훈)
+│   ├── scoring/                                 📝  ⭐ 채점·메트릭·비교 (승연) — LLM 호출 없음
+│   │   ├── scorer.py                            📝  Accuracy·Precision·Recall·F1·환각률 코어 (승연)
+│   │   ├── breakdown.py                         📝  필드·난이도·변조·signal 세분화 (승연)
+│   │   └── compare.py                           📝  3개 score.json → compare.md (승연)
 │   │
-│   └── stats/                                   📝  통계 검정
-│       └── significance.py                      📝  McNemar + 부트스트랩 CI (승훈/건)
+│   ├── cli/                                     📝  CLI 진입점 (건, PM 협업)
+│   │   └── main.py                              📝  `dnb run / score / compare …` (typer)
+│   │
+│   └── stats/                                   📝  통계 검정 (승훈)
+│       └── significance.py                      📝  McNemar + 부트스트랩 95% CI
 │
-├── prompts/                                     📝  버전 관리되는 프롬프트
+├── prompts/                                     ✅  버전 관리되는 프롬프트
 │   └── v0/
-│       ├── extract/system.md                    📝  4개념 추출 프롬프트 (종현)
-│       └── baseline/system.md                   📝  ① 베이스라인 — 자유 질의 (종현)
+│       ├── extract/system.md                    ✅  4개념 추출 프롬프트 (종현)
+│       ├── judge/system.md                      ✅  의미 동등 판단 프롬프트 (종현)
+│       └── normalize/system.md                  ✅  정규화 프롬프트 (종현)
 │
-├── scripts/                                     📝  일회성·실험용 (src 외부)
-│   ├── hello_claude.py                          📝  API 연결 smoke (공통, W1)
-│   ├── build_golden.py                          📝  golden_master.csv → 채점용 파일 변환 (승연)
-│   ├── apply_perturbations.py                   📝  IM 값 변조 적용 (건)
+├── scripts/                                     ✅  일회성·실험용 (src 외부)
+│   ├── run_extract_once.py                      ✅  단발 추출 PoC (종현)
+│   ├── render_mermaid.py                        ✅  온톨로지 mermaid 렌더 (종현)
+│   ├── render_ontology_graph.py                 ✅  온톨로지 그래프 렌더 (종현)
+│   ├── render_figma_ontology_svg.py             ✅  Figma용 SVG 렌더 (종현)
+│   ├── apply_perturbations.py                   📝  골든셋 변조 IM 값 적용 (건)
 │   └── run_experiment.py                        📝  3조건(①②③) 전수 실행 (건)
 │
-├── tests/                                       📝  pytest
-│   ├── test_consistency_scorer.py               📝  채점기 정합성 (승훈)
-│   ├── test_guards.py                           📝  가드 3종 (건)
-│   └── test_validate.py                         📝  SHACL 검증 (종현)
+├── tests/                                       ✅  pytest
+│   ├── golden/                                  ✅  ⭐ 골든셋 (PLAN §6)
+│   │   ├── golden_master.csv                    ✅  30문항 마스터 (정상18 + 변조12)
+│   │   └── labeler_v1_rina.csv                  📝  리나 1차 라벨 (W1~W2)
+│   ├── test_anthropic_client.py                 ✅  Anthropic SDK 래퍼
+│   ├── test_extract_pipeline.py                 ✅  추출
+│   ├── test_extraction_schema.py                ✅  Pydantic 스키마
+│   ├── test_normalization.py                    ✅  정규화
+│   ├── test_cross_check.py                      ✅  교차검증
+│   ├── test_llm_judge.py                        ✅  LLM judge
+│   ├── test_ontology_mapping.py                 ✅  JSON→ABox
+│   ├── test_ontology_validate.py                ✅  SHACL
+│   ├── test_run_extract_once.py                 ✅  PoC 스크립트
+│   ├── test_render_mermaid.py                   ✅  렌더
+│   ├── test_render_ontology_graph.py            ✅  렌더
+│   ├── test_render_figma_ontology_svg.py        ✅  렌더
+│   ├── test_scorer.py                           📝  채점기 단위 (승연)
+│   ├── test_breakdown.py                        📝  세분화 (승연)
+│   ├── test_compare.py                          📝  비교 리포트 (승연)
+│   └── test_guards.py                           📝  가드 3종 (건)
 │
 └── reports/                                     🤖🚫  실행 결과 (자동 생성, gitignore)
-    ├── .gitkeep                                 📝  디렉토리만 git에 남김 (승연)
-    └── <run_id>/                                🤖  예: run_20260527_153012_a1b2
-        ├── report.md                            🤖  메트릭·표·결론
-        ├── results.json                         🤖  3조건 결과 (재채점용)
-        └── figures/                             🤖  F1 막대 등 (matplotlib)
+    ├── manual_extract/                          ✅  종현 수동 PoC 결과 (참고용)
+    └── <run_id>/                                🤖  예: exp_baseline_20260601_120000
+        ├── manifest.json                        🤖  run 메타 (mode·model·seed·timestamps)
+        ├── extraction.json                      🤖  4개념 추출 JSON
+        ├── abox.ttl                             🤖  RDF/ABox
+        ├── shacl_report.txt                     🤖  SHACL 검증 로그
+        ├── cross_check.json                     🤖  교차검증 결과
+        ├── guard_log.json                       🤖  가드 통과/거부 로그
+        ├── score.json                           🤖  ⭐ 메트릭 12종 (승연)
+        └── report.md                            🤖  단일 run 마크다운 리포트
 ```
 
 ---
@@ -106,20 +127,22 @@ DnB_harness/
 
 | 디렉토리 | 역할 | 핵심 원칙 |
 |----------|------|----------|
-| `database/` | 펀드 PDF + 사람이 라벨한 골든셋 30문항 | **외부 업로드 절대 금지**. PDF는 gitignore |
+| `database/` | 펀드 PDF 원본 | **외부 업로드 절대 금지**. PDF는 gitignore |
 | `ontology/` | 개념 지도(`.ttl`) + SHACL 규칙 | 개념·속성 이름의 **단일 소스**(종현). 바뀌면 공지 |
-| `docs/` | 보고서·계획·역할·가이드 | PLAN/EXECUTION 변경 시 PR + 리뷰 |
-| `docs/onboarding/` | 멤버별 가이드 + R&R | 신규 합류자가 먼저 펴보는 곳 |
+| `docs/` | 보고서·계획·역할·가이드 | PLAN/실행계획/역할분담 변경 시 PR + 리뷰 |
+| `src/client/` | Anthropic SDK 래퍼 | caching·retry·usage 로깅 |
 | `src/schemas/` | LLM 출력 강제 형식 (Pydantic) | W1에 형식 합의 → 고정 |
 | `src/ontology/` | JSON→ABox 변환·pyshacl 검증 래퍼 | 추출 결과를 개념 지도에 끼워 검사 |
-| `src/pipelines/` | 추출 → 교차검증 → 리포트 흐름 | 태스크 1개 = 파일 1개 |
-| `src/guards/` | 가드 3종(형식·출처·제약) | 각 가드 = `check(...) -> GuardResult`. **LLM 호출 금지** |
-| `src/eval/` | 채점기 — 출력 vs 골든셋 | **순수 함수**(재현성) |
+| `src/pipelines/` | 추출 → 정규화 → 교차검증 → judge 흐름 | 태스크 1개 = 파일 1개 |
+| `src/guards/` | 가드 3종(형식·출처·제약) | 각 가드 = 순수함수. **LLM 호출 금지** |
+| `src/scoring/` | 채점기 — 출력 vs 골든셋·메트릭·비교 | **순수함수**(재현성). 통계 해석은 `src/stats/` |
 | `src/stats/` | McNemar·부트스트랩 | 3조건 비교의 유의성 검정 |
+| `src/cli/` | `dnb` 진입점 (typer) | run_id 부여·`reports/<run_id>/` 관리 |
 | `prompts/` | 프롬프트 텍스트 (코드와 분리) | 호출에 `prompt_version` 기록 |
-| `scripts/` | smoke·골든셋 빌드·변조·실험 실행 | 정식 모듈 아님 |
+| `scripts/` | smoke·렌더·실험 실행 | 정식 모듈 아님 |
+| `tests/golden/` | 골든셋 마스터 + 라벨링 시트 | PM 확정 freeze, 사양은 `docs/golden_master.md` |
 | `tests/` | pytest | 채점기·가드·검증은 단위 테스트 필수 |
-| `reports/` | 실행 결과 (자동·gitignore) | `<run_id>`별 raw 보존 |
+| `reports/` | 실행 결과 (자동·gitignore) | `<run_id>`별 raw 보존. `manual_extract/`만 git 추적 |
 
 ---
 
@@ -127,11 +150,11 @@ DnB_harness/
 
 | 담당 | 처음 만들 파일 | 목표 |
 |------|--------------|------|
-| **신승훈** | `database/labels/igis_blackon_1/golden_master.csv`(양식) + `docs/labeling_guide.md` + `src/eval/consistency_scorer.py` | 골든셋 양식 + 채점기 |
-| **노종현** | `ontology/trust_fund.ttl`(4개념) + `prompts/v0/extract/system.md` + `src/pipelines/extract.py` | 개념 지도 + 추출 JSON |
-| **조건** | `src/client/anthropic_client.py` + `src/guards/citation_guard.py` | AI 호출 공용 함수 + 출처 가드 |
-| **한승연** | `src/cli.py` + `src/__init__.py` + `scripts/hello_claude.py` | `python -m src.cli` 한 줄 동작 |
-| **김리나** | `golden_master.csv` 정상값 라벨링 시작 | PDF 정독 + 정답 채우기 |
+| **신승훈** (PM) | `docs/INTERFACES.md`(manifest·score 스키마) + `src/stats/significance.py` 골격 | 인터페이스 단일 소스 + 통계 골격 |
+| **노종현** | (W1 거의 완료) `ontology/`·`src/pipelines/`·`prompts/v0/` 안정화 + W2 SHACL 보수 0~5% 제약 추가 | 추출·정규화·교차검증 안정 |
+| **조건** | `src/guards/{format,citation,constraint}_guard.py` + `src/cli/main.py` 골격 | 가드 3종 + CLI 진입점 |
+| **한승연** | `src/scoring/scorer.py`(Accuracy·Precision·Recall·F1·환각률) + `tests/test_scorer.py` | mock 데이터로 채점기 단위 테스트 통과 |
+| **김리나** | `tests/golden/labeler_v1_rina.csv` 시작 (30개 PDF 대조 검수) | `docs/golden_master.md` 가이드 따라 라벨링 v1 |
 
 ---
 
@@ -140,7 +163,7 @@ DnB_harness/
 ```
 database/**/*.pdf      # 펀드 원본
 .env                   # API 키
-reports/*/             # 실행 결과 (.gitkeep만 유지)
+reports/*/             # 실행 결과 (manual_extract/는 추적 유지)
 __pycache__/
 .pytest_cache/
 *.pyc
