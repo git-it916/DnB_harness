@@ -1,0 +1,264 @@
+{
+  "schema_version": "v0",
+  "fund": {
+    "name": {
+      "contract": {
+        "value": "이지스블랙 ON 일반사모투자신탁 1호",
+        "unit": "fund_name",
+        "raw_text": "이지스블랙 ON 일반사모투자신탁 1호",
+        "citation": {
+          "document": "신탁계약서",
+          "page": 1
+        }
+      },
+      "im": {
+        "value": "이지스블랙ON 일반사모투자신탁제1호",
+        "unit": "fund_name",
+        "raw_text": "이지스블랙ON 일반사모투자신탁제1호",
+        "citation": {
+          "document": "IM",
+          "page": 9
+        }
+      }
+    },
+    "type": {
+      "contract": {
+        "value": "일반사모투자신탁",
+        "unit": "fund_type",
+        "raw_text": "일반사모투자신탁",
+        "citation": {
+          "document": "신탁계약서",
+          "page": 1
+        }
+      },
+      "im": {
+        "value": "일반사모집합투자기구, 투자신탁형, 혼합자산형, 단위형, 폐쇄형, 사모형",
+        "unit": "fund_type",
+        "raw_text": "일반사모집합투자기구, 투자신탁형, 혼합자산형, 단위형, 폐쇄형, 사모형",
+        "citation": {
+          "document": "IM",
+          "page": 9
+        }
+      }
+    },
+    "inception_date": {
+      "contract": {
+        "value": "2025년 7월 22일",
+        "unit": "date",
+        "raw_text": "2025년 7월 22일",
+        "citation": {
+          "document": "신탁계약서",
+          "page": 4
+        }
+      },
+      "im": {
+        "value": "2025-07-22",
+        "unit": "date",
+        "raw_text": "2025년7월22일",
+        "citation": {
+          "document": "IM",
+          "page": 9
+        }
+      }
+    },
+    "maturity_date": {
+      "contract": {
+        "value": "2027년 7월 22일",
+        "unit": "date",
+        "raw_text": "2027년 7월 22일",
+        "citation": {
+          "document": "신탁계약서",
+          "page": 4
+        }
+      },
+      "im": {
+        "value": "2027-07-22",
+        "unit": "date",
+        "raw_text": "2년(수익자동의하에조기청산가능)",
+        "citation": {
+          "document": "IM",
+          "page": 9
+        }
+      }
+    }
+  },
+  "party": {
+    "asset_manager": {
+      "contract": {
+        "value": "이지스자산운용 주식회사",
+        "unit": "company_name",
+        "raw_text": "이지스자산운용 주식회사",
+        "citation": {
+          "document": "신탁계약서",
+          "page": 1
+        }
+      },
+      "im": {
+        "value": "이지스자산운용주식회사",
+        "unit": "company_name",
+        "raw_text": "이지스자산운용주식회사",
+        "citation": {
+          "document": "IM",
+          "page": 2
+        }
+      }
+    },
+    "trustee": {
+      "contract": {
+        "value": "엔에이치투자증권 주식회사",
+        "unit": "company_name",
+        "raw_text": "엔에이치투자증권 주식회사",
+        "citation": {
+          "document": "신탁계약서",
+          "page": 1
+        }
+      },
+      "im": {
+        "value": null,
+        "unit": null,
+        "raw_text": null,
+        "citation": null
+      }
+    },
+    "distributor": {
+      "contract": {
+        "value": null,
+        "unit": null,
+        "raw_text": null,
+        "citation": null
+      },
+      "im": {
+        "value": null,
+        "unit": null,
+        "raw_text": null,
+        "citation": null
+      }
+    }
+  },
+  "fee_schedule": {
+    "management_fee": {
+      "contract": {
+        "value": "1000분의 8.9",
+        "unit": "permille_per_year",
+        "raw_text": "집합투자업자보수율 : 연 1,000분의 8.9",
+        "citation": {
+          "document": "신탁계약서",
+          "page": 15
+        }
+      },
+      "im": {
+        "value": "0.89",
+        "unit": "percent_per_year",
+        "raw_text": "[운용]연[ 0.89 ] %",
+        "citation": {
+          "document": "IM",
+          "page": 9
+        }
+      }
+    },
+    "trust_fee": {
+      "contract": {
+        "value": "1000분의 0.5",
+        "unit": "permille_per_year",
+        "raw_text": "신탁업자보수율 : 연 1,000분의 0.5",
+        "citation": {
+          "document": "신탁계약서",
+          "page": 15
+        }
+      },
+      "im": {
+        "value": "0.05",
+        "unit": "percent_per_year",
+        "raw_text": "[신탁] 연[ 0.05] %",
+        "citation": {
+          "document": "IM",
+          "page": 9
+        }
+      }
+    },
+    "sales_fee": {
+      "contract": {
+        "value": "1000분의 0.3",
+        "unit": "permille_per_year",
+        "raw_text": "판매회사보수율 : 연 1,000분의 0.3",
+        "citation": {
+          "document": "신탁계약서",
+          "page": 15
+        }
+      },
+      "im": {
+        "value": "0.03",
+        "unit": "percent_per_year",
+        "raw_text": "[판매] 연[ 0.03 ] %",
+        "citation": {
+          "document": "IM",
+          "page": 9
+        }
+      }
+    }
+  },
+  "redemption_terms": {
+    "is_redeemable": {
+      "contract": {
+        "value": "false",
+        "unit": "boolean",
+        "raw_text": "수익자는 이 투자신탁 수익증권의 환매를 청구할 수 없다.",
+        "citation": {
+          "document": "신탁계약서",
+          "page": 12
+        }
+      },
+      "im": {
+        "value": "false",
+        "unit": "boolean",
+        "raw_text": "본상품은환매가불가능한폐쇄형상품임",
+        "citation": {
+          "document": "IM",
+          "page": 9
+        }
+      }
+    },
+    "lockup_period": {
+      "contract": {
+        "value": null,
+        "unit": null,
+        "raw_text": null,
+        "citation": null
+      },
+      "im": {
+        "value": null,
+        "unit": null,
+        "raw_text": null,
+        "citation": null
+      }
+    },
+    "redemption_cycle": {
+      "contract": {
+        "value": null,
+        "unit": null,
+        "raw_text": null,
+        "citation": null
+      },
+      "im": {
+        "value": null,
+        "unit": null,
+        "raw_text": null,
+        "citation": null
+      }
+    },
+    "redemption_fee": {
+      "contract": {
+        "value": null,
+        "unit": null,
+        "raw_text": null,
+        "citation": null
+      },
+      "im": {
+        "value": null,
+        "unit": null,
+        "raw_text": null,
+        "citation": null
+      }
+    }
+  }
+}

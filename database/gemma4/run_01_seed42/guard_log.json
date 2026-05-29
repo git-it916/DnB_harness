@@ -1,0 +1,315 @@
+{
+  "run_id": "run_01_seed42",
+  "guard_config": {
+    "g1_format": true,
+    "g2_citation": true,
+    "g3_constraint": true,
+    "g1_max_retries": 1,
+    "g3_use_shacl": false
+  },
+  "events": [
+    {
+      "guard": "G1",
+      "field_path": null,
+      "decision": "pass",
+      "reason_code": "json_valid",
+      "reason": "Pydantic 검증 통과 (attempt=1)",
+      "metadata": {
+        "attempt": 1
+      }
+    },
+    {
+      "guard": "G2",
+      "field_path": "fund.name.contract",
+      "decision": "pass",
+      "reason_code": "page_in_range",
+      "reason": "page 1 ∈ [1, 22]",
+      "metadata": {
+        "page": 1,
+        "max_page": 22,
+        "side": "contract"
+      }
+    },
+    {
+      "guard": "G2",
+      "field_path": "fund.name.im",
+      "decision": "pass",
+      "reason_code": "page_in_range",
+      "reason": "page 9 ∈ [1, 32]",
+      "metadata": {
+        "page": 9,
+        "max_page": 32,
+        "side": "im"
+      }
+    },
+    {
+      "guard": "G2",
+      "field_path": "fund.type.contract",
+      "decision": "pass",
+      "reason_code": "page_in_range",
+      "reason": "page 2 ∈ [1, 22]",
+      "metadata": {
+        "page": 2,
+        "max_page": 22,
+        "side": "contract"
+      }
+    },
+    {
+      "guard": "G2",
+      "field_path": "fund.type.im",
+      "decision": "pass",
+      "reason_code": "page_in_range",
+      "reason": "page 9 ∈ [1, 32]",
+      "metadata": {
+        "page": 9,
+        "max_page": 32,
+        "side": "im"
+      }
+    },
+    {
+      "guard": "G2",
+      "field_path": "fund.inception_date.im",
+      "decision": "pass",
+      "reason_code": "page_in_range",
+      "reason": "page 9 ∈ [1, 32]",
+      "metadata": {
+        "page": 9,
+        "max_page": 32,
+        "side": "im"
+      }
+    },
+    {
+      "guard": "G2",
+      "field_path": "fund.maturity_date.contract",
+      "decision": "pass",
+      "reason_code": "page_in_range",
+      "reason": "page 4 ∈ [1, 22]",
+      "metadata": {
+        "page": 4,
+        "max_page": 22,
+        "side": "contract"
+      }
+    },
+    {
+      "guard": "G2",
+      "field_path": "fund.maturity_date.im",
+      "decision": "pass",
+      "reason_code": "page_in_range",
+      "reason": "page 9 ∈ [1, 32]",
+      "metadata": {
+        "page": 9,
+        "max_page": 32,
+        "side": "im"
+      }
+    },
+    {
+      "guard": "G2",
+      "field_path": "party.asset_manager.contract",
+      "decision": "pass",
+      "reason_code": "page_in_range",
+      "reason": "page 1 ∈ [1, 22]",
+      "metadata": {
+        "page": 1,
+        "max_page": 22,
+        "side": "contract"
+      }
+    },
+    {
+      "guard": "G2",
+      "field_path": "party.asset_manager.im",
+      "decision": "pass",
+      "reason_code": "page_in_range",
+      "reason": "page 2 ∈ [1, 32]",
+      "metadata": {
+        "page": 2,
+        "max_page": 32,
+        "side": "im"
+      }
+    },
+    {
+      "guard": "G2",
+      "field_path": "party.trustee.contract",
+      "decision": "pass",
+      "reason_code": "page_in_range",
+      "reason": "page 1 ∈ [1, 22]",
+      "metadata": {
+        "page": 1,
+        "max_page": 22,
+        "side": "contract"
+      }
+    },
+    {
+      "guard": "G2",
+      "field_path": "fee_schedule.management_fee.contract",
+      "decision": "pass",
+      "reason_code": "page_in_range",
+      "reason": "page 15 ∈ [1, 22]",
+      "metadata": {
+        "page": 15,
+        "max_page": 22,
+        "side": "contract"
+      }
+    },
+    {
+      "guard": "G2",
+      "field_path": "fee_schedule.management_fee.im",
+      "decision": "pass",
+      "reason_code": "page_in_range",
+      "reason": "page 9 ∈ [1, 32]",
+      "metadata": {
+        "page": 9,
+        "max_page": 32,
+        "side": "im"
+      }
+    },
+    {
+      "guard": "G2",
+      "field_path": "fee_schedule.trust_fee.contract",
+      "decision": "pass",
+      "reason_code": "page_in_range",
+      "reason": "page 15 ∈ [1, 22]",
+      "metadata": {
+        "page": 15,
+        "max_page": 22,
+        "side": "contract"
+      }
+    },
+    {
+      "guard": "G2",
+      "field_path": "fee_schedule.trust_fee.im",
+      "decision": "pass",
+      "reason_code": "page_in_range",
+      "reason": "page 9 ∈ [1, 32]",
+      "metadata": {
+        "page": 9,
+        "max_page": 32,
+        "side": "im"
+      }
+    },
+    {
+      "guard": "G2",
+      "field_path": "fee_schedule.sales_fee.im",
+      "decision": "pass",
+      "reason_code": "page_in_range",
+      "reason": "page 9 ∈ [1, 32]",
+      "metadata": {
+        "page": 9,
+        "max_page": 32,
+        "side": "im"
+      }
+    },
+    {
+      "guard": "G2",
+      "field_path": "redemption_terms.is_redeemable.im",
+      "decision": "pass",
+      "reason_code": "page_in_range",
+      "reason": "page 9 ∈ [1, 32]",
+      "metadata": {
+        "page": 9,
+        "max_page": 32,
+        "side": "im"
+      }
+    },
+    {
+      "guard": "G3",
+      "field_path": "fund.inception_date.im",
+      "decision": "pass",
+      "reason_code": "date_parsed",
+      "reason": "parsed=2025-07-22T00:00:00",
+      "metadata": {
+        "date": "2025-07-22T00:00:00"
+      }
+    },
+    {
+      "guard": "G3",
+      "field_path": "fund.maturity_date.contract",
+      "decision": "pass",
+      "reason_code": "date_parsed",
+      "reason": "parsed=2027-07-22T00:00:00",
+      "metadata": {
+        "date": "2027-07-22T00:00:00"
+      }
+    },
+    {
+      "guard": "G3",
+      "field_path": "fund.maturity_date.im",
+      "decision": "pass",
+      "reason_code": "date_unparseable",
+      "reason": "날짜 표기 인식 불가 — 검증 스킵",
+      "metadata": {
+        "raw_text": "2년(수익자동의하에조기청산가능)"
+      }
+    },
+    {
+      "guard": "G3",
+      "field_path": "fee_schedule.management_fee.contract",
+      "decision": "pass",
+      "reason_code": "percent_in_range",
+      "reason": "0.89% ∈ [0.0, 5.0]",
+      "metadata": {
+        "value_pct": 0.89
+      }
+    },
+    {
+      "guard": "G3",
+      "field_path": "fee_schedule.management_fee.im",
+      "decision": "pass",
+      "reason_code": "unit_not_recognized",
+      "reason": "단위 정규화 불가 — 범위 검증 스킵",
+      "metadata": {
+        "raw_text": "[운용]연[ 0.89 ] %"
+      }
+    },
+    {
+      "guard": "G3",
+      "field_path": "fee_schedule.trust_fee.contract",
+      "decision": "pass",
+      "reason_code": "percent_in_range",
+      "reason": "0.05% ∈ [0.0, 2.0]",
+      "metadata": {
+        "value_pct": 0.05
+      }
+    },
+    {
+      "guard": "G3",
+      "field_path": "fee_schedule.trust_fee.im",
+      "decision": "pass",
+      "reason_code": "unit_not_recognized",
+      "reason": "단위 정규화 불가 — 범위 검증 스킵",
+      "metadata": {
+        "raw_text": "[신탁] 연[ 0.05] %"
+      }
+    },
+    {
+      "guard": "G3",
+      "field_path": "fee_schedule.sales_fee.im",
+      "decision": "pass",
+      "reason_code": "unit_not_recognized",
+      "reason": "단위 정규화 불가 — 범위 검증 스킵",
+      "metadata": {
+        "raw_text": "[판매] 연[ 0.03 ] %"
+      }
+    }
+  ],
+  "summary": {
+    "total_events": 25,
+    "rejected_count": 0,
+    "by_guard": {
+      "G1": {
+        "pass": 1,
+        "reject": 0,
+        "retry": 0
+      },
+      "G2": {
+        "pass": 16,
+        "reject": 0,
+        "retry": 0
+      },
+      "G3": {
+        "pass": 8,
+        "reject": 0,
+        "retry": 0
+      }
+    }
+  }
+}

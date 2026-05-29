@@ -1,0 +1,52 @@
+{
+  "run_id": "run_01_seed42",
+  "seed": 42,
+  "model": "gemma4:31b",
+  "model_digest": "unknown",
+  "temperature": 0.1,
+  "contract_pdf": "제정신탁계약서_날인본_이지스블랙ON1호_20250722_최종버전.pdf",
+  "contract_sha256": "669237ea203a02aebedb3849d5fe22cf9d088f758ff9e8a3d032720a2692e66c",
+  "contract_pages": 22,
+  "im_pdf": "이지스 블랙ON 1호_준감필.pdf",
+  "im_sha256": "c462f6f6880c24f08c586c651b72c231042bee21bc2f4f05a566c11ba9b2376d",
+  "im_pages": 32,
+  "ollama_contract_pass": {
+    "model": "gemma4:31b",
+    "model_digest": "unknown",
+    "prompt_eval_count": 6328,
+    "eval_count": 752,
+    "eval_ms": 44932,
+    "total_ms": 62949
+  },
+  "ollama_im_pass": {
+    "model": "gemma4:31b",
+    "model_digest": "unknown",
+    "prompt_eval_count": 16093,
+    "eval_count": 993,
+    "eval_ms": 58558,
+    "total_ms": 74600
+  },
+  "total_eval_ms": 103490,
+  "total_wall_ms": 173979,
+  "guard_summary": {
+    "total_events": 25,
+    "rejected_count": 0,
+    "by_guard": {
+      "G1": {
+        "pass": 1,
+        "reject": 0,
+        "retry": 0
+      },
+      "G2": {
+        "pass": 16,
+        "reject": 0,
+        "retry": 0
+      },
+      "G3": {
+        "pass": 8,
+        "reject": 0,
+        "retry": 0
+      }
+    }
+  }
+}

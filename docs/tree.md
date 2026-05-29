@@ -35,39 +35,53 @@ DnB_harness/
 │   ├── tree.md                                  ✅  ⭐ 이 파일 — 디렉토리 한글 가이드
 │   ├── ontology_pipeline.md                     ✅  파이프라인 현황 (종현)
 │   ├── ontology_prd.md                          ✅  온톨로지 PRD (종현)
-│   └── INTERFACES.md                            📝  manifest·score 스키마 (승훈, W1)
+│   ├── EXTRACT_GUARD_PLAN.md                    ✅  ⭐ 추출·가드 설계 (PM 전담, Gemma 4)
+│   └── INTERFACES.md                            ✅  ⭐ 단일 진실 스키마 (LLMBackend·Guard·score·manifest)
 │
 ├── src/                                         ✅  소스 코드
 │   ├── __init__.py                              ✅  패키지 표시
 │   │
-│   ├── client/                                  ✅  Anthropic SDK 래퍼
-│   │   └── anthropic_client.py                  ✅  caching·retry·usage 로깅 (건)
+│   ├── client/                                  ✅  LLM SDK 래퍼
+│   │   ├── anthropic_client.py                  ✅  Claude — caching·retry·usage 로깅 (종현)
+│   │   └── ollama_client.py                     📝  Gemma 4 HTTP API + JSON Schema 강제 (승훈)
 │   │
 │   ├── schemas/                                 ✅  LLM 출력 강제 형식 (Pydantic)
-│   │   └── extraction.py                        ✅  4개념 추출 스키마 (종현)
+│   │   └── extraction.py                        ✅  4개념 추출 스키마 (종현, 단일 소스)
+│   │
+│   ├── ingest/                                  📝  ⭐ PDF → 텍스트 (승훈)
+│   │   └── pdf_to_text.py                       📝  스캔=Tesseract OCR / 디지털=pdfplumber, 페이지 보존
+│   │
+│   ├── extraction/                              📝  ⭐ 추출 백엔드 추상화 (승훈)
+│   │   ├── backend_base.py                      📝  LLMBackend Protocol
+│   │   ├── backend_ollama.py                    📝  Gemma 4 호출 + JSON Schema
+│   │   ├── extractor.py                         📝  Doc-then-field 2-pass orchestration
+│   │   └── prompts/
+│   │       ├── extract_side_v1.md               📝  한 면 추출 프롬프트
+│   │       └── retry_g1_v1.md                   📝  G1 형식 오류 재시도 프롬프트
 │   │
 │   ├── ontology/                                ✅  온톨로지 로딩·검증 래퍼
 │   │   ├── mapping.py                           ✅  추출 JSON → ABox(개념 지도) 변환 (종현)
 │   │   └── validate.py                          ✅  pyshacl 적정성 검증 래퍼 (종현)
 │   │
 │   ├── pipelines/                               ✅  태스크별 흐름
-│   │   ├── extract.py                           ✅  추출 — tool-use 구조화 출력 (종현)
+│   │   ├── extract.py                           ✅  추출 — Claude 경로 (종현)
 │   │   ├── normalize.py                         ✅  단위·표기 정규화 (종현)
 │   │   ├── cross_check.py                       ✅  교차검증 — 계약서값 vs IM값 (종현)
 │   │   └── llm_judge.py                         ✅  의미 동등 판단 LLM 라우터 (종현)
 │   │
-│   ├── guards/                                  📝  ⭐ 가드 3종 — 출력 후처리 검증 (건)
-│   │   ├── registry.py                          📝  가드 ON/OFF 토글 (건)
-│   │   ├── format_guard.py                      📝  G1 형식 — 빈칸 형식 검증 (건)
-│   │   ├── citation_guard.py                    📝  G2 출처 — 없는 페이지 인용 차단 (건)
-│   │   └── constraint_guard.py                  📝  G3 제약 — 범위·논리 위반 차단 (건)
+│   ├── guards/                                  📝  ⭐ 가드 3종 — 출력 후처리 검증 (승훈)
+│   │   ├── base.py                              📝  GuardEvent, GuardConfig, GuardContext, Guard Protocol
+│   │   ├── g1_format.py                         📝  G1 형식 — Pydantic + 1회 재시도
+│   │   ├── g2_citation.py                       📝  G2 출처 — pypdf 페이지 범위 확인
+│   │   ├── g3_constraint.py                     📝  G3 제약 — 범위·논리 + SHACL 위임
+│   │   └── registry.py                          📝  가드 ON/OFF 토글 + 체이닝
 │   │
 │   ├── scoring/                                 📝  ⭐ 채점·메트릭·비교 (승연) — LLM 호출 없음
-│   │   ├── scorer.py                            📝  Accuracy·Precision·Recall·F1·환각률 코어 (승연)
-│   │   ├── breakdown.py                         📝  필드·난이도·변조·signal 세분화 (승연)
-│   │   └── compare.py                           📝  3개 score.json → compare.md (승연)
+│   │   ├── scorer.py                            📝  Accuracy·Precision·Recall·F1·환각률 코어
+│   │   ├── breakdown.py                         📝  필드·난이도·변조·signal 세분화
+│   │   └── compare.py                           📝  3개 score.json → compare.md
 │   │
-│   ├── cli/                                     📝  CLI 진입점 (건, PM 협업)
+│   ├── cli/                                     📝  CLI 진입점 (건)
 │   │   └── main.py                              📝  `dnb run / score / compare …` (typer)
 │   │
 │   └── stats/                                   📝  통계 검정 (승훈)
@@ -80,6 +94,7 @@ DnB_harness/
 │       └── normalize/system.md                  ✅  정규화 프롬프트 (종현)
 │
 ├── scripts/                                     ✅  일회성·실험용 (src 외부)
+│   ├── hello_gemma.py                           ✅  Gemma 4 + JSON Schema smoke (승훈)
 │   ├── run_extract_once.py                      ✅  단발 추출 PoC (종현)
 │   ├── render_mermaid.py                        ✅  온톨로지 mermaid 렌더 (종현)
 │   ├── render_ontology_graph.py                 ✅  온톨로지 그래프 렌더 (종현)
@@ -129,12 +144,14 @@ DnB_harness/
 |----------|------|----------|
 | `database/` | 펀드 PDF 원본 | **외부 업로드 절대 금지**. PDF는 gitignore |
 | `ontology/` | 개념 지도(`.ttl`) + SHACL 규칙 | 개념·속성 이름의 **단일 소스**(종현). 바뀌면 공지 |
-| `docs/` | 보고서·계획·역할·가이드 | PLAN/실행계획/역할분담 변경 시 PR + 리뷰 |
-| `src/client/` | Anthropic SDK 래퍼 | caching·retry·usage 로깅 |
-| `src/schemas/` | LLM 출력 강제 형식 (Pydantic) | W1에 형식 합의 → 고정 |
+| `docs/` | 보고서·계획·역할·가이드·인터페이스 | PLAN/실행계획/역할분담/INTERFACES 변경 시 PR + 리뷰 |
+| `src/client/` | LLM SDK 래퍼 (Claude·Gemma) | caching·retry·usage·timing 로깅 |
+| `src/schemas/` | LLM 출력 강제 형식 (Pydantic) | 14필드 4개념 — 변경 금지 (단일 소스) |
+| `src/ingest/` | PDF → 페이지별 텍스트 | 스캔=OCR / 디지털=pdfplumber. 페이지 번호 보존 |
+| `src/extraction/` | LLM 추출 백엔드 + 2-pass orchestration | `LLMBackend` Protocol 통해 Claude·Gemma 교체 가능 |
 | `src/ontology/` | JSON→ABox 변환·pyshacl 검증 래퍼 | 추출 결과를 개념 지도에 끼워 검사 |
-| `src/pipelines/` | 추출 → 정규화 → 교차검증 → judge 흐름 | 태스크 1개 = 파일 1개 |
-| `src/guards/` | 가드 3종(형식·출처·제약) | 각 가드 = 순수함수. **LLM 호출 금지** |
+| `src/pipelines/` | 정규화 → 교차검증 → judge 흐름 | 태스크 1개 = 파일 1개 |
+| `src/guards/` | 가드 3종(형식·출처·제약) + Registry | 각 가드 = **순수함수**. **LLM 호출 금지** |
 | `src/scoring/` | 채점기 — 출력 vs 골든셋·메트릭·비교 | **순수함수**(재현성). 통계 해석은 `src/stats/` |
 | `src/stats/` | McNemar·부트스트랩 | 3조건 비교의 유의성 검정 |
 | `src/cli/` | `dnb` 진입점 (typer) | run_id 부여·`reports/<run_id>/` 관리 |
@@ -150,9 +167,9 @@ DnB_harness/
 
 | 담당 | 처음 만들 파일 | 목표 |
 |------|--------------|------|
-| **신승훈** (PM) | `docs/INTERFACES.md`(manifest·score 스키마) + `src/stats/significance.py` 골격 | 인터페이스 단일 소스 + 통계 골격 |
-| **노종현** | (W1 거의 완료) `ontology/`·`src/pipelines/`·`prompts/v0/` 안정화 + W2 SHACL 보수 0~5% 제약 추가 | 추출·정규화·교차검증 안정 |
-| **조건** | `src/guards/{format,citation,constraint}_guard.py` + `src/cli/main.py` 골격 | 가드 3종 + CLI 진입점 |
+| **신승훈** (PM) | `docs/EXTRACT_GUARD_PLAN.md` + `docs/INTERFACES.md` (✅ 완료) + `scripts/hello_gemma.py` smoke (✅) + `src/ingest/pdf_to_text.py` + `src/client/ollama_client.py` | 추출·가드 백엔드 토대 + 인터페이스 freeze |
+| **노종현** | (W1 거의 완료) `ontology/`·`src/pipelines/`·`prompts/v0/` 안정화 + W2 SHACL 보수 0~5% 제약 추가 | 추출·정규화·교차검증·Judge 안정 |
+| **조건** | `src/cli/main.py` 골격(typer) + `scripts/apply_perturbations.py` 초안 | CLI 진입점 + 변조 적용 인프라 |
 | **한승연** | `src/scoring/scorer.py`(Accuracy·Precision·Recall·F1·환각률) + `tests/test_scorer.py` | mock 데이터로 채점기 단위 테스트 통과 |
 | **김리나** | `tests/golden/labeler_v1_rina.csv` 시작 (30개 PDF 대조 검수) | `docs/golden_master.md` 가이드 따라 라벨링 v1 |
 

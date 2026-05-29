@@ -13,8 +13,13 @@ pyshacl>=0.26.0             # SHACL 규칙 검증
 # --- PDF 조작 (perturbation 생성, 페이지 수/메타 확인) ---
 pypdf>=4.2.0                # 텍스트 PDF 파싱/병합/분할
 pymupdf>=1.24.0             # 페이지 오버레이/텍스트 redaction (perturbation 핵심)
-pdf2image>=1.17.0           # 스캔 PDF → 이미지 (필요 시 분리 검증용)
+pdf2image>=1.17.0           # 스캔 PDF → 이미지 (Tesseract OCR 입력)
+pdfplumber>=0.11.0          # 디지털 PDF 본문 추출 (페이지별 텍스트)
+pytesseract>=0.3.10         # Tesseract Korean OCR (스캔 계약서)
 Pillow>=10.3.0              # 이미지 조작
+
+# --- 로컬 LLM (Gemma 4 via Ollama) ---
+requests>=2.32.0            # Ollama HTTP API 호출
 
 # --- 평가 결과 집계/리포팅 ---
 pandas>=2.2.0               # eval 결과 long-format 집계
