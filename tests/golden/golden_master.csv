@@ -1,4 +1,4 @@
-case_id,category,field,label,gold_label,mutation_type,difficulty,contract_raw,contract_page,im_raw,im_page,harness_signal,weak_model_pitfall,note
+﻿case_id,category,field,label,gold_label,mutation_type,difficulty,contract_raw,contract_page,im_raw,im_page,harness_signal,weak_model_pitfall,note
 C001,정상,fund.name,"펀드명(공백/전각)",match,whitespace_normalize,easy,"이지스블랙 ON 일반사모투자신탁제 1 호",2,"이지스블랙ON 일반사모투자신탁제1호",9,normalization,"공백/전각 차이를 mismatch로 판단","정규화 1회로 동일"
 C002,정상,fund.name,"펀드명(약칭)",match,format_diff,medium,"이 집합투자기구는 일반 사모집합투자기구로서 집합투자기구의 명칭은 '이지스블랙 ON 일반사모투자신탁제 1 호'라 한다.",2,"이지스블랙ON1호",1,llm_judge,"약칭이라 다른 펀드라고 판단","IM 표지의 흔한 약칭"
 C003,정상,fund.type,"펀드유형(순서)",match,list_reorder,medium,"이 집합투자기구는 다음 각호의 형태를 갖는 집합투자기구로 한다. 1. 투자신탁 2. 폐쇄형 3. 단위형 4. 사모형 5. 혼합자산형 6. 일반 사모집합투자기구",2,"일반사모집합투자기구, 투자신탁형, 혼합자산형, 단위형, 폐쇄형, 사모형",9,llm_judge,"순서/조사 차이로 mismatch","집합 동치 인식 필요"
