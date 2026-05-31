@@ -37,9 +37,12 @@ PDF 3종 → [추출] → [온톨로지 변환] → [가드 3종] → [SHACL 적
 
 | 문서 | 내용 |
 |------|------|
-| [`docs/PLAN.md`](./docs/PLAN.md) | 설계 — 무엇을·왜 |
-| [`docs/실행계획.md`](./docs/실행계획.md) | 실행 — 누가·언제 (4주) |
-| [`docs/역할분담.md`](./docs/역할분담.md) | 역할·책임·RACI |
+| [`AGENTS.md`](./AGENTS.md) | 팀원·AI agent 공통 작업 지도 |
+| [`docs/STATUS.md`](./docs/STATUS.md) | 현재 완료 상태와 다음 시작점 |
+| [`docs/README.md`](./docs/README.md) | 문서 지도 |
+| [`docs/ARCHITECTURE.md`](./docs/ARCHITECTURE.md) | 설계 — 무엇을·왜 |
+| [`docs/ROADMAP.md`](./docs/ROADMAP.md) | 실행 — 누가·언제 (4주) |
+| [`docs/Role_Dividing.md`](./docs/Role_Dividing.md) | 역할·책임·RACI |
 | [`docs/tree.md`](./docs/tree.md) | 디렉토리 구조 가이드 |
 
 ---

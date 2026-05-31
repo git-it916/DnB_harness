@@ -3,7 +3,7 @@
 > 팀이 병렬 작업하려면 *경계*가 먼저 박혀야 한다. 이 문서가 깨지면 모든 모듈이 깨짐.
 > 변경은 PR + PM 승인. 최종 갱신: 2026-05-29.
 >
-> 관련: [`PLAN.md`](./PLAN.md) · [`EXTRACT_GUARD_PLAN.md`](./EXTRACT_GUARD_PLAN.md) · [`golden_master.md`](./golden_master.md).
+> 관련: [`ARCHITECTURE.md`](./ARCHITECTURE.md) · [`extract_guard_plan.md`](./reference/extract_guard_plan.md) · [`GOLDENSET.md`](./GOLDENSET.md).
 
 ---
 
@@ -298,7 +298,7 @@ class HarnessResult(BaseModel):
 }
 ```
 
-> **gold_label ↔ FinalCheckStatus 매핑**: `golden_master.md §7` 참고.
+> **gold_label ↔ FinalCheckStatus 매핑**: `GOLDENSET.md §7` 참고.
 
 ---
 
@@ -361,7 +361,7 @@ class HarnessResult(BaseModel):
 1. PR 제목: `[INTERFACE] <스키마명> 변경`
 2. body에 *영향 모듈 목록* 명시 (예: extractor·guards·scorer·러너 중 어디)
 3. PM 승인 필수
-4. 변경 후 `docs/EXTRACT_GUARD_PLAN.md`·`docs/golden_master.md` 동기화
+4. 변경 후 `docs/reference/extract_guard_plan.md`·`docs/GOLDENSET.md` 동기화
 
 ---
 

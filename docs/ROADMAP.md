@@ -2,7 +2,7 @@
 
 > **목표**: 잔가지 다 쳐내고 **통계값 하나를 뽑아내는 최소 하네스(MVP)**.
 > **유지**: 온톨로지 + 하네스(가드) 엔지니어링. **골든셋 30개. 펀드 1개(이지스).**
-> **기간**: 4주 (+1주 버퍼). 설계 배경은 [`PLAN.md`](./PLAN.md), 이 문서는 실행만.
+> **기간**: 4주 (+1주 버퍼). 설계 배경은 [`ARCHITECTURE.md`](./ARCHITECTURE.md), 이 문서는 실행만.
 
 ---
 ## 0. MVP 한 장 요약
@@ -14,7 +14,7 @@
 
 ---
 
-> 📖 **용어가 헷갈리면** [`PLAN.md → 용어 사전`](./PLAN.md) 참조. 한 줄: 추출(LLM) → 가드(코드) → 온톨로지·SHACL(코드) → cross_check(코드) → Judge(LLM 일부) → 채점(코드). 이 6단계 합쳐서 **하네스**.
+> 📖 **용어가 헷갈리면** [`ARCHITECTURE.md → 용어 사전`](./ARCHITECTURE.md) 참조. 한 줄: 추출(LLM) → 가드(코드) → 온톨로지·SHACL(코드) → cross_check(코드) → Judge(LLM 일부) → 채점(코드). 이 6단계 합쳐서 **하네스**.
 
 ---
 
@@ -91,11 +91,11 @@ PDF 3종
 ## 5. 4주 계획 (팀원별, 최소)
 
 ### W1 — 토대: 온톨로지 4개념 + 추출 + 골든셋 시작
-- **승훈**: `docs/EXTRACT_GUARD_PLAN.md`·`docs/INTERFACES.md` freeze (완료) / `scripts/hello_gemma.py` smoke (완료) / `src/ingest/pdf_to_text.py` (디지털=pdfplumber, 스캔=**Gemma 4 vision**) · `src/client/ollama_client.py` (Ollama HTTP + JSON Schema + images) · `src/extraction/{side_schemas,extractor}.py` (2-pass) · `src/guards/{base,g1_format,g2_citation,g3_constraint,registry}.py` 초기 구현 + `database/gemma4/` 5회 산출.
+- **승훈**: `docs/reference/extract_guard_plan.md`·`docs/INTERFACES.md` freeze (완료) / `scripts/hello_gemma.py` smoke (완료) / `src/ingest/pdf_to_text.py` (디지털=pdfplumber, 스캔=**Gemma 4 vision**) · `src/client/ollama_client.py` (Ollama HTTP + JSON Schema + images) · `src/extraction/{side_schemas,extractor}.py` (2-pass) · `src/guards/{base,g1_format,g2_citation,g3_constraint,registry}.py` 초기 구현 + `database/gemma4/` 5회 산출.
 - **종현**: `trust_fund.ttl`(4개념) + 추출 프롬프트(빈칸 강제) + 추출→JSON. (W1 거의 완료)
 - **건**: `src/cli/main.py` 골격 (typer + `dnb run/score/compare` 명령 시그니처) + `scripts/apply_perturbations.py` 초안.
 - **승연**: `score.json` v0 스키마 확정 + 채점기 코어(Accuracy·Precision·Recall·F1) 순수함수 + mock 데이터 단위테스트. (빠른 테스트 사이클 확보)
-- **리나**: `tests/golden/golden_master.csv` 30개 PDF 대조 검수 시작 + 합성 케이스(C002·C014·C029) 의견. 가이드: `docs/golden_master.md`.
+- **리나**: `tests/golden/golden_master.csv` 30개 PDF 대조 검수 시작 + 합성 케이스(C002·C014·C029) 의견. 가이드: `docs/GOLDENSET.md`.
 - ✅ 끝 신호: 명령어 한 줄로 PDF→AI 답이 뜬다.
 
 ### W2 — MVH: 끝→끝 + 골든셋 30 완성

@@ -1,9 +1,9 @@
 # R&R — 역할과 책임 (Roles & Responsibilities)
 
-> 기준 문서: [`실행계획.md`](./실행계획.md) (MVP, 4주). 스코프가 바뀌면 이 문서도 갱신.
+> 기준 문서: [`ROADMAP.md`](./ROADMAP.md) (MVP, 4주). 스코프가 바뀌면 이 문서도 갱신.
 > 한 줄: **PM 1명(승훈) + 개발 3명(종현·건·승연) + 골든셋·발표 1명(리나). 골든셋 정답은 PM이 최종 확정.**
 >
-> 📖 **단어가 헷갈리면** [`PLAN.md → 용어 사전`](./PLAN.md) 참조 — 추출·가드·온톨로지·SHACL·cross_check·Judge·하네스·채점·골든셋의 정의를 한 표에서.
+> 📖 **단어가 헷갈리면** [`ARCHITECTURE.md → 용어 사전`](./ARCHITECTURE.md) 참조 — 추출·가드·온톨로지·SHACL·cross_check·Judge·하네스·채점·골든셋의 정의를 한 표에서.
 
 ---
 
@@ -11,7 +11,7 @@
 
 ### 신승훈 — PM · 추출(Gemma) · 가드 · 통계
 - **책임**: 일정·통합 관리 / 골든셋 정답 **최종 확정**(κ 합의) / **Gemma 4 기반 추출 백엔드** (`src/ingest/`, `src/client/ollama_client.py`, `src/extraction/`) / **가드 3종** (G1 형식·G2 출처·G3 제약) / 통계(McNemar·부트스트랩) / 보고서 + 인터페이스 명세.
-- **산출물**: `docs/EXTRACT_GUARD_PLAN.md` + `docs/INTERFACES.md` / `tests/golden/golden_master.csv` PM 확정본 / `docs/golden_master.md`(가이드) / `src/ingest/pdf_to_text.py` + `src/client/ollama_client.py` + `src/extraction/extractor.py` / `src/guards/{g1_format,g2_citation,g3_constraint,registry}.py` / `src/stats/significance.py`(McNemar·Bootstrap CI) / 학술제 보고서.
+- **산출물**: `docs/reference/extract_guard_plan.md` + `docs/INTERFACES.md` / `tests/golden/golden_master.csv` PM 확정본 / `docs/GOLDENSET.md`(가이드) / `src/ingest/pdf_to_text.py` + `src/client/ollama_client.py` + `src/extraction/extractor.py` / `src/guards/{g1_format,g2_citation,g3_constraint,registry}.py` / `src/stats/significance.py`(McNemar·Bootstrap CI) / 학술제 보고서.
 - **안 넘기는 선**: 골든셋 정답값은 PM이 확정(라벨러 의견 → 조정). 채점기·메트릭은 승연 영역(PM은 통계 검정·해석만). 가드는 **결정론 함수**(LLM 호출 금지). Gemma 호출 결정론(temp=0.1·seed=42·model hash 로깅).
 
 ### 노종현 — 온톨로지 · LLM 추출
@@ -30,7 +30,7 @@
 - **안 넘기는 선**: 채점기 안에 **LLM 호출 금지**(순수함수). 골든셋 정답값 임의 변경 금지. 숫자 임의 반올림·필터 금지 — 통계 검정·해석은 PM 영역.
 
 ### 김리나 — 골든셋 검수 · 발표
-- **책임**: `tests/golden/golden_master.csv` 30개 PDF 대조 검수(라벨러) / 변조 케이스 검수 / κ 합의 / 발표 장표·대본. 가이드: `docs/golden_master.md`.
+- **책임**: `tests/golden/golden_master.csv` 30개 PDF 대조 검수(라벨러) / 변조 케이스 검수 / κ 합의 / 발표 장표·대본. 가이드: `docs/GOLDENSET.md`.
 - **산출물**: `tests/golden/labeler_v1_rina.csv`, 변조 검수 메모, 발표자료.
 - **안 넘기는 선**: 코드 수정 금지. `contract_raw` 변경 금지. 합성 케이스(C002·C014·C029) 손대지 말 것. 추측 라벨 금지(모르면 `note` + PM 질문).
 

@@ -1,7 +1,7 @@
 # 추출·가드 설계 — Gemma 4 로컬 백엔드 (PM 전담)
 
 > 추출(Extract)과 가드(Guard) 레이어를 로컬 Gemma 4 기반으로 PM(승훈)이 전담 구현하는 설계서.
-> 기준: [`PLAN.md §3·§4`](./PLAN.md), [`golden_master.md`](./golden_master.md), [`INTERFACES.md`](./INTERFACES.md).
+> 기준: [`ARCHITECTURE.md §3·§4`](../ARCHITECTURE.md), [`GOLDENSET.md`](../GOLDENSET.md), [`INTERFACES.md`](../INTERFACES.md).
 > 최종 갱신: 2026-05-29.
 
 ---
@@ -23,7 +23,7 @@
 | 환각 (본문에 없는 값) | ✅ null 반환 (환각 X) |
 | 응답 속도 | 0.5~2.6초 / 필드 |
 
-→ smoke 스크립트: [`scripts/hello_gemma.py`](../scripts/hello_gemma.py)
+→ smoke 스크립트: [`scripts/hello_gemma.py`](../../scripts/hello_gemma.py)
 
 ---
 
@@ -75,7 +75,7 @@ PDF 2개
 └─────────────────────────────────────────────┘
 ```
 
-→ **종현의 [`src/pipelines/extract.py`](../src/pipelines/extract.py)(Claude) 는 그대로**. 둘 다 같은 [`ExtractionResult`](../src/schemas/extraction.py) 출력 → 가드·이후 단계 공통.
+→ **종현의 [`src/pipelines/extract.py`](../../src/pipelines/extract.py)(Claude) 는 그대로**. 둘 다 같은 [`ExtractionResult`](../../src/schemas/extraction.py) 출력 → 가드·이후 단계 공통.
 
 ---
 
@@ -122,7 +122,7 @@ PDF 2개
 ### Poppler 자동 탐색
 Conda env 의 `Library/bin/pdfinfo.exe` 자동 검색 → `convert_from_path(poppler_path=...)` 로 전달. 시스템 PATH 의존 제거.
 
-### 모듈 시그니처 [`src/ingest/pdf_to_text.py`](../src/ingest/pdf_to_text.py)
+### 모듈 시그니처 [`src/ingest/pdf_to_text.py`](../../src/ingest/pdf_to_text.py)
 
 ```python
 from pathlib import Path
@@ -173,7 +173,7 @@ class DocumentText:
 
 ### 4.1.1 `SideExtraction` 스키마 (신규)
 
-**위치**: [`src/extraction/side_schemas.py`](../src/extraction/side_schemas.py)
+**위치**: [`src/extraction/side_schemas.py`](../../src/extraction/side_schemas.py)
 
 `ExtractionResult` 는 `ComparableField(contract, im)` 으로 양쪽을 한 객체에 묶지만, 한 번 호출에 한 면만 처리하려면 *평탄한* 스키마가 필요. → `FundSide` · `PartySide` · `FeeScheduleSide` · `RedemptionTermsSide` 정의 + `SideExtraction` 번들 + `merge_sides(contract_side, im_side) → ExtractionResult` 합성 함수.
 
@@ -224,7 +224,7 @@ extraction = FundExtraction.model_validate_json(raw)
 
 ### 4.3 프롬프트 (한국어, side-aware)
 
-**위치**: [`src/extraction/extractor.py`](../src/extraction/extractor.py) 내 `SYSTEM_RULES` 상수.
+**위치**: [`src/extraction/extractor.py`](../../src/extraction/extractor.py) 내 `SYSTEM_RULES` 상수.
 
 > 원래 plan 은 `prompts/extract_side_v1.md` 외부 파일이었으나 MVP 가속을 위해 인라인 결정 (2026-05-29). 프롬프트 버전 관리가 필요해지면 그때 분리.
 
@@ -273,7 +273,7 @@ JSON으로만 답하세요.
 
 ## 5. 가드 3종 형식
 
-스키마 단일 소스: [`INTERFACES.md`](./INTERFACES.md).
+스키마 단일 소스: [`INTERFACES.md`](../INTERFACES.md).
 
 ### 5.1 공통 `GuardEvent` (요지)
 
@@ -520,7 +520,7 @@ requests>=2.32        # Ollama HTTP
 
 ---
 
-## 9. R&R 영향 (역할분담.md 갱신 필요)
+## 9. R&R 영향 (Role_Dividing.md 갱신 필요)
 
 | 활동 | 기존 (R/A) | 새 (R/A) |
 |---|---|---|
@@ -562,7 +562,7 @@ requests>=2.32        # Ollama HTTP
 1. **`docs/INTERFACES.md` 박기** ← 본 작업과 동시 (병렬)
 2. **`src/ingest/pdf_to_text.py` 시작** — Tesseract Korean 설치 + 디지털/스캔 분기
 3. **requirements.txt + pyproject.toml** 에 pdfplumber·pytesseract 추가
-4. **`역할분담.md` §9 표 반영** — PM이 추출+가드 전담으로 재조정
+4. **`Role_Dividing.md` §9 표 반영** — PM이 추출+가드 전담으로 재조정
 
 ---
 
@@ -615,7 +615,7 @@ find database/gemma4 -name "error.txt" -delete
 
 **우려**: §4.4 표에 "temp=0은 Q4 양자화 token 폭주(degenerate) 위험" 명시
 
-**검증 스크립트**: [`scripts/smoke_temp0.py`](../scripts/smoke_temp0.py)
+**검증 스크립트**: [`scripts/smoke_temp0.py`](../../scripts/smoke_temp0.py)
 
 **방법**: text-only 단순 prompt + 3-필드 JSON Schema. temp ∈ {0.0, 0.05, 0.1} × 같은 prompt 2회 호출 = 6번
 
@@ -634,7 +634,7 @@ find database/gemma4 -name "error.txt" -delete
 1. DPI를 150→200으로 올리면 한국어 OCR 정확도 ↑
 2. temp=0이면 추출 안정성 ↑ (필드 결측 ↓)
 
-**검증 스크립트**: [`scripts/extract_v2.py`](../scripts/extract_v2.py)
+**검증 스크립트**: [`scripts/extract_v2.py`](../../scripts/extract_v2.py)
 
 **설정**:
 - temperature=0.0, IMAGE_DPI=200
@@ -686,7 +686,7 @@ find database/gemma4 -name "error.txt" -delete
 - C029 (fake_citation): `im_page = 999` (PDF에 없는 페이지)
 - + 추가: `citation.document` side mismatch (contract 측인데 "IM" 라벨)
 
-**검증 스크립트**: [`scripts/test_g2_fake_citation.py`](../scripts/test_g2_fake_citation.py)
+**검증 스크립트**: [`scripts/test_g2_fake_citation.py`](../../scripts/test_g2_fake_citation.py)
 
 **방법**:
 1. V1 run_01 의 `extraction.json` 을 base 로 load
@@ -718,16 +718,16 @@ find database/gemma4 -name "error.txt" -delete
 | Vision 결정론 | 8/9 ≈ 89% 수용 | — | 다중 실행 후 다수결 또는 통계 단계에서 처리 |
 
 **코드 적용**:
-- [`src/ingest/pdf_to_text.py`](../src/ingest/pdf_to_text.py): `IMAGE_DPI = 150` → **`200`**
-- [`scripts/extract_5_runs.py`](../scripts/extract_5_runs.py): `temperature=0.1` → **`0.0`**
+- [`src/ingest/pdf_to_text.py`](../../src/ingest/pdf_to_text.py): `IMAGE_DPI = 150` → **`200`**
+- [`scripts/extract_5_runs.py`](../../scripts/extract_5_runs.py): `temperature=0.1` → **`0.0`**
 
 ### 13.8 산출물 표
 
 | 카테고리 | 파일 | 산출 시점 |
 |---|---|---|
-| 실험 스크립트 | [`scripts/smoke_temp0.py`](../scripts/smoke_temp0.py) | (ii) |
-| 실험 스크립트 | [`scripts/extract_v2.py`](../scripts/extract_v2.py) | (iii) |
-| 가드 검증 | [`scripts/test_g2_fake_citation.py`](../scripts/test_g2_fake_citation.py) | (iv) |
+| 실험 스크립트 | [`scripts/smoke_temp0.py`](../../scripts/smoke_temp0.py) | (ii) |
+| 실험 스크립트 | [`scripts/extract_v2.py`](../../scripts/extract_v2.py) | (iii) |
+| 가드 검증 | [`scripts/test_g2_fake_citation.py`](../../scripts/test_g2_fake_citation.py) | (iv) |
 | 결과 (V1) | `database/gemma4/run_01~05/` (5 폴더 × 4파일) | V1 |
 | 결과 (V2) | `database/gemma4_v2_t0_d200/run_{A,B}/` (2 폴더 × 4파일) | (iii) |
 | 보고서 | 본 §13 | (v) |
