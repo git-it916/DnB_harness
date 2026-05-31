@@ -40,6 +40,14 @@ def test_validate_graph_requires_contract_trustee_company_name():
     assert "trustee" in result.report_text
 
 
+def test_validate_graph_reports_management_fee_above_business_range():
+    result = validate_graph(extraction_to_graph(_high_management_fee_extraction()))
+
+    assert result.conforms is False
+    assert "management_fee" in result.report_text
+    assert "5.0%" in result.report_text
+
+
 def _valid_minimum_extraction() -> ExtractionResult:
     return ExtractionResult.model_validate(
         {
@@ -94,6 +102,17 @@ def _missing_contract_trustee_extraction() -> ExtractionResult:
         "unit": None,
         "raw_text": None,
         "citation": None,
+    }
+    return ExtractionResult.model_validate(extraction)
+
+
+def _high_management_fee_extraction() -> ExtractionResult:
+    extraction = _valid_minimum_extraction().model_dump()
+    extraction["fee_schedule"]["management_fee"]["im"] = {
+        "value": "8.9",
+        "unit": "percent_per_year",
+        "raw_text": "[운용] 연[ 8.9 ] %",
+        "citation": {"document": "IM", "page": 9},
     }
     return ExtractionResult.model_validate(extraction)
 

@@ -18,6 +18,8 @@ from src.guards.base import (
     iter_comparable_fields,
     nullify_side,
 )
+from src.ontology.mapping import extraction_to_graph
+from src.ontology.validate import validate_graph
 from src.schemas.extraction import ComparableField, DocumentValue, ExtractionResult
 
 # 결정론 범위 규칙
@@ -58,6 +60,12 @@ def check_constraints(
             if event.decision == GuardDecision.REJECT:
                 # 만기일 null 처리 (덜 신뢰 가는 쪽)
                 current = nullify_side(current, "fund.maturity_date", side)
+
+    # (c) SHACL 위임: ontology 조건의 진단을 guard 조건에서 집행 신호로 연결
+    if ctx.config.g3_use_shacl:
+        event = _check_shacl_constraints(current)
+        if event is not None:
+            events.append(event)
 
     return current, events
 
@@ -161,6 +169,29 @@ def _check_maturity_after_inception(
         reason_code="maturity_after_inception",
         reason=f"만기={maturity.isoformat()} > 설정일={incept.isoformat()}",
         metadata={"inception": incept.isoformat(), "maturity": maturity.isoformat()},
+    )
+
+
+def _check_shacl_constraints(extraction: ExtractionResult) -> GuardEvent | None:
+    graph = extraction_to_graph(extraction)
+    result = validate_graph(graph)
+    if result.conforms:
+        return GuardEvent(
+            guard="G3",
+            field_path=None,
+            decision=GuardDecision.PASS,
+            reason_code="shacl_conforms",
+            reason="SHACL validation conforms",
+            metadata={},
+        )
+
+    return GuardEvent(
+        guard="G3",
+        field_path=None,
+        decision=GuardDecision.REJECT,
+        reason_code="shacl_violation",
+        reason="SHACL validation failed",
+        metadata={"report_text": result.report_text},
     )
 
 

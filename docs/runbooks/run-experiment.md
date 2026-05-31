@@ -9,8 +9,8 @@
 | 조건 | 설명 |
 |---|---|
 | baseline | LLM 단독 자유 질문 |
-| ontology | 4개념 구조화 추출 + 교차검증 |
-| guard | ontology 조건 + G1/G2/G3 가드 |
+| ontology | 4개념 구조화 추출 + ABox/SHACL 진단 + 교차검증. SHACL 위반은 기록만 하고 결과 수정 없음 |
+| guard | ontology 조건 + G1/G2/G3 가드. G3가 Python 규칙/SHACL 신호를 reject/null 처리로 집행 |
 
 ## 현재 상태
 

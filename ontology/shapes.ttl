@@ -61,4 +61,30 @@ dnb:FeeScheduleShape a sh:NodeShape ;
         sh:minCount 1 ;
         sh:datatype xsd:string ;
         sh:message "FeeSchedule must include management_fee raw_text."@en
+    ] ;
+    sh:sparql [
+        sh:message "management_fee must be within 0.0% and 5.0%."@en ;
+        sh:select """
+            PREFIX dnb: <https://dnb-harness.local/ontology#>
+            PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+
+            SELECT $this ?value ?percent
+            WHERE {
+                $this dnb:management_fee ?value .
+                BIND(STR(?value) AS ?raw)
+                FILTER(
+                    REGEX(?raw, "%")
+                    || REGEX(?raw, "1[,，]?000\\\\s*분의")
+                )
+                BIND(
+                    IF(
+                        REGEX(?raw, "1[,，]?000\\\\s*분의"),
+                        xsd:decimal(REPLACE(?raw, ".*1[,，]?000\\\\s*분의\\\\s*([0-9]+(?:\\\\.[0-9]+)?).*", "$1")) / 10,
+                        xsd:decimal(REPLACE(?raw, ".*?([0-9]+(?:\\\\.[0-9]+)?)[^0-9.]*%.*", "$1"))
+                    )
+                    AS ?percent
+                )
+                FILTER(?percent < 0.0 || ?percent > 5.0)
+            }
+        """
     ] .

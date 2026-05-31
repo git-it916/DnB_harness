@@ -359,7 +359,7 @@ def check_citations(extraction, ctx) -> tuple[ExtractionResult, list[GuardEvent]
 
 **두 갈래**:
 - (a) **결정론 Python 규칙** — 즉시 동작 가능
-- (b) **SHACL 위임** — `shapes.ttl` 갱신 후 동작
+- (b) **SHACL 위임** — `shapes.ttl` 갱신 후 `guard` 조건에서 집행 신호로 사용
 
 ```python
 CONSTRAINTS = {
@@ -401,7 +401,7 @@ class GuardConfig:
     g2_citation: bool = True
     g3_constraint: bool = True
     g1_max_retries: int = 1
-    g3_use_shacl: bool = True
+    g3_use_shacl: bool = False  # shapes.ttl 비즈니스 제약 보강 후 True 가능
 
 def apply_guards(raw_output, ctx, retry_callback=None) -> tuple[ExtractionResult | None, list[GuardEvent]]:
     events = []
@@ -427,8 +427,9 @@ def apply_guards(raw_output, ctx, retry_callback=None) -> tuple[ExtractionResult
 ```
 
 **3조건 매핑**:
-- ② +온톨로지: `GuardConfig(False, False, False)` — 가드 OFF
-- ③ +가드(풀): `GuardConfig(True, True, True)` — 가드 ON
+- ① baseline: 자유 질문. 가드 OFF, ABox/SHACL/cross_check 없음.
+- ② +온톨로지: 가드 OFF. ABox/SHACL/cross_check는 산출하지만 SHACL 위반으로 추출 결과를 수정하지 않음.
+- ③ +가드(풀): `GuardConfig(True, True, True)` — 가드 ON. G3가 Python 규칙/SHACL 위임 결과를 `GuardEvent`와 reject/null 처리로 집행.
 
 ---
 

@@ -10,12 +10,12 @@
 ## 1. 팀원별 책임
 
 ### 신승훈 — PM · 추출(Gemma) · 가드 · 통계
-- **책임**: 일정·통합 관리 / 골든셋 정답 **최종 확정**(κ 합의) / **Gemma 4 기반 추출 백엔드** (`src/ingest/`, `src/client/ollama_client.py`, `src/extraction/`) / **가드 3종** (G1 형식·G2 출처·G3 제약) / 통계(McNemar·부트스트랩) / 보고서 + 인터페이스 명세.
+- **책임**: 일정·통합 관리 / 골든셋 정답 **최종 확정**(κ 합의) / **Gemma 4 기반 추출 백엔드** (`src/ingest/`, `src/client/ollama_client.py`, `src/extraction/`) / **가드 3종** (G1 형식·G2 출처·G3 제약 집행) / 통계(McNemar·부트스트랩) / 보고서 + 인터페이스 명세.
 - **산출물**: `docs/reference/extract_guard_plan.md` + `docs/INTERFACES.md` / `tests/golden/golden_master.csv` PM 확정본 / `docs/GOLDENSET.md`(가이드) / `src/ingest/pdf_to_text.py` + `src/client/ollama_client.py` + `src/extraction/extractor.py` / `src/guards/{g1_format,g2_citation,g3_constraint,registry}.py` / `src/stats/significance.py`(McNemar·Bootstrap CI) / 학술제 보고서.
-- **안 넘기는 선**: 골든셋 정답값은 PM이 확정(라벨러 의견 → 조정). 채점기·메트릭은 승연 영역(PM은 통계 검정·해석만). 가드는 **결정론 함수**(LLM 호출 금지). Gemma 호출 결정론(temp=0.1·seed=42·model hash 로깅).
+- **안 넘기는 선**: 골든셋 정답값은 PM이 확정(라벨러 의견 → 조정). 채점기·메트릭은 승연 영역(PM은 통계 검정·해석만). 가드는 **결정론 함수**(LLM 호출 금지)이며, 온톨로지 규칙을 새로 정의하지 않고 G3에서 Python 규칙/SHACL 신호를 집행한다. Gemma 호출 결정론(temp=0.1·seed=42·model hash 로깅).
 
 ### 노종현 — 온톨로지 · LLM 추출
-- **책임**: 온톨로지(`trust_fund.ttl`·`shapes.ttl`) / 추출 프롬프트(tool-use) / JSON→ABox 변환 / 교차검증 로직 / 베이스라인(①) 모드.
+- **책임**: 온톨로지(`trust_fund.ttl`·`shapes.ttl`) / 추출 프롬프트(tool-use) / JSON→ABox 변환 / SHACL 진단 산출 / 교차검증 로직 / 베이스라인(①) 모드.
 - **산출물**: 온톨로지 2파일, 추출기, 교차검증, 그래프(W4).
 - **안 넘기는 선**: 개념·속성 **이름의 단일 소스**. 변경 시 즉시 공지(가드·채점기가 깨짐).
 
