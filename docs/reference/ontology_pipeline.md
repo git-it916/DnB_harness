@@ -6,6 +6,8 @@
 
 현재 파이프라인은 PDF 두 개를 LLM으로 구조화 추출하고, 추출 결과를 스키마로 검증한 뒤, raw text 기반 교차검증과 AI 정규화를 수행한다. 추출 JSON은 RDF 그래프로 매핑할 수 있고, RDF 그래프는 TTL 온톨로지와 SHACL shape로 최소 구조 검증을 받는다.
 
+3조건 실험에서는 이 온톨로지 파이프라인을 ② `+온톨로지` 조건의 진단 산출물로 사용한다. SHACL 위반은 여기서 결과를 수정하지 않고 리포트로만 남긴다. ③ `+가드` 조건에서는 G3가 같은 Python 제약/SHACL 신호를 reject/null 처리로 집행한다.
+
 ```text
 신탁계약서 PDF + IM PDF
   -> LLM extraction
@@ -407,7 +409,7 @@ W1 SHACL은 최소 필수 구조만 본다.
 
 IM에는 신탁업자 역할 표시만 있고 회사명이 없는 경우가 있으므로, W1에서는 `party_im.trustee`를 필수로 강제하지 않는다. 신탁계약서 쪽 `party_contract.trustee`는 필수다.
 
-SHACL은 현재 “문서 간 값이 같은가”를 판단하지 않는다. 그 역할은 cross check, judge, normalization 쪽에 있다.
+SHACL은 현재 “문서 간 값이 같은가”를 판단하지 않는다. 그 역할은 cross check, judge, normalization 쪽에 있다. 또한 ② `+온톨로지` 조건에서 SHACL은 진단 산출물일 뿐 추출 결과를 고치지 않는다. 추출 결과를 reject/null 처리하는 집행은 ③ `+가드` 조건의 G3 책임이다.
 
 ## 8. 현재 산출물 구조
 
@@ -515,6 +517,6 @@ uv run pytest
 - `llm_judgements.status`: needs_review에 대한 보조 의미 판단
 - `normalization.normalized_value/unit`: 후검증을 통과한 비교 후보값
 - RDF graph: raw text 기반 온톨로지 구조 표현
-- SHACL result: RDF 구조가 최소 필수 조건을 만족하는지에 대한 검증
+- SHACL result: RDF 구조가 최소 필수 조건을 만족하는지에 대한 검증. ②에서는 진단, ③에서는 G3 집행 신호로 사용 가능
 
-따라서 현재 단계에서 날짜·보수율 필드는 `final_status`로 자동 매칭까지 가능하고, RDF/ABox 및 SHACL 산출물도 한 번의 CLI 실행으로 생성된다. 다음 작업은 가드·골든셋 채점기와 합쳐 full harness 리포트로 만드는 것이다.
+따라서 현재 단계에서 날짜·보수율 필드는 `final_status`로 자동 매칭까지 가능하고, RDF/ABox 및 SHACL 산출물도 한 번의 CLI 실행으로 생성된다. 다음 작업은 가드·골든셋 채점기와 합쳐 full harness 리포트로 만들고, ③ 조건에서만 G3가 규칙 위반을 집행하도록 연결하는 것이다.

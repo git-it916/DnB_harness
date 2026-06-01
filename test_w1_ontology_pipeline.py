@@ -1,3 +1,4 @@
+import builtins
 import json
 import sys
 import types
@@ -177,6 +178,14 @@ dnb:FeeScheduleShape a sh:NodeShape ;
         shapes_path.write_text("@prefix sh: <http://www.w3.org/ns/shacl#> .", encoding="utf-8")
 
         original_pyshacl = sys.modules.pop("pyshacl", None)
+        original_import = builtins.__import__
+
+        def blocked_import(name, *args, **kwargs):
+            if name == "pyshacl":
+                raise ImportError("blocked pyshacl for test")
+            return original_import(name, *args, **kwargs)
+
+        builtins.__import__ = blocked_import
         try:
             with self.assertRaisesRegex(RuntimeError, "pyshacl is required"):
                 validate_abox(
@@ -185,6 +194,7 @@ dnb:FeeScheduleShape a sh:NodeShape ;
                     output_path=output_path,
                 )
         finally:
+            builtins.__import__ = original_import
             if original_pyshacl is not None:
                 sys.modules["pyshacl"] = original_pyshacl
 

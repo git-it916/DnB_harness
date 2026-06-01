@@ -3,7 +3,7 @@
 > 팀이 병렬 작업하려면 *경계*가 먼저 박혀야 한다. 이 문서가 깨지면 모든 모듈이 깨짐.
 > 변경은 PR + PM 승인. 최종 갱신: 2026-05-29.
 >
-> 관련: [`PLAN.md`](./PLAN.md) · [`EXTRACT_GUARD_PLAN.md`](./EXTRACT_GUARD_PLAN.md) · [`golden_master.md`](./golden_master.md).
+> 관련: [`ARCHITECTURE.md`](./ARCHITECTURE.md) · [`extract_guard_plan.md`](./reference/extract_guard_plan.md) · [`GOLDENSET.md`](./GOLDENSET.md).
 
 ---
 
@@ -16,7 +16,7 @@
                      └──────────────────────┘
                               ↓
                      ┌──────────────────────┐
-                     │  GuardConfig         │  ←─── 승훈 (가드 ON/OFF)
+                     │  GuardConfig         │  ←─── 승훈 (가드 ON/OFF, guard 조건만 집행)
                      │  GuardEvent          │
                      │  GuardContext        │
                      └──────────────────────┘
@@ -120,7 +120,7 @@ class GuardConfig:
     g2_citation: bool = True
     g3_constraint: bool = True
     g1_max_retries: int = 1
-    g3_use_shacl: bool = True
+    g3_use_shacl: bool = False  # shapes.ttl 비즈니스 제약 보강 후 True 가능
 
 @dataclass(frozen=True)
 class GuardContext:
@@ -155,6 +155,11 @@ class Guard(Protocol):
 }
 ```
 
+**3조건에서의 의미**:
+- `baseline`: 자유 질문 추출. 가드, ABox, SHACL, cross_check 없음.
+- `ontology`: 구조화 추출 결과를 ABox로 매핑하고 SHACL/cross_check를 산출한다. 단, SHACL 위반을 추출 결과 수정이나 null 처리에 사용하지 않는다.
+- `guard`: `ontology` 조건을 포함하고, G1/G2/G3가 reject/null/retry를 실제 적용한다. G3는 Python 제약 또는 SHACL 위임 결과를 `GuardEvent`로 남긴다.
+
 ---
 
 ## 4. `HarnessResult` — 하네스 1회 실행 출력
@@ -171,13 +176,13 @@ from src.pipelines.cross_check import CrossCheckResult
 class HarnessResult(BaseModel):
     model_config = {"arbitrary_types_allowed": True}
     
-    mode: Literal["baseline", "onto", "guard"]
+    mode: Literal["baseline", "ontology", "guard"]
     extraction: ExtractionResult       # 항상
-    guard_log: list[GuardEvent] = []   # guard 모드만
-    abox_ttl: str | None = None        # onto/guard 모드만 — Turtle 직렬화
-    shacl_conforms: bool | None = None
+    guard_log: list[GuardEvent] = []   # guard 모드만. ontology 모드는 SHACL 리포트만 있고 GuardEvent 없음
+    abox_ttl: str | None = None        # ontology/guard 모드만 — Turtle 직렬화
+    shacl_conforms: bool | None = None # ontology/guard 모드. ontology에서는 진단, guard에서는 G3 집행 신호로도 사용 가능
     shacl_report_text: str | None = None
-    cross_check: list[CrossCheckResult] | None = None  # onto/guard 모드만
+    cross_check: list[CrossCheckResult] | None = None  # ontology/guard 모드만
     
     # 운영 메타
     total_latency_ms: int
@@ -298,7 +303,7 @@ class HarnessResult(BaseModel):
 }
 ```
 
-> **gold_label ↔ FinalCheckStatus 매핑**: `golden_master.md §7` 참고.
+> **gold_label ↔ FinalCheckStatus 매핑**: `GOLDENSET.md §7` 참고.
 
 ---
 
@@ -313,7 +318,7 @@ class HarnessResult(BaseModel):
 | 조건 | Accuracy | Precision | Recall ★ | F1 | 환각률 | 비용($) | 시간(s) |
 |---|--:|--:|--:|--:|--:|--:|--:|
 | ① baseline | 0.42 | 0.40 | 0.33 | 0.36 | 0.25 | 0.00 | 24 |
-| ② +onto    | 0.71 | 0.69 | 0.67 | 0.68 | 0.08 | 0.00 | 31 |
+| ② +ontology | 0.71 | 0.69 | 0.67 | 0.68 | 0.08 | 0.00 | 31 |
 | ③ +guard   | 0.85 | 0.83 | 0.83 | 0.83 | 0.00 | 0.00 | 35 |
 
 ## 통계 (PM 채울 자리)
@@ -330,7 +335,7 @@ class HarnessResult(BaseModel):
 |---|--:|--:|--:|--:|---|
 | decimal_shift   | 2 | 0.00 | 0.50 | 1.00 | 정규화 |
 | fake_citation   | 1 | 0.00 | 0.00 | 1.00 | **G2 가드만** |
-| shacl_violation | 1 | 0.00 | 0.00 | 1.00 | **G3/SHACL만** |
+| shacl_violation | 1 | 0.00 | 0.00 | 1.00 | **G3가 SHACL/제약 신호를 집행** |
 
 ## 자주 놓친 케이스 (FN)
 | case_id | field | mutation | ① | ② | ③ |
@@ -346,7 +351,7 @@ class HarnessResult(BaseModel):
 
 위치: `reports/stats/<run_prefix>.csv`
 
-| case_id | gold_label | mode_baseline | mode_onto | mode_guard |
+| case_id | gold_label | mode_baseline | mode_ontology | mode_guard |
 |---|---|---|---|---|
 | C001 | match | match | match | match |
 | C002 | match | mismatch | match | match |
@@ -361,7 +366,7 @@ class HarnessResult(BaseModel):
 1. PR 제목: `[INTERFACE] <스키마명> 변경`
 2. body에 *영향 모듈 목록* 명시 (예: extractor·guards·scorer·러너 중 어디)
 3. PM 승인 필수
-4. 변경 후 `docs/EXTRACT_GUARD_PLAN.md`·`docs/golden_master.md` 동기화
+4. 변경 후 `docs/reference/extract_guard_plan.md`·`docs/GOLDENSET.md` 동기화
 
 ---
 

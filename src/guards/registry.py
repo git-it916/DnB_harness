@@ -1,8 +1,9 @@
 """Guard Registry — apply_guards orchestration + summary.
 
 3조건 실험:
-    GuardConfig(False, False, False)  → ②번 모드 (가드 OFF)
-    GuardConfig(True, True, True)     → ③번 모드 (가드 풀)
+    baseline   → 자유 질문, apply_guards 미사용
+    ontology   → 구조화 추출 + ABox/SHACL 진단, apply_guards 미사용
+    guard      → GuardConfig(True, True, True) 로 G1/G2/G3 집행
 """
 
 from __future__ import annotations
