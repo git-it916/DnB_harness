@@ -28,6 +28,36 @@ dnb:FundShape a sh:NodeShape ;
         sh:minCount 1 ;
         sh:class dnb:RedemptionTerms ;
         sh:message "Fund must link to RedemptionTerms."@en
+    ] ;
+    sh:sparql [
+        sh:message "maturity_date must be after inception_date."@en ;
+        sh:select """
+            PREFIX dnb: <https://dnb-harness.local/ontology#>
+            PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+
+            SELECT $this ?inception ?maturity
+            WHERE {
+                $this dnb:inception_date ?inception ;
+                      dnb:maturity_date ?maturity .
+                BIND(STR(?inception) AS ?inception_raw)
+                BIND(STR(?maturity) AS ?maturity_raw)
+                FILTER(
+                    REGEX(?inception_raw, "[0-9]{4}\\\\s*년\\\\s*[0-9]{1,2}\\\\s*월\\\\s*[0-9]{1,2}\\\\s*일")
+                    && REGEX(?maturity_raw, "[0-9]{4}\\\\s*년\\\\s*[0-9]{1,2}\\\\s*월\\\\s*[0-9]{1,2}\\\\s*일")
+                )
+                BIND(xsd:integer(REPLACE(?inception_raw, ".*?([0-9]{4})\\\\s*년.*", "$1")) AS ?inception_y)
+                BIND(xsd:integer(REPLACE(?inception_raw, ".*?[0-9]{4}\\\\s*년\\\\s*([0-9]{1,2})\\\\s*월.*", "$1")) AS ?inception_m)
+                BIND(xsd:integer(REPLACE(?inception_raw, ".*?[0-9]{4}\\\\s*년\\\\s*[0-9]{1,2}\\\\s*월\\\\s*([0-9]{1,2})\\\\s*일.*", "$1")) AS ?inception_d)
+                BIND(xsd:integer(REPLACE(?maturity_raw, ".*?([0-9]{4})\\\\s*년.*", "$1")) AS ?maturity_y)
+                BIND(xsd:integer(REPLACE(?maturity_raw, ".*?[0-9]{4}\\\\s*년\\\\s*([0-9]{1,2})\\\\s*월.*", "$1")) AS ?maturity_m)
+                BIND(xsd:integer(REPLACE(?maturity_raw, ".*?[0-9]{4}\\\\s*년\\\\s*[0-9]{1,2}\\\\s*월\\\\s*([0-9]{1,2})\\\\s*일.*", "$1")) AS ?maturity_d)
+                FILTER(
+                    ?maturity_y < ?inception_y
+                    || (?maturity_y = ?inception_y && ?maturity_m < ?inception_m)
+                    || (?maturity_y = ?inception_y && ?maturity_m = ?inception_m && ?maturity_d <= ?inception_d)
+                )
+            }
+        """
     ] .
 
 dnb:ContractPartyShape a sh:NodeShape ;
@@ -41,8 +71,9 @@ dnb:ContractPartyShape a sh:NodeShape ;
     sh:property [
         sh:path dnb:trustee ;
         sh:minCount 1 ;
+        sh:maxCount 1 ;
         sh:datatype xsd:string ;
-        sh:message "Contract Party must include trustee raw_text."@en
+        sh:message "Contract Party must include exactly one trustee raw_text."@en
     ] .
 
 dnb:ImPartyShape a sh:NodeShape ;

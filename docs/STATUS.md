@@ -1,21 +1,21 @@
 # Project Status
 
-최종 갱신: 2026-05-31
+최종 갱신: 2026-06-02
 
-현재 단계: W2 진입 준비. 추출, 온톨로지, 가드의 초기 토대는 생겼고, 채점/CLI/실험 러너가 다음 병목이다.
+현재 단계: W2 진입 준비. 추출, 온톨로지, 가드의 초기 토대는 생겼고, 채점/CLI/실험 러너가 다음 병목이다. SHACL 비즈니스 제약은 보수 범위, 만기일 논리, 계약서 신탁업자 개수까지 보강됐다.
 
 ## 지금 시작할 곳
 
 1. `src/scoring/` 구현 시작: `scorer.py`, `breakdown.py`, `compare.py`와 단위 테스트.
 2. `src/cli/main.py` 골격 추가: `dnb run`, `dnb score`, `dnb compare` 진입점.
-3. `ontology/shapes.ttl` 비즈니스 제약 보강: 보수 범위, 만기일, 신탁업자 개수.
+3. G3 SHACL 위임 연동 확인: 보강된 `ontology/shapes.ttl` 위반을 guard 조건에서 집행 신호로 사용.
 4. `tests/golden/labeler_v1_rina.csv` 수집 및 골든셋 freeze 절차 진행.
 
 ## 모듈 상태
 
 | 영역 | 상태 | 담당 | 다음 작업 | 기준 문서 |
 |---|---|---|---|---|
-| 온톨로지 TBox/ABox | 부분 완료 | 종현 | SHACL 비즈니스 제약 추가 | `docs/ARCHITECTURE.md` |
+| 온톨로지 TBox/ABox | 완료 | 종현 | G3 SHACL 위임 연동 확인 지원 | `docs/ARCHITECTURE.md` |
 | Claude 추출 경로 | 완료 | 종현 | 회귀 테스트 유지 | `docs/INTERFACES.md` |
 | Gemma 추출 경로 | 초기 구현 | 승훈 | IM 측 추출 정확도 검증 | `docs/reference/extract_guard_plan.md` |
 | Guards | 초기 구현 | 승훈 | `tests/test_guards.py` 추가 | `docs/INTERFACES.md` |
@@ -41,7 +41,6 @@
 |---|---|---|
 | `src/scoring/` 부재 | 3조건 실험 결과를 점수화할 수 없음 | scorer 최소 구현 우선 |
 | `src/cli/` 부재 | 팀원이 동일 명령으로 실행하기 어려움 | Typer 기반 CLI 골격 추가 |
-| SHACL 비즈니스 제약 일부 부족 | C030 운용보수 범위는 잡지만, 만기일·신탁업자 개수 같은 추가 제약 보강 필요 | `ontology/shapes.ttl` 추가 보강 |
 
 ## 문서 운영 원칙
 

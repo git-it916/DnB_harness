@@ -1,8 +1,12 @@
-from rdflib import Graph
+from rdflib import Graph, Literal, Namespace
 
 from src.ontology.mapping import extraction_to_graph
 from src.ontology.validate import validate_graph
 from src.schemas.extraction import ExtractionResult
+
+
+DNB = Namespace("https://dnb-harness.local/ontology#")
+DATA = Namespace("https://dnb-harness.local/data#")
 
 
 def test_trust_fund_ttl_parses():
@@ -46,6 +50,32 @@ def test_validate_graph_reports_management_fee_above_business_range():
     assert result.conforms is False
     assert "management_fee" in result.report_text
     assert "5.0%" in result.report_text
+
+
+def test_validate_graph_reports_maturity_date_not_after_inception_date():
+    result = validate_graph(extraction_to_graph(_maturity_before_inception_extraction()))
+
+    assert result.conforms is False
+    assert "maturity_date" in result.report_text
+    assert "inception_date" in result.report_text
+
+
+def test_validate_graph_reports_more_than_one_contract_trustee():
+    graph = extraction_to_graph(_valid_minimum_extraction())
+    graph.add(
+        (
+            DATA.party_contract,
+            DNB.trustee,
+            Literal("신탁업자: 하나은행"),
+        )
+    )
+
+    result = validate_graph(graph)
+
+    assert result.conforms is False
+    assert "party_contract" in result.report_text
+    assert "trustee" in result.report_text
+    assert "exactly one" in result.report_text
 
 
 def _valid_minimum_extraction() -> ExtractionResult:
@@ -113,6 +143,23 @@ def _high_management_fee_extraction() -> ExtractionResult:
         "unit": "percent_per_year",
         "raw_text": "[운용] 연[ 8.9 ] %",
         "citation": {"document": "IM", "page": 9},
+    }
+    return ExtractionResult.model_validate(extraction)
+
+
+def _maturity_before_inception_extraction() -> ExtractionResult:
+    extraction = _valid_minimum_extraction().model_dump()
+    extraction["fund"]["inception_date"]["contract"] = {
+        "value": "2025-07-22",
+        "unit": "date",
+        "raw_text": "설정일은 2025년 7월 22일",
+        "citation": {"document": "신탁계약서", "page": 1},
+    }
+    extraction["fund"]["maturity_date"]["contract"] = {
+        "value": "2025-07-21",
+        "unit": "date",
+        "raw_text": "만기일은 2025년 7월 21일",
+        "citation": {"document": "신탁계약서", "page": 2},
     }
     return ExtractionResult.model_validate(extraction)
 
