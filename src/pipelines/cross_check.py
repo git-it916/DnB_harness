@@ -45,6 +45,9 @@ class CrossCheckResult(StrictResultModel):
     final_status: FinalCheckStatus | None = None
     final_reason_code: str | None = None
     final_reason: str | None = None
+    canonical_status: str | None = None
+    canonical_reason_code: str | None = None
+    canonical: dict[str, Any] | None = None
     contract: CrossCheckValue
     im: CrossCheckValue
 
