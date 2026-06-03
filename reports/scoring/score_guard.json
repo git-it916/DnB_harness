@@ -1,0 +1,594 @@
+{
+  "schema_version": "v0",
+  "run_id": "golden_det_guard",
+  "mode": "guard",
+  "golden_version": "v0.1",
+  "n_cases": 30,
+  "metrics": {
+    "accuracy": 0.4615,
+    "precision": 0.4615,
+    "recall": 1.0,
+    "f1": 0.6316,
+    "hallucination_rate": 0.0
+  },
+  "confusion": {
+    "tp": 12,
+    "fp": 14,
+    "fn": 0,
+    "tn": 0,
+    "missing_excluded": 4
+  },
+  "by_field": {
+    "fund.name": {
+      "n": 4,
+      "correct": 2,
+      "recall": 1.0,
+      "f1": 0.6667
+    },
+    "fund.type": {
+      "n": 1,
+      "correct": 0,
+      "recall": 0.0,
+      "f1": 0.0
+    },
+    "fund.inception_date": {
+      "n": 3,
+      "correct": 1,
+      "recall": 1.0,
+      "f1": 0.5
+    },
+    "fund.maturity_date": {
+      "n": 2,
+      "correct": 1,
+      "recall": 1.0,
+      "f1": 0.6667
+    },
+    "party.asset_manager": {
+      "n": 3,
+      "correct": 1,
+      "recall": 1.0,
+      "f1": 0.5
+    },
+    "party.trustee": {
+      "n": 2,
+      "correct": 2,
+      "recall": 1.0,
+      "f1": 1.0
+    },
+    "party.distributor": {
+      "n": 1,
+      "correct": 1,
+      "recall": 0.0,
+      "f1": 0.0
+    },
+    "fee_schedule.management_fee": {
+      "n": 4,
+      "correct": 2,
+      "recall": 1.0,
+      "f1": 0.6667
+    },
+    "fee_schedule.trust_fee": {
+      "n": 2,
+      "correct": 1,
+      "recall": 1.0,
+      "f1": 0.6667
+    },
+    "fee_schedule.sales_fee": {
+      "n": 2,
+      "correct": 1,
+      "recall": 1.0,
+      "f1": 0.6667
+    },
+    "redemption_terms.is_redeemable": {
+      "n": 2,
+      "correct": 1,
+      "recall": 1.0,
+      "f1": 0.6667
+    },
+    "redemption_terms.lockup_period": {
+      "n": 1,
+      "correct": 1,
+      "recall": 0.0,
+      "f1": 0.0
+    },
+    "redemption_terms.redemption_cycle": {
+      "n": 1,
+      "correct": 1,
+      "recall": 0.0,
+      "f1": 0.0
+    },
+    "redemption_terms.redemption_fee": {
+      "n": 2,
+      "correct": 1,
+      "recall": 1.0,
+      "f1": 0.6667
+    }
+  },
+  "by_difficulty": {
+    "easy": {
+      "n": 5,
+      "accuracy": 0.0,
+      "recall": 0.0
+    },
+    "medium": {
+      "n": 12,
+      "accuracy": 0.4,
+      "recall": 1.0
+    },
+    "hard": {
+      "n": 13,
+      "accuracy": 0.6154,
+      "recall": 1.0
+    }
+  },
+  "by_mutation": {
+    "whitespace_normalize": {
+      "n": 1,
+      "caught": 0,
+      "recall": 0.0
+    },
+    "format_diff": {
+      "n": 3,
+      "caught": 0,
+      "recall": 0.0
+    },
+    "list_reorder": {
+      "n": 1,
+      "caught": 0,
+      "recall": 0.0
+    },
+    "semantic_equivalent": {
+      "n": 4,
+      "caught": 0,
+      "recall": 0.0
+    },
+    "ocr_typo": {
+      "n": 1,
+      "caught": 0,
+      "recall": 0.0
+    },
+    "missing_one_side": {
+      "n": 1,
+      "caught": 0,
+      "recall": 0.0
+    },
+    "missing_both": {
+      "n": 1,
+      "caught": 0,
+      "recall": 0.0
+    },
+    "unit_conversion": {
+      "n": 4,
+      "caught": 0,
+      "recall": 0.0
+    },
+    "missing_not_applicable": {
+      "n": 2,
+      "caught": 0,
+      "recall": 0.0
+    },
+    "digit_swap": {
+      "n": 1,
+      "caught": 1,
+      "recall": 1.0
+    },
+    "decimal_shift": {
+      "n": 2,
+      "caught": 2,
+      "recall": 1.0
+    },
+    "date_shift": {
+      "n": 2,
+      "caught": 2,
+      "recall": 1.0
+    },
+    "char_typo": {
+      "n": 1,
+      "caught": 1,
+      "recall": 1.0
+    },
+    "entity_swap": {
+      "n": 1,
+      "caught": 1,
+      "recall": 1.0
+    },
+    "digit_insert": {
+      "n": 1,
+      "caught": 1,
+      "recall": 1.0
+    },
+    "bool_flip": {
+      "n": 1,
+      "caught": 1,
+      "recall": 1.0
+    },
+    "invent_clause": {
+      "n": 1,
+      "caught": 1,
+      "recall": 1.0
+    },
+    "fake_citation": {
+      "n": 1,
+      "caught": 1,
+      "recall": 1.0
+    },
+    "shacl_violation": {
+      "n": 1,
+      "caught": 1,
+      "recall": 1.0
+    }
+  },
+  "by_signal": {
+    "normalization": {
+      "expected": 0,
+      "caught": 0,
+      "hit_rate": 0.0
+    },
+    "llm_judge": {
+      "expected": 2,
+      "caught": 2,
+      "hit_rate": 1.0
+    },
+    "cross_check": {
+      "expected": 4,
+      "caught": 4,
+      "hit_rate": 1.0
+    },
+    "normalization+cross_check": {
+      "expected": 2,
+      "caught": 2,
+      "hit_rate": 1.0
+    },
+    "cross_check+llm_judge": {
+      "expected": 2,
+      "caught": 2,
+      "hit_rate": 1.0
+    },
+    "g2_citation": {
+      "expected": 1,
+      "caught": 1,
+      "hit_rate": 1.0
+    },
+    "g3_constraint+shacl": {
+      "expected": 1,
+      "caught": 1,
+      "hit_rate": 1.0
+    }
+  },
+  "cases": [
+    {
+      "case_id": "C001",
+      "field": "fund.name",
+      "gold_label": "match",
+      "predicted_label": "mismatch",
+      "correct": false,
+      "final_status": "needs_review",
+      "reason_code": "raw_text_difference",
+      "guard_rejections": [],
+      "latency_ms": 0
+    },
+    {
+      "case_id": "C002",
+      "field": "fund.name",
+      "gold_label": "match",
+      "predicted_label": "mismatch",
+      "correct": false,
+      "final_status": "needs_review",
+      "reason_code": "raw_text_difference",
+      "guard_rejections": [],
+      "latency_ms": 0
+    },
+    {
+      "case_id": "C003",
+      "field": "fund.type",
+      "gold_label": "match",
+      "predicted_label": "mismatch",
+      "correct": false,
+      "final_status": "needs_review",
+      "reason_code": "raw_text_difference",
+      "guard_rejections": [],
+      "latency_ms": 0
+    },
+    {
+      "case_id": "C004",
+      "field": "fund.inception_date",
+      "gold_label": "match",
+      "predicted_label": "mismatch",
+      "correct": false,
+      "final_status": "needs_review",
+      "reason_code": "raw_text_difference",
+      "guard_rejections": [],
+      "latency_ms": 0
+    },
+    {
+      "case_id": "C005",
+      "field": "fund.inception_date",
+      "gold_label": "match",
+      "predicted_label": "mismatch",
+      "correct": false,
+      "final_status": "needs_review",
+      "reason_code": "raw_text_difference",
+      "guard_rejections": [],
+      "latency_ms": 0
+    },
+    {
+      "case_id": "C006",
+      "field": "fund.maturity_date",
+      "gold_label": "match",
+      "predicted_label": "mismatch",
+      "correct": false,
+      "final_status": "needs_review",
+      "reason_code": "raw_text_difference",
+      "guard_rejections": [],
+      "latency_ms": 0
+    },
+    {
+      "case_id": "C007",
+      "field": "party.asset_manager",
+      "gold_label": "match",
+      "predicted_label": "mismatch",
+      "correct": false,
+      "final_status": "needs_review",
+      "reason_code": "raw_text_difference",
+      "guard_rejections": [],
+      "latency_ms": 0
+    },
+    {
+      "case_id": "C008",
+      "field": "party.asset_manager",
+      "gold_label": "match",
+      "predicted_label": "mismatch",
+      "correct": false,
+      "final_status": "needs_review",
+      "reason_code": "raw_text_difference",
+      "guard_rejections": [],
+      "latency_ms": 0
+    },
+    {
+      "case_id": "C009",
+      "field": "party.trustee",
+      "gold_label": "missing",
+      "predicted_label": "missing",
+      "correct": true,
+      "final_status": "missing_evidence",
+      "reason_code": "missing_evidence",
+      "guard_rejections": [],
+      "latency_ms": 0
+    },
+    {
+      "case_id": "C010",
+      "field": "party.distributor",
+      "gold_label": "missing",
+      "predicted_label": "missing",
+      "correct": true,
+      "final_status": "missing_evidence",
+      "reason_code": "missing_evidence",
+      "guard_rejections": [],
+      "latency_ms": 0
+    },
+    {
+      "case_id": "C011",
+      "field": "fee_schedule.management_fee",
+      "gold_label": "match",
+      "predicted_label": "mismatch",
+      "correct": false,
+      "final_status": "needs_review",
+      "reason_code": "raw_text_difference",
+      "guard_rejections": [],
+      "latency_ms": 0
+    },
+    {
+      "case_id": "C012",
+      "field": "fee_schedule.trust_fee",
+      "gold_label": "match",
+      "predicted_label": "mismatch",
+      "correct": false,
+      "final_status": "needs_review",
+      "reason_code": "raw_text_difference",
+      "guard_rejections": [],
+      "latency_ms": 0
+    },
+    {
+      "case_id": "C013",
+      "field": "fee_schedule.sales_fee",
+      "gold_label": "match",
+      "predicted_label": "mismatch",
+      "correct": false,
+      "final_status": "needs_review",
+      "reason_code": "raw_text_difference",
+      "guard_rejections": [],
+      "latency_ms": 0
+    },
+    {
+      "case_id": "C014",
+      "field": "fee_schedule.management_fee",
+      "gold_label": "match",
+      "predicted_label": "mismatch",
+      "correct": false,
+      "final_status": "needs_review",
+      "reason_code": "raw_text_difference",
+      "guard_rejections": [],
+      "latency_ms": 0
+    },
+    {
+      "case_id": "C015",
+      "field": "redemption_terms.is_redeemable",
+      "gold_label": "match",
+      "predicted_label": "mismatch",
+      "correct": false,
+      "final_status": "needs_review",
+      "reason_code": "raw_text_difference",
+      "guard_rejections": [],
+      "latency_ms": 0
+    },
+    {
+      "case_id": "C016",
+      "field": "redemption_terms.lockup_period",
+      "gold_label": "missing",
+      "predicted_label": "missing",
+      "correct": true,
+      "final_status": "missing_evidence",
+      "reason_code": "missing_evidence",
+      "guard_rejections": [],
+      "latency_ms": 0
+    },
+    {
+      "case_id": "C017",
+      "field": "redemption_terms.redemption_cycle",
+      "gold_label": "missing",
+      "predicted_label": "missing",
+      "correct": true,
+      "final_status": "missing_evidence",
+      "reason_code": "missing_evidence",
+      "guard_rejections": [],
+      "latency_ms": 0
+    },
+    {
+      "case_id": "C018",
+      "field": "redemption_terms.redemption_fee",
+      "gold_label": "match",
+      "predicted_label": "mismatch",
+      "correct": false,
+      "final_status": "needs_review",
+      "reason_code": "raw_text_difference",
+      "guard_rejections": [],
+      "latency_ms": 0
+    },
+    {
+      "case_id": "C019",
+      "field": "fee_schedule.management_fee",
+      "gold_label": "mismatch",
+      "predicted_label": "mismatch",
+      "correct": true,
+      "final_status": "needs_review",
+      "reason_code": "raw_text_difference",
+      "guard_rejections": [],
+      "latency_ms": 0
+    },
+    {
+      "case_id": "C020",
+      "field": "fee_schedule.trust_fee",
+      "gold_label": "mismatch",
+      "predicted_label": "mismatch",
+      "correct": true,
+      "final_status": "needs_review",
+      "reason_code": "raw_text_difference",
+      "guard_rejections": [],
+      "latency_ms": 0
+    },
+    {
+      "case_id": "C021",
+      "field": "fee_schedule.sales_fee",
+      "gold_label": "mismatch",
+      "predicted_label": "mismatch",
+      "correct": true,
+      "final_status": "needs_review",
+      "reason_code": "raw_text_difference",
+      "guard_rejections": [],
+      "latency_ms": 0
+    },
+    {
+      "case_id": "C022",
+      "field": "fund.maturity_date",
+      "gold_label": "mismatch",
+      "predicted_label": "mismatch",
+      "correct": true,
+      "final_status": "needs_review",
+      "reason_code": "raw_text_difference",
+      "guard_rejections": [],
+      "latency_ms": 0
+    },
+    {
+      "case_id": "C023",
+      "field": "fund.inception_date",
+      "gold_label": "mismatch",
+      "predicted_label": "mismatch",
+      "correct": true,
+      "final_status": "needs_review",
+      "reason_code": "raw_text_difference",
+      "guard_rejections": [],
+      "latency_ms": 0
+    },
+    {
+      "case_id": "C024",
+      "field": "party.asset_manager",
+      "gold_label": "mismatch",
+      "predicted_label": "mismatch",
+      "correct": true,
+      "final_status": "needs_review",
+      "reason_code": "raw_text_difference",
+      "guard_rejections": [],
+      "latency_ms": 0
+    },
+    {
+      "case_id": "C025",
+      "field": "party.trustee",
+      "gold_label": "mismatch",
+      "predicted_label": "mismatch",
+      "correct": true,
+      "final_status": "needs_review",
+      "reason_code": "raw_text_difference",
+      "guard_rejections": [],
+      "latency_ms": 0
+    },
+    {
+      "case_id": "C026",
+      "field": "fund.name",
+      "gold_label": "mismatch",
+      "predicted_label": "mismatch",
+      "correct": true,
+      "final_status": "needs_review",
+      "reason_code": "raw_text_difference",
+      "guard_rejections": [],
+      "latency_ms": 0
+    },
+    {
+      "case_id": "C027",
+      "field": "redemption_terms.is_redeemable",
+      "gold_label": "mismatch",
+      "predicted_label": "mismatch",
+      "correct": true,
+      "final_status": "needs_review",
+      "reason_code": "raw_text_difference",
+      "guard_rejections": [],
+      "latency_ms": 0
+    },
+    {
+      "case_id": "C028",
+      "field": "redemption_terms.redemption_fee",
+      "gold_label": "mismatch",
+      "predicted_label": "mismatch",
+      "correct": true,
+      "final_status": "needs_review",
+      "reason_code": "raw_text_difference",
+      "guard_rejections": [],
+      "latency_ms": 0
+    },
+    {
+      "case_id": "C029",
+      "field": "fund.name",
+      "gold_label": "mismatch",
+      "predicted_label": "mismatch",
+      "correct": true,
+      "final_status": "missing_evidence",
+      "reason_code": "missing_evidence",
+      "guard_rejections": [
+        "G2:page_out_of_range"
+      ],
+      "latency_ms": 0
+    },
+    {
+      "case_id": "C030",
+      "field": "fee_schedule.management_fee",
+      "gold_label": "mismatch",
+      "predicted_label": "mismatch",
+      "correct": true,
+      "final_status": "missing_evidence",
+      "reason_code": "missing_evidence",
+      "guard_rejections": [
+        "G3:percent_range"
+      ],
+      "latency_ms": 0
+    }
+  ]
+}

@@ -1,0 +1,20 @@
+{
+  "mcnemar": {
+    "mode_a": "ontology",
+    "mode_b": "guard",
+    "b": 0,
+    "c": 0,
+    "n_discordant": 0,
+    "statistic": 0.0,
+    "p_value": 1.0,
+    "method": "no_discordant"
+  },
+  "bootstrap_f1": {
+    "mode": "guard",
+    "point": 0.631578947368421,
+    "lo": 0.42424242424242425,
+    "hi": 0.7906976744186047,
+    "n_boot": 2000,
+    "ci": 0.95
+  }
+}

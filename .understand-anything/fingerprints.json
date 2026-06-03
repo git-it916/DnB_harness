@@ -1,0 +1,5715 @@
+{
+  "version": "1.0.0",
+  "gitCommitHash": "66c9696bc044221d20dacf6a241b98888b332061",
+  "generatedAt": "2026-06-03T04:35:55.795Z",
+  "files": {
+    ".understand-anything/.understandignore": {
+      "filePath": ".understand-anything/.understandignore",
+      "contentHash": "8546ce0b756a4c98300f55c313a9a151f119ff6905b3e71891f74e424b733c55",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 109,
+      "hasStructuralAnalysis": false
+    },
+    "AGENTS.md": {
+      "filePath": "AGENTS.md",
+      "contentHash": "eab59dde67883a9a56473706a0cbb633da23910d0fd6af0f5ff47155dcf20d4f",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 78,
+      "hasStructuralAnalysis": true
+    },
+    "database/gemma4_full/pipeline_summary.json": {
+      "filePath": "database/gemma4_full/pipeline_summary.json",
+      "contentHash": "288a3aeafa71618c612763ac035e56ab30648f170981e29f4aa1105279ec9ddb",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 51,
+      "hasStructuralAnalysis": true
+    },
+    "database/gemma4_full/run_01_seed42/abox.ttl": {
+      "filePath": "database/gemma4_full/run_01_seed42/abox.ttl",
+      "contentHash": "fd7944993bf1913362857190b399a3dee0cd3ea5e3ddd76a47b3d424c9b64851",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 44,
+      "hasStructuralAnalysis": false
+    },
+    "database/gemma4_full/run_01_seed42/cross_check.json": {
+      "filePath": "database/gemma4_full/run_01_seed42/cross_check.json",
+      "contentHash": "84c600f086bdb2e645ce4facd9f561e82df431aba70f8d555b087ecb36e06dd7",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 308,
+      "hasStructuralAnalysis": true
+    },
+    "database/gemma4_full/run_01_seed42/extraction_after_guards.json": {
+      "filePath": "database/gemma4_full/run_01_seed42/extraction_after_guards.json",
+      "contentHash": "fe95894cab0d4f57563fa8eb53749011eb71d6595de48c62d8a1350b617a6b1c",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 261,
+      "hasStructuralAnalysis": true
+    },
+    "database/gemma4_full/run_01_seed42/extraction.json": {
+      "filePath": "database/gemma4_full/run_01_seed42/extraction.json",
+      "contentHash": "fe95894cab0d4f57563fa8eb53749011eb71d6595de48c62d8a1350b617a6b1c",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 261,
+      "hasStructuralAnalysis": true
+    },
+    "database/gemma4_full/run_01_seed42/guard_log.json": {
+      "filePath": "database/gemma4_full/run_01_seed42/guard_log.json",
+      "contentHash": "9be1e9103177b4ebbb3801163b662e5913a813c10de31908cff573e775cdc6dd",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 360,
+      "hasStructuralAnalysis": true
+    },
+    "database/gemma4_full/run_01_seed42/meta.json": {
+      "filePath": "database/gemma4_full/run_01_seed42/meta.json",
+      "contentHash": "4a5324295dd3939306e4e140e77bb4ce53d4a019d6b043548aa69e17844875ee",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 43,
+      "hasStructuralAnalysis": true
+    },
+    "database/gemma4_full/run_01_seed42/shacl_report.txt": {
+      "filePath": "database/gemma4_full/run_01_seed42/shacl_report.txt",
+      "contentHash": "4d83fbfef17dc0841bf4a82e0e82bbbedb0bed7283467fb1be959416c19de8c2",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 3,
+      "hasStructuralAnalysis": false
+    },
+    "database/gemma4_full/run_01_seed42/shacl_validation.json": {
+      "filePath": "database/gemma4_full/run_01_seed42/shacl_validation.json",
+      "contentHash": "303c9c0ac78ed007bd56563170f7ce1af863d5e8fefb66132f5e87ed8f988b18",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 3,
+      "hasStructuralAnalysis": true
+    },
+    "database/gemma4_v2_t0_d200/run_A_seed42_t0_d200/extraction_after_guards.json": {
+      "filePath": "database/gemma4_v2_t0_d200/run_A_seed42_t0_d200/extraction_after_guards.json",
+      "contentHash": "d84b27041c2845ede905a95ddf5da480b273b81bdf7f18882648be47691afb5c",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 264,
+      "hasStructuralAnalysis": true
+    },
+    "database/gemma4_v2_t0_d200/run_A_seed42_t0_d200/extraction.json": {
+      "filePath": "database/gemma4_v2_t0_d200/run_A_seed42_t0_d200/extraction.json",
+      "contentHash": "d84b27041c2845ede905a95ddf5da480b273b81bdf7f18882648be47691afb5c",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 264,
+      "hasStructuralAnalysis": true
+    },
+    "database/gemma4_v2_t0_d200/run_A_seed42_t0_d200/guard_log.json": {
+      "filePath": "database/gemma4_v2_t0_d200/run_A_seed42_t0_d200/guard_log.json",
+      "contentHash": "9cb18423e956b59562f29cd96eb1b0c08b1c983e7d6e5025e6888fb136f39a92",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 382,
+      "hasStructuralAnalysis": true
+    },
+    "database/gemma4_v2_t0_d200/run_A_seed42_t0_d200/meta.json": {
+      "filePath": "database/gemma4_v2_t0_d200/run_A_seed42_t0_d200/meta.json",
+      "contentHash": "303be4ab5da1b8e51ce674f36f91d75a989234f7f3124046cca87a88c057d48f",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 51,
+      "hasStructuralAnalysis": true
+    },
+    "database/gemma4_v2_t0_d200/run_B_seed42_t0_d200/extraction_after_guards.json": {
+      "filePath": "database/gemma4_v2_t0_d200/run_B_seed42_t0_d200/extraction_after_guards.json",
+      "contentHash": "fe95894cab0d4f57563fa8eb53749011eb71d6595de48c62d8a1350b617a6b1c",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 261,
+      "hasStructuralAnalysis": true
+    },
+    "database/gemma4_v2_t0_d200/run_B_seed42_t0_d200/extraction.json": {
+      "filePath": "database/gemma4_v2_t0_d200/run_B_seed42_t0_d200/extraction.json",
+      "contentHash": "fe95894cab0d4f57563fa8eb53749011eb71d6595de48c62d8a1350b617a6b1c",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 261,
+      "hasStructuralAnalysis": true
+    },
+    "database/gemma4_v2_t0_d200/run_B_seed42_t0_d200/guard_log.json": {
+      "filePath": "database/gemma4_v2_t0_d200/run_B_seed42_t0_d200/guard_log.json",
+      "contentHash": "53bc962141ded60cb3691dc31287c0eebcd9c173d016af22b25081ec6986a708",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 360,
+      "hasStructuralAnalysis": true
+    },
+    "database/gemma4_v2_t0_d200/run_B_seed42_t0_d200/meta.json": {
+      "filePath": "database/gemma4_v2_t0_d200/run_B_seed42_t0_d200/meta.json",
+      "contentHash": "52625baa79229eb5dcd1f0a52b48addf6aa4b7c2bed571b336e6d7d7e551d02d",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 51,
+      "hasStructuralAnalysis": true
+    },
+    "database/gemma4/run_01_seed42/extraction_after_guards.json": {
+      "filePath": "database/gemma4/run_01_seed42/extraction_after_guards.json",
+      "contentHash": "e9d82cd553c4bbd566e85688c5f07d6ad604c2f088eb38c2303a3aee211fb0b4",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 255,
+      "hasStructuralAnalysis": true
+    },
+    "database/gemma4/run_01_seed42/extraction.json": {
+      "filePath": "database/gemma4/run_01_seed42/extraction.json",
+      "contentHash": "e9d82cd553c4bbd566e85688c5f07d6ad604c2f088eb38c2303a3aee211fb0b4",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 255,
+      "hasStructuralAnalysis": true
+    },
+    "database/gemma4/run_01_seed42/guard_log.json": {
+      "filePath": "database/gemma4/run_01_seed42/guard_log.json",
+      "contentHash": "2f944ddd7a24777beddf120fce9eeab255f7eb44f75aad96f9db152c863154e3",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 315,
+      "hasStructuralAnalysis": true
+    },
+    "database/gemma4/run_01_seed42/meta.json": {
+      "filePath": "database/gemma4/run_01_seed42/meta.json",
+      "contentHash": "15287713b0c2742b91698bb84a55ea80fce77762d00bb2c3fdf25d06256fdeb3",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 52,
+      "hasStructuralAnalysis": true
+    },
+    "database/gemma4/run_02_seed1/extraction_after_guards.json": {
+      "filePath": "database/gemma4/run_02_seed1/extraction_after_guards.json",
+      "contentHash": "c1672fab4e01df5497f0b44052cf4ae6175c2b7044ed5e950fd84bfe6328e562",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 258,
+      "hasStructuralAnalysis": true
+    },
+    "database/gemma4/run_02_seed1/extraction.json": {
+      "filePath": "database/gemma4/run_02_seed1/extraction.json",
+      "contentHash": "c1672fab4e01df5497f0b44052cf4ae6175c2b7044ed5e950fd84bfe6328e562",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 258,
+      "hasStructuralAnalysis": true
+    },
+    "database/gemma4/run_02_seed1/guard_log.json": {
+      "filePath": "database/gemma4/run_02_seed1/guard_log.json",
+      "contentHash": "8784afd230710b45c34ed85c3cf6cec84b80687bce55d450c39263f4bb1a9898",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 327,
+      "hasStructuralAnalysis": true
+    },
+    "database/gemma4/run_02_seed1/meta.json": {
+      "filePath": "database/gemma4/run_02_seed1/meta.json",
+      "contentHash": "053b26207811e1bc3f445d2d93331dfcbe5de774b80fc0e3e3fe910a62108103",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 52,
+      "hasStructuralAnalysis": true
+    },
+    "database/gemma4/run_03_seed2/extraction_after_guards.json": {
+      "filePath": "database/gemma4/run_03_seed2/extraction_after_guards.json",
+      "contentHash": "3e518cb19aa321ce7d8caee72c916825e4fc2dac848fc9bd2028820d83a5fb51",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 258,
+      "hasStructuralAnalysis": true
+    },
+    "database/gemma4/run_03_seed2/extraction.json": {
+      "filePath": "database/gemma4/run_03_seed2/extraction.json",
+      "contentHash": "3e518cb19aa321ce7d8caee72c916825e4fc2dac848fc9bd2028820d83a5fb51",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 258,
+      "hasStructuralAnalysis": true
+    },
+    "database/gemma4/run_03_seed2/guard_log.json": {
+      "filePath": "database/gemma4/run_03_seed2/guard_log.json",
+      "contentHash": "e1c35f6a7319fc181ebdc365e2d2bff4ad24869a609abb8d223b214839001797",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 327,
+      "hasStructuralAnalysis": true
+    },
+    "database/gemma4/run_03_seed2/meta.json": {
+      "filePath": "database/gemma4/run_03_seed2/meta.json",
+      "contentHash": "71d3c4e2ae22c9a7f5b6cecebb4fed2b09d49fb48e0f0ff004a4e06fc46144fd",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 52,
+      "hasStructuralAnalysis": true
+    },
+    "database/gemma4/run_04_seed3/extraction_after_guards.json": {
+      "filePath": "database/gemma4/run_04_seed3/extraction_after_guards.json",
+      "contentHash": "27df8a6881ac5d1a37af8db31cb42e15eb0df1f3f7a5cb4c743f1b63f2cd6554",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 258,
+      "hasStructuralAnalysis": true
+    },
+    "database/gemma4/run_04_seed3/extraction.json": {
+      "filePath": "database/gemma4/run_04_seed3/extraction.json",
+      "contentHash": "27df8a6881ac5d1a37af8db31cb42e15eb0df1f3f7a5cb4c743f1b63f2cd6554",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 258,
+      "hasStructuralAnalysis": true
+    },
+    "database/gemma4/run_04_seed3/guard_log.json": {
+      "filePath": "database/gemma4/run_04_seed3/guard_log.json",
+      "contentHash": "2b8d868324b6e144b585dd74cafab119fc14ea861a045340bfb91afae8b895a9",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 327,
+      "hasStructuralAnalysis": true
+    },
+    "database/gemma4/run_04_seed3/meta.json": {
+      "filePath": "database/gemma4/run_04_seed3/meta.json",
+      "contentHash": "5c0bc254cae8b3fabee5c4124d0f80c180107296aefed8c4b376a8b61edf84b7",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 52,
+      "hasStructuralAnalysis": true
+    },
+    "database/gemma4/run_05_seed4/extraction_after_guards.json": {
+      "filePath": "database/gemma4/run_05_seed4/extraction_after_guards.json",
+      "contentHash": "27df8a6881ac5d1a37af8db31cb42e15eb0df1f3f7a5cb4c743f1b63f2cd6554",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 258,
+      "hasStructuralAnalysis": true
+    },
+    "database/gemma4/run_05_seed4/extraction.json": {
+      "filePath": "database/gemma4/run_05_seed4/extraction.json",
+      "contentHash": "27df8a6881ac5d1a37af8db31cb42e15eb0df1f3f7a5cb4c743f1b63f2cd6554",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 258,
+      "hasStructuralAnalysis": true
+    },
+    "database/gemma4/run_05_seed4/guard_log.json": {
+      "filePath": "database/gemma4/run_05_seed4/guard_log.json",
+      "contentHash": "ddeb3561ae01bd3dd4e17a3947c063d7d149c647c8a61f442ef141192e0f2a60",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 327,
+      "hasStructuralAnalysis": true
+    },
+    "database/gemma4/run_05_seed4/meta.json": {
+      "filePath": "database/gemma4/run_05_seed4/meta.json",
+      "contentHash": "d1595e9c83ed46b0d6980ef78a28dfbd5e4de4c5a1d0dbb37e57b0fc1761be8e",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 52,
+      "hasStructuralAnalysis": true
+    },
+    "dnb_harness/__init__.py": {
+      "filePath": "dnb_harness/__init__.py",
+      "contentHash": "b1879669126ecb5937f7906141ce06657ff7b7132f43795266745ee74c5264fe",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 2,
+      "hasStructuralAnalysis": true
+    },
+    "dnb_harness/ontology/__init__.py": {
+      "filePath": "dnb_harness/ontology/__init__.py",
+      "contentHash": "e2b5f296194dfd32db2bff9608541075d122fffa6a93fc2e95d579c3f6339f7b",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 2,
+      "hasStructuralAnalysis": true
+    },
+    "dnb_harness/ontology/mapping.py": {
+      "filePath": "dnb_harness/ontology/mapping.py",
+      "contentHash": "6f1b7fc27e51ab86058e69e65ed5f3171b9c2d7e1a37f2df89409ade7b39a241",
+      "functions": [
+        {
+          "name": "build_abox",
+          "params": [
+            "extraction_path",
+            "normalization_path",
+            "output_path"
+          ],
+          "returnType": "None",
+          "exported": true,
+          "lineCount": 42
+        },
+        {
+          "name": "_field_predicates",
+          "params": [
+            "field_name",
+            "payload"
+          ],
+          "returnType": "list[str]",
+          "exported": true,
+          "lineCount": 16
+        },
+        {
+          "name": "_normalization_predicates",
+          "params": [
+            "field_name",
+            "normalized"
+          ],
+          "returnType": "list[str]",
+          "exported": true,
+          "lineCount": 10
+        },
+        {
+          "name": "_read_normalizations",
+          "params": [
+            "path"
+          ],
+          "returnType": "dict[tuple[str, str], dict[str, Any]]",
+          "exported": true,
+          "lineCount": 18
+        },
+        {
+          "name": "_read_json",
+          "params": [
+            "path"
+          ],
+          "returnType": "Any",
+          "exported": true,
+          "lineCount": 2
+        },
+        {
+          "name": "_literal",
+          "params": [
+            "value",
+            "datatype"
+          ],
+          "returnType": "str",
+          "exported": true,
+          "lineCount": 4
+        },
+        {
+          "name": "_escape",
+          "params": [
+            "value"
+          ],
+          "returnType": "str",
+          "exported": true,
+          "lineCount": 2
+        },
+        {
+          "name": "_parse_args",
+          "params": [],
+          "returnType": "argparse.Namespace",
+          "exported": true,
+          "lineCount": 6
+        },
+        {
+          "name": "main",
+          "params": [],
+          "returnType": "None",
+          "exported": true,
+          "lineCount": 8
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "argparse",
+          "specifiers": [
+            "argparse"
+          ]
+        },
+        {
+          "source": "json",
+          "specifiers": [
+            "json"
+          ]
+        },
+        {
+          "source": "pathlib",
+          "specifiers": [
+            "Path"
+          ]
+        },
+        {
+          "source": "typing",
+          "specifiers": [
+            "Any"
+          ]
+        }
+      ],
+      "exports": [
+        "build_abox",
+        "_field_predicates",
+        "_normalization_predicates",
+        "_read_normalizations",
+        "_read_json",
+        "_literal",
+        "_escape",
+        "_parse_args",
+        "main"
+      ],
+      "totalLines": 144,
+      "hasStructuralAnalysis": true
+    },
+    "dnb_harness/ontology/validate.py": {
+      "filePath": "dnb_harness/ontology/validate.py",
+      "contentHash": "c2367e6bb0479d794ddfa4f59a453140cb2b9b5f59a953722a566a6cc7674a99",
+      "functions": [
+        {
+          "name": "validate_abox",
+          "params": [
+            "data_path",
+            "shapes_path",
+            "output_path",
+            "allow_fallback"
+          ],
+          "returnType": "dict[str, Any]",
+          "exported": true,
+          "lineCount": 22
+        },
+        {
+          "name": "_validate_with_pyshacl",
+          "params": [
+            "data_path",
+            "shapes_path"
+          ],
+          "returnType": "dict[str, Any] | None",
+          "exported": true,
+          "lineCount": 17
+        },
+        {
+          "name": "_validate_w1_rules",
+          "params": [
+            "data_path"
+          ],
+          "returnType": "dict[str, Any]",
+          "exported": true,
+          "lineCount": 41
+        },
+        {
+          "name": "_parse_turtle_subjects",
+          "params": [
+            "text"
+          ],
+          "returnType": "dict[str, dict[str, str]]",
+          "exported": true,
+          "lineCount": 12
+        },
+        {
+          "name": "_clean_literal",
+          "params": [
+            "value"
+          ],
+          "returnType": "str",
+          "exported": true,
+          "lineCount": 6
+        },
+        {
+          "name": "_to_float",
+          "params": [
+            "value"
+          ],
+          "returnType": "float | None",
+          "exported": true,
+          "lineCount": 7
+        },
+        {
+          "name": "_to_date",
+          "params": [
+            "value"
+          ],
+          "returnType": "date | None",
+          "exported": true,
+          "lineCount": 7
+        },
+        {
+          "name": "_parse_args",
+          "params": [],
+          "returnType": "argparse.Namespace",
+          "exported": true,
+          "lineCount": 11
+        },
+        {
+          "name": "main",
+          "params": [],
+          "returnType": "None",
+          "exported": true,
+          "lineCount": 9
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "argparse",
+          "specifiers": [
+            "argparse"
+          ]
+        },
+        {
+          "source": "json",
+          "specifiers": [
+            "json"
+          ]
+        },
+        {
+          "source": "re",
+          "specifiers": [
+            "re"
+          ]
+        },
+        {
+          "source": "datetime",
+          "specifiers": [
+            "date"
+          ]
+        },
+        {
+          "source": "pathlib",
+          "specifiers": [
+            "Path"
+          ]
+        },
+        {
+          "source": "typing",
+          "specifiers": [
+            "Any"
+          ]
+        }
+      ],
+      "exports": [
+        "validate_abox",
+        "_validate_with_pyshacl",
+        "_validate_w1_rules",
+        "_parse_turtle_subjects",
+        "_clean_literal",
+        "_to_float",
+        "_to_date",
+        "_parse_args",
+        "main"
+      ],
+      "totalLines": 168,
+      "hasStructuralAnalysis": true
+    },
+    "docs/ARCHITECTURE.md": {
+      "filePath": "docs/ARCHITECTURE.md",
+      "contentHash": "fe1e023b47a20d578509842d2b28b34cf2e7ffc9175de264a103a3da8054e649",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 193,
+      "hasStructuralAnalysis": true
+    },
+    "docs/archive/2026-05-29-worklog.md": {
+      "filePath": "docs/archive/2026-05-29-worklog.md",
+      "contentHash": "7f0210fc90abfcdc4e988faf04fb9ec46d577190e70fbde199a7bf78a825cbb1",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 382,
+      "hasStructuralAnalysis": true
+    },
+    "docs/decisions/ADR-0001-docs-as-current-map.md": {
+      "filePath": "docs/decisions/ADR-0001-docs-as-current-map.md",
+      "contentHash": "9b8b42b4ed83d71eedbf0c7da74edf8b5a0e9c9afb48d74c14b1a58e8a8f5450",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 22,
+      "hasStructuralAnalysis": true
+    },
+    "docs/GOLDENSET.md": {
+      "filePath": "docs/GOLDENSET.md",
+      "contentHash": "bf0281dcedbf74a222018c742bfb9d4bde0ad1937ccff00dab2f6c7c330c9c0e",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 327,
+      "hasStructuralAnalysis": true
+    },
+    "docs/INTERFACES.md": {
+      "filePath": "docs/INTERFACES.md",
+      "contentHash": "9c4f0be5a22a1a845255dd5184a66a9a0ef0127a5ea8eb4f5a4b4d5304dca910",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 378,
+      "hasStructuralAnalysis": true
+    },
+    "docs/ontology_prd.md": {
+      "filePath": "docs/ontology_prd.md",
+      "contentHash": "0efb0bf70b2062ce1288bbe8de107f854fdb7fb61972db794efe285e74ebba34",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 288,
+      "hasStructuralAnalysis": true
+    },
+    "docs/README.md": {
+      "filePath": "docs/README.md",
+      "contentHash": "df73ca844df2e482be6af75f6ef4d6f1a0aeefce5d1e6e8f0a6d766adcbdc040",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 41,
+      "hasStructuralAnalysis": true
+    },
+    "docs/reference/extract_guard_plan.md": {
+      "filePath": "docs/reference/extract_guard_plan.md",
+      "contentHash": "0a1aa141f2aa0c074a059c72579e7ddeac340459ed15f986c19054444c7d5c62",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 745,
+      "hasStructuralAnalysis": true
+    },
+    "docs/reference/ontology_pipeline.md": {
+      "filePath": "docs/reference/ontology_pipeline.md",
+      "contentHash": "d3818ddda2e39d37a221482164ec4f5ffe593a52175a54639e450eea5759a9d1",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 523,
+      "hasStructuralAnalysis": true
+    },
+    "docs/ROADMAP.md": {
+      "filePath": "docs/ROADMAP.md",
+      "contentHash": "c80eb05da5ff73a820d0defc96b3e891300cd7a255d4ffcd271504e972fbeabf",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 136,
+      "hasStructuralAnalysis": true
+    },
+    "docs/Role_Dividing.md": {
+      "filePath": "docs/Role_Dividing.md",
+      "contentHash": "7be4d89f618efa00f40e413215218222adede18ececeff21c6f5aaa566f2d580",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 74,
+      "hasStructuralAnalysis": true
+    },
+    "docs/runbooks/local-setup.md": {
+      "filePath": "docs/runbooks/local-setup.md",
+      "contentHash": "60b8c7d219b84164f8da837c86f365e4a20f7cba8c4e91e9891a95232c9e99ae",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 29,
+      "hasStructuralAnalysis": true
+    },
+    "docs/runbooks/run-experiment.md": {
+      "filePath": "docs/runbooks/run-experiment.md",
+      "contentHash": "b793cf6be62a26d0a3dcf9e5c6aa271b314b72733f8327b26c52e9bee63e8c3d",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 33,
+      "hasStructuralAnalysis": true
+    },
+    "docs/runbooks/run-extraction.md": {
+      "filePath": "docs/runbooks/run-extraction.md",
+      "contentHash": "451f1048f601231d7ff12ba106313297b53986aeb5985e0a9c2b7f3518e5cd2d",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 31,
+      "hasStructuralAnalysis": true
+    },
+    "docs/runbooks/scoring.md": {
+      "filePath": "docs/runbooks/scoring.md",
+      "contentHash": "2f6f57b78392a06d0d1dbe1d679e86680ea52a7cc6a77c916233287d25fd7660",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 26,
+      "hasStructuralAnalysis": true
+    },
+    "docs/STATUS.md": {
+      "filePath": "docs/STATUS.md",
+      "contentHash": "739dcf3231495e7155bd00232889189855ef9b4e9fb6722e1864d68473da7457",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 50,
+      "hasStructuralAnalysis": true
+    },
+    "docs/tree.md": {
+      "filePath": "docs/tree.md",
+      "contentHash": "bae81568b70b137f8a68d645e255bc66c584f921ffe834bdbd001d0fcfcce559",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 65,
+      "hasStructuralAnalysis": true
+    },
+    "ontology/shapes.ttl": {
+      "filePath": "ontology/shapes.ttl",
+      "contentHash": "cb9047ca6adac334577c8d023e875ea04c12402622ce92dfc4c2207874f72a8d",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 122,
+      "hasStructuralAnalysis": false
+    },
+    "ontology/trust_fund.ttl": {
+      "filePath": "ontology/trust_fund.ttl",
+      "contentHash": "a0d25051f0dac054a550f445f9d526cea8d5f306e21a438a40af09796aae2b13",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 106,
+      "hasStructuralAnalysis": false
+    },
+    "prompts/v0/extract/system.md": {
+      "filePath": "prompts/v0/extract/system.md",
+      "contentHash": "e76af3f17c9477c600f6f0f543857e983737bb1c05247f7ef9722dd7c19e5af3",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 317,
+      "hasStructuralAnalysis": true
+    },
+    "prompts/v0/judge/system.md": {
+      "filePath": "prompts/v0/judge/system.md",
+      "contentHash": "9a6171736dbb91c6d209b486ff2743ea0e195eb92663bfa1985002050fcd036b",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 62,
+      "hasStructuralAnalysis": true
+    },
+    "prompts/v0/normalize/system.md": {
+      "filePath": "prompts/v0/normalize/system.md",
+      "contentHash": "31eda6e348544502954d1c597f7b1c4d245ca8b22534a94137f768f07333a2a6",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 67,
+      "hasStructuralAnalysis": true
+    },
+    "pyproject.toml": {
+      "filePath": "pyproject.toml",
+      "contentHash": "6651caeef6d772cc4f8adb83dfe44612a2bfb091692dfe7ca3a3d2e797ce502b",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 46,
+      "hasStructuralAnalysis": true
+    },
+    "README.md": {
+      "filePath": "README.md",
+      "contentHash": "5d6564c1d1d0d2a516412d14659427bd4257c9f819244b9b25ed762af247f5ca",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 79,
+      "hasStructuralAnalysis": true
+    },
+    "reports/.DS_Store": {
+      "filePath": "reports/.DS_Store",
+      "contentHash": "1c695fff82f87a004c950f995d6c02bae687a4d299d8b6991510d8249061bf25",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 1,
+      "hasStructuralAnalysis": false
+    },
+    "reports/manual_extract/abox.ttl": {
+      "filePath": "reports/manual_extract/abox.ttl",
+      "contentHash": "8262d347e3e81811271694cbbe917c13a18b6216704e2cf2c8881a0589f98f30",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 47,
+      "hasStructuralAnalysis": false
+    },
+    "reports/manual_extract/cross_check.json": {
+      "filePath": "reports/manual_extract/cross_check.json",
+      "contentHash": "8637f5ca93ae773250d2cb4d4111d7c3c5e0651da6c7bd61d17e12cffa37ac1b",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 318,
+      "hasStructuralAnalysis": true
+    },
+    "reports/manual_extract/extraction.json": {
+      "filePath": "reports/manual_extract/extraction.json",
+      "contentHash": "e06315a85618c6377ef83533d8193759138c4395d86f83b0da5ecaddc7178a67",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 271,
+      "hasStructuralAnalysis": true
+    },
+    "reports/manual_extract/llm_judgements.json": {
+      "filePath": "reports/manual_extract/llm_judgements.json",
+      "contentHash": "a5338d955b09046ec0b16f3a9625b7955c763aae07dc722e474e6078745f932f",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 2,
+      "hasStructuralAnalysis": true
+    },
+    "reports/manual_extract/normalization.json": {
+      "filePath": "reports/manual_extract/normalization.json",
+      "contentHash": "e5fb224ff46dd40f58934e01af15b2afcd16597e21685be2d80ac65d1312cb6e",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 579,
+      "hasStructuralAnalysis": true
+    },
+    "reports/manual_extract/ontology_mermaid.md": {
+      "filePath": "reports/manual_extract/ontology_mermaid.md",
+      "contentHash": "9b8f7af826fe315a15f3a25650c372a008c6dbc05e99e81fa66c0348ac29338d",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 71,
+      "hasStructuralAnalysis": true
+    },
+    "reports/manual_extract/shacl_report.txt": {
+      "filePath": "reports/manual_extract/shacl_report.txt",
+      "contentHash": "4d83fbfef17dc0841bf4a82e0e82bbbedb0bed7283467fb1be959416c19de8c2",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 3,
+      "hasStructuralAnalysis": false
+    },
+    "reports/manual_extract/shacl_validation.json": {
+      "filePath": "reports/manual_extract/shacl_validation.json",
+      "contentHash": "8474890e326945fcef7220fc08565a6c48bdfaeea0f80c34574000661bd16703",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 4,
+      "hasStructuralAnalysis": true
+    },
+    "requirements.txt": {
+      "filePath": "requirements.txt",
+      "contentHash": "bfb875e1e6b5d5cf05c633437cbd01f969390e302e7cd5a8dc3a1befa111723f",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 50,
+      "hasStructuralAnalysis": false
+    },
+    "scripts/__init__.py": {
+      "filePath": "scripts/__init__.py",
+      "contentHash": "991661e9de7487216d22923013fc6f81372446129489cd470792b018e6159bdd",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 2,
+      "hasStructuralAnalysis": true
+    },
+    "scripts/extract_5_runs.py": {
+      "filePath": "scripts/extract_5_runs.py",
+      "contentHash": "148b107922c0105d441db5ca1b8388763c9fa42dd9288ea00c944c9465b1f25d",
+      "functions": [
+        {
+          "name": "main",
+          "params": [],
+          "returnType": "int",
+          "exported": true,
+          "lineCount": 104
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "json",
+          "specifiers": [
+            "json"
+          ]
+        },
+        {
+          "source": "logging",
+          "specifiers": [
+            "logging"
+          ]
+        },
+        {
+          "source": "sys",
+          "specifiers": [
+            "sys"
+          ]
+        },
+        {
+          "source": "traceback",
+          "specifiers": [
+            "traceback"
+          ]
+        },
+        {
+          "source": "pathlib",
+          "specifiers": [
+            "Path"
+          ]
+        },
+        {
+          "source": "src.client.ollama_client",
+          "specifiers": [
+            "OllamaClient"
+          ]
+        },
+        {
+          "source": "src.extraction.extractor",
+          "specifiers": [
+            "extract_from_pdfs"
+          ]
+        },
+        {
+          "source": "src.guards.base",
+          "specifiers": [
+            "GuardConfig",
+            "GuardContext"
+          ]
+        },
+        {
+          "source": "src.guards.registry",
+          "specifiers": [
+            "apply_guards",
+            "summarize_events"
+          ]
+        }
+      ],
+      "exports": [
+        "main"
+      ],
+      "totalLines": 150,
+      "hasStructuralAnalysis": true
+    },
+    "scripts/extract_full_pipeline.py": {
+      "filePath": "scripts/extract_full_pipeline.py",
+      "contentHash": "bc1e86ef03bc27abc9ec6e30478d302af0f0b1f1cbb907b24e9d31dd0a3af443",
+      "functions": [
+        {
+          "name": "parse_args",
+          "params": [],
+          "returnType": "argparse.Namespace",
+          "exported": true,
+          "lineCount": 11
+        },
+        {
+          "name": "run_one_seed",
+          "params": [
+            "seed",
+            "args",
+            "out_dir"
+          ],
+          "returnType": "dict",
+          "exported": true,
+          "lineCount": 147
+        },
+        {
+          "name": "main",
+          "params": [],
+          "returnType": "int",
+          "exported": true,
+          "lineCount": 44
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "argparse",
+          "specifiers": [
+            "argparse"
+          ]
+        },
+        {
+          "source": "json",
+          "specifiers": [
+            "json"
+          ]
+        },
+        {
+          "source": "logging",
+          "specifiers": [
+            "logging"
+          ]
+        },
+        {
+          "source": "sys",
+          "specifiers": [
+            "sys"
+          ]
+        },
+        {
+          "source": "time",
+          "specifiers": [
+            "time"
+          ]
+        },
+        {
+          "source": "traceback",
+          "specifiers": [
+            "traceback"
+          ]
+        },
+        {
+          "source": "pathlib",
+          "specifiers": [
+            "Path"
+          ]
+        },
+        {
+          "source": "src.client.ollama_client",
+          "specifiers": [
+            "OllamaClient"
+          ]
+        },
+        {
+          "source": "src.extraction.extractor",
+          "specifiers": [
+            "extract_from_pdfs"
+          ]
+        },
+        {
+          "source": "src.guards.base",
+          "specifiers": [
+            "GuardConfig",
+            "GuardContext"
+          ]
+        },
+        {
+          "source": "src.guards.registry",
+          "specifiers": [
+            "apply_guards",
+            "summarize_events"
+          ]
+        },
+        {
+          "source": "src.ontology.mapping",
+          "specifiers": [
+            "extraction_to_graph"
+          ]
+        },
+        {
+          "source": "src.ontology.validate",
+          "specifiers": [
+            "validate_graph"
+          ]
+        },
+        {
+          "source": "src.pipelines.cross_check",
+          "specifiers": [
+            "apply_normalization_to_cross_check",
+            "cross_check_extraction"
+          ]
+        },
+        {
+          "source": "src.schemas.extraction",
+          "specifiers": [
+            "ExtractionResult"
+          ]
+        }
+      ],
+      "exports": [
+        "parse_args",
+        "run_one_seed",
+        "main"
+      ],
+      "totalLines": 265,
+      "hasStructuralAnalysis": true
+    },
+    "scripts/extract_v2.py": {
+      "filePath": "scripts/extract_v2.py",
+      "contentHash": "c7abfe8b7ca0a1056c71aea78b96dc34183ff1316fe933cf08a6a30e3130caf9",
+      "functions": [
+        {
+          "name": "main",
+          "params": [],
+          "returnType": "int",
+          "exported": true,
+          "lineCount": 76
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "json",
+          "specifiers": [
+            "json"
+          ]
+        },
+        {
+          "source": "logging",
+          "specifiers": [
+            "logging"
+          ]
+        },
+        {
+          "source": "sys",
+          "specifiers": [
+            "sys"
+          ]
+        },
+        {
+          "source": "traceback",
+          "specifiers": [
+            "traceback"
+          ]
+        },
+        {
+          "source": "pathlib",
+          "specifiers": [
+            "Path"
+          ]
+        },
+        {
+          "source": "src.ingest.pdf_to_text",
+          "specifiers": [
+            "ingest_mod"
+          ]
+        },
+        {
+          "source": "src.client.ollama_client",
+          "specifiers": [
+            "OllamaClient"
+          ]
+        },
+        {
+          "source": "src.extraction.extractor",
+          "specifiers": [
+            "extract_from_pdfs"
+          ]
+        },
+        {
+          "source": "src.guards.base",
+          "specifiers": [
+            "GuardConfig",
+            "GuardContext"
+          ]
+        },
+        {
+          "source": "src.guards.registry",
+          "specifiers": [
+            "apply_guards",
+            "summarize_events"
+          ]
+        }
+      ],
+      "exports": [
+        "main"
+      ],
+      "totalLines": 127,
+      "hasStructuralAnalysis": true
+    },
+    "scripts/hello_gemma.py": {
+      "filePath": "scripts/hello_gemma.py",
+      "contentHash": "63f70b9f89de22ffa6dc87602aec10f9ae1245535df6e97c08eac5a18fa7bacb",
+      "functions": [
+        {
+          "name": "generate_json",
+          "params": [
+            "prompt",
+            "schema",
+            "temperature"
+          ],
+          "returnType": "tuple[dict[str, Any], int]",
+          "exported": true,
+          "lineCount": 21
+        },
+        {
+          "name": "main",
+          "params": [],
+          "returnType": "int",
+          "exported": true,
+          "lineCount": 110
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "json",
+          "specifiers": [
+            "json"
+          ]
+        },
+        {
+          "source": "sys",
+          "specifiers": [
+            "sys"
+          ]
+        },
+        {
+          "source": "time",
+          "specifiers": [
+            "time"
+          ]
+        },
+        {
+          "source": "typing",
+          "specifiers": [
+            "Any"
+          ]
+        },
+        {
+          "source": "requests",
+          "specifiers": [
+            "requests"
+          ]
+        }
+      ],
+      "exports": [
+        "generate_json",
+        "main"
+      ],
+      "totalLines": 163,
+      "hasStructuralAnalysis": true
+    },
+    "scripts/inspect_pdfs.py": {
+      "filePath": "scripts/inspect_pdfs.py",
+      "contentHash": "b54988b2ad60c095013a40cd01b61d033b2f89fdaf5d42bf988d41b5857892eb",
+      "functions": [
+        {
+          "name": "main",
+          "params": [],
+          "returnType": "int",
+          "exported": true,
+          "lineCount": 21
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "sys",
+          "specifiers": [
+            "sys"
+          ]
+        },
+        {
+          "source": "pathlib",
+          "specifiers": [
+            "Path"
+          ]
+        },
+        {
+          "source": "pdfplumber",
+          "specifiers": [
+            "pdfplumber"
+          ]
+        }
+      ],
+      "exports": [
+        "main"
+      ],
+      "totalLines": 36,
+      "hasStructuralAnalysis": true
+    },
+    "scripts/render_figma_ontology_svg.py": {
+      "filePath": "scripts/render_figma_ontology_svg.py",
+      "contentHash": "5adf20ba9b115f2fb7ad87a9c23b4b6012d8b41b4092d928c5e34a7beb41b755",
+      "functions": [
+        {
+          "name": "render_figma_svg",
+          "params": [
+            "output_path"
+          ],
+          "returnType": "None",
+          "exported": true,
+          "lineCount": 5
+        },
+        {
+          "name": "_boxes",
+          "params": [],
+          "returnType": "list[Box]",
+          "exported": true,
+          "lineCount": 15
+        },
+        {
+          "name": "_edges",
+          "params": [],
+          "returnType": "list[Edge]",
+          "exported": true,
+          "lineCount": 16
+        },
+        {
+          "name": "_svg_document",
+          "params": [
+            "boxes",
+            "edges"
+          ],
+          "returnType": "str",
+          "exported": true,
+          "lineCount": 25
+        },
+        {
+          "name": "_box_svg",
+          "params": [
+            "box"
+          ],
+          "returnType": "str",
+          "exported": true,
+          "lineCount": 10
+        },
+        {
+          "name": "_edge_svg",
+          "params": [
+            "edge",
+            "box_by_id"
+          ],
+          "returnType": "str",
+          "exported": true,
+          "lineCount": 11
+        },
+        {
+          "name": "_edge_points",
+          "params": [
+            "source",
+            "target"
+          ],
+          "returnType": "tuple[float, float, float, float]",
+          "exported": true,
+          "lineCount": 18
+        },
+        {
+          "name": "_parse_args",
+          "params": [],
+          "returnType": "argparse.Namespace",
+          "exported": true,
+          "lineCount": 4
+        },
+        {
+          "name": "main",
+          "params": [],
+          "returnType": "None",
+          "exported": true,
+          "lineCount": 4
+        }
+      ],
+      "classes": [
+        {
+          "name": "Box",
+          "methods": [],
+          "properties": [
+            "id",
+            "title",
+            "subtitle",
+            "x",
+            "y",
+            "w",
+            "h",
+            "fill",
+            "stroke"
+          ],
+          "exported": true,
+          "lineCount": 10
+        },
+        {
+          "name": "Edge",
+          "methods": [],
+          "properties": [
+            "source",
+            "target",
+            "label"
+          ],
+          "exported": true,
+          "lineCount": 4
+        }
+      ],
+      "imports": [
+        {
+          "source": "argparse",
+          "specifiers": [
+            "argparse"
+          ]
+        },
+        {
+          "source": "html",
+          "specifiers": [
+            "html"
+          ]
+        },
+        {
+          "source": "dataclasses",
+          "specifiers": [
+            "dataclass"
+          ]
+        },
+        {
+          "source": "pathlib",
+          "specifiers": [
+            "Path"
+          ]
+        }
+      ],
+      "exports": [
+        "Box",
+        "Edge",
+        "render_figma_svg",
+        "_boxes",
+        "_edges",
+        "_svg_document",
+        "_box_svg",
+        "_edge_svg",
+        "_edge_points",
+        "_parse_args",
+        "main"
+      ],
+      "totalLines": 158,
+      "hasStructuralAnalysis": true
+    },
+    "scripts/render_mermaid.py": {
+      "filePath": "scripts/render_mermaid.py",
+      "contentHash": "fadcb22b7d04c4ce44c0f5b297f2ef9b416f0b6ba0ef02901177377682e1715d",
+      "functions": [
+        {
+          "name": "render_mermaid",
+          "params": [
+            "ontology_path",
+            "abox_path",
+            "output_path"
+          ],
+          "returnType": "None",
+          "exported": true,
+          "lineCount": 34
+        },
+        {
+          "name": "_schema_mermaid",
+          "params": [
+            "graph"
+          ],
+          "returnType": "str",
+          "exported": true,
+          "lineCount": 49
+        },
+        {
+          "name": "_abox_mermaid",
+          "params": [
+            "graph"
+          ],
+          "returnType": "str",
+          "exported": true,
+          "lineCount": 63
+        },
+        {
+          "name": "_label_for",
+          "params": [
+            "graph",
+            "subject"
+          ],
+          "returnType": "str",
+          "exported": true,
+          "lineCount": 5
+        },
+        {
+          "name": "_local_name",
+          "params": [
+            "value"
+          ],
+          "returnType": "str",
+          "exported": true,
+          "lineCount": 7
+        },
+        {
+          "name": "_escape_mermaid_label",
+          "params": [
+            "value"
+          ],
+          "returnType": "str",
+          "exported": true,
+          "lineCount": 2
+        },
+        {
+          "name": "_parse_args",
+          "params": [],
+          "returnType": "argparse.Namespace",
+          "exported": true,
+          "lineCount": 6
+        },
+        {
+          "name": "main",
+          "params": [],
+          "returnType": "None",
+          "exported": true,
+          "lineCount": 8
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "argparse",
+          "specifiers": [
+            "argparse"
+          ]
+        },
+        {
+          "source": "sys",
+          "specifiers": [
+            "sys"
+          ]
+        },
+        {
+          "source": "pathlib",
+          "specifiers": [
+            "Path"
+          ]
+        },
+        {
+          "source": "rdflib",
+          "specifiers": [
+            "RDF",
+            "RDFS",
+            "Graph",
+            "Literal",
+            "Namespace",
+            "URIRef"
+          ]
+        }
+      ],
+      "exports": [
+        "render_mermaid",
+        "_schema_mermaid",
+        "_abox_mermaid",
+        "_label_for",
+        "_local_name",
+        "_escape_mermaid_label",
+        "_parse_args",
+        "main"
+      ],
+      "totalLines": 212,
+      "hasStructuralAnalysis": true
+    },
+    "scripts/render_ontology_graph.py": {
+      "filePath": "scripts/render_ontology_graph.py",
+      "contentHash": "49988ec29cbf63eb484a448faf544f7431c0ecdddfe9e9e4be09791f3b4b54e4",
+      "functions": [
+        {
+          "name": "render_graphs",
+          "params": [
+            "ontology_path",
+            "abox_path",
+            "schema_output_path",
+            "abox_output_path",
+            "schema_graph_output_path",
+            "abox_graph_output_path"
+          ],
+          "returnType": "None",
+          "exported": true,
+          "lineCount": 45
+        },
+        {
+          "name": "_schema_graph_data",
+          "params": [
+            "graph"
+          ],
+          "returnType": "tuple[list[GraphNode], list[GraphEdge]]",
+          "exported": true,
+          "lineCount": 24
+        },
+        {
+          "name": "_abox_graph_data",
+          "params": [
+            "graph"
+          ],
+          "returnType": "tuple[list[GraphNode], list[GraphEdge]]",
+          "exported": true,
+          "lineCount": 33
+        },
+        {
+          "name": "_write_schema_board_html",
+          "params": [
+            "output_path",
+            "title",
+            "subtitle",
+            "nodes",
+            "edges"
+          ],
+          "returnType": "None",
+          "exported": true,
+          "lineCount": 68
+        },
+        {
+          "name": "_write_abox_board_html",
+          "params": [
+            "output_path",
+            "title",
+            "subtitle",
+            "graph"
+          ],
+          "returnType": "None",
+          "exported": true,
+          "lineCount": 29
+        },
+        {
+          "name": "_abox_sections",
+          "params": [
+            "graph",
+            "scope"
+          ],
+          "returnType": "str",
+          "exported": true,
+          "lineCount": 49
+        },
+        {
+          "name": "_board_html",
+          "params": [
+            "title",
+            "subtitle",
+            "body"
+          ],
+          "returnType": "str",
+          "exported": true,
+          "lineCount": 240
+        },
+        {
+          "name": "_write_graph_html",
+          "params": [
+            "output_path",
+            "title",
+            "subtitle",
+            "nodes",
+            "edges",
+            "layout_mode"
+          ],
+          "returnType": "None",
+          "exported": true,
+          "lineCount": 23
+        },
+        {
+          "name": "_html_document",
+          "params": [
+            "title",
+            "subtitle",
+            "payload",
+            "layout_mode"
+          ],
+          "returnType": "str",
+          "exported": true,
+          "lineCount": 414
+        },
+        {
+          "name": "_label_for",
+          "params": [
+            "graph",
+            "subject"
+          ],
+          "returnType": "str",
+          "exported": true,
+          "lineCount": 5
+        },
+        {
+          "name": "_local_name",
+          "params": [
+            "value"
+          ],
+          "returnType": "str",
+          "exported": true,
+          "lineCount": 7
+        },
+        {
+          "name": "_class_group",
+          "params": [
+            "class_name"
+          ],
+          "returnType": "str",
+          "exported": true,
+          "lineCount": 2
+        },
+        {
+          "name": "_truncate",
+          "params": [
+            "value",
+            "max_length"
+          ],
+          "returnType": "str",
+          "exported": true,
+          "lineCount": 5
+        },
+        {
+          "name": "_parse_args",
+          "params": [],
+          "returnType": "argparse.Namespace",
+          "exported": true,
+          "lineCount": 17
+        },
+        {
+          "name": "main",
+          "params": [],
+          "returnType": "None",
+          "exported": true,
+          "lineCount": 14
+        }
+      ],
+      "classes": [
+        {
+          "name": "GraphNode",
+          "methods": [],
+          "properties": [
+            "id",
+            "label",
+            "group"
+          ],
+          "exported": true,
+          "lineCount": 4
+        },
+        {
+          "name": "GraphEdge",
+          "methods": [],
+          "properties": [
+            "source",
+            "target",
+            "label"
+          ],
+          "exported": true,
+          "lineCount": 4
+        }
+      ],
+      "imports": [
+        {
+          "source": "argparse",
+          "specifiers": [
+            "argparse"
+          ]
+        },
+        {
+          "source": "html",
+          "specifiers": [
+            "html"
+          ]
+        },
+        {
+          "source": "json",
+          "specifiers": [
+            "json"
+          ]
+        },
+        {
+          "source": "sys",
+          "specifiers": [
+            "sys"
+          ]
+        },
+        {
+          "source": "dataclasses",
+          "specifiers": [
+            "dataclass"
+          ]
+        },
+        {
+          "source": "pathlib",
+          "specifiers": [
+            "Path"
+          ]
+        },
+        {
+          "source": "rdflib",
+          "specifiers": [
+            "RDF",
+            "RDFS",
+            "Graph",
+            "Literal",
+            "Namespace",
+            "URIRef"
+          ]
+        }
+      ],
+      "exports": [
+        "GraphNode",
+        "GraphEdge",
+        "render_graphs",
+        "_schema_graph_data",
+        "_abox_graph_data",
+        "_write_schema_board_html",
+        "_write_abox_board_html",
+        "_abox_sections",
+        "_board_html",
+        "_write_graph_html",
+        "_html_document",
+        "_label_for",
+        "_local_name",
+        "_class_group",
+        "_truncate",
+        "_parse_args",
+        "main"
+      ],
+      "totalLines": 1049,
+      "hasStructuralAnalysis": true
+    },
+    "scripts/run_extract_once.py": {
+      "filePath": "scripts/run_extract_once.py",
+      "contentHash": "aa6d6a8180a0b9d46490327b3ade89494512b540a4d2d3b67ada233fcf44d194",
+      "functions": [
+        {
+          "name": "main",
+          "params": [],
+          "returnType": "None",
+          "exported": true,
+          "lineCount": 35
+        },
+        {
+          "name": "write_run_outputs",
+          "params": [
+            "output_dir",
+            "extraction",
+            "cross_check_results",
+            "judgements",
+            "normalization_results",
+            "include_ontology_outputs"
+          ],
+          "returnType": "None",
+          "exported": true,
+          "lineCount": 26
+        },
+        {
+          "name": "_write_json",
+          "params": [
+            "path",
+            "payload"
+          ],
+          "returnType": "None",
+          "exported": true,
+          "lineCount": 5
+        },
+        {
+          "name": "_write_ontology_outputs",
+          "params": [
+            "output_dir",
+            "extraction"
+          ],
+          "returnType": "None",
+          "exported": true,
+          "lineCount": 15
+        },
+        {
+          "name": "_parse_args",
+          "params": [],
+          "returnType": "argparse.Namespace",
+          "exported": true,
+          "lineCount": 43
+        },
+        {
+          "name": "_read_existing_extraction",
+          "params": [
+            "path"
+          ],
+          "returnType": "ExtractionResult",
+          "exported": true,
+          "lineCount": 3
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "argparse",
+          "specifiers": [
+            "argparse"
+          ]
+        },
+        {
+          "source": "json",
+          "specifiers": [
+            "json"
+          ]
+        },
+        {
+          "source": "sys",
+          "specifiers": [
+            "sys"
+          ]
+        },
+        {
+          "source": "pathlib",
+          "specifiers": [
+            "Path"
+          ]
+        },
+        {
+          "source": "typing",
+          "specifiers": [
+            "Any"
+          ]
+        },
+        {
+          "source": "src.pipelines.cross_check",
+          "specifiers": [
+            "CrossCheckResult",
+            "apply_normalization_to_cross_check",
+            "cross_check_extraction"
+          ]
+        },
+        {
+          "source": "src.pipelines.extract",
+          "specifiers": [
+            "DocumentInput",
+            "extract_from_documents"
+          ]
+        },
+        {
+          "source": "src.pipelines.llm_judge",
+          "specifiers": [
+            "LLMJudgement",
+            "judge_needs_review"
+          ]
+        },
+        {
+          "source": "src.pipelines.normalize",
+          "specifiers": [
+            "NormalizationResult",
+            "normalize_extraction"
+          ]
+        },
+        {
+          "source": "src.ontology.mapping",
+          "specifiers": [
+            "extraction_to_graph"
+          ]
+        },
+        {
+          "source": "src.ontology.validate",
+          "specifiers": [
+            "validate_graph"
+          ]
+        },
+        {
+          "source": "src.schemas.extraction",
+          "specifiers": [
+            "ExtractionResult"
+          ]
+        }
+      ],
+      "exports": [
+        "main",
+        "write_run_outputs",
+        "_write_json",
+        "_write_ontology_outputs",
+        "_parse_args",
+        "_read_existing_extraction"
+      ],
+      "totalLines": 172,
+      "hasStructuralAnalysis": true
+    },
+    "scripts/smoke_temp0.py": {
+      "filePath": "scripts/smoke_temp0.py",
+      "contentHash": "fcea6b535529b50b5dca671488577d39cfda2bf82da80377c71ade10bfbe8ae4",
+      "functions": [
+        {
+          "name": "run_one",
+          "params": [
+            "client",
+            "label"
+          ],
+          "returnType": "None",
+          "exported": true,
+          "lineCount": 9
+        },
+        {
+          "name": "main",
+          "params": [],
+          "returnType": "int",
+          "exported": true,
+          "lineCount": 7
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "json",
+          "specifiers": [
+            "json"
+          ]
+        },
+        {
+          "source": "sys",
+          "specifiers": [
+            "sys"
+          ]
+        },
+        {
+          "source": "pathlib",
+          "specifiers": [
+            "Path"
+          ]
+        },
+        {
+          "source": "src.client.ollama_client",
+          "specifiers": [
+            "OllamaClient"
+          ]
+        }
+      ],
+      "exports": [
+        "run_one",
+        "main"
+      ],
+      "totalLines": 56,
+      "hasStructuralAnalysis": true
+    },
+    "scripts/test_g2_fake_citation.py": {
+      "filePath": "scripts/test_g2_fake_citation.py",
+      "contentHash": "6cdda5225fc2d7f3da4d9d933b22a4c3cc5335043584e8324cfa2597fd4071d7",
+      "functions": [
+        {
+          "name": "main",
+          "params": [],
+          "returnType": "int",
+          "exported": true,
+          "lineCount": 73
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "json",
+          "specifiers": [
+            "json"
+          ]
+        },
+        {
+          "source": "sys",
+          "specifiers": [
+            "sys"
+          ]
+        },
+        {
+          "source": "pathlib",
+          "specifiers": [
+            "Path"
+          ]
+        },
+        {
+          "source": "src.guards.base",
+          "specifiers": [
+            "GuardConfig",
+            "GuardContext"
+          ]
+        },
+        {
+          "source": "src.guards.g2_citation",
+          "specifiers": [
+            "check_citations"
+          ]
+        },
+        {
+          "source": "src.schemas.extraction",
+          "specifiers": [
+            "ExtractionResult"
+          ]
+        }
+      ],
+      "exports": [
+        "main"
+      ],
+      "totalLines": 102,
+      "hasStructuralAnalysis": true
+    },
+    "src/__init__.py": {
+      "filePath": "src/__init__.py",
+      "contentHash": "83ac4be8591bbdb4820947b98c206b1cf65ff25f970b064d8910e4cf2589a11a",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 2,
+      "hasStructuralAnalysis": true
+    },
+    "src/client/__init__.py": {
+      "filePath": "src/client/__init__.py",
+      "contentHash": "498f233a02b5f81499384763c15778a8096db7c8eb2f2cc776c31a392ae2e44b",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 2,
+      "hasStructuralAnalysis": true
+    },
+    "src/client/anthropic_client.py": {
+      "filePath": "src/client/anthropic_client.py",
+      "contentHash": "c1b2b160d3ec3d271046e13cab1f1064764867f43d33f962db44276cd6c3aff7",
+      "functions": [
+        {
+          "name": "_message_text",
+          "params": [
+            "message"
+          ],
+          "returnType": "str",
+          "exported": true,
+          "lineCount": 7
+        },
+        {
+          "name": "_parse_json_response",
+          "params": [
+            "text"
+          ],
+          "returnType": "dict[str, Any]",
+          "exported": true,
+          "lineCount": 9
+        },
+        {
+          "name": "_strip_markdown_json_fence",
+          "params": [
+            "text"
+          ],
+          "returnType": "str",
+          "exported": true,
+          "lineCount": 9
+        }
+      ],
+      "classes": [
+        {
+          "name": "AnthropicJSONClient",
+          "methods": [
+            "__init__",
+            "complete_json",
+            "complete_json_with_content",
+            "complete_text_with_content",
+            "_anthropic_client"
+          ],
+          "properties": [],
+          "exported": true,
+          "lineCount": 66
+        }
+      ],
+      "imports": [
+        {
+          "source": "json",
+          "specifiers": [
+            "json"
+          ]
+        },
+        {
+          "source": "os",
+          "specifiers": [
+            "os"
+          ]
+        },
+        {
+          "source": "typing",
+          "specifiers": [
+            "Any"
+          ]
+        },
+        {
+          "source": "dotenv",
+          "specifiers": [
+            "load_dotenv"
+          ]
+        }
+      ],
+      "exports": [
+        "AnthropicJSONClient",
+        "_message_text",
+        "_parse_json_response",
+        "_strip_markdown_json_fence"
+      ],
+      "totalLines": 107,
+      "hasStructuralAnalysis": true
+    },
+    "src/client/ollama_client.py": {
+      "filePath": "src/client/ollama_client.py",
+      "contentHash": "47b08b3436428febc94713a1f920b179c0149805a7b583fe910a757c4c85cd68",
+      "functions": [],
+      "classes": [
+        {
+          "name": "OllamaResult",
+          "methods": [
+            "eval_ms",
+            "total_ms"
+          ],
+          "properties": [
+            "response_text",
+            "model",
+            "model_digest",
+            "prompt_eval_count",
+            "eval_count",
+            "eval_duration_ns",
+            "total_duration_ns",
+            "raw"
+          ],
+          "exported": true,
+          "lineCount": 18
+        },
+        {
+          "name": "OllamaClient",
+          "methods": [
+            "__init__",
+            "ping",
+            "get_model_digest",
+            "generate"
+          ],
+          "properties": [],
+          "exported": true,
+          "lineCount": 97
+        }
+      ],
+      "imports": [
+        {
+          "source": "logging",
+          "specifiers": [
+            "logging"
+          ]
+        },
+        {
+          "source": "dataclasses",
+          "specifiers": [
+            "dataclass",
+            "field"
+          ]
+        },
+        {
+          "source": "typing",
+          "specifiers": [
+            "Any"
+          ]
+        },
+        {
+          "source": "requests",
+          "specifiers": [
+            "requests"
+          ]
+        }
+      ],
+      "exports": [
+        "OllamaResult",
+        "OllamaClient"
+      ],
+      "totalLines": 135,
+      "hasStructuralAnalysis": true
+    },
+    "src/extraction/__init__.py": {
+      "filePath": "src/extraction/__init__.py",
+      "contentHash": "6b3439cb7b5a77485af74405483280d8ddfb0361fb8232a38312e245003250b2",
+      "functions": [],
+      "classes": [],
+      "imports": [
+        {
+          "source": "src.extraction.extractor",
+          "specifiers": [
+            "ExtractionRun",
+            "extract_from_pdfs"
+          ]
+        },
+        {
+          "source": "src.extraction.side_schemas",
+          "specifiers": [
+            "FeeScheduleSide",
+            "FundSide",
+            "PartySide",
+            "RedemptionTermsSide",
+            "SideExtraction",
+            "merge_sides"
+          ]
+        }
+      ],
+      "exports": [],
+      "totalLines": 21,
+      "hasStructuralAnalysis": true
+    },
+    "src/extraction/extractor.py": {
+      "filePath": "src/extraction/extractor.py",
+      "contentHash": "035ae24b0394c382e78c76eabe98c4f18f3b558e8af71c3f9dd744cdc2bead26",
+      "functions": [
+        {
+          "name": "extract_from_pdfs",
+          "params": [
+            "contract_pdf",
+            "im_pdf",
+            "client"
+          ],
+          "returnType": "ExtractionRun",
+          "exported": true,
+          "lineCount": 51
+        },
+        {
+          "name": "_extract_side",
+          "params": [
+            "client",
+            "doc",
+            "side",
+            "document_role"
+          ],
+          "returnType": "SidePassResult",
+          "exported": true,
+          "lineCount": 41
+        }
+      ],
+      "classes": [
+        {
+          "name": "SidePassResult",
+          "methods": [],
+          "properties": [
+            "side",
+            "document_role",
+            "side_extraction",
+            "pdf_pages",
+            "pdf_sha256",
+            "ollama_meta"
+          ],
+          "exported": true,
+          "lineCount": 8
+        },
+        {
+          "name": "ExtractionRun",
+          "methods": [],
+          "properties": [
+            "extraction",
+            "contract_pass",
+            "im_pass",
+            "model",
+            "model_digest",
+            "seed",
+            "temperature",
+            "total_eval_ms",
+            "total_wall_ms"
+          ],
+          "exported": true,
+          "lineCount": 11
+        }
+      ],
+      "imports": [
+        {
+          "source": "logging",
+          "specifiers": [
+            "logging"
+          ]
+        },
+        {
+          "source": "time",
+          "specifiers": [
+            "time"
+          ]
+        },
+        {
+          "source": "dataclasses",
+          "specifiers": [
+            "dataclass",
+            "field"
+          ]
+        },
+        {
+          "source": "pathlib",
+          "specifiers": [
+            "Path"
+          ]
+        },
+        {
+          "source": "typing",
+          "specifiers": [
+            "Any",
+            "Literal"
+          ]
+        },
+        {
+          "source": "src.client.ollama_client",
+          "specifiers": [
+            "OllamaClient",
+            "OllamaResult"
+          ]
+        },
+        {
+          "source": "src.extraction.side_schemas",
+          "specifiers": [
+            "SideExtraction",
+            "merge_sides"
+          ]
+        },
+        {
+          "source": "src.ingest.pdf_to_text",
+          "specifiers": [
+            "DocumentText",
+            "ingest_pdf"
+          ]
+        },
+        {
+          "source": "src.schemas.extraction",
+          "specifiers": [
+            "DocumentRole",
+            "ExtractionResult"
+          ]
+        }
+      ],
+      "exports": [
+        "SidePassResult",
+        "ExtractionRun",
+        "extract_from_pdfs",
+        "_extract_side"
+      ],
+      "totalLines": 170,
+      "hasStructuralAnalysis": true
+    },
+    "src/extraction/side_schemas.py": {
+      "filePath": "src/extraction/side_schemas.py",
+      "contentHash": "e87e12f32efc98ab75f41ac05f3caf70fe7ea9d21715641b271d88c939fe96a7",
+      "functions": [
+        {
+          "name": "merge_sides",
+          "params": [
+            "contract_side",
+            "im_side"
+          ],
+          "returnType": "ExtractionResult",
+          "exported": true,
+          "lineCount": 57
+        }
+      ],
+      "classes": [
+        {
+          "name": "StrictSideModel",
+          "methods": [],
+          "properties": [],
+          "exported": true,
+          "lineCount": 2
+        },
+        {
+          "name": "FundSide",
+          "methods": [],
+          "properties": [
+            "name",
+            "type",
+            "inception_date",
+            "maturity_date"
+          ],
+          "exported": true,
+          "lineCount": 5
+        },
+        {
+          "name": "PartySide",
+          "methods": [],
+          "properties": [
+            "asset_manager",
+            "trustee",
+            "distributor"
+          ],
+          "exported": true,
+          "lineCount": 4
+        },
+        {
+          "name": "FeeScheduleSide",
+          "methods": [],
+          "properties": [
+            "management_fee",
+            "trust_fee",
+            "sales_fee"
+          ],
+          "exported": true,
+          "lineCount": 4
+        },
+        {
+          "name": "RedemptionTermsSide",
+          "methods": [],
+          "properties": [
+            "is_redeemable",
+            "lockup_period",
+            "redemption_cycle",
+            "redemption_fee"
+          ],
+          "exported": true,
+          "lineCount": 5
+        },
+        {
+          "name": "SideExtraction",
+          "methods": [],
+          "properties": [
+            "fund",
+            "party",
+            "fee_schedule",
+            "redemption_terms"
+          ],
+          "exported": true,
+          "lineCount": 5
+        }
+      ],
+      "imports": [
+        {
+          "source": "pydantic",
+          "specifiers": [
+            "BaseModel",
+            "ConfigDict"
+          ]
+        },
+        {
+          "source": "src.schemas.extraction",
+          "specifiers": [
+            "ComparableField",
+            "DocumentValue",
+            "ExtractionResult",
+            "FeeScheduleExtraction",
+            "FundExtraction",
+            "PartyExtraction",
+            "RedemptionTermsExtraction"
+          ]
+        }
+      ],
+      "exports": [
+        "StrictSideModel",
+        "FundSide",
+        "PartySide",
+        "FeeScheduleSide",
+        "RedemptionTermsSide",
+        "SideExtraction",
+        "merge_sides"
+      ],
+      "totalLines": 116,
+      "hasStructuralAnalysis": true
+    },
+    "src/guards/__init__.py": {
+      "filePath": "src/guards/__init__.py",
+      "contentHash": "a666bae4d542907619473993604d1d9f751f2fd7cab2e470ad1a9fc6174c1f8c",
+      "functions": [],
+      "classes": [],
+      "imports": [
+        {
+          "source": "src.guards.base",
+          "specifiers": [
+            "Guard",
+            "GuardConfig",
+            "GuardContext",
+            "GuardDecision",
+            "GuardEvent",
+            "iter_comparable_fields",
+            "nullify_side"
+          ]
+        },
+        {
+          "source": "src.guards.g1_format",
+          "specifiers": [
+            "check_format"
+          ]
+        },
+        {
+          "source": "src.guards.g2_citation",
+          "specifiers": [
+            "check_citations"
+          ]
+        },
+        {
+          "source": "src.guards.g3_constraint",
+          "specifiers": [
+            "check_constraints"
+          ]
+        },
+        {
+          "source": "src.guards.registry",
+          "specifiers": [
+            "apply_guards"
+          ]
+        }
+      ],
+      "exports": [],
+      "totalLines": 28,
+      "hasStructuralAnalysis": true
+    },
+    "src/guards/base.py": {
+      "filePath": "src/guards/base.py",
+      "contentHash": "b4cdbaa4255067833f377955285f226772a6fe3d7b00efea84531d295d39dfdf",
+      "functions": [
+        {
+          "name": "iter_comparable_fields",
+          "params": [
+            "extraction"
+          ],
+          "returnType": "Iterable[tuple[str, ComparableField]]",
+          "exported": true,
+          "lineCount": 18
+        },
+        {
+          "name": "nullify_side",
+          "params": [
+            "extraction",
+            "field_path",
+            "side"
+          ],
+          "returnType": "ExtractionResult",
+          "exported": true,
+          "lineCount": 14
+        },
+        {
+          "name": "strip_markdown_fence",
+          "params": [
+            "text"
+          ],
+          "returnType": "str",
+          "exported": true,
+          "lineCount": 12
+        }
+      ],
+      "classes": [
+        {
+          "name": "GuardDecision",
+          "methods": [],
+          "properties": [],
+          "exported": true,
+          "lineCount": 4
+        },
+        {
+          "name": "GuardEvent",
+          "methods": [],
+          "properties": [
+            "guard",
+            "field_path",
+            "decision",
+            "reason_code",
+            "reason",
+            "metadata"
+          ],
+          "exported": true,
+          "lineCount": 10
+        },
+        {
+          "name": "GuardConfig",
+          "methods": [],
+          "properties": [
+            "g1_format",
+            "g2_citation",
+            "g3_constraint",
+            "g1_max_retries",
+            "g3_use_shacl"
+          ],
+          "exported": true,
+          "lineCount": 7
+        },
+        {
+          "name": "GuardContext",
+          "methods": [],
+          "properties": [
+            "contract_pdf",
+            "im_pdf",
+            "contract_pages",
+            "im_pages",
+            "config"
+          ],
+          "exported": true,
+          "lineCount": 7
+        },
+        {
+          "name": "Guard",
+          "methods": [
+            "check"
+          ],
+          "properties": [
+            "name"
+          ],
+          "exported": true,
+          "lineCount": 6
+        }
+      ],
+      "imports": [
+        {
+          "source": "dataclasses",
+          "specifiers": [
+            "dataclass"
+          ]
+        },
+        {
+          "source": "enum",
+          "specifiers": [
+            "StrEnum"
+          ]
+        },
+        {
+          "source": "pathlib",
+          "specifiers": [
+            "Path"
+          ]
+        },
+        {
+          "source": "typing",
+          "specifiers": [
+            "Any",
+            "Iterable",
+            "Literal",
+            "Protocol",
+            "runtime_checkable"
+          ]
+        },
+        {
+          "source": "pydantic",
+          "specifiers": [
+            "BaseModel",
+            "ConfigDict"
+          ]
+        },
+        {
+          "source": "src.schemas.extraction",
+          "specifiers": [
+            "ComparableField",
+            "DocumentValue",
+            "ExtractionResult"
+          ]
+        }
+      ],
+      "exports": [
+        "GuardDecision",
+        "GuardEvent",
+        "GuardConfig",
+        "GuardContext",
+        "Guard",
+        "iter_comparable_fields",
+        "nullify_side",
+        "strip_markdown_fence"
+      ],
+      "totalLines": 130,
+      "hasStructuralAnalysis": true
+    },
+    "src/guards/g1_format.py": {
+      "filePath": "src/guards/g1_format.py",
+      "contentHash": "11f9a68ff0dec254b9c6c335cffd00d0bb6197be3fd61b865b025269ca4727e8",
+      "functions": [
+        {
+          "name": "check_format",
+          "params": [
+            "raw_output",
+            "schema",
+            "retry_callback",
+            "config"
+          ],
+          "returnType": "tuple[BaseModel | None, list[GuardEvent]]",
+          "exported": true,
+          "lineCount": 54
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "json",
+          "specifiers": [
+            "json"
+          ]
+        },
+        {
+          "source": "typing",
+          "specifiers": [
+            "Callable"
+          ]
+        },
+        {
+          "source": "pydantic",
+          "specifiers": [
+            "BaseModel",
+            "ValidationError"
+          ]
+        },
+        {
+          "source": "src.guards.base",
+          "specifiers": [
+            "GuardConfig",
+            "GuardDecision",
+            "GuardEvent",
+            "strip_markdown_fence"
+          ]
+        }
+      ],
+      "exports": [
+        "check_format"
+      ],
+      "totalLines": 67,
+      "hasStructuralAnalysis": true
+    },
+    "src/guards/g2_citation.py": {
+      "filePath": "src/guards/g2_citation.py",
+      "contentHash": "75e6af801c63d2aa9a95924d41fb0a7d1013a30e1e6e85697186dffd42fe7c0a",
+      "functions": [
+        {
+          "name": "check_citations",
+          "params": [
+            "extraction",
+            "ctx"
+          ],
+          "returnType": "tuple[ExtractionResult, list[GuardEvent]]",
+          "exported": true,
+          "lineCount": 16
+        },
+        {
+          "name": "_check_one_side",
+          "params": [
+            "field_path",
+            "comparable",
+            "side",
+            "ctx"
+          ],
+          "returnType": "GuardEvent | None",
+          "exported": true,
+          "lineCount": 44
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "typing",
+          "specifiers": [
+            "Literal"
+          ]
+        },
+        {
+          "source": "src.guards.base",
+          "specifiers": [
+            "GuardContext",
+            "GuardDecision",
+            "GuardEvent",
+            "iter_comparable_fields",
+            "nullify_side"
+          ]
+        },
+        {
+          "source": "src.schemas.extraction",
+          "specifiers": [
+            "ComparableField",
+            "DocumentValue",
+            "ExtractionResult"
+          ]
+        }
+      ],
+      "exports": [
+        "check_citations",
+        "_check_one_side"
+      ],
+      "totalLines": 82,
+      "hasStructuralAnalysis": true
+    },
+    "src/guards/g3_constraint.py": {
+      "filePath": "src/guards/g3_constraint.py",
+      "contentHash": "b613feeff535f95ec238574416ba9d881b68b647c454c148efd242002b41de07",
+      "functions": [
+        {
+          "name": "check_constraints",
+          "params": [
+            "extraction",
+            "ctx"
+          ],
+          "returnType": "tuple[ExtractionResult, list[GuardEvent]]",
+          "exported": true,
+          "lineCount": 33
+        },
+        {
+          "name": "_check_field_range",
+          "params": [
+            "field_path",
+            "comparable",
+            "side"
+          ],
+          "returnType": "GuardEvent | None",
+          "exported": true,
+          "lineCount": 63
+        },
+        {
+          "name": "_check_maturity_after_inception",
+          "params": [
+            "extraction",
+            "side"
+          ],
+          "returnType": "GuardEvent | None",
+          "exported": true,
+          "lineCount": 35
+        },
+        {
+          "name": "_check_shacl_constraints",
+          "params": [
+            "extraction"
+          ],
+          "returnType": "GuardEvent | None",
+          "exported": true,
+          "lineCount": 21
+        },
+        {
+          "name": "_to_percent",
+          "params": [
+            "raw"
+          ],
+          "returnType": "float | None",
+          "exported": true,
+          "lineCount": 18
+        },
+        {
+          "name": "_try_parse_date",
+          "params": [
+            "raw"
+          ],
+          "returnType": "datetime | None",
+          "exported": true,
+          "lineCount": 18
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "re",
+          "specifiers": [
+            "re"
+          ]
+        },
+        {
+          "source": "datetime",
+          "specifiers": [
+            "datetime"
+          ]
+        },
+        {
+          "source": "typing",
+          "specifiers": [
+            "Literal"
+          ]
+        },
+        {
+          "source": "src.guards.base",
+          "specifiers": [
+            "GuardContext",
+            "GuardDecision",
+            "GuardEvent",
+            "iter_comparable_fields",
+            "nullify_side"
+          ]
+        },
+        {
+          "source": "src.ontology.mapping",
+          "specifiers": [
+            "extraction_to_graph"
+          ]
+        },
+        {
+          "source": "src.ontology.validate",
+          "specifiers": [
+            "validate_graph"
+          ]
+        },
+        {
+          "source": "src.schemas.extraction",
+          "specifiers": [
+            "ComparableField",
+            "DocumentValue",
+            "ExtractionResult"
+          ]
+        }
+      ],
+      "exports": [
+        "check_constraints",
+        "_check_field_range",
+        "_check_maturity_after_inception",
+        "_check_shacl_constraints",
+        "_to_percent",
+        "_try_parse_date"
+      ],
+      "totalLines": 238,
+      "hasStructuralAnalysis": true
+    },
+    "src/guards/registry.py": {
+      "filePath": "src/guards/registry.py",
+      "contentHash": "cbdfcc532e5559f1fb69214c88f97c9f76ab22068571e056774ffe126b1b4d38",
+      "functions": [
+        {
+          "name": "apply_guards",
+          "params": [
+            "raw_extraction_json",
+            "ctx",
+            "retry_callback"
+          ],
+          "returnType": "tuple[ExtractionResult | None, list[GuardEvent]]",
+          "exported": true,
+          "lineCount": 58
+        },
+        {
+          "name": "summarize_events",
+          "params": [
+            "events"
+          ],
+          "returnType": "dict",
+          "exported": true,
+          "lineCount": 14
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "typing",
+          "specifiers": [
+            "Callable"
+          ]
+        },
+        {
+          "source": "src.guards.base",
+          "specifiers": [
+            "GuardContext",
+            "GuardDecision",
+            "GuardEvent"
+          ]
+        },
+        {
+          "source": "src.guards.g1_format",
+          "specifiers": [
+            "check_format"
+          ]
+        },
+        {
+          "source": "src.guards.g2_citation",
+          "specifiers": [
+            "check_citations"
+          ]
+        },
+        {
+          "source": "src.guards.g3_constraint",
+          "specifiers": [
+            "check_constraints"
+          ]
+        },
+        {
+          "source": "src.schemas.extraction",
+          "specifiers": [
+            "ExtractionResult"
+          ]
+        }
+      ],
+      "exports": [
+        "apply_guards",
+        "summarize_events"
+      ],
+      "totalLines": 94,
+      "hasStructuralAnalysis": true
+    },
+    "src/ingest/__init__.py": {
+      "filePath": "src/ingest/__init__.py",
+      "contentHash": "4c7ab02e515f232cbc14e49589a4c182a4bc01e81bf5475c7d8e28ea5feed773",
+      "functions": [],
+      "classes": [],
+      "imports": [
+        {
+          "source": "src.ingest.pdf_to_text",
+          "specifiers": [
+            "DocumentText",
+            "PageContent",
+            "ingest_pdf"
+          ]
+        }
+      ],
+      "exports": [],
+      "totalLines": 4,
+      "hasStructuralAnalysis": true
+    },
+    "src/ingest/pdf_to_text.py": {
+      "filePath": "src/ingest/pdf_to_text.py",
+      "contentHash": "9e98c25bb9bd264ad6d3bdd5fb7429b9d4e1513e8569b59c032aa0bd22f0f65b",
+      "functions": [
+        {
+          "name": "_find_poppler_path",
+          "params": [],
+          "returnType": "str | None",
+          "exported": true,
+          "lineCount": 12
+        },
+        {
+          "name": "ingest_pdf",
+          "params": [
+            "pdf_path"
+          ],
+          "returnType": "DocumentText",
+          "exported": true,
+          "lineCount": 9
+        },
+        {
+          "name": "_is_scanned",
+          "params": [
+            "pdf_path"
+          ],
+          "returnType": "bool",
+          "exported": true,
+          "lineCount": 8
+        },
+        {
+          "name": "_ingest_as_text",
+          "params": [
+            "pdf_path",
+            "sha"
+          ],
+          "returnType": "DocumentText",
+          "exported": true,
+          "lineCount": 8
+        },
+        {
+          "name": "_ingest_as_images",
+          "params": [
+            "pdf_path",
+            "sha"
+          ],
+          "returnType": "DocumentText",
+          "exported": true,
+          "lineCount": 10
+        },
+        {
+          "name": "_image_to_base64_png",
+          "params": [
+            "img"
+          ],
+          "returnType": "str",
+          "exported": true,
+          "lineCount": 10
+        },
+        {
+          "name": "_hash_file",
+          "params": [
+            "p"
+          ],
+          "returnType": "str",
+          "exported": true,
+          "lineCount": 6
+        }
+      ],
+      "classes": [
+        {
+          "name": "PageContent",
+          "methods": [],
+          "properties": [
+            "page",
+            "source",
+            "text",
+            "image_b64"
+          ],
+          "exported": true,
+          "lineCount": 6
+        },
+        {
+          "name": "DocumentText",
+          "methods": [
+            "is_vision",
+            "text_only",
+            "image_payload"
+          ],
+          "properties": [
+            "pdf_path",
+            "pdf_sha256",
+            "total_pages",
+            "pages"
+          ],
+          "exported": true,
+          "lineCount": 19
+        }
+      ],
+      "imports": [
+        {
+          "source": "base64",
+          "specifiers": [
+            "base64"
+          ]
+        },
+        {
+          "source": "hashlib",
+          "specifiers": [
+            "hashlib"
+          ]
+        },
+        {
+          "source": "io",
+          "specifiers": [
+            "io"
+          ]
+        },
+        {
+          "source": "logging",
+          "specifiers": [
+            "logging"
+          ]
+        },
+        {
+          "source": "os",
+          "specifiers": [
+            "os"
+          ]
+        },
+        {
+          "source": "sys",
+          "specifiers": [
+            "sys"
+          ]
+        },
+        {
+          "source": "dataclasses",
+          "specifiers": [
+            "dataclass",
+            "field"
+          ]
+        },
+        {
+          "source": "pathlib",
+          "specifiers": [
+            "Path"
+          ]
+        },
+        {
+          "source": "typing",
+          "specifiers": [
+            "Literal"
+          ]
+        },
+        {
+          "source": "pdfplumber",
+          "specifiers": [
+            "pdfplumber"
+          ]
+        },
+        {
+          "source": "pdf2image",
+          "specifiers": [
+            "convert_from_path"
+          ]
+        },
+        {
+          "source": "PIL",
+          "specifiers": [
+            "Image"
+          ]
+        }
+      ],
+      "exports": [
+        "_find_poppler_path",
+        "PageContent",
+        "DocumentText",
+        "ingest_pdf",
+        "_is_scanned",
+        "_ingest_as_text",
+        "_ingest_as_images",
+        "_image_to_base64_png",
+        "_hash_file"
+      ],
+      "totalLines": 143,
+      "hasStructuralAnalysis": true
+    },
+    "src/ontology/__init__.py": {
+      "filePath": "src/ontology/__init__.py",
+      "contentHash": "e2b5f296194dfd32db2bff9608541075d122fffa6a93fc2e95d579c3f6339f7b",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 2,
+      "hasStructuralAnalysis": true
+    },
+    "src/ontology/mapping.py": {
+      "filePath": "src/ontology/mapping.py",
+      "contentHash": "ffa9982d80c5f1ef1c0fadf8f9b2b690c5e8868d3945aaae0978e4b8ff7ff36b",
+      "functions": [
+        {
+          "name": "extraction_to_graph",
+          "params": [
+            "extraction"
+          ],
+          "returnType": "Graph",
+          "exported": true,
+          "lineCount": 97
+        },
+        {
+          "name": "_add_document_structure",
+          "params": [
+            "graph",
+            "document_scope"
+          ],
+          "returnType": "None",
+          "exported": true,
+          "lineCount": 14
+        },
+        {
+          "name": "_add_fields",
+          "params": [
+            "graph",
+            "subject",
+            "fields",
+            "document_scope"
+          ],
+          "returnType": "None",
+          "exported": true,
+          "lineCount": 11
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "collections.abc",
+          "specifiers": [
+            "Mapping"
+          ]
+        },
+        {
+          "source": "rdflib",
+          "specifiers": [
+            "RDF",
+            "Graph",
+            "Literal",
+            "Namespace"
+          ]
+        },
+        {
+          "source": "src.schemas.extraction",
+          "specifiers": [
+            "ComparableField",
+            "ExtractionResult"
+          ]
+        }
+      ],
+      "exports": [
+        "extraction_to_graph",
+        "_add_document_structure",
+        "_add_fields"
+      ],
+      "totalLines": 138,
+      "hasStructuralAnalysis": true
+    },
+    "src/ontology/validate.py": {
+      "filePath": "src/ontology/validate.py",
+      "contentHash": "229d81a82b68223c788e83987bffee9d773f61751339da543fbf4536b133468a",
+      "functions": [
+        {
+          "name": "validate_graph",
+          "params": [
+            "data_graph",
+            "ontology_path",
+            "shapes_path"
+          ],
+          "returnType": "ValidationResult",
+          "exported": true,
+          "lineCount": 26
+        }
+      ],
+      "classes": [
+        {
+          "name": "ValidationResult",
+          "methods": [],
+          "properties": [
+            "conforms",
+            "report_graph",
+            "report_text"
+          ],
+          "exported": true,
+          "lineCount": 4
+        }
+      ],
+      "imports": [
+        {
+          "source": "dataclasses",
+          "specifiers": [
+            "dataclass"
+          ]
+        },
+        {
+          "source": "pathlib",
+          "specifiers": [
+            "Path"
+          ]
+        },
+        {
+          "source": "pyshacl",
+          "specifiers": [
+            "validate"
+          ]
+        },
+        {
+          "source": "rdflib",
+          "specifiers": [
+            "Graph"
+          ]
+        }
+      ],
+      "exports": [
+        "ValidationResult",
+        "validate_graph"
+      ],
+      "totalLines": 45,
+      "hasStructuralAnalysis": true
+    },
+    "src/pipelines/__init__.py": {
+      "filePath": "src/pipelines/__init__.py",
+      "contentHash": "cb43edba7f60d5d91358266d448ea34e14e60354e0489a9f36074d4e268ece88",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 2,
+      "hasStructuralAnalysis": true
+    },
+    "src/pipelines/cross_check.py": {
+      "filePath": "src/pipelines/cross_check.py",
+      "contentHash": "713d4681f5e2ac901df57f765e2dfd035b5649e3fcaf05d46bc97c278dc9a70f",
+      "functions": [
+        {
+          "name": "cross_check_extraction",
+          "params": [
+            "extraction"
+          ],
+          "returnType": "list[CrossCheckResult]",
+          "exported": true,
+          "lineCount": 5
+        },
+        {
+          "name": "apply_normalization_to_cross_check",
+          "params": [
+            "cross_check_results",
+            "normalization_results"
+          ],
+          "returnType": "list[CrossCheckResult]",
+          "exported": true,
+          "lineCount": 11
+        },
+        {
+          "name": "judge_inputs_from_results",
+          "params": [
+            "results"
+          ],
+          "returnType": "list[JudgeInput]",
+          "exported": true,
+          "lineCount": 18
+        },
+        {
+          "name": "_compare_field",
+          "params": [
+            "field_path",
+            "field"
+          ],
+          "returnType": "CrossCheckResult",
+          "exported": true,
+          "lineCount": 27
+        },
+        {
+          "name": "_apply_normalization_result",
+          "params": [
+            "result",
+            "normalization_result"
+          ],
+          "returnType": "CrossCheckResult",
+          "exported": true,
+          "lineCount": 36
+        },
+        {
+          "name": "_default_final_result",
+          "params": [
+            "status"
+          ],
+          "returnType": "tuple[FinalCheckStatus, str, str]",
+          "exported": true,
+          "lineCount": 20
+        },
+        {
+          "name": "_missing_side",
+          "params": [
+            "contract",
+            "im"
+          ],
+          "returnType": "MissingSide",
+          "exported": true,
+          "lineCount": 10
+        },
+        {
+          "name": "_canonical_text",
+          "params": [
+            "raw_text"
+          ],
+          "returnType": "str | None",
+          "exported": true,
+          "lineCount": 4
+        },
+        {
+          "name": "_iter_comparable_fields",
+          "params": [
+            "extraction"
+          ],
+          "returnType": "Iterable[tuple[str, ComparableField]]",
+          "exported": true,
+          "lineCount": 17
+        }
+      ],
+      "classes": [
+        {
+          "name": "CrossCheckStatus",
+          "methods": [],
+          "properties": [],
+          "exported": true,
+          "lineCount": 4
+        },
+        {
+          "name": "FinalCheckStatus",
+          "methods": [],
+          "properties": [],
+          "exported": true,
+          "lineCount": 6
+        },
+        {
+          "name": "MissingSide",
+          "methods": [],
+          "properties": [],
+          "exported": true,
+          "lineCount": 5
+        },
+        {
+          "name": "StrictResultModel",
+          "methods": [],
+          "properties": [],
+          "exported": true,
+          "lineCount": 2
+        },
+        {
+          "name": "CrossCheckValue",
+          "methods": [],
+          "properties": [
+            "raw_text",
+            "citation"
+          ],
+          "exported": true,
+          "lineCount": 3
+        },
+        {
+          "name": "CrossCheckResult",
+          "methods": [
+            "default_final_result"
+          ],
+          "properties": [
+            "field",
+            "label",
+            "status",
+            "missing_side",
+            "normalization_status",
+            "final_status",
+            "final_reason_code",
+            "final_reason",
+            "contract",
+            "im"
+          ],
+          "exported": true,
+          "lineCount": 25
+        },
+        {
+          "name": "JudgeInput",
+          "methods": [],
+          "properties": [
+            "field",
+            "label",
+            "contract_raw_text",
+            "im_raw_text"
+          ],
+          "exported": true,
+          "lineCount": 5
+        }
+      ],
+      "imports": [
+        {
+          "source": "enum",
+          "specifiers": [
+            "StrEnum"
+          ]
+        },
+        {
+          "source": "typing",
+          "specifiers": [
+            "Any",
+            "Iterable"
+          ]
+        },
+        {
+          "source": "pydantic",
+          "specifiers": [
+            "BaseModel",
+            "ConfigDict",
+            "model_validator"
+          ]
+        },
+        {
+          "source": "src.schemas.extraction",
+          "specifiers": [
+            "Citation",
+            "ComparableField",
+            "DocumentValue",
+            "ExtractionResult"
+          ]
+        }
+      ],
+      "exports": [
+        "CrossCheckStatus",
+        "FinalCheckStatus",
+        "MissingSide",
+        "StrictResultModel",
+        "CrossCheckValue",
+        "CrossCheckResult",
+        "JudgeInput",
+        "cross_check_extraction",
+        "apply_normalization_to_cross_check",
+        "judge_inputs_from_results",
+        "_compare_field",
+        "_apply_normalization_result",
+        "_default_final_result",
+        "_missing_side",
+        "_canonical_text",
+        "_iter_comparable_fields"
+      ],
+      "totalLines": 255,
+      "hasStructuralAnalysis": true
+    },
+    "src/pipelines/extract.py": {
+      "filePath": "src/pipelines/extract.py",
+      "contentHash": "8d6168a68b128c984b3cda1999e896d971f0f22760a0fc8db44ec0c13325e248",
+      "functions": [
+        {
+          "name": "extract_from_documents",
+          "params": [
+            "documents",
+            "llm",
+            "system_prompt_path"
+          ],
+          "returnType": "ExtractionResult",
+          "exported": true,
+          "lineCount": 24
+        },
+        {
+          "name": "build_extraction_content",
+          "params": [
+            "documents"
+          ],
+          "returnType": "list[dict]",
+          "exported": true,
+          "lineCount": 21
+        },
+        {
+          "name": "_pdf_document_block",
+          "params": [
+            "path"
+          ],
+          "returnType": "dict",
+          "exported": true,
+          "lineCount": 14
+        },
+        {
+          "name": "_require_w1_documents",
+          "params": [
+            "documents"
+          ],
+          "returnType": "None",
+          "exported": true,
+          "lineCount": 6
+        },
+        {
+          "name": "_ordered_documents",
+          "params": [
+            "documents"
+          ],
+          "returnType": "list[DocumentInput]",
+          "exported": true,
+          "lineCount": 3
+        }
+      ],
+      "classes": [
+        {
+          "name": "ExtractionLLM",
+          "methods": [
+            "complete_json_with_content",
+            "complete_text_with_content"
+          ],
+          "properties": [],
+          "exported": true,
+          "lineCount": 16
+        },
+        {
+          "name": "DocumentInput",
+          "methods": [],
+          "properties": [
+            "role",
+            "path"
+          ],
+          "exported": true,
+          "lineCount": 5
+        }
+      ],
+      "imports": [
+        {
+          "source": "base64",
+          "specifiers": [
+            "base64"
+          ]
+        },
+        {
+          "source": "pathlib",
+          "specifiers": [
+            "Path"
+          ]
+        },
+        {
+          "source": "typing",
+          "specifiers": [
+            "Protocol"
+          ]
+        },
+        {
+          "source": "pydantic",
+          "specifiers": [
+            "BaseModel",
+            "ConfigDict"
+          ]
+        },
+        {
+          "source": "src.client.anthropic_client",
+          "specifiers": [
+            "AnthropicJSONClient"
+          ]
+        },
+        {
+          "source": "src.schemas.extraction",
+          "specifiers": [
+            "DocumentRole",
+            "ExtractionResult"
+          ]
+        }
+      ],
+      "exports": [
+        "ExtractionLLM",
+        "DocumentInput",
+        "extract_from_documents",
+        "build_extraction_content",
+        "_pdf_document_block",
+        "_require_w1_documents",
+        "_ordered_documents"
+      ],
+      "totalLines": 115,
+      "hasStructuralAnalysis": true
+    },
+    "src/pipelines/llm_judge.py": {
+      "filePath": "src/pipelines/llm_judge.py",
+      "contentHash": "6712a756aba8c2e597322df9b79a903b9e58e622002ff724c4917ab1d63d8cb5",
+      "functions": [
+        {
+          "name": "judge_needs_review",
+          "params": [
+            "cross_check_results",
+            "llm",
+            "system_prompt_path"
+          ],
+          "returnType": "list[LLMJudgement]",
+          "exported": true,
+          "lineCount": 26
+        },
+        {
+          "name": "judge_prompt_for_input",
+          "params": [
+            "judge_input"
+          ],
+          "returnType": "str",
+          "exported": true,
+          "lineCount": 8
+        },
+        {
+          "name": "needs_judge",
+          "params": [
+            "result"
+          ],
+          "returnType": "bool",
+          "exported": true,
+          "lineCount": 2
+        }
+      ],
+      "classes": [
+        {
+          "name": "JudgeStatus",
+          "methods": [],
+          "properties": [],
+          "exported": true,
+          "lineCount": 3
+        },
+        {
+          "name": "JudgeLLM",
+          "methods": [
+            "complete_json"
+          ],
+          "properties": [],
+          "exported": true,
+          "lineCount": 3
+        },
+        {
+          "name": "StrictJudgeModel",
+          "methods": [],
+          "properties": [],
+          "exported": true,
+          "lineCount": 2
+        },
+        {
+          "name": "LLMJudgement",
+          "methods": [
+            "reason_must_not_be_empty"
+          ],
+          "properties": [
+            "field",
+            "reason",
+            "status"
+          ],
+          "exported": true,
+          "lineCount": 11
+        }
+      ],
+      "imports": [
+        {
+          "source": "json",
+          "specifiers": [
+            "json"
+          ]
+        },
+        {
+          "source": "enum",
+          "specifiers": [
+            "StrEnum"
+          ]
+        },
+        {
+          "source": "pathlib",
+          "specifiers": [
+            "Path"
+          ]
+        },
+        {
+          "source": "typing",
+          "specifiers": [
+            "Protocol"
+          ]
+        },
+        {
+          "source": "pydantic",
+          "specifiers": [
+            "BaseModel",
+            "ConfigDict",
+            "field_validator"
+          ]
+        },
+        {
+          "source": "src.client.anthropic_client",
+          "specifiers": [
+            "AnthropicJSONClient"
+          ]
+        },
+        {
+          "source": "src.pipelines.cross_check",
+          "specifiers": [
+            "CrossCheckResult",
+            "CrossCheckStatus",
+            "JudgeInput",
+            "judge_inputs_from_results"
+          ]
+        }
+      ],
+      "exports": [
+        "JudgeStatus",
+        "JudgeLLM",
+        "StrictJudgeModel",
+        "LLMJudgement",
+        "judge_needs_review",
+        "judge_prompt_for_input",
+        "needs_judge"
+      ],
+      "totalLines": 87,
+      "hasStructuralAnalysis": true
+    },
+    "src/pipelines/normalize.py": {
+      "filePath": "src/pipelines/normalize.py",
+      "contentHash": "616d5eca95b9de846d8d3284cbaef6cec33d6535384bdd75daa2e61fae27da13",
+      "functions": [
+        {
+          "name": "normalize_extraction",
+          "params": [
+            "extraction",
+            "llm",
+            "system_prompt_path"
+          ],
+          "returnType": "list[NormalizationResult]",
+          "exported": true,
+          "lineCount": 21
+        },
+        {
+          "name": "normalization_prompt_for_input",
+          "params": [
+            "prompt_input"
+          ],
+          "returnType": "str",
+          "exported": true,
+          "lineCount": 6
+        },
+        {
+          "name": "_normalize_field",
+          "params": [
+            "field_path",
+            "field",
+            "results_by_field",
+            "llm",
+            "system_prompt"
+          ],
+          "returnType": "NormalizationResult",
+          "exported": true,
+          "lineCount": 53
+        },
+        {
+          "name": "_build_side_result",
+          "params": [
+            "field_path",
+            "source",
+            "document_value",
+            "llm_side",
+            "prompt_input"
+          ],
+          "returnType": "NormalizationSideResult",
+          "exported": true,
+          "lineCount": 55
+        },
+        {
+          "name": "_field_status",
+          "params": [
+            "contract",
+            "im"
+          ],
+          "returnType": "tuple[NormalizationStatus, str, str]",
+          "exported": true,
+          "lineCount": 33
+        },
+        {
+          "name": "_reference_date_payload",
+          "params": [
+            "field_path",
+            "results_by_field"
+          ],
+          "returnType": "dict[str, str | None]",
+          "exported": true,
+          "lineCount": 48
+        },
+        {
+          "name": "_no_reference_date_payload",
+          "params": [],
+          "returnType": "dict[str, str | None]",
+          "exported": true,
+          "lineCount": 7
+        },
+        {
+          "name": "_field_not_in_scope",
+          "params": [
+            "field_path",
+            "field"
+          ],
+          "returnType": "NormalizationResult",
+          "exported": true,
+          "lineCount": 19
+        },
+        {
+          "name": "_not_normalized_for_missing_evidence",
+          "params": [
+            "field_path",
+            "field"
+          ],
+          "returnType": "NormalizationResult",
+          "exported": true,
+          "lineCount": 21
+        },
+        {
+          "name": "_side_not_normalized",
+          "params": [
+            "raw_text",
+            "reason_code",
+            "reason",
+            "normalized_text",
+            "normalized_unit",
+            "raw_normalized_text",
+            "raw_normalized_unit"
+          ],
+          "returnType": "NormalizationSideResult",
+          "exported": true,
+          "lineCount": 22
+        },
+        {
+          "name": "_convert_normalized_text",
+          "params": [
+            "normalized_text",
+            "normalized_unit",
+            "expected_unit"
+          ],
+          "returnType": "str | float | int | None",
+          "exported": true,
+          "lineCount": 14
+        },
+        {
+          "name": "_convert_raw_normalized_text",
+          "params": [
+            "raw_normalized_text",
+            "raw_normalized_unit"
+          ],
+          "returnType": "str | float | int | None",
+          "exported": true,
+          "lineCount": 9
+        },
+        {
+          "name": "_parse_number",
+          "params": [
+            "value"
+          ],
+          "returnType": "float | None",
+          "exported": true,
+          "lineCount": 4
+        },
+        {
+          "name": "_parse_int",
+          "params": [
+            "value"
+          ],
+          "returnType": "int | None",
+          "exported": true,
+          "lineCount": 4
+        },
+        {
+          "name": "_parse_iso_date",
+          "params": [
+            "value"
+          ],
+          "returnType": "str | None",
+          "exported": true,
+          "lineCount": 9
+        },
+        {
+          "name": "_valid_method",
+          "params": [
+            "method"
+          ],
+          "returnType": "NormalizationMethod | None",
+          "exported": true,
+          "lineCount": 5
+        },
+        {
+          "name": "_side_success",
+          "params": [
+            "side"
+          ],
+          "returnType": "bool",
+          "exported": true,
+          "lineCount": 2
+        },
+        {
+          "name": "_values_equal",
+          "params": [
+            "left",
+            "right",
+            "unit"
+          ],
+          "returnType": "bool",
+          "exported": true,
+          "lineCount": 10
+        },
+        {
+          "name": "_has_evidence",
+          "params": [
+            "document_value"
+          ],
+          "returnType": "bool",
+          "exported": true,
+          "lineCount": 2
+        },
+        {
+          "name": "_iter_comparable_fields",
+          "params": [
+            "extraction"
+          ],
+          "returnType": "Iterable[tuple[str, ComparableField]]",
+          "exported": true,
+          "lineCount": 17
+        }
+      ],
+      "classes": [
+        {
+          "name": "NormalizationStatus",
+          "methods": [],
+          "properties": [],
+          "exported": true,
+          "lineCount": 6
+        },
+        {
+          "name": "NormalizationMethod",
+          "methods": [],
+          "properties": [],
+          "exported": true,
+          "lineCount": 4
+        },
+        {
+          "name": "NormalizationLLM",
+          "methods": [
+            "complete_json"
+          ],
+          "properties": [],
+          "exported": true,
+          "lineCount": 3
+        },
+        {
+          "name": "StrictNormalizationModel",
+          "methods": [],
+          "properties": [],
+          "exported": true,
+          "lineCount": 2
+        },
+        {
+          "name": "LLMNormalizationSide",
+          "methods": [
+            "reason_must_not_be_empty"
+          ],
+          "properties": [
+            "normalized_text",
+            "normalized_unit",
+            "method",
+            "reason_code",
+            "reason",
+            "raw_normalized_text",
+            "raw_normalized_unit"
+          ],
+          "exported": true,
+          "lineCount": 15
+        },
+        {
+          "name": "LLMNormalizationResult",
+          "methods": [],
+          "properties": [
+            "field",
+            "contract",
+            "im"
+          ],
+          "exported": true,
+          "lineCount": 4
+        },
+        {
+          "name": "NormalizationSideResult",
+          "methods": [],
+          "properties": [
+            "raw_text",
+            "normalized_text",
+            "normalized_value",
+            "normalized_unit",
+            "method",
+            "reason_code",
+            "reason",
+            "raw_normalized_text",
+            "raw_normalized_value",
+            "raw_normalized_unit",
+            "derived_from",
+            "reference_date",
+            "reference_date_field",
+            "reference_date_source",
+            "reference_date_policy"
+          ],
+          "exported": true,
+          "lineCount": 16
+        },
+        {
+          "name": "NormalizationResult",
+          "methods": [],
+          "properties": [
+            "field",
+            "label",
+            "status",
+            "reason_code",
+            "reason",
+            "contract",
+            "im"
+          ],
+          "exported": true,
+          "lineCount": 8
+        },
+        {
+          "name": "NormalizationInput",
+          "methods": [],
+          "properties": [
+            "field",
+            "target_unit",
+            "contract_raw_text",
+            "im_raw_text",
+            "reference_date",
+            "reference_date_field",
+            "reference_date_source",
+            "reference_date_policy"
+          ],
+          "exported": true,
+          "lineCount": 9
+        }
+      ],
+      "imports": [
+        {
+          "source": "json",
+          "specifiers": [
+            "json"
+          ]
+        },
+        {
+          "source": "re",
+          "specifiers": [
+            "re"
+          ]
+        },
+        {
+          "source": "datetime",
+          "specifiers": [
+            "date"
+          ]
+        },
+        {
+          "source": "enum",
+          "specifiers": [
+            "StrEnum"
+          ]
+        },
+        {
+          "source": "pathlib",
+          "specifiers": [
+            "Path"
+          ]
+        },
+        {
+          "source": "typing",
+          "specifiers": [
+            "Any",
+            "Iterable",
+            "Protocol"
+          ]
+        },
+        {
+          "source": "pydantic",
+          "specifiers": [
+            "BaseModel",
+            "ConfigDict",
+            "field_validator"
+          ]
+        },
+        {
+          "source": "src.client.anthropic_client",
+          "specifiers": [
+            "AnthropicJSONClient"
+          ]
+        },
+        {
+          "source": "src.pipelines.cross_check",
+          "specifiers": [
+            "FIELD_LABELS"
+          ]
+        },
+        {
+          "source": "src.schemas.extraction",
+          "specifiers": [
+            "ComparableField",
+            "DocumentValue",
+            "ExtractionResult"
+          ]
+        }
+      ],
+      "exports": [
+        "NormalizationStatus",
+        "NormalizationMethod",
+        "NormalizationLLM",
+        "StrictNormalizationModel",
+        "LLMNormalizationSide",
+        "LLMNormalizationResult",
+        "NormalizationSideResult",
+        "NormalizationResult",
+        "NormalizationInput",
+        "normalize_extraction",
+        "normalization_prompt_for_input",
+        "_normalize_field",
+        "_build_side_result",
+        "_field_status",
+        "_reference_date_payload",
+        "_no_reference_date_payload",
+        "_field_not_in_scope",
+        "_not_normalized_for_missing_evidence",
+        "_side_not_normalized",
+        "_convert_normalized_text",
+        "_convert_raw_normalized_text",
+        "_parse_number",
+        "_parse_int",
+        "_parse_iso_date",
+        "_valid_method",
+        "_side_success",
+        "_values_equal",
+        "_has_evidence",
+        "_iter_comparable_fields"
+      ],
+      "totalLines": 514,
+      "hasStructuralAnalysis": true
+    },
+    "src/schemas/__init__.py": {
+      "filePath": "src/schemas/__init__.py",
+      "contentHash": "a3a463512f568924ed68b6181fc937daac26144bbc6a15e6c002cef0ec7340f3",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 2,
+      "hasStructuralAnalysis": true
+    },
+    "src/schemas/extraction.py": {
+      "filePath": "src/schemas/extraction.py",
+      "contentHash": "fe5ed311fd57e4f1a00109dbaa4565977b7fdef7548a37e9c082a7fcb99095c7",
+      "functions": [],
+      "classes": [
+        {
+          "name": "StrictSchemaModel",
+          "methods": [],
+          "properties": [],
+          "exported": true,
+          "lineCount": 2
+        },
+        {
+          "name": "Citation",
+          "methods": [],
+          "properties": [
+            "document",
+            "page"
+          ],
+          "exported": true,
+          "lineCount": 3
+        },
+        {
+          "name": "DocumentValue",
+          "methods": [
+            "require_citation_for_evidence"
+          ],
+          "properties": [
+            "value",
+            "unit",
+            "raw_text",
+            "citation"
+          ],
+          "exported": true,
+          "lineCount": 11
+        },
+        {
+          "name": "ComparableField",
+          "methods": [],
+          "properties": [
+            "contract",
+            "im"
+          ],
+          "exported": true,
+          "lineCount": 3
+        },
+        {
+          "name": "FundExtraction",
+          "methods": [],
+          "properties": [
+            "name",
+            "type",
+            "inception_date",
+            "maturity_date"
+          ],
+          "exported": true,
+          "lineCount": 5
+        },
+        {
+          "name": "PartyExtraction",
+          "methods": [],
+          "properties": [
+            "asset_manager",
+            "trustee",
+            "distributor"
+          ],
+          "exported": true,
+          "lineCount": 4
+        },
+        {
+          "name": "FeeScheduleExtraction",
+          "methods": [],
+          "properties": [
+            "management_fee",
+            "trust_fee",
+            "sales_fee"
+          ],
+          "exported": true,
+          "lineCount": 4
+        },
+        {
+          "name": "RedemptionTermsExtraction",
+          "methods": [],
+          "properties": [
+            "is_redeemable",
+            "lockup_period",
+            "redemption_cycle",
+            "redemption_fee"
+          ],
+          "exported": true,
+          "lineCount": 5
+        },
+        {
+          "name": "ExtractionResult",
+          "methods": [],
+          "properties": [
+            "schema_version",
+            "fund",
+            "party",
+            "fee_schedule",
+            "redemption_terms"
+          ],
+          "exported": true,
+          "lineCount": 6
+        }
+      ],
+      "imports": [
+        {
+          "source": "typing",
+          "specifiers": [
+            "Literal"
+          ]
+        },
+        {
+          "source": "pydantic",
+          "specifiers": [
+            "BaseModel",
+            "ConfigDict",
+            "Field",
+            "PositiveInt",
+            "model_validator"
+          ]
+        }
+      ],
+      "exports": [
+        "StrictSchemaModel",
+        "Citation",
+        "DocumentValue",
+        "ComparableField",
+        "FundExtraction",
+        "PartyExtraction",
+        "FeeScheduleExtraction",
+        "RedemptionTermsExtraction",
+        "ExtractionResult"
+      ],
+      "totalLines": 68,
+      "hasStructuralAnalysis": true
+    },
+    "test_w1_ontology_pipeline.py": {
+      "filePath": "test_w1_ontology_pipeline.py",
+      "contentHash": "649ba5675c28b45e39b74160c38c97033b29afa42af6105aee9e945b7806f0ec",
+      "functions": [],
+      "classes": [
+        {
+          "name": "W1OntologyPipelineTest",
+          "methods": [
+            "test_build_abox_merges_extraction_and_normalization",
+            "test_validate_abox_uses_pyshacl_and_writes_json_result",
+            "test_validate_abox_requires_pyshacl_by_default",
+            "setUp",
+            "tearDown"
+          ],
+          "properties": [],
+          "exported": true,
+          "lineCount": 199
+        }
+      ],
+      "imports": [
+        {
+          "source": "builtins",
+          "specifiers": [
+            "builtins"
+          ]
+        },
+        {
+          "source": "json",
+          "specifiers": [
+            "json"
+          ]
+        },
+        {
+          "source": "sys",
+          "specifiers": [
+            "sys"
+          ]
+        },
+        {
+          "source": "types",
+          "specifiers": [
+            "types"
+          ]
+        },
+        {
+          "source": "unittest",
+          "specifiers": [
+            "unittest"
+          ]
+        },
+        {
+          "source": "dnb_harness.ontology.mapping",
+          "specifiers": [
+            "build_abox"
+          ]
+        },
+        {
+          "source": "dnb_harness.ontology.validate",
+          "specifiers": [
+            "validate_abox"
+          ]
+        }
+      ],
+      "exports": [
+        "W1OntologyPipelineTest"
+      ],
+      "totalLines": 214,
+      "hasStructuralAnalysis": true
+    },
+    "tests/golden/golden_master.csv": {
+      "filePath": "tests/golden/golden_master.csv",
+      "contentHash": "fbef60988013d67bec02c5a781429bfc56857a9591ef409f3cfb5611b4e07448",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 32,
+      "hasStructuralAnalysis": false
+    },
+    "tests/test_anthropic_client.py": {
+      "filePath": "tests/test_anthropic_client.py",
+      "contentHash": "7210247dd46b4f3403d230c314da03b72d21d335134a22465bb71c3e9a7459c8",
+      "functions": [
+        {
+          "name": "test_parse_json_response_accepts_markdown_json_fence",
+          "params": [],
+          "exported": true,
+          "lineCount": 4
+        },
+        {
+          "name": "test_parse_json_response_reports_invalid_json_after_fence_is_removed",
+          "params": [],
+          "exported": true,
+          "lineCount": 3
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "json",
+          "specifiers": [
+            "json"
+          ]
+        },
+        {
+          "source": "pytest",
+          "specifiers": [
+            "pytest"
+          ]
+        },
+        {
+          "source": "src.client.anthropic_client",
+          "specifiers": [
+            "_parse_json_response"
+          ]
+        }
+      ],
+      "exports": [
+        "test_parse_json_response_accepts_markdown_json_fence",
+        "test_parse_json_response_reports_invalid_json_after_fence_is_removed"
+      ],
+      "totalLines": 17,
+      "hasStructuralAnalysis": true
+    },
+    "tests/test_cross_check.py": {
+      "filePath": "tests/test_cross_check.py",
+      "contentHash": "42ea824d343f42e38bfd2e60ca6625e4bbc51f674f224541b0cde319714d2e36",
+      "functions": [
+        {
+          "name": "test_cross_check_returns_all_w1_fields",
+          "params": [],
+          "exported": true,
+          "lineCount": 20
+        },
+        {
+          "name": "test_cross_check_treats_whitespace_only_difference_as_exact_match",
+          "params": [],
+          "exported": true,
+          "lineCount": 5
+        },
+        {
+          "name": "test_cross_check_marks_different_raw_text_as_needs_review",
+          "params": [],
+          "exported": true,
+          "lineCount": 11
+        },
+        {
+          "name": "test_cross_check_marks_missing_side",
+          "params": [],
+          "exported": true,
+          "lineCount": 5
+        },
+        {
+          "name": "test_judge_inputs_are_created_only_for_needs_review_results",
+          "params": [],
+          "exported": true,
+          "lineCount": 13
+        },
+        {
+          "name": "test_judge_inputs_skip_results_resolved_by_normalization",
+          "params": [],
+          "exported": true,
+          "lineCount": 18
+        },
+        {
+          "name": "test_apply_normalization_to_cross_check_marks_normalized_match",
+          "params": [],
+          "exported": true,
+          "lineCount": 17
+        },
+        {
+          "name": "test_apply_normalization_to_cross_check_marks_normalized_difference",
+          "params": [],
+          "exported": true,
+          "lineCount": 17
+        },
+        {
+          "name": "test_apply_normalization_to_cross_check_keeps_missing_evidence_final_status",
+          "params": [],
+          "exported": true,
+          "lineCount": 18
+        },
+        {
+          "name": "_result_by_field",
+          "params": [
+            "results",
+            "field"
+          ],
+          "exported": true,
+          "lineCount": 2
+        },
+        {
+          "name": "_sample_extraction",
+          "params": [],
+          "returnType": "ExtractionResult",
+          "exported": true,
+          "lineCount": 41
+        },
+        {
+          "name": "_pair",
+          "params": [
+            "contract_raw_text",
+            "im_raw_text"
+          ],
+          "exported": true,
+          "lineCount": 15
+        },
+        {
+          "name": "_normalization_result",
+          "params": [
+            "field",
+            "status",
+            "reason_code"
+          ],
+          "returnType": "NormalizationResult",
+          "exported": true,
+          "lineCount": 28
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "src.pipelines.cross_check",
+          "specifiers": [
+            "CrossCheckStatus",
+            "FinalCheckStatus",
+            "MissingSide",
+            "cross_check_extraction",
+            "apply_normalization_to_cross_check",
+            "judge_inputs_from_results"
+          ]
+        },
+        {
+          "source": "src.pipelines.normalize",
+          "specifiers": [
+            "NormalizationResult",
+            "NormalizationStatus"
+          ]
+        },
+        {
+          "source": "src.schemas.extraction",
+          "specifiers": [
+            "ExtractionResult"
+          ]
+        }
+      ],
+      "exports": [
+        "test_cross_check_returns_all_w1_fields",
+        "test_cross_check_treats_whitespace_only_difference_as_exact_match",
+        "test_cross_check_marks_different_raw_text_as_needs_review",
+        "test_cross_check_marks_missing_side",
+        "test_judge_inputs_are_created_only_for_needs_review_results",
+        "test_judge_inputs_skip_results_resolved_by_normalization",
+        "test_apply_normalization_to_cross_check_marks_normalized_match",
+        "test_apply_normalization_to_cross_check_marks_normalized_difference",
+        "test_apply_normalization_to_cross_check_keeps_missing_evidence_final_status",
+        "_result_by_field",
+        "_sample_extraction",
+        "_pair",
+        "_normalization_result"
+      ],
+      "totalLines": 247,
+      "hasStructuralAnalysis": true
+    },
+    "tests/test_extract_pipeline.py": {
+      "filePath": "tests/test_extract_pipeline.py",
+      "contentHash": "4f6cdb74488f82879aacb97ef8d1e55230930dd3f20692f710797f6ee23757a9",
+      "functions": [
+        {
+          "name": "test_build_extraction_content_uses_pdf_document_blocks",
+          "params": [
+            "tmp_path"
+          ],
+          "exported": true,
+          "lineCount": 24
+        },
+        {
+          "name": "test_extract_from_documents_validates_llm_json_response",
+          "params": [
+            "tmp_path"
+          ],
+          "exported": true,
+          "lineCount": 19
+        },
+        {
+          "name": "_valid_extraction_payload",
+          "params": [],
+          "exported": true,
+          "lineCount": 46
+        }
+      ],
+      "classes": [
+        {
+          "name": "FakeExtractionLLM",
+          "methods": [
+            "__init__",
+            "complete_json_with_content"
+          ],
+          "properties": [],
+          "exported": true,
+          "lineCount": 10
+        }
+      ],
+      "imports": [
+        {
+          "source": "json",
+          "specifiers": [
+            "json"
+          ]
+        },
+        {
+          "source": "src.pipelines.extract",
+          "specifiers": [
+            "DocumentInput",
+            "build_extraction_content",
+            "extract_from_documents"
+          ]
+        }
+      ],
+      "exports": [
+        "test_build_extraction_content_uses_pdf_document_blocks",
+        "test_extract_from_documents_validates_llm_json_response",
+        "FakeExtractionLLM",
+        "_valid_extraction_payload"
+      ],
+      "totalLines": 115,
+      "hasStructuralAnalysis": true
+    },
+    "tests/test_extraction_schema.py": {
+      "filePath": "tests/test_extraction_schema.py",
+      "contentHash": "ca8bd4dbe56ec5477855c1c7c8ec5a3ba9594d0f9b2a3c1015546797f02abddc",
+      "functions": [
+        {
+          "name": "test_document_value_requires_citation_when_raw_text_exists",
+          "params": [],
+          "exported": true,
+          "lineCount": 8
+        },
+        {
+          "name": "test_document_value_allows_missing_value_when_all_evidence_is_null",
+          "params": [],
+          "exported": true,
+          "lineCount": 5
+        },
+        {
+          "name": "test_citation_document_is_limited_to_w1_documents",
+          "params": [],
+          "exported": true,
+          "lineCount": 3
+        },
+        {
+          "name": "test_citation_page_is_one_based",
+          "params": [],
+          "exported": true,
+          "lineCount": 3
+        },
+        {
+          "name": "test_extraction_result_requires_all_w1_sections_and_fields",
+          "params": [],
+          "exported": true,
+          "lineCount": 45
+        },
+        {
+          "name": "test_extraction_result_rejects_missing_w1_field",
+          "params": [],
+          "exported": true,
+          "lineCount": 28
+        },
+        {
+          "name": "_missing_pair",
+          "params": [],
+          "exported": true,
+          "lineCount": 3
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "pytest",
+          "specifiers": [
+            "pytest"
+          ]
+        },
+        {
+          "source": "pydantic",
+          "specifiers": [
+            "ValidationError"
+          ]
+        },
+        {
+          "source": "src.schemas.extraction",
+          "specifiers": [
+            "Citation",
+            "DocumentValue",
+            "ExtractionResult"
+          ]
+        }
+      ],
+      "exports": [
+        "test_document_value_requires_citation_when_raw_text_exists",
+        "test_document_value_allows_missing_value_when_all_evidence_is_null",
+        "test_citation_document_is_limited_to_w1_documents",
+        "test_citation_page_is_one_based",
+        "test_extraction_result_requires_all_w1_sections_and_fields",
+        "test_extraction_result_rejects_missing_w1_field",
+        "_missing_pair"
+      ],
+      "totalLines": 118,
+      "hasStructuralAnalysis": true
+    },
+    "tests/test_guards.py": {
+      "filePath": "tests/test_guards.py",
+      "contentHash": "366fecdbb64082b4291281ebdc2a73d6eb9e11ff8ee3d067498dc3ec1f57f8fc",
+      "functions": [
+        {
+          "name": "test_g3_shacl_delegation_emits_reject_event_when_enabled",
+          "params": [],
+          "exported": true,
+          "lineCount": 19
+        },
+        {
+          "name": "_high_management_fee_extraction",
+          "params": [],
+          "returnType": "ExtractionResult",
+          "exported": true,
+          "lineCount": 28
+        },
+        {
+          "name": "_pair",
+          "params": [
+            "contract_raw_text",
+            "im_raw_text"
+          ],
+          "exported": true,
+          "lineCount": 15
+        },
+        {
+          "name": "_missing_pair",
+          "params": [],
+          "exported": true,
+          "lineCount": 3
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "pathlib",
+          "specifiers": [
+            "Path"
+          ]
+        },
+        {
+          "source": "src.guards.base",
+          "specifiers": [
+            "GuardConfig",
+            "GuardContext",
+            "GuardDecision"
+          ]
+        },
+        {
+          "source": "src.guards.g3_constraint",
+          "specifiers": [
+            "check_constraints"
+          ]
+        },
+        {
+          "source": "src.schemas.extraction",
+          "specifiers": [
+            "ExtractionResult"
+          ]
+        }
+      ],
+      "exports": [
+        "test_g3_shacl_delegation_emits_reject_event_when_enabled",
+        "_high_management_fee_extraction",
+        "_pair",
+        "_missing_pair"
+      ],
+      "totalLines": 79,
+      "hasStructuralAnalysis": true
+    },
+    "tests/test_llm_judge.py": {
+      "filePath": "tests/test_llm_judge.py",
+      "contentHash": "4202ae266b07927f4400f95ecfe0e0bd06ccd84315d23ff82b826f18177d8a41",
+      "functions": [
+        {
+          "name": "test_judge_prompt_contains_only_field_label_and_raw_text",
+          "params": [],
+          "exported": true,
+          "lineCount": 18
+        },
+        {
+          "name": "test_judge_needs_review_calls_model_only_for_needs_review_results",
+          "params": [],
+          "exported": true,
+          "lineCount": 34
+        },
+        {
+          "name": "test_judge_needs_review_rejects_wrong_field_in_model_response",
+          "params": [],
+          "exported": true,
+          "lineCount": 23
+        },
+        {
+          "name": "test_judge_needs_review_rejects_status_outside_same_or_different",
+          "params": [],
+          "exported": true,
+          "lineCount": 23
+        },
+        {
+          "name": "_cross_check_result",
+          "params": [
+            "field",
+            "status",
+            "contract_raw_text",
+            "im_raw_text"
+          ],
+          "returnType": "CrossCheckResult",
+          "exported": true,
+          "lineCount": 23
+        }
+      ],
+      "classes": [
+        {
+          "name": "FakeJudgeLLM",
+          "methods": [
+            "__init__",
+            "complete_json"
+          ],
+          "properties": [],
+          "exported": true,
+          "lineCount": 8
+        }
+      ],
+      "imports": [
+        {
+          "source": "pytest",
+          "specifiers": [
+            "pytest"
+          ]
+        },
+        {
+          "source": "pydantic",
+          "specifiers": [
+            "ValidationError"
+          ]
+        },
+        {
+          "source": "src.pipelines.cross_check",
+          "specifiers": [
+            "CrossCheckResult",
+            "CrossCheckStatus",
+            "CrossCheckValue",
+            "JudgeInput",
+            "MissingSide"
+          ]
+        },
+        {
+          "source": "src.pipelines.llm_judge",
+          "specifiers": [
+            "JudgeStatus",
+            "judge_needs_review",
+            "judge_prompt_for_input"
+          ]
+        },
+        {
+          "source": "src.schemas.extraction",
+          "specifiers": [
+            "Citation"
+          ]
+        }
+      ],
+      "exports": [
+        "test_judge_prompt_contains_only_field_label_and_raw_text",
+        "test_judge_needs_review_calls_model_only_for_needs_review_results",
+        "test_judge_needs_review_rejects_wrong_field_in_model_response",
+        "test_judge_needs_review_rejects_status_outside_same_or_different",
+        "FakeJudgeLLM",
+        "_cross_check_result"
+      ],
+      "totalLines": 158,
+      "hasStructuralAnalysis": true
+    },
+    "tests/test_normalization.py": {
+      "filePath": "tests/test_normalization.py",
+      "contentHash": "9cf980467f4cb2f3f415165c4d44234131ceb3184515b13785cc2a6475f4a13f",
+      "functions": [
+        {
+          "name": "test_normalize_extraction_returns_all_fields_and_computes_statuses",
+          "params": [],
+          "exported": true,
+          "lineCount": 64
+        },
+        {
+          "name": "test_normalize_extraction_marks_missing_target_field_without_llm_call",
+          "params": [],
+          "exported": true,
+          "lineCount": 10
+        },
+        {
+          "name": "test_normalize_extraction_rejects_unit_outside_field_scope",
+          "params": [],
+          "exported": true,
+          "lineCount": 39
+        },
+        {
+          "name": "test_normalization_prompt_uses_raw_text_and_omits_citation_and_extracted_value",
+          "params": [],
+          "exported": true,
+          "lineCount": 20
+        },
+        {
+          "name": "test_normalize_extraction_rejects_wrong_field_from_llm",
+          "params": [],
+          "exported": true,
+          "lineCount": 13
+        },
+        {
+          "name": "test_normalize_extraction_rejects_missing_reason_from_llm",
+          "params": [],
+          "exported": true,
+          "lineCount": 19
+        },
+        {
+          "name": "_side",
+          "params": [
+            "normalized_text",
+            "normalized_unit"
+          ],
+          "returnType": "dict",
+          "exported": true,
+          "lineCount": 8
+        },
+        {
+          "name": "_extraction_for_normalization",
+          "params": [
+            "missing_target_fields"
+          ],
+          "returnType": "ExtractionResult",
+          "exported": true,
+          "lineCount": 50
+        }
+      ],
+      "classes": [
+        {
+          "name": "FakeNormalizationLLM",
+          "methods": [
+            "__init__",
+            "complete_json"
+          ],
+          "properties": [],
+          "exported": true,
+          "lineCount": 8
+        }
+      ],
+      "imports": [
+        {
+          "source": "json",
+          "specifiers": [
+            "json"
+          ]
+        },
+        {
+          "source": "pytest",
+          "specifiers": [
+            "pytest"
+          ]
+        },
+        {
+          "source": "pydantic",
+          "specifiers": [
+            "ValidationError"
+          ]
+        },
+        {
+          "source": "src.pipelines.normalize",
+          "specifiers": [
+            "NormalizationStatus",
+            "normalize_extraction",
+            "normalization_prompt_for_input"
+          ]
+        },
+        {
+          "source": "src.schemas.extraction",
+          "specifiers": [
+            "ExtractionResult"
+          ]
+        }
+      ],
+      "exports": [
+        "test_normalize_extraction_returns_all_fields_and_computes_statuses",
+        "test_normalize_extraction_marks_missing_target_field_without_llm_call",
+        "test_normalize_extraction_rejects_unit_outside_field_scope",
+        "test_normalization_prompt_uses_raw_text_and_omits_citation_and_extracted_value",
+        "test_normalize_extraction_rejects_wrong_field_from_llm",
+        "test_normalize_extraction_rejects_missing_reason_from_llm",
+        "FakeNormalizationLLM",
+        "_side",
+        "_extraction_for_normalization"
+      ],
+      "totalLines": 261,
+      "hasStructuralAnalysis": true
+    },
+    "tests/test_ontology_mapping.py": {
+      "filePath": "tests/test_ontology_mapping.py",
+      "contentHash": "a03a4cc622722d64990383ea6ca479a28f0c7c40005220fa3fdf130b1b4dce77",
+      "functions": [
+        {
+          "name": "test_extraction_to_graph_creates_document_scoped_nodes",
+          "params": [],
+          "exported": true,
+          "lineCount": 12
+        },
+        {
+          "name": "test_extraction_to_graph_uses_raw_text_as_rdf_value",
+          "params": [],
+          "exported": true,
+          "lineCount": 13
+        },
+        {
+          "name": "test_extraction_to_graph_skips_missing_raw_text",
+          "params": [],
+          "exported": true,
+          "lineCount": 5
+        },
+        {
+          "name": "test_extraction_to_graph_does_not_include_citation_values",
+          "params": [],
+          "exported": true,
+          "lineCount": 8
+        },
+        {
+          "name": "_sample_extraction",
+          "params": [],
+          "returnType": "ExtractionResult",
+          "exported": true,
+          "lineCount": 55
+        },
+        {
+          "name": "_pair",
+          "params": [
+            "contract_raw_text",
+            "im_raw_text"
+          ],
+          "exported": true,
+          "lineCount": 15
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "rdflib",
+          "specifiers": [
+            "RDF",
+            "Graph",
+            "Literal",
+            "Namespace"
+          ]
+        },
+        {
+          "source": "src.ontology.mapping",
+          "specifiers": [
+            "extraction_to_graph"
+          ]
+        },
+        {
+          "source": "src.schemas.extraction",
+          "specifiers": [
+            "ExtractionResult"
+          ]
+        }
+      ],
+      "exports": [
+        "test_extraction_to_graph_creates_document_scoped_nodes",
+        "test_extraction_to_graph_uses_raw_text_as_rdf_value",
+        "test_extraction_to_graph_skips_missing_raw_text",
+        "test_extraction_to_graph_does_not_include_citation_values",
+        "_sample_extraction",
+        "_pair"
+      ],
+      "totalLines": 129,
+      "hasStructuralAnalysis": true
+    },
+    "tests/test_ontology_validate.py": {
+      "filePath": "tests/test_ontology_validate.py",
+      "contentHash": "02196eddf000393673539770012653aaf111b8dcb12d5c34c591294bf10c7fb4",
+      "functions": [
+        {
+          "name": "test_trust_fund_ttl_parses",
+          "params": [],
+          "exported": true,
+          "lineCount": 5
+        },
+        {
+          "name": "test_validate_graph_conforms_for_minimum_required_w1_values",
+          "params": [],
+          "exported": true,
+          "lineCount": 5
+        },
+        {
+          "name": "test_validate_graph_reports_missing_required_w1_value",
+          "params": [],
+          "exported": true,
+          "lineCount": 5
+        },
+        {
+          "name": "test_validate_graph_allows_missing_im_trustee_company_name",
+          "params": [],
+          "exported": true,
+          "lineCount": 4
+        },
+        {
+          "name": "test_validate_graph_requires_contract_trustee_company_name",
+          "params": [],
+          "exported": true,
+          "lineCount": 6
+        },
+        {
+          "name": "test_validate_graph_reports_management_fee_above_business_range",
+          "params": [],
+          "exported": true,
+          "lineCount": 6
+        },
+        {
+          "name": "test_validate_graph_reports_maturity_date_not_after_inception_date",
+          "params": [],
+          "exported": true,
+          "lineCount": 6
+        },
+        {
+          "name": "test_validate_graph_reports_more_than_one_contract_trustee",
+          "params": [],
+          "exported": true,
+          "lineCount": 16
+        },
+        {
+          "name": "_valid_minimum_extraction",
+          "params": [],
+          "returnType": "ExtractionResult",
+          "exported": true,
+          "lineCount": 28
+        },
+        {
+          "name": "_missing_management_fee_extraction",
+          "params": [],
+          "returnType": "ExtractionResult",
+          "exported": true,
+          "lineCount": 4
+        },
+        {
+          "name": "_missing_im_trustee_extraction",
+          "params": [],
+          "returnType": "ExtractionResult",
+          "exported": true,
+          "lineCount": 9
+        },
+        {
+          "name": "_missing_contract_trustee_extraction",
+          "params": [],
+          "returnType": "ExtractionResult",
+          "exported": true,
+          "lineCount": 9
+        },
+        {
+          "name": "_high_management_fee_extraction",
+          "params": [],
+          "returnType": "ExtractionResult",
+          "exported": true,
+          "lineCount": 9
+        },
+        {
+          "name": "_maturity_before_inception_extraction",
+          "params": [],
+          "returnType": "ExtractionResult",
+          "exported": true,
+          "lineCount": 15
+        },
+        {
+          "name": "_pair",
+          "params": [
+            "contract_raw_text",
+            "im_raw_text"
+          ],
+          "exported": true,
+          "lineCount": 15
+        },
+        {
+          "name": "_missing_pair",
+          "params": [],
+          "exported": true,
+          "lineCount": 3
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "rdflib",
+          "specifiers": [
+            "Graph",
+            "Literal",
+            "Namespace"
+          ]
+        },
+        {
+          "source": "src.ontology.mapping",
+          "specifiers": [
+            "extraction_to_graph"
+          ]
+        },
+        {
+          "source": "src.ontology.validate",
+          "specifiers": [
+            "validate_graph"
+          ]
+        },
+        {
+          "source": "src.schemas.extraction",
+          "specifiers": [
+            "ExtractionResult"
+          ]
+        }
+      ],
+      "exports": [
+        "test_trust_fund_ttl_parses",
+        "test_validate_graph_conforms_for_minimum_required_w1_values",
+        "test_validate_graph_reports_missing_required_w1_value",
+        "test_validate_graph_allows_missing_im_trustee_company_name",
+        "test_validate_graph_requires_contract_trustee_company_name",
+        "test_validate_graph_reports_management_fee_above_business_range",
+        "test_validate_graph_reports_maturity_date_not_after_inception_date",
+        "test_validate_graph_reports_more_than_one_contract_trustee",
+        "_valid_minimum_extraction",
+        "_missing_management_fee_extraction",
+        "_missing_im_trustee_extraction",
+        "_missing_contract_trustee_extraction",
+        "_high_management_fee_extraction",
+        "_maturity_before_inception_extraction",
+        "_pair",
+        "_missing_pair"
+      ],
+      "totalLines": 187,
+      "hasStructuralAnalysis": true
+    },
+    "tests/test_render_figma_ontology_svg.py": {
+      "filePath": "tests/test_render_figma_ontology_svg.py",
+      "contentHash": "177a3ef8103935d4825c11b923076c0e674a846410e23fab207504c3091f6a8a",
+      "functions": [
+        {
+          "name": "test_render_figma_svg_writes_importable_svg",
+          "params": [
+            "tmp_path"
+          ],
+          "exported": true,
+          "lineCount": 13
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "pathlib",
+          "specifiers": [
+            "Path"
+          ]
+        },
+        {
+          "source": "scripts.render_figma_ontology_svg",
+          "specifiers": [
+            "render_figma_svg"
+          ]
+        }
+      ],
+      "exports": [
+        "test_render_figma_svg_writes_importable_svg"
+      ],
+      "totalLines": 19,
+      "hasStructuralAnalysis": true
+    },
+    "tests/test_render_mermaid.py": {
+      "filePath": "tests/test_render_mermaid.py",
+      "contentHash": "e5eede7f099bf2b9e916300bb82f310bd0172398cd870dddf9beba50405167e9",
+      "functions": [
+        {
+          "name": "test_render_mermaid_writes_schema_and_abox_diagrams",
+          "params": [
+            "tmp_path"
+          ],
+          "exported": true,
+          "lineCount": 19
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "pathlib",
+          "specifiers": [
+            "Path"
+          ]
+        },
+        {
+          "source": "scripts.render_mermaid",
+          "specifiers": [
+            "render_mermaid"
+          ]
+        }
+      ],
+      "exports": [
+        "test_render_mermaid_writes_schema_and_abox_diagrams"
+      ],
+      "totalLines": 25,
+      "hasStructuralAnalysis": true
+    },
+    "tests/test_render_ontology_graph.py": {
+      "filePath": "tests/test_render_ontology_graph.py",
+      "contentHash": "9eef7d0d62c0edcb7de1b1bc7b014ae9c5d193b0448a0ec349ed1acbdb3bf276",
+      "functions": [
+        {
+          "name": "test_render_graphs_writes_schema_and_abox_html",
+          "params": [
+            "tmp_path"
+          ],
+          "exported": true,
+          "lineCount": 35
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "pathlib",
+          "specifiers": [
+            "Path"
+          ]
+        },
+        {
+          "source": "scripts.render_ontology_graph",
+          "specifiers": [
+            "render_graphs"
+          ]
+        }
+      ],
+      "exports": [
+        "test_render_graphs_writes_schema_and_abox_html"
+      ],
+      "totalLines": 41,
+      "hasStructuralAnalysis": true
+    },
+    "tests/test_run_extract_once.py": {
+      "filePath": "tests/test_run_extract_once.py",
+      "contentHash": "af3cbef7c400426172cb83de841e47f3e379fdaf24f9378d88b73f18ef6d2b3a",
+      "functions": [
+        {
+          "name": "test_write_run_outputs_writes_extraction_and_cross_check",
+          "params": [
+            "tmp_path"
+          ],
+          "exported": true,
+          "lineCount": 21
+        },
+        {
+          "name": "test_write_run_outputs_writes_normalization_when_provided",
+          "params": [
+            "tmp_path"
+          ],
+          "exported": true,
+          "lineCount": 42
+        },
+        {
+          "name": "test_write_run_outputs_writes_rdf_and_shacl_outputs",
+          "params": [
+            "tmp_path"
+          ],
+          "exported": true,
+          "lineCount": 21
+        },
+        {
+          "name": "_valid_extraction",
+          "params": [],
+          "returnType": "ExtractionResult",
+          "exported": true,
+          "lineCount": 44
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "json",
+          "specifiers": [
+            "json"
+          ]
+        },
+        {
+          "source": "scripts.run_extract_once",
+          "specifiers": [
+            "write_run_outputs"
+          ]
+        },
+        {
+          "source": "src.pipelines.cross_check",
+          "specifiers": [
+            "cross_check_extraction"
+          ]
+        },
+        {
+          "source": "src.pipelines.normalize",
+          "specifiers": [
+            "NormalizationStatus",
+            "NormalizationResult"
+          ]
+        },
+        {
+          "source": "src.schemas.extraction",
+          "specifiers": [
+            "ExtractionResult"
+          ]
+        }
+      ],
+      "exports": [
+        "test_write_run_outputs_writes_extraction_and_cross_check",
+        "test_write_run_outputs_writes_normalization_when_provided",
+        "test_write_run_outputs_writes_rdf_and_shacl_outputs",
+        "_valid_extraction"
+      ],
+      "totalLines": 143,
+      "hasStructuralAnalysis": true
+    }
+  }
+}

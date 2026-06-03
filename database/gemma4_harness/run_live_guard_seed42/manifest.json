@@ -1,0 +1,31 @@
+{
+  "schema_version": "v0",
+  "run_id": "run_live_guard_seed42",
+  "mode": "guard",
+  "guards": {
+    "g1_format": true,
+    "g2_citation": true,
+    "g3_constraint": true
+  },
+  "backend": {
+    "name": "gemma4:31b",
+    "model_id": "unknown",
+    "seed": 42,
+    "temperature": 0.0
+  },
+  "inputs": {
+    "contract_pdf": "제정신탁계약서_날인본_이지스블랙ON1호_20250722_최종버전.pdf",
+    "contract_pages": 22,
+    "contract_sha256": "669237ea203a02aebedb3849d5fe22cf9d088f758ff9e8a3d032720a2692e66c",
+    "im_pdf": "이지스 블랙ON 1호_준감필.pdf",
+    "im_pages": 32,
+    "im_sha256": "c462f6f6880c24f08c586c651b72c231042bee21bc2f4f05a566c11ba9b2376d"
+  },
+  "golden_version": "v0.1",
+  "started_at": "2026-06-03T07:15:21Z",
+  "ended_at": "2026-06-03T07:18:15Z",
+  "total_latency_s": 173.831,
+  "llm_call_count": 2,
+  "llm_total_tokens": 24168,
+  "cost_usd": 0.0
+}

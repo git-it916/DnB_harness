@@ -1,0 +1,20 @@
+{
+  "mcnemar": {
+    "mode_a": "baseline",
+    "mode_b": "guard",
+    "b": 13,
+    "c": 4,
+    "n_discordant": 17,
+    "statistic": 4.0,
+    "p_value": 0.049041748046875,
+    "method": "exact_binomial"
+  },
+  "bootstrap_f1": {
+    "mode": "guard",
+    "point": 0.631578947368421,
+    "lo": 0.42424242424242425,
+    "hi": 0.7906976744186047,
+    "n_boot": 2000,
+    "ci": 0.95
+  }
+}

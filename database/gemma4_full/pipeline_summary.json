@@ -1,0 +1,51 @@
+{
+  "runs": [
+    {
+      "run_id": "run_01_seed42",
+      "seed": 42,
+      "model": "gemma4:31b",
+      "model_digest": "unknown",
+      "temperature": 0.0,
+      "with_normalize": false,
+      "with_judge": false,
+      "contract_pdf": "제정신탁계약서_날인본_이지스블랙ON1호_20250722_최종버전.pdf",
+      "im_pdf": "이지스 블랙ON 1호_준감필.pdf",
+      "contract_pages": 22,
+      "im_pages": 32,
+      "contract_sha256": "669237ea203a02aebedb3849d5fe22cf9d088f758ff9e8a3d032720a2692e66c",
+      "im_sha256": "c462f6f6880c24f08c586c651b72c231042bee21bc2f4f05a566c11ba9b2376d",
+      "guard_summary": {
+        "total_events": 29,
+        "rejected_count": 0,
+        "by_guard": {
+          "G1": {
+            "pass": 1,
+            "reject": 0,
+            "retry": 0
+          },
+          "G2": {
+            "pass": 18,
+            "reject": 0,
+            "retry": 0
+          },
+          "G3": {
+            "pass": 10,
+            "reject": 0,
+            "retry": 0
+          }
+        }
+      },
+      "shacl_conforms": true,
+      "cross_check_by_status": {
+        "needs_review": 8,
+        "missing_evidence": 6
+      },
+      "total_eval_ms": 111908,
+      "total_wall_ms": 223158
+    }
+  ],
+  "n_runs": 1,
+  "seeds": [
+    42
+  ]
+}

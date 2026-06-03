@@ -22,6 +22,7 @@
 | [`runbooks/run-extraction.md`](./runbooks/run-extraction.md) | PDF 추출 실행 |
 | [`runbooks/scoring.md`](./runbooks/scoring.md) | 채점기 작업 기준 |
 | [`runbooks/run-experiment.md`](./runbooks/run-experiment.md) | 3조건 실험 실행 기준 |
+| [`runbooks/reproduce-results.md`](./runbooks/reproduce-results.md) | 채점·통계·라이브 하네스 결과 재현 절차 (실측 포함) |
 
 ## 참고와 기록
 

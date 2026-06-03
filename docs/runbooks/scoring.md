@@ -2,24 +2,37 @@
 
 ## 목적
 
-하네스 판정 결과를 `tests/golden/golden_master.csv`와 비교해 점수를 산출한다.
+하네스 판정 결과를 `tests/golden/golden_master.csv`와 비교해 점수(`score.json`)를 산출한다.
 
 ## 현재 상태
 
-`src/scoring/`은 아직 구현되지 않았다. 다음 구현자는 `docs/GOLDENSET.md`와 `docs/INTERFACES.md`의 `score.json` 스키마를 먼저 확인한다.
+`src/scoring/` 구현 완료. 실제 실행 절차와 실측 결과는 [`reproduce-results.md §1`](./reproduce-results.md)에 있다.
 
-## 구현 기준
+## 구현 기준 (지켜진 계약)
 
-- 채점기는 LLM을 호출하지 않는 순수 함수로 둔다.
+- 채점기는 LLM을 호출하지 않는 순수 함수다 (`score_cases`).
 - `gold_label=mismatch`를 positive로 본다.
-- `gold_label=missing`은 mismatch 재현율/정밀도 계산의 분모에서 제외한다.
-- 필드, 난이도, 변조 유형, harness signal별 breakdown을 별도 함수로 분리한다.
+- `gold_label=missing`은 confusion 분모·분자에서 제외한다 (재현율 페널티 없음).
+- 가드가 reject한 필드는 `final_status`가 missing_evidence여도 예측을 mismatch로 본다 (재현율 우선, `GOLDENSET §7`).
+- 필드·난이도·변조유형·harness signal별 breakdown은 별도 함수로 분리한다.
+- `gold_label ↔ FinalCheckStatus` 매핑은 `docs/GOLDENSET.md §7`(`GOLD_TO_FINAL`)이 단일 진실 소스.
 
-## 예상 산출물
+## 모듈
 
-- `src/scoring/scorer.py`
-- `src/scoring/breakdown.py`
-- `src/scoring/compare.py`
-- `tests/test_scorer.py`
-- `tests/test_breakdown.py`
-- `tests/test_compare.py`
+| 파일 | 역할 |
+|---|---|
+| `src/scoring/golden.py` | `golden_master.csv` 로더 (utf-8-sig) |
+| `src/scoring/labels.py` | `GOLD_TO_FINAL`, `predicted_label()` |
+| `src/scoring/scorer.py` | `CaseRecord`, `score_cases()` → score.json |
+| `src/scoring/breakdown.py` | by_field/difficulty/mutation/signal |
+| `src/scoring/evaluate.py` | 결정적 평가기 (골든 → 하네스 로직, LLM 불필요) |
+| `src/scoring/compare.py` | 3조건 compare.md 렌더러 |
+| `tests/test_scoring.py` | 채점 단위 테스트 |
+
+## 명령
+
+```bash
+python -m src.cli score --mode guard --out reports/scoring/score_guard.json
+```
+
+전체 절차(ontology/guard, compare, stats, 라이브)는 [`reproduce-results.md`](./reproduce-results.md) 참조.

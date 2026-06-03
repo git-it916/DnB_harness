@@ -200,14 +200,16 @@ def _check_shacl_constraints(extraction: ExtractionResult) -> GuardEvent | None:
 def _to_percent(raw: str) -> float | None:
     """raw text → 백분율(%) 값. 인식 못 하면 None."""
     s = raw.replace("，", ",")
-    # 1) "연 0.89 %" → 0.89
-    m = _PERCENT_PATTERN.search(s)
+    # 1) "연 0.89 %" / "[운용] 연[ 8.9 ] %" → 0.89 / 8.9
+    #    대괄호·소괄호를 공백으로 치환해 표 형식(IM)도 파싱.
+    s_percent = re.sub(r"[\[\]()]", " ", s)
+    m = _PERCENT_PATTERN.search(s_percent)
     if m:
         try:
             return float(m.group(1))
         except ValueError:
             pass
-    # 2) "1,000분의 8.9" → 0.89
+    # 2) "1,000분의 8.9" → 0.89  (콤마 보존 위해 원본 s 사용)
     m = _PERMILLE_PATTERN.search(s)
     if m:
         try:

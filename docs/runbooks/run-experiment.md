@@ -14,16 +14,24 @@
 
 ## 현재 상태
 
-실험 runner와 CLI는 아직 구현되지 않았다. 구현 전에는 `docs/ROADMAP.md`, `docs/INTERFACES.md`, `docs/GOLDENSET.md`를 기준으로 입력/출력 형식을 맞춘다.
+CLI(`src/cli`)·하네스 러너(`src/harness`)·채점(`src/scoring`)·통계(`src/stats`) 구현 완료. 실제 실행·실측 결과는 [`reproduce-results.md`](./reproduce-results.md)에 있다. 남은 것은 골든셋 freeze 와 baseline 라이브 채점.
 
-## 예상 명령
+## 명령
+
+> conda env `dnb_harness` 사용. `uv run` 금지. (Windows: `set PYTHONIOENCODING=utf-8`)
 
 ```bash
-uv run dnb run --mode baseline
-uv run dnb run --mode ontology
-uv run dnb run --mode guard
-uv run dnb compare reports/<baseline> reports/<ontology> reports/<guard>
+# 단일 모드 라이브 풀런 (Ollama 필요)
+python scripts/harness_run.py --mode guard --seed 42
+
+# 결정적 채점 + 비교 + 통계 (LLM 불필요)
+python -m src.cli score   --mode ontology --out reports/scoring/score_ontology.json
+python -m src.cli score   --mode guard    --out reports/scoring/score_guard.json
+python -m src.cli compare reports/scoring/score_ontology.json reports/scoring/score_guard.json --out reports/compare.md
+python -m src.cli stats   reports/scoring/score_ontology.json reports/scoring/score_guard.json --out reports/stats.json
 ```
+
+단계별 실측 출력은 [`reproduce-results.md`](./reproduce-results.md) 참조.
 
 ## 재현성 규칙
 

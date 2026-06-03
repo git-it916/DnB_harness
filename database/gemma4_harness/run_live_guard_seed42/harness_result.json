@@ -1,0 +1,908 @@
+{
+  "mode": "guard",
+  "extraction": {
+    "schema_version": "v0",
+    "fund": {
+      "name": {
+        "contract": {
+          "value": "이지스블랙 ON 일반사모투자신탁 1호",
+          "unit": "fund_name",
+          "raw_text": "이지스블랙 ON 일반사모투자신탁 1호",
+          "citation": {
+            "document": "신탁계약서",
+            "page": 1
+          }
+        },
+        "im": {
+          "value": "이지스블랙ON 일반사모투자신탁제1호",
+          "unit": "fund_name",
+          "raw_text": "이지스블랙ON 일반사모투자신탁제1호",
+          "citation": {
+            "document": "IM",
+            "page": 9
+          }
+        }
+      },
+      "type": {
+        "contract": {
+          "value": "일반사모투자신탁",
+          "unit": "fund_type",
+          "raw_text": "일반사모투자신탁",
+          "citation": {
+            "document": "신탁계약서",
+            "page": 1
+          }
+        },
+        "im": {
+          "value": "일반사모집합투자기구, 투자신탁형, 혼합자산형, 단위형, 폐쇄형, 사모형",
+          "unit": "fund_type",
+          "raw_text": "일반사모집합투자기구, 투자신탁형, 혼합자산형, 단위형, 폐쇄형, 사모형",
+          "citation": {
+            "document": "IM",
+            "page": 9
+          }
+        }
+      },
+      "inception_date": {
+        "contract": {
+          "value": "2025년 7월 22일",
+          "unit": "date",
+          "raw_text": "2025년 7월 22일",
+          "citation": {
+            "document": "신탁계약서",
+            "page": 4
+          }
+        },
+        "im": {
+          "value": "2025-07-22",
+          "unit": "date",
+          "raw_text": "2025년7월22일",
+          "citation": {
+            "document": "IM",
+            "page": 9
+          }
+        }
+      },
+      "maturity_date": {
+        "contract": {
+          "value": "2027년 7월 22일",
+          "unit": "date",
+          "raw_text": "2027년 7월 22일",
+          "citation": {
+            "document": "신탁계약서",
+            "page": 4
+          }
+        },
+        "im": {
+          "value": "2027-07-22",
+          "unit": "date",
+          "raw_text": "2년(수익자동의하에조기청산가능)",
+          "citation": {
+            "document": "IM",
+            "page": 9
+          }
+        }
+      }
+    },
+    "party": {
+      "asset_manager": {
+        "contract": {
+          "value": "이지스자산운용 주식회사",
+          "unit": "company_name",
+          "raw_text": "이지스자산운용 주식회사",
+          "citation": {
+            "document": "신탁계약서",
+            "page": 1
+          }
+        },
+        "im": {
+          "value": "이지스자산운용주식회사",
+          "unit": "company_name",
+          "raw_text": "이지스자산운용주식회사",
+          "citation": {
+            "document": "IM",
+            "page": 2
+          }
+        }
+      },
+      "trustee": {
+        "contract": {
+          "value": "엔에이치투자증권 주식회사",
+          "unit": "company_name",
+          "raw_text": "엔에이치투자증권 주식회사",
+          "citation": {
+            "document": "신탁계약서",
+            "page": 1
+          }
+        },
+        "im": {
+          "value": null,
+          "unit": null,
+          "raw_text": null,
+          "citation": null
+        }
+      },
+      "distributor": {
+        "contract": {
+          "value": null,
+          "unit": null,
+          "raw_text": null,
+          "citation": null
+        },
+        "im": {
+          "value": null,
+          "unit": null,
+          "raw_text": null,
+          "citation": null
+        }
+      }
+    },
+    "fee_schedule": {
+      "management_fee": {
+        "contract": {
+          "value": "1000분의 8.9",
+          "unit": "permille_per_year",
+          "raw_text": "집합투자업자보수율 : 연 1,000분의 8.9",
+          "citation": {
+            "document": "신탁계약서",
+            "page": 15
+          }
+        },
+        "im": {
+          "value": "0.89",
+          "unit": "percent_per_year",
+          "raw_text": "[운용]연[ 0.89 ] %",
+          "citation": {
+            "document": "IM",
+            "page": 9
+          }
+        }
+      },
+      "trust_fee": {
+        "contract": {
+          "value": "1000분의 0.5",
+          "unit": "permille_per_year",
+          "raw_text": "신탁업자보수율 : 연 1,000분의 0.5",
+          "citation": {
+            "document": "신탁계약서",
+            "page": 15
+          }
+        },
+        "im": {
+          "value": "0.05",
+          "unit": "percent_per_year",
+          "raw_text": "[신탁] 연[ 0.05] %",
+          "citation": {
+            "document": "IM",
+            "page": 9
+          }
+        }
+      },
+      "sales_fee": {
+        "contract": {
+          "value": null,
+          "unit": null,
+          "raw_text": null,
+          "citation": null
+        },
+        "im": {
+          "value": "0.03",
+          "unit": "percent_per_year",
+          "raw_text": "[판매] 연[ 0.03 ] %",
+          "citation": {
+            "document": "IM",
+            "page": 9
+          }
+        }
+      }
+    },
+    "redemption_terms": {
+      "is_redeemable": {
+        "contract": {
+          "value": "false",
+          "unit": "boolean",
+          "raw_text": "수익자는 이 투자신탁 수익증권의 환매를 청구할 수 없다.",
+          "citation": {
+            "document": "신탁계약서",
+            "page": 12
+          }
+        },
+        "im": {
+          "value": "false",
+          "unit": "boolean",
+          "raw_text": "본상품은환매가불가능한폐쇄형상품임",
+          "citation": {
+            "document": "IM",
+            "page": 9
+          }
+        }
+      },
+      "lockup_period": {
+        "contract": {
+          "value": null,
+          "unit": null,
+          "raw_text": null,
+          "citation": null
+        },
+        "im": {
+          "value": null,
+          "unit": null,
+          "raw_text": null,
+          "citation": null
+        }
+      },
+      "redemption_cycle": {
+        "contract": {
+          "value": null,
+          "unit": null,
+          "raw_text": null,
+          "citation": null
+        },
+        "im": {
+          "value": null,
+          "unit": null,
+          "raw_text": null,
+          "citation": null
+        }
+      },
+      "redemption_fee": {
+        "contract": {
+          "value": null,
+          "unit": null,
+          "raw_text": null,
+          "citation": null
+        },
+        "im": {
+          "value": null,
+          "unit": null,
+          "raw_text": null,
+          "citation": null
+        }
+      }
+    }
+  },
+  "guard_log": [
+    {
+      "guard": "G1",
+      "field_path": null,
+      "decision": "pass",
+      "reason_code": "json_valid",
+      "reason": "Pydantic 검증 통과 (attempt=1)",
+      "metadata": {
+        "attempt": 1
+      }
+    },
+    {
+      "guard": "G2",
+      "field_path": "fund.name.contract",
+      "decision": "pass",
+      "reason_code": "page_in_range",
+      "reason": "page 1 ∈ [1, 22]",
+      "metadata": {
+        "page": 1,
+        "max_page": 22,
+        "side": "contract"
+      }
+    },
+    {
+      "guard": "G2",
+      "field_path": "fund.name.im",
+      "decision": "pass",
+      "reason_code": "page_in_range",
+      "reason": "page 9 ∈ [1, 32]",
+      "metadata": {
+        "page": 9,
+        "max_page": 32,
+        "side": "im"
+      }
+    },
+    {
+      "guard": "G2",
+      "field_path": "fund.type.contract",
+      "decision": "pass",
+      "reason_code": "page_in_range",
+      "reason": "page 1 ∈ [1, 22]",
+      "metadata": {
+        "page": 1,
+        "max_page": 22,
+        "side": "contract"
+      }
+    },
+    {
+      "guard": "G2",
+      "field_path": "fund.type.im",
+      "decision": "pass",
+      "reason_code": "page_in_range",
+      "reason": "page 9 ∈ [1, 32]",
+      "metadata": {
+        "page": 9,
+        "max_page": 32,
+        "side": "im"
+      }
+    },
+    {
+      "guard": "G2",
+      "field_path": "fund.inception_date.contract",
+      "decision": "pass",
+      "reason_code": "page_in_range",
+      "reason": "page 4 ∈ [1, 22]",
+      "metadata": {
+        "page": 4,
+        "max_page": 22,
+        "side": "contract"
+      }
+    },
+    {
+      "guard": "G2",
+      "field_path": "fund.inception_date.im",
+      "decision": "pass",
+      "reason_code": "page_in_range",
+      "reason": "page 9 ∈ [1, 32]",
+      "metadata": {
+        "page": 9,
+        "max_page": 32,
+        "side": "im"
+      }
+    },
+    {
+      "guard": "G2",
+      "field_path": "fund.maturity_date.contract",
+      "decision": "pass",
+      "reason_code": "page_in_range",
+      "reason": "page 4 ∈ [1, 22]",
+      "metadata": {
+        "page": 4,
+        "max_page": 22,
+        "side": "contract"
+      }
+    },
+    {
+      "guard": "G2",
+      "field_path": "fund.maturity_date.im",
+      "decision": "pass",
+      "reason_code": "page_in_range",
+      "reason": "page 9 ∈ [1, 32]",
+      "metadata": {
+        "page": 9,
+        "max_page": 32,
+        "side": "im"
+      }
+    },
+    {
+      "guard": "G2",
+      "field_path": "party.asset_manager.contract",
+      "decision": "pass",
+      "reason_code": "page_in_range",
+      "reason": "page 1 ∈ [1, 22]",
+      "metadata": {
+        "page": 1,
+        "max_page": 22,
+        "side": "contract"
+      }
+    },
+    {
+      "guard": "G2",
+      "field_path": "party.asset_manager.im",
+      "decision": "pass",
+      "reason_code": "page_in_range",
+      "reason": "page 2 ∈ [1, 32]",
+      "metadata": {
+        "page": 2,
+        "max_page": 32,
+        "side": "im"
+      }
+    },
+    {
+      "guard": "G2",
+      "field_path": "party.trustee.contract",
+      "decision": "pass",
+      "reason_code": "page_in_range",
+      "reason": "page 1 ∈ [1, 22]",
+      "metadata": {
+        "page": 1,
+        "max_page": 22,
+        "side": "contract"
+      }
+    },
+    {
+      "guard": "G2",
+      "field_path": "fee_schedule.management_fee.contract",
+      "decision": "pass",
+      "reason_code": "page_in_range",
+      "reason": "page 15 ∈ [1, 22]",
+      "metadata": {
+        "page": 15,
+        "max_page": 22,
+        "side": "contract"
+      }
+    },
+    {
+      "guard": "G2",
+      "field_path": "fee_schedule.management_fee.im",
+      "decision": "pass",
+      "reason_code": "page_in_range",
+      "reason": "page 9 ∈ [1, 32]",
+      "metadata": {
+        "page": 9,
+        "max_page": 32,
+        "side": "im"
+      }
+    },
+    {
+      "guard": "G2",
+      "field_path": "fee_schedule.trust_fee.contract",
+      "decision": "pass",
+      "reason_code": "page_in_range",
+      "reason": "page 15 ∈ [1, 22]",
+      "metadata": {
+        "page": 15,
+        "max_page": 22,
+        "side": "contract"
+      }
+    },
+    {
+      "guard": "G2",
+      "field_path": "fee_schedule.trust_fee.im",
+      "decision": "pass",
+      "reason_code": "page_in_range",
+      "reason": "page 9 ∈ [1, 32]",
+      "metadata": {
+        "page": 9,
+        "max_page": 32,
+        "side": "im"
+      }
+    },
+    {
+      "guard": "G2",
+      "field_path": "fee_schedule.sales_fee.im",
+      "decision": "pass",
+      "reason_code": "page_in_range",
+      "reason": "page 9 ∈ [1, 32]",
+      "metadata": {
+        "page": 9,
+        "max_page": 32,
+        "side": "im"
+      }
+    },
+    {
+      "guard": "G2",
+      "field_path": "redemption_terms.is_redeemable.contract",
+      "decision": "pass",
+      "reason_code": "page_in_range",
+      "reason": "page 12 ∈ [1, 22]",
+      "metadata": {
+        "page": 12,
+        "max_page": 22,
+        "side": "contract"
+      }
+    },
+    {
+      "guard": "G2",
+      "field_path": "redemption_terms.is_redeemable.im",
+      "decision": "pass",
+      "reason_code": "page_in_range",
+      "reason": "page 9 ∈ [1, 32]",
+      "metadata": {
+        "page": 9,
+        "max_page": 32,
+        "side": "im"
+      }
+    },
+    {
+      "guard": "G3",
+      "field_path": "fund.inception_date.contract",
+      "decision": "pass",
+      "reason_code": "date_parsed",
+      "reason": "parsed=2025-07-22T00:00:00",
+      "metadata": {
+        "date": "2025-07-22T00:00:00"
+      }
+    },
+    {
+      "guard": "G3",
+      "field_path": "fund.inception_date.im",
+      "decision": "pass",
+      "reason_code": "date_parsed",
+      "reason": "parsed=2025-07-22T00:00:00",
+      "metadata": {
+        "date": "2025-07-22T00:00:00"
+      }
+    },
+    {
+      "guard": "G3",
+      "field_path": "fund.maturity_date.contract",
+      "decision": "pass",
+      "reason_code": "date_parsed",
+      "reason": "parsed=2027-07-22T00:00:00",
+      "metadata": {
+        "date": "2027-07-22T00:00:00"
+      }
+    },
+    {
+      "guard": "G3",
+      "field_path": "fund.maturity_date.im",
+      "decision": "pass",
+      "reason_code": "date_unparseable",
+      "reason": "날짜 표기 인식 불가 — 검증 스킵",
+      "metadata": {
+        "raw_text": "2년(수익자동의하에조기청산가능)"
+      }
+    },
+    {
+      "guard": "G3",
+      "field_path": "fee_schedule.management_fee.contract",
+      "decision": "pass",
+      "reason_code": "percent_in_range",
+      "reason": "0.89% ∈ [0.0, 5.0]",
+      "metadata": {
+        "value_pct": 0.89
+      }
+    },
+    {
+      "guard": "G3",
+      "field_path": "fee_schedule.management_fee.im",
+      "decision": "pass",
+      "reason_code": "percent_in_range",
+      "reason": "0.89% ∈ [0.0, 5.0]",
+      "metadata": {
+        "value_pct": 0.89
+      }
+    },
+    {
+      "guard": "G3",
+      "field_path": "fee_schedule.trust_fee.contract",
+      "decision": "pass",
+      "reason_code": "percent_in_range",
+      "reason": "0.05% ∈ [0.0, 2.0]",
+      "metadata": {
+        "value_pct": 0.05
+      }
+    },
+    {
+      "guard": "G3",
+      "field_path": "fee_schedule.trust_fee.im",
+      "decision": "pass",
+      "reason_code": "percent_in_range",
+      "reason": "0.05% ∈ [0.0, 2.0]",
+      "metadata": {
+        "value_pct": 0.05
+      }
+    },
+    {
+      "guard": "G3",
+      "field_path": "fee_schedule.sales_fee.im",
+      "decision": "pass",
+      "reason_code": "percent_in_range",
+      "reason": "0.03% ∈ [0.0, 3.0]",
+      "metadata": {
+        "value_pct": 0.03
+      }
+    },
+    {
+      "guard": "G3",
+      "field_path": "fund.maturity_date.contract",
+      "decision": "pass",
+      "reason_code": "maturity_after_inception",
+      "reason": "만기=2027-07-22T00:00:00 > 설정일=2025-07-22T00:00:00",
+      "metadata": {
+        "inception": "2025-07-22T00:00:00",
+        "maturity": "2027-07-22T00:00:00"
+      }
+    }
+  ],
+  "abox_ttl": "@prefix data: <https://dnb-harness.local/data#> .\n@prefix dnb: <https://dnb-harness.local/ontology#> .\n\ndata:fund_contract a dnb:Fund ;\n    dnb:fund_name \"이지스블랙 ON 일반사모투자신탁 1호\" ;\n    dnb:fund_type \"일반사모투자신탁\" ;\n    dnb:has_fee_schedule data:fee_schedule_contract ;\n    dnb:has_party data:party_contract ;\n    dnb:has_redemption_terms data:redemption_terms_contract ;\n    dnb:inception_date \"2025년 7월 22일\" ;\n    dnb:maturity_date \"2027년 7월 22일\" .\n\ndata:fund_im a dnb:Fund ;\n    dnb:fund_name \"이지스블랙ON 일반사모투자신탁제1호\" ;\n    dnb:fund_type \"일반사모집합투자기구, 투자신탁형, 혼합자산형, 단위형, 폐쇄형, 사모형\" ;\n    dnb:has_fee_schedule data:fee_schedule_im ;\n    dnb:has_party data:party_im ;\n    dnb:has_redemption_terms data:redemption_terms_im ;\n    dnb:inception_date \"2025년7월22일\" ;\n    dnb:maturity_date \"2년(수익자동의하에조기청산가능)\" .\n\ndata:fee_schedule_contract a dnb:FeeSchedule ;\n    dnb:management_fee \"집합투자업자보수율 : 연 1,000분의 8.9\" ;\n    dnb:trust_fee \"신탁업자보수율 : 연 1,000분의 0.5\" .\n\ndata:fee_schedule_im a dnb:FeeSchedule ;\n    dnb:management_fee \"[운용]연[ 0.89 ] %\" ;\n    dnb:sales_fee \"[판매] 연[ 0.03 ] %\" ;\n    dnb:trust_fee \"[신탁] 연[ 0.05] %\" .\n\ndata:party_contract a dnb:Party ;\n    dnb:asset_manager \"이지스자산운용 주식회사\" ;\n    dnb:trustee \"엔에이치투자증권 주식회사\" .\n\ndata:party_im a dnb:Party ;\n    dnb:asset_manager \"이지스자산운용주식회사\" .\n\ndata:redemption_terms_contract a dnb:RedemptionTerms ;\n    dnb:is_redeemable \"수익자는 이 투자신탁 수익증권의 환매를 청구할 수 없다.\" .\n\ndata:redemption_terms_im a dnb:RedemptionTerms ;\n    dnb:is_redeemable \"본상품은환매가불가능한폐쇄형상품임\" .\n\n",
+  "shacl_conforms": true,
+  "shacl_report_text": "Validation Report\nConforms: True\n",
+  "cross_check": [
+    {
+      "field": "fund.name",
+      "label": "펀드명",
+      "status": "needs_review",
+      "missing_side": "none",
+      "normalization_status": null,
+      "final_status": "needs_review",
+      "final_reason_code": "raw_text_difference",
+      "final_reason": "Raw text differs and no decisive normalization result has been applied.",
+      "contract": {
+        "raw_text": "이지스블랙 ON 일반사모투자신탁 1호",
+        "citation": {
+          "document": "신탁계약서",
+          "page": 1
+        }
+      },
+      "im": {
+        "raw_text": "이지스블랙ON 일반사모투자신탁제1호",
+        "citation": {
+          "document": "IM",
+          "page": 9
+        }
+      }
+    },
+    {
+      "field": "fund.type",
+      "label": "펀드 유형",
+      "status": "needs_review",
+      "missing_side": "none",
+      "normalization_status": null,
+      "final_status": "needs_review",
+      "final_reason_code": "raw_text_difference",
+      "final_reason": "Raw text differs and no decisive normalization result has been applied.",
+      "contract": {
+        "raw_text": "일반사모투자신탁",
+        "citation": {
+          "document": "신탁계약서",
+          "page": 1
+        }
+      },
+      "im": {
+        "raw_text": "일반사모집합투자기구, 투자신탁형, 혼합자산형, 단위형, 폐쇄형, 사모형",
+        "citation": {
+          "document": "IM",
+          "page": 9
+        }
+      }
+    },
+    {
+      "field": "fund.inception_date",
+      "label": "설정일",
+      "status": "needs_review",
+      "missing_side": "none",
+      "normalization_status": null,
+      "final_status": "needs_review",
+      "final_reason_code": "raw_text_difference",
+      "final_reason": "Raw text differs and no decisive normalization result has been applied.",
+      "contract": {
+        "raw_text": "2025년 7월 22일",
+        "citation": {
+          "document": "신탁계약서",
+          "page": 4
+        }
+      },
+      "im": {
+        "raw_text": "2025년7월22일",
+        "citation": {
+          "document": "IM",
+          "page": 9
+        }
+      }
+    },
+    {
+      "field": "fund.maturity_date",
+      "label": "만기일",
+      "status": "needs_review",
+      "missing_side": "none",
+      "normalization_status": null,
+      "final_status": "needs_review",
+      "final_reason_code": "raw_text_difference",
+      "final_reason": "Raw text differs and no decisive normalization result has been applied.",
+      "contract": {
+        "raw_text": "2027년 7월 22일",
+        "citation": {
+          "document": "신탁계약서",
+          "page": 4
+        }
+      },
+      "im": {
+        "raw_text": "2년(수익자동의하에조기청산가능)",
+        "citation": {
+          "document": "IM",
+          "page": 9
+        }
+      }
+    },
+    {
+      "field": "party.asset_manager",
+      "label": "운용사",
+      "status": "needs_review",
+      "missing_side": "none",
+      "normalization_status": null,
+      "final_status": "needs_review",
+      "final_reason_code": "raw_text_difference",
+      "final_reason": "Raw text differs and no decisive normalization result has been applied.",
+      "contract": {
+        "raw_text": "이지스자산운용 주식회사",
+        "citation": {
+          "document": "신탁계약서",
+          "page": 1
+        }
+      },
+      "im": {
+        "raw_text": "이지스자산운용주식회사",
+        "citation": {
+          "document": "IM",
+          "page": 2
+        }
+      }
+    },
+    {
+      "field": "party.trustee",
+      "label": "신탁업자",
+      "status": "missing_evidence",
+      "missing_side": "im",
+      "normalization_status": null,
+      "final_status": "missing_evidence",
+      "final_reason_code": "missing_evidence",
+      "final_reason": "One or both sides are missing raw evidence.",
+      "contract": {
+        "raw_text": "엔에이치투자증권 주식회사",
+        "citation": {
+          "document": "신탁계약서",
+          "page": 1
+        }
+      },
+      "im": {
+        "raw_text": null,
+        "citation": null
+      }
+    },
+    {
+      "field": "party.distributor",
+      "label": "판매사",
+      "status": "missing_evidence",
+      "missing_side": "both",
+      "normalization_status": null,
+      "final_status": "missing_evidence",
+      "final_reason_code": "missing_evidence",
+      "final_reason": "One or both sides are missing raw evidence.",
+      "contract": {
+        "raw_text": null,
+        "citation": null
+      },
+      "im": {
+        "raw_text": null,
+        "citation": null
+      }
+    },
+    {
+      "field": "fee_schedule.management_fee",
+      "label": "운용보수",
+      "status": "needs_review",
+      "missing_side": "none",
+      "normalization_status": null,
+      "final_status": "needs_review",
+      "final_reason_code": "raw_text_difference",
+      "final_reason": "Raw text differs and no decisive normalization result has been applied.",
+      "contract": {
+        "raw_text": "집합투자업자보수율 : 연 1,000분의 8.9",
+        "citation": {
+          "document": "신탁계약서",
+          "page": 15
+        }
+      },
+      "im": {
+        "raw_text": "[운용]연[ 0.89 ] %",
+        "citation": {
+          "document": "IM",
+          "page": 9
+        }
+      }
+    },
+    {
+      "field": "fee_schedule.trust_fee",
+      "label": "신탁보수",
+      "status": "needs_review",
+      "missing_side": "none",
+      "normalization_status": null,
+      "final_status": "needs_review",
+      "final_reason_code": "raw_text_difference",
+      "final_reason": "Raw text differs and no decisive normalization result has been applied.",
+      "contract": {
+        "raw_text": "신탁업자보수율 : 연 1,000분의 0.5",
+        "citation": {
+          "document": "신탁계약서",
+          "page": 15
+        }
+      },
+      "im": {
+        "raw_text": "[신탁] 연[ 0.05] %",
+        "citation": {
+          "document": "IM",
+          "page": 9
+        }
+      }
+    },
+    {
+      "field": "fee_schedule.sales_fee",
+      "label": "판매보수",
+      "status": "missing_evidence",
+      "missing_side": "contract",
+      "normalization_status": null,
+      "final_status": "missing_evidence",
+      "final_reason_code": "missing_evidence",
+      "final_reason": "One or both sides are missing raw evidence.",
+      "contract": {
+        "raw_text": null,
+        "citation": null
+      },
+      "im": {
+        "raw_text": "[판매] 연[ 0.03 ] %",
+        "citation": {
+          "document": "IM",
+          "page": 9
+        }
+      }
+    },
+    {
+      "field": "redemption_terms.is_redeemable",
+      "label": "환매 가능 여부",
+      "status": "needs_review",
+      "missing_side": "none",
+      "normalization_status": null,
+      "final_status": "needs_review",
+      "final_reason_code": "raw_text_difference",
+      "final_reason": "Raw text differs and no decisive normalization result has been applied.",
+      "contract": {
+        "raw_text": "수익자는 이 투자신탁 수익증권의 환매를 청구할 수 없다.",
+        "citation": {
+          "document": "신탁계약서",
+          "page": 12
+        }
+      },
+      "im": {
+        "raw_text": "본상품은환매가불가능한폐쇄형상품임",
+        "citation": {
+          "document": "IM",
+          "page": 9
+        }
+      }
+    },
+    {
+      "field": "redemption_terms.lockup_period",
+      "label": "락업 기간",
+      "status": "missing_evidence",
+      "missing_side": "both",
+      "normalization_status": null,
+      "final_status": "missing_evidence",
+      "final_reason_code": "missing_evidence",
+      "final_reason": "One or both sides are missing raw evidence.",
+      "contract": {
+        "raw_text": null,
+        "citation": null
+      },
+      "im": {
+        "raw_text": null,
+        "citation": null
+      }
+    },
+    {
+      "field": "redemption_terms.redemption_cycle",
+      "label": "환매 주기",
+      "status": "missing_evidence",
+      "missing_side": "both",
+      "normalization_status": null,
+      "final_status": "missing_evidence",
+      "final_reason_code": "missing_evidence",
+      "final_reason": "One or both sides are missing raw evidence.",
+      "contract": {
+        "raw_text": null,
+        "citation": null
+      },
+      "im": {
+        "raw_text": null,
+        "citation": null
+      }
+    },
+    {
+      "field": "redemption_terms.redemption_fee",
+      "label": "환매수수료",
+      "status": "missing_evidence",
+      "missing_side": "both",
+      "normalization_status": null,
+      "final_status": "missing_evidence",
+      "final_reason_code": "missing_evidence",
+      "final_reason": "One or both sides are missing raw evidence.",
+      "contract": {
+        "raw_text": null,
+        "citation": null
+      },
+      "im": {
+        "raw_text": null,
+        "citation": null
+      }
+    }
+  ],
+  "total_latency_ms": 173546,
+  "llm_call_count": 2,
+  "llm_total_tokens": 24168,
+  "llm_total_cost_usd": 0.0
+}

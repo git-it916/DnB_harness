@@ -1,0 +1,308 @@
+[
+  {
+    "field": "fund.name",
+    "label": "펀드명",
+    "status": "needs_review",
+    "missing_side": "none",
+    "normalization_status": null,
+    "final_status": "needs_review",
+    "final_reason_code": "raw_text_difference",
+    "final_reason": "Raw text differs and no decisive normalization result has been applied.",
+    "contract": {
+      "raw_text": "이지스블랙 ON 일반사모투자신탁 1호",
+      "citation": {
+        "document": "신탁계약서",
+        "page": 1
+      }
+    },
+    "im": {
+      "raw_text": "이지스블랙ON 일반사모투자신탁제1호",
+      "citation": {
+        "document": "IM",
+        "page": 9
+      }
+    }
+  },
+  {
+    "field": "fund.type",
+    "label": "펀드 유형",
+    "status": "needs_review",
+    "missing_side": "none",
+    "normalization_status": null,
+    "final_status": "needs_review",
+    "final_reason_code": "raw_text_difference",
+    "final_reason": "Raw text differs and no decisive normalization result has been applied.",
+    "contract": {
+      "raw_text": "일반사모투자신탁",
+      "citation": {
+        "document": "신탁계약서",
+        "page": 1
+      }
+    },
+    "im": {
+      "raw_text": "일반사모집합투자기구, 투자신탁형, 혼합자산형, 단위형, 폐쇄형, 사모형",
+      "citation": {
+        "document": "IM",
+        "page": 9
+      }
+    }
+  },
+  {
+    "field": "fund.inception_date",
+    "label": "설정일",
+    "status": "needs_review",
+    "missing_side": "none",
+    "normalization_status": null,
+    "final_status": "needs_review",
+    "final_reason_code": "raw_text_difference",
+    "final_reason": "Raw text differs and no decisive normalization result has been applied.",
+    "contract": {
+      "raw_text": "2025년 7월 22일",
+      "citation": {
+        "document": "신탁계약서",
+        "page": 4
+      }
+    },
+    "im": {
+      "raw_text": "2025년7월22일",
+      "citation": {
+        "document": "IM",
+        "page": 9
+      }
+    }
+  },
+  {
+    "field": "fund.maturity_date",
+    "label": "만기일",
+    "status": "needs_review",
+    "missing_side": "none",
+    "normalization_status": null,
+    "final_status": "needs_review",
+    "final_reason_code": "raw_text_difference",
+    "final_reason": "Raw text differs and no decisive normalization result has been applied.",
+    "contract": {
+      "raw_text": "2027년 7월 22일",
+      "citation": {
+        "document": "신탁계약서",
+        "page": 4
+      }
+    },
+    "im": {
+      "raw_text": "2년(수익자동의하에조기청산가능)",
+      "citation": {
+        "document": "IM",
+        "page": 9
+      }
+    }
+  },
+  {
+    "field": "party.asset_manager",
+    "label": "운용사",
+    "status": "needs_review",
+    "missing_side": "none",
+    "normalization_status": null,
+    "final_status": "needs_review",
+    "final_reason_code": "raw_text_difference",
+    "final_reason": "Raw text differs and no decisive normalization result has been applied.",
+    "contract": {
+      "raw_text": "이지스자산운용 주식회사",
+      "citation": {
+        "document": "신탁계약서",
+        "page": 1
+      }
+    },
+    "im": {
+      "raw_text": "이지스자산운용주식회사",
+      "citation": {
+        "document": "IM",
+        "page": 2
+      }
+    }
+  },
+  {
+    "field": "party.trustee",
+    "label": "신탁업자",
+    "status": "missing_evidence",
+    "missing_side": "im",
+    "normalization_status": null,
+    "final_status": "missing_evidence",
+    "final_reason_code": "missing_evidence",
+    "final_reason": "One or both sides are missing raw evidence.",
+    "contract": {
+      "raw_text": "엔에이치투자증권 주식회사",
+      "citation": {
+        "document": "신탁계약서",
+        "page": 1
+      }
+    },
+    "im": {
+      "raw_text": null,
+      "citation": null
+    }
+  },
+  {
+    "field": "party.distributor",
+    "label": "판매사",
+    "status": "missing_evidence",
+    "missing_side": "both",
+    "normalization_status": null,
+    "final_status": "missing_evidence",
+    "final_reason_code": "missing_evidence",
+    "final_reason": "One or both sides are missing raw evidence.",
+    "contract": {
+      "raw_text": null,
+      "citation": null
+    },
+    "im": {
+      "raw_text": null,
+      "citation": null
+    }
+  },
+  {
+    "field": "fee_schedule.management_fee",
+    "label": "운용보수",
+    "status": "needs_review",
+    "missing_side": "none",
+    "normalization_status": null,
+    "final_status": "needs_review",
+    "final_reason_code": "raw_text_difference",
+    "final_reason": "Raw text differs and no decisive normalization result has been applied.",
+    "contract": {
+      "raw_text": "집합투자업자보수율 : 연 1,000분의 8.9",
+      "citation": {
+        "document": "신탁계약서",
+        "page": 15
+      }
+    },
+    "im": {
+      "raw_text": "[운용]연[ 0.89 ] %",
+      "citation": {
+        "document": "IM",
+        "page": 9
+      }
+    }
+  },
+  {
+    "field": "fee_schedule.trust_fee",
+    "label": "신탁보수",
+    "status": "needs_review",
+    "missing_side": "none",
+    "normalization_status": null,
+    "final_status": "needs_review",
+    "final_reason_code": "raw_text_difference",
+    "final_reason": "Raw text differs and no decisive normalization result has been applied.",
+    "contract": {
+      "raw_text": "신탁업자보수율 : 연 1,000분의 0.5",
+      "citation": {
+        "document": "신탁계약서",
+        "page": 15
+      }
+    },
+    "im": {
+      "raw_text": "[신탁] 연[ 0.05] %",
+      "citation": {
+        "document": "IM",
+        "page": 9
+      }
+    }
+  },
+  {
+    "field": "fee_schedule.sales_fee",
+    "label": "판매보수",
+    "status": "missing_evidence",
+    "missing_side": "contract",
+    "normalization_status": null,
+    "final_status": "missing_evidence",
+    "final_reason_code": "missing_evidence",
+    "final_reason": "One or both sides are missing raw evidence.",
+    "contract": {
+      "raw_text": null,
+      "citation": null
+    },
+    "im": {
+      "raw_text": "[판매] 연[ 0.03 ] %",
+      "citation": {
+        "document": "IM",
+        "page": 9
+      }
+    }
+  },
+  {
+    "field": "redemption_terms.is_redeemable",
+    "label": "환매 가능 여부",
+    "status": "needs_review",
+    "missing_side": "none",
+    "normalization_status": null,
+    "final_status": "needs_review",
+    "final_reason_code": "raw_text_difference",
+    "final_reason": "Raw text differs and no decisive normalization result has been applied.",
+    "contract": {
+      "raw_text": "수익자는 이 투자신탁 수익증권의 환매를 청구할 수 없다.",
+      "citation": {
+        "document": "신탁계약서",
+        "page": 12
+      }
+    },
+    "im": {
+      "raw_text": "본상품은환매가불가능한폐쇄형상품임",
+      "citation": {
+        "document": "IM",
+        "page": 9
+      }
+    }
+  },
+  {
+    "field": "redemption_terms.lockup_period",
+    "label": "락업 기간",
+    "status": "missing_evidence",
+    "missing_side": "both",
+    "normalization_status": null,
+    "final_status": "missing_evidence",
+    "final_reason_code": "missing_evidence",
+    "final_reason": "One or both sides are missing raw evidence.",
+    "contract": {
+      "raw_text": null,
+      "citation": null
+    },
+    "im": {
+      "raw_text": null,
+      "citation": null
+    }
+  },
+  {
+    "field": "redemption_terms.redemption_cycle",
+    "label": "환매 주기",
+    "status": "missing_evidence",
+    "missing_side": "both",
+    "normalization_status": null,
+    "final_status": "missing_evidence",
+    "final_reason_code": "missing_evidence",
+    "final_reason": "One or both sides are missing raw evidence.",
+    "contract": {
+      "raw_text": null,
+      "citation": null
+    },
+    "im": {
+      "raw_text": null,
+      "citation": null
+    }
+  },
+  {
+    "field": "redemption_terms.redemption_fee",
+    "label": "환매수수료",
+    "status": "missing_evidence",
+    "missing_side": "both",
+    "normalization_status": null,
+    "final_status": "missing_evidence",
+    "final_reason_code": "missing_evidence",
+    "final_reason": "One or both sides are missing raw evidence.",
+    "contract": {
+      "raw_text": null,
+      "citation": null
+    },
+    "im": {
+      "raw_text": null,
+      "citation": null
+    }
+  }
+]
