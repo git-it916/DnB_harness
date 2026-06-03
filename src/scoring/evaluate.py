@@ -122,6 +122,17 @@ def resolve_with_judge(final_status: FinalCheckStatus, judge_status) -> FinalChe
     return FinalCheckStatus.DIFFERENT_AFTER_NORMALIZATION
 
 
+def resolve_policy_with_judge(final_status: FinalCheckStatus, judge_status) -> FinalCheckStatus:
+    """ontology_policy_judge 에서 needs_review 만 judge 결과로 확정."""
+    from src.pipelines.llm_judge import JudgeStatus
+
+    if final_status != FinalCheckStatus.NEEDS_REVIEW or judge_status is None:
+        return final_status
+    if judge_status == JudgeStatus.SAME:
+        return FinalCheckStatus.SAME_AFTER_NORMALIZATION
+    return FinalCheckStatus.DIFFERENT_AFTER_NORMALIZATION
+
+
 def evaluate_golden_full(
     cases: list[GoldenCase],
     *,
@@ -177,6 +188,57 @@ def evaluate_golden_full(
                 harness_signal=case.harness_signal,
                 final_status=str(final),
                 final_reason_code="harness_norm_judge",
+                guard_rejections=guard_rejections,
+            )
+        )
+    return records
+
+
+def evaluate_golden_ontology_policy_judge(
+    cases: list[GoldenCase],
+    *,
+    contract_pages: int,
+    im_pages: int,
+    client,
+) -> list[CaseRecord]:
+    """ontology_policy + Claude judge fallback. Claude normalization 은 사용하지 않는다."""
+    from src.canonical.pipeline import cross_check_with_policy
+    from src.pipelines.llm_judge import judge_needs_review
+
+    records: list[CaseRecord] = []
+    for case in cases:
+        comparable = _field_from_case(case)
+        extraction = _build_extraction(case.field, comparable)
+        ctx = GuardContext(
+            contract_pdf=Path("contract.pdf"),
+            im_pdf=Path("im.pdf"),
+            contract_pages=contract_pages,
+            im_pages=im_pages,
+            config=GuardConfig(g1_format=True, g2_citation=True, g3_constraint=True),
+        )
+        guarded, events = apply_guards(raw_extraction_json=extraction.model_dump_json(), ctx=ctx)
+        if guarded is not None:
+            extraction = guarded
+        guard_rejections = _rejections_for_field(events, case.field)
+
+        cc = cross_check_with_policy(extraction)
+        result = next(r for r in cc if r.field == case.field)
+        judge_allowed = bool((result.canonical or {}).get("judge_allowed"))
+        judged = {}
+        if result.final_status == FinalCheckStatus.NEEDS_REVIEW and judge_allowed:
+            judged = {j.field: j.status for j in judge_needs_review([result], llm=client)}
+        final = resolve_policy_with_judge(result.final_status, judged.get(result.field))
+
+        records.append(
+            CaseRecord(
+                case_id=case.case_id,
+                field=case.field,
+                gold_label=case.gold_label,
+                difficulty=case.difficulty,
+                mutation_type=case.mutation_type,
+                harness_signal=case.harness_signal,
+                final_status=str(final),
+                final_reason_code="ontology_policy_judge" if judged else result.final_reason_code,
                 guard_rejections=guard_rejections,
             )
         )

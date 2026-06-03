@@ -186,6 +186,20 @@ python -m src.cli stats reports/scoring/score_baseline.json reports/scoring/scor
 - **③ 의 남은 오탐 4건**: C002 약칭·C006 만기(절대 vs 기간)·C007 OCR 오타·C018 부재 동치 — 모두 `llm_judge` 신호의 어려운 의미동등 케이스.
 - **주의**: 골든셋 freeze 전 잠정치. 경향(③ 이 F1 최고, ② 가 재현율 보장, judge 의 단위 누락 위험)은 견고하다.
 
+## 7. Ontology Policy 비교
+
+`ontology_policy`는 G1/G2/G3 이후 `ontology/field_policies.yaml` 기반 canonical comparison을 먼저 수행한다. 결정론으로 확정된 필드는 LLM을 호출하지 않는다.
+
+```bash
+# 결정론 policy 비교 (LLM 불필요)
+python -m src.cli score --mode ontology_policy --out reports/scoring/score_ontology_policy.json
+
+# Claude judge fallback 포함 (ANTHROPIC_API_KEY 필요)
+python scripts/score_ontology_policy.py
+```
+
+`ontology_policy_judge`는 canonical이 확정하지 못하고 field policy가 허용한 필드에만 Claude judge fallback을 적용한다. Claude normalization은 사용하지 않는다. 이 경로는 C021 같은 보수 단위 자릿수 함정을 LLM judge에 맡기기 전에 결정론 canonical comparison으로 먼저 확정하기 위한 추가 비교 조건이다.
+
 ## 재현성 규칙
 
 - 같은 입력 PDF(`database/raw_data/`)와 같은 골든셋(`tests/golden/golden_master.csv`)을 쓴다.

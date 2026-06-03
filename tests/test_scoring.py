@@ -9,7 +9,7 @@ import math
 
 from src.pipelines.cross_check import FinalCheckStatus
 from src.pipelines.llm_judge import JudgeStatus
-from src.scoring.evaluate import evaluate_golden, resolve_with_judge
+from src.scoring.evaluate import evaluate_golden, resolve_policy_with_judge, resolve_with_judge
 from src.scoring.golden import GoldenCase, load_golden_master
 from src.scoring.labels import GoldLabel, predicted_label
 from src.scoring.scorer import CaseRecord, score_cases
@@ -200,4 +200,21 @@ def test_resolve_with_judge_none_keeps_needs_review():
     assert (
         resolve_with_judge(FinalCheckStatus.NEEDS_REVIEW, None)
         == FinalCheckStatus.NEEDS_REVIEW
+    )
+
+
+# ── resolve_policy_with_judge (ontology_policy_judge 의 judge 적용) ─────────────
+
+def test_resolve_policy_with_judge_only_updates_needs_review():
+    assert (
+        resolve_policy_with_judge(FinalCheckStatus.EXACT_MATCH, JudgeStatus.DIFFERENT)
+        == FinalCheckStatus.EXACT_MATCH
+    )
+    assert (
+        resolve_policy_with_judge(FinalCheckStatus.NEEDS_REVIEW, JudgeStatus.SAME)
+        == FinalCheckStatus.SAME_AFTER_NORMALIZATION
+    )
+    assert (
+        resolve_policy_with_judge(FinalCheckStatus.NEEDS_REVIEW, JudgeStatus.DIFFERENT)
+        == FinalCheckStatus.DIFFERENT_AFTER_NORMALIZATION
     )
