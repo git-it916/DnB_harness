@@ -86,6 +86,18 @@ def test_cli_score_rejects_unsupported_mode(tmp_path: Path):
     assert result.exit_code != 0
 
 
+def test_cli_score_ontology_policy(tmp_path: Path):
+    out = tmp_path / "score_ontology_policy.json"
+    result = runner.invoke(
+        app,
+        ["score", "--mode", "ontology_policy", "--out", str(out)],
+    )
+    assert result.exit_code == 0
+    report = json.loads(out.read_text(encoding="utf-8"))
+    assert report["mode"] == "ontology_policy"
+    assert report["n_cases"] == 30
+
+
 def test_cli_compare_writes_markdown(tmp_path: Path):
     s1 = tmp_path / "a.json"
     s2 = tmp_path / "b.json"

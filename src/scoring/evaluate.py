@@ -6,6 +6,7 @@ LLM 호출 없이(=Ollama/Claude 불필요) 동작한다. golden CSV 의 raw_tex
 지원 모드:
     - "ontology" : cross_check 만 (가드 OFF, 진단). normalization/judge 는 미적용.
     - "guard"    : G1/G2/G3 가드 적용 후 cross_check. 가드 reject 를 기록.
+    - "ontology_policy" : G1/G2/G3 가드 적용 후 field policy canonical 비교.
 
 미지원:
     - "baseline" : LLM 자유 추출이 필요 → src/harness 러너(Stage C)에서 처리.
@@ -32,7 +33,7 @@ from src.schemas.extraction import (
 from src.scoring.golden import GoldenCase
 from src.scoring.scorer import CaseRecord
 
-SUPPORTED_MODES = ("ontology", "guard")
+SUPPORTED_MODES = ("ontology", "guard", "ontology_policy")
 
 # field_path 의 첫 마디 -> (그룹 모델, 그 그룹의 필드명들)
 _GROUPS: dict[str, tuple[type, tuple[str, ...]]] = {
@@ -193,7 +194,7 @@ def evaluate_golden(
 
     Args:
         cases: load_golden_master() 결과.
-        mode: "ontology" | "guard".
+        mode: "ontology" | "guard" | "ontology_policy".
         contract_pages / im_pages: 실제 PDF 페이지 수 (G2 출처 범위 검증 기준).
 
     Raises:
@@ -211,7 +212,7 @@ def evaluate_golden(
         extraction = _build_extraction(case.field, comparable)
         guard_rejections: list[str] = []
 
-        if mode == "guard":
+        if mode in ("guard", "ontology_policy"):
             # G2 는 ctx.contract_pages/im_pages(정수)만 사용하고 PDF 파일을 직접
             # 열지 않는다 → placeholder 경로로 충분 (결정적 평가, 파일 IO 없음).
             ctx = GuardContext(
@@ -227,6 +228,27 @@ def evaluate_golden(
             if guarded is not None:
                 extraction = guarded
             guard_rejections = _rejections_for_field(events, case.field)
+
+        if mode == "ontology_policy":
+            from src.canonical.pipeline import cross_check_with_policy
+
+            result = next(
+                r for r in cross_check_with_policy(extraction) if r.field == case.field
+            )
+            records.append(
+                CaseRecord(
+                    case_id=case.case_id,
+                    field=case.field,
+                    gold_label=case.gold_label,
+                    difficulty=case.difficulty,
+                    mutation_type=case.mutation_type,
+                    harness_signal=case.harness_signal,
+                    final_status=str(result.final_status),
+                    final_reason_code=result.final_reason_code,
+                    guard_rejections=guard_rejections,
+                )
+            )
+            continue
 
         result = next(
             r for r in cross_check_extraction(extraction) if r.field == case.field

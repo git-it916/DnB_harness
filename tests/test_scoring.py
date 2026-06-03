@@ -161,6 +161,20 @@ def test_evaluate_guard_does_not_false_reject_normal_fee_cases():
         assert guard[cid].guard_rejections == []
 
 
+def test_evaluate_ontology_policy_mode_uses_canonical_comparison():
+    records = evaluate_golden(
+        load_golden_master(),
+        mode="ontology_policy",
+        contract_pages=22,
+        im_pages=32,
+    )
+    assert len(records) == 30
+    assert any(
+        r.final_reason_code and r.final_reason_code.startswith("canonical_")
+        for r in records
+    )
+
+
 # ── resolve_with_judge (harness+norm 의 judge 적용, 순수 함수) ─────────────────
 
 def test_resolve_with_judge_only_touches_needs_review():
