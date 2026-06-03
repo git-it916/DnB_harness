@@ -17,7 +17,7 @@ from pathlib import Path
 
 from src.guards.base import GuardConfig, GuardContext, GuardDecision
 from src.guards.registry import apply_guards
-from src.pipelines.cross_check import cross_check_extraction
+from src.pipelines.cross_check import FinalCheckStatus, cross_check_extraction
 from src.schemas.extraction import (
     Citation,
     ComparableField,
@@ -104,6 +104,82 @@ def _rejections_for_field(events, field_path: str) -> list[str]:
         if path == field_path or path.startswith(field_path + "."):
             out.append(f"{event.guard}:{event.reason_code}")
     return out
+
+
+def resolve_with_judge(final_status: FinalCheckStatus, judge_status) -> FinalCheckStatus:
+    """needs_review 가 남아있으면 judge 결과(same/different)로 확정. 순수 함수.
+
+    judge_status 는 llm_judge.JudgeStatus 또는 None. needs_review 가 아니거나
+    judge_status 가 없으면 그대로 둔다.
+    """
+    from src.pipelines.llm_judge import JudgeStatus
+
+    if final_status != FinalCheckStatus.NEEDS_REVIEW or judge_status is None:
+        return final_status
+    if judge_status == JudgeStatus.SAME:
+        return FinalCheckStatus.SAME_AFTER_NORMALIZATION
+    return FinalCheckStatus.DIFFERENT_AFTER_NORMALIZATION
+
+
+def evaluate_golden_full(
+    cases: list[GoldenCase],
+    *,
+    contract_pages: int,
+    im_pages: int,
+    client,
+) -> list[CaseRecord]:
+    """harness + normalization + judge (3번째 조건). Claude(client) 필요.
+
+    각 케이스: guard 적용 → cross_check → normalize(Claude) → 남은 needs_review 를
+    judge(Claude)로 확정. guard reject 는 그대로 mismatch 로 본다.
+
+    Args:
+        client: AnthropicJSONClient 호환(complete_json). normalize/judge 양쪽에 쓰임.
+    """
+    from src.pipelines.cross_check import apply_normalization_to_cross_check
+    from src.pipelines.llm_judge import judge_needs_review
+    from src.pipelines.normalize import normalize_extraction
+
+    records: list[CaseRecord] = []
+    for case in cases:
+        comparable = _field_from_case(case)
+        extraction = _build_extraction(case.field, comparable)
+
+        ctx = GuardContext(
+            contract_pdf=Path("contract.pdf"),
+            im_pdf=Path("im.pdf"),
+            contract_pages=contract_pages,
+            im_pages=im_pages,
+            config=GuardConfig(g1_format=True, g2_citation=True, g3_constraint=True),
+        )
+        guarded, events = apply_guards(
+            raw_extraction_json=extraction.model_dump_json(), ctx=ctx
+        )
+        if guarded is not None:
+            extraction = guarded
+        guard_rejections = _rejections_for_field(events, case.field)
+
+        cc = cross_check_extraction(extraction)
+        cc = apply_normalization_to_cross_check(cc, normalize_extraction(extraction, llm=client))
+        judged = {j.field: j.status for j in judge_needs_review(cc, llm=client)}
+
+        result = next(r for r in cc if r.field == case.field)
+        final = resolve_with_judge(result.final_status, judged.get(result.field))
+
+        records.append(
+            CaseRecord(
+                case_id=case.case_id,
+                field=case.field,
+                gold_label=case.gold_label,
+                difficulty=case.difficulty,
+                mutation_type=case.mutation_type,
+                harness_signal=case.harness_signal,
+                final_status=str(final),
+                final_reason_code="harness_norm_judge",
+                guard_rejections=guard_rejections,
+            )
+        )
+    return records
 
 
 def evaluate_golden(

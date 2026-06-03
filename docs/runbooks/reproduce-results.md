@@ -128,59 +128,63 @@ python -m src.cli run --seeds 42 --with-normalize --with-judge
 
 → `scripts/extract_full_pipeline.py` 를 실행 (Gemma 추출 + 가드 + 온톨로지 + cross_check, 옵션으로 Claude 정규화/judge). 산출은 `database/gemma4_full/run_NN_seedM/`.
 
-## 6. OFF vs ON 비교 (3조건 실증)
+## 6. 3조건 비교 (non-harness / harness / harness+norm)
 
-"온톨로지·하네스를 **안 썼을 때(baseline)** vs **썼을 때(guard)**"를 같은 골든 30케이스·같은 입력으로 비교한다. 차이는 *방법*뿐 — baseline 은 LLM 단독 판정, guard 는 온톨로지+하네스 결정적 로직.
+같은 골든 30케이스·같은 입력으로 세 조건을 비교한다. 차이는 *방법*뿐.
 
-### 6.1 baseline 라이브 채점 (LLM 단독, Ollama 필요)
+| 조건 | 구성 | 실행 |
+|---|---|---|
+| ① non-harness | LLM(gemma4:31b) 단독 판정. 온톨로지·가드 없음 | `scripts/baseline_judge.py` |
+| ② harness | 가드(G1/G2/G3) + cross_check, 결정적 | `dnb score --mode guard` |
+| ③ harness+norm | ② + normalization + judge (Claude) | `scripts/score_harness_norm.py` |
+
+### 6.1 세 조건 산출
 
 ```bash
+# ① non-harness (Ollama 필요)
 python scripts/baseline_judge.py --seed 42
+# ② harness (결정적, LLM 불필요)
+python -m src.cli score --mode guard --out reports/scoring/score_guard.json
+# ③ harness+norm (Claude 필요 — .env 의 ANTHROPIC_API_KEY)
+python scripts/score_harness_norm.py
 ```
 
-실측 출력 (gemma4:31b, 30케이스 168s):
+실측 (gemma4:31b 추출/판정, claude-sonnet-4-6 정규화/judge):
 
 ```
-[baseline DONE] 30케이스 wall=168s
-  P=0.889 R=0.667 F1=0.762 acc=0.808 환각=0.000
-  TP=8 FP=1 FN=4 TN=13 missing제외=4
+① non-harness   P=0.889 R=0.667 F1=0.762 acc=0.808  TP8  FP1  FN4 TN13   (168s)
+② harness       P=0.462 R=1.000 F1=0.632 acc=0.462  TP12 FP14 FN0 TN0    (<1s)
+③ harness+norm  P=0.733 R=0.917 F1=0.815 acc=0.808  TP11 FP4  FN1 TN10   (123s)
 ```
 
-### 6.2 통계 비교
+### 6.2 통계
 
 ```bash
-python -m src.cli stats \
-  reports/scoring/score_baseline.json reports/scoring/score_guard.json \
-  --out reports/stats_off_vs_on.json
+python -m src.cli stats reports/scoring/score_baseline.json reports/scoring/score_guard.json --out reports/stats_off_vs_on.json
+python -m src.cli stats reports/scoring/score_baseline.json reports/scoring/score_harness_norm.json --out reports/stats_base_vs_full.json
 ```
 
-실측: `McNemar (baseline vs guard): b=13 c=4 p=0.0490 [exact_binomial]` → **유의수준 0.05 에서 유의미한 차이.**
+실측: `①vs② McNemar b=13 c=4 p=0.0490`(유의) · `①vs③ b=3 c=3 p=1.0000`(정확도 동률) · `Bootstrap F1(③) 95% CI [0.621, 0.952]`.
 
 ### 6.3 결과표 (잠정 골든 기준)
 
-| 지표 | OFF · baseline (LLM 단독) | ON · guard (온톨로지+하네스) |
-|---|:---:|:---:|
-| Recall ★ | 0.667 | **1.000** |
-| Precision | **0.889** | 0.462 |
-| F1 | 0.762 | 0.632 |
-| Accuracy | 0.808 | 0.462 |
-| 환각률 | 0.000 | 0.000 |
-| 혼동행렬 | TP8 FP1 **FN4** TN13 | **TP12** FP14 FN0 TN0 |
+| 지표 | ① non-harness | ② harness | ③ harness+norm |
+|---|:---:|:---:|:---:|
+| F1 | 0.762 | 0.632 | **0.815** |
+| Recall ★ | 0.667 | **1.000** | 0.917 |
+| Precision | **0.889** | 0.462 | 0.733 |
+| Accuracy | 0.808 | 0.462 | 0.808 |
+| 환각률 | 0.000 | 0.000 | 0.000 |
+| 혼동(TP/FP/FN/TN) | 8/1/4/13 | 12/14/0/0 | 11/4/1/10 |
 
-### 6.4 핵심 — baseline 이 놓친 4건을 하네스가 전부 잡음
+### 6.4 핵심 발견
 
-| 케이스 | 변조 유형 | LLM 단독 | 하네스 | 놓친 이유 |
-|---|---|:---:|:---:|---|
-| C021 | decimal_shift | ❌ match | ✅ mismatch | 숫자만 보고 0.3=0.3 합격 (단위 함정) |
-| C022 | date_shift | ❌ match | ✅ mismatch | '3년'을 절대일자와 대조 안 함 |
-| C029 | fake_citation | ❌ match | ✅ mismatch | 값 같으니 합격 — 페이지 위조는 G2 전용 |
-| C030 | shacl_violation | ❌ match | ✅ mismatch | 8.9=8.9 숫자 같아 합격 — 보수 한도는 G3/SHACL 전용 |
-
-### 6.5 해석
-
-- **가설 증명**: LLM 단독은 가장 위험한 4건(단위함정·날짜추론·가짜인용·보수한도초과)을 "일치"로 통과 → 컴플라이언스 사고. 하네스는 재현율 1.0 으로 전부 차단 (McNemar p=0.049).
-- **하네스의 현재 약점은 정밀도**: 결정적 단계만으론 정상 표기차이를 오탐(FP14). baseline 의 정밀도 0.889 가 목표선 → **normalization + LLM judge(Claude)를 켜면 재현율 1.0 을 유지하며 정밀도 회복**이 완성형(②/③ 가 ① 을 이기는 그림).
-- **주의**: 골든셋 freeze 전 잠정치. 경향(LLM 단독은 치명 4건 누락, 하네스는 전부 탐지)과 McNemar 유의성은 견고하다.
+- **③ 완성형이 F1 최고(0.815) — ① LLM 단독(0.762)을 이긴다.** ②→③ 에서 정규화/judge 가 정상 표기차이 오탐을 14→4 로 줄여 정밀도 0.46→0.73 회복.
+- **① 이 놓친 치명 4건**(C021 단위함정·C022 날짜추론·C029 가짜인용·C030 보수한도초과)을 ② 가드는 전부 차단 (McNemar p=0.049, 유의).
+- **⚠️ ③ 의 재현율 역행 (1.0→0.917)**: `C021`(판매보수 0.3% vs 0.03%, 10배 자릿수 함정)을 Claude judge 가 "동일"로 정규화해 **놓침**(② 는 잡았음). 같은 변조 C020(0.5 vs 0.05)은 잡아 judge 의 숫자 비교가 불안정.
+  → **교훈**: 보수(천분율/소수점) 단위 비교는 judge 위임 대신 **G3 에서 결정적으로** 처리해야 함 (재현율 우선).
+- **③ 의 남은 오탐 4건**: C002 약칭·C006 만기(절대 vs 기간)·C007 OCR 오타·C018 부재 동치 — 모두 `llm_judge` 신호의 어려운 의미동등 케이스.
+- **주의**: 골든셋 freeze 전 잠정치. 경향(③ 이 F1 최고, ② 가 재현율 보장, judge 의 단위 누락 위험)은 견고하다.
 
 ## 재현성 규칙
 

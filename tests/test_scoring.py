@@ -8,7 +8,8 @@ from __future__ import annotations
 import math
 
 from src.pipelines.cross_check import FinalCheckStatus
-from src.scoring.evaluate import evaluate_golden
+from src.pipelines.llm_judge import JudgeStatus
+from src.scoring.evaluate import evaluate_golden, resolve_with_judge
 from src.scoring.golden import GoldenCase, load_golden_master
 from src.scoring.labels import GoldLabel, predicted_label
 from src.scoring.scorer import CaseRecord, score_cases
@@ -158,3 +159,31 @@ def test_evaluate_guard_does_not_false_reject_normal_fee_cases():
     guard = _records_by_id("guard")
     for cid in ("C011", "C012", "C013"):
         assert guard[cid].guard_rejections == []
+
+
+# ── resolve_with_judge (harness+norm 의 judge 적용, 순수 함수) ─────────────────
+
+def test_resolve_with_judge_only_touches_needs_review():
+    # needs_review 가 아니면 judge 무시
+    assert (
+        resolve_with_judge(FinalCheckStatus.EXACT_MATCH, JudgeStatus.DIFFERENT)
+        == FinalCheckStatus.EXACT_MATCH
+    )
+
+
+def test_resolve_with_judge_same_and_different():
+    assert (
+        resolve_with_judge(FinalCheckStatus.NEEDS_REVIEW, JudgeStatus.SAME)
+        == FinalCheckStatus.SAME_AFTER_NORMALIZATION
+    )
+    assert (
+        resolve_with_judge(FinalCheckStatus.NEEDS_REVIEW, JudgeStatus.DIFFERENT)
+        == FinalCheckStatus.DIFFERENT_AFTER_NORMALIZATION
+    )
+
+
+def test_resolve_with_judge_none_keeps_needs_review():
+    assert (
+        resolve_with_judge(FinalCheckStatus.NEEDS_REVIEW, None)
+        == FinalCheckStatus.NEEDS_REVIEW
+    )
