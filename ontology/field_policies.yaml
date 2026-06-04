@@ -87,7 +87,7 @@ redemption_terms.is_redeemable:
   value_type: boolean
   canonicalizer: boolean
   compare_policy: boolean_equal
-  judge_allowed: false
+  judge_allowed: true
   absence_semantics: missing_evidence
 
 redemption_terms.lockup_period:

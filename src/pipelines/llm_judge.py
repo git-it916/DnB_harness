@@ -3,6 +3,8 @@ from enum import StrEnum
 from pathlib import Path
 from typing import Protocol
 
+from typing import Literal
+
 from pydantic import BaseModel, ConfigDict, field_validator
 
 from src.client.anthropic_client import AnthropicJSONClient
@@ -44,6 +46,24 @@ class LLMJudgement(StrictJudgeModel):
         return value
 
 
+class RedeemabilityJudgement(StrictJudgeModel):
+    field: Literal["redemption_terms.is_redeemable"]
+    contract_redeemable: Literal["yes", "no", "conditional", "unknown"]
+    im_redeemable: Literal["yes", "no", "conditional", "unknown"]
+    confidence: Literal["high", "medium", "low"]
+    reason_code: str
+    contract_evidence: str
+    im_evidence: str
+    reason: str
+
+    @field_validator("reason", "reason_code", "contract_evidence", "im_evidence")
+    @classmethod
+    def text_must_not_be_empty(cls, value: str) -> str:
+        if not value.strip():
+            raise ValueError("text fields must not be empty")
+        return value
+
+
 def judge_needs_review(
     cross_check_results: list[CrossCheckResult],
     *,
@@ -70,6 +90,68 @@ def judge_needs_review(
             )
         judgements.append(judgement)
     return judgements
+
+
+_REDEEMABILITY_SYSTEM_PROMPT = """\
+You classify redeemability for Korean private fund documents.
+
+Return JSON only with these fields:
+- field: must be "redemption_terms.is_redeemable"
+- contract_redeemable: "yes" | "no" | "conditional" | "unknown"
+- im_redeemable: "yes" | "no" | "conditional" | "unknown"
+- confidence: "high" | "medium" | "low"
+- reason_code: short snake_case code
+- contract_evidence: short phrase from contract text supporting the class
+- im_evidence: short phrase from IM text supporting the class
+- reason: one short Korean explanation
+
+Classify each side independently:
+- "yes": redemption is allowed.
+- "no": redemption is not allowed, including closed-ended fund or no redemption before maturity.
+- "conditional": redemption depends on special conditions, exceptions, gates, approval, or partial restrictions.
+- "unknown": evidence is insufficient or ambiguous.
+
+Do not decide same/different directly. Do not use outside knowledge.
+Use high confidence only when both side classifications are explicit from the given text.
+"""
+
+
+def judge_redeemability(
+    result: CrossCheckResult,
+    *,
+    llm: JudgeLLM | None = None,
+) -> RedeemabilityJudgement:
+    if result.field != "redemption_terms.is_redeemable":
+        raise ValueError(f"redeemability judge cannot handle field: {result.field}")
+    judge_llm = llm or AnthropicJSONClient()
+    payload = judge_llm.complete_json(
+        system_prompt=_REDEEMABILITY_SYSTEM_PROMPT,
+        user_prompt=json.dumps(
+            {
+                "field": result.field,
+                "label": result.label,
+                "contract_raw_text": result.contract.raw_text,
+                "im_raw_text": result.im.raw_text,
+            },
+            ensure_ascii=False,
+            indent=2,
+        ),
+    )
+    return RedeemabilityJudgement.model_validate(payload)
+
+
+def resolve_redeemability_judgement(judgement) -> JudgeStatus | None:
+    if not isinstance(judgement, RedeemabilityJudgement):
+        judgement = RedeemabilityJudgement.model_validate(judgement)
+    if judgement.confidence != "high":
+        return None
+    contract = judgement.contract_redeemable
+    im = judgement.im_redeemable
+    if contract in ("conditional", "unknown") or im in ("conditional", "unknown"):
+        return None
+    if contract == im:
+        return JudgeStatus.SAME
+    return JudgeStatus.DIFFERENT
 
 
 def judge_prompt_for_input(judge_input: JudgeInput) -> str:

@@ -203,7 +203,11 @@ def evaluate_golden_ontology_policy_judge(
 ) -> list[CaseRecord]:
     """ontology_policy + Claude judge fallback. Claude normalization 은 사용하지 않는다."""
     from src.canonical.pipeline import cross_check_with_policy
-    from src.pipelines.llm_judge import judge_needs_review
+    from src.pipelines.llm_judge import (
+        judge_needs_review,
+        judge_redeemability,
+        resolve_redeemability_judgement,
+    )
 
     records: list[CaseRecord] = []
     for case in cases:
@@ -226,7 +230,13 @@ def evaluate_golden_ontology_policy_judge(
         judge_allowed = bool((result.canonical or {}).get("judge_allowed"))
         judged = {}
         if result.final_status == FinalCheckStatus.NEEDS_REVIEW and judge_allowed:
-            judged = {j.field: j.status for j in judge_needs_review([result], llm=client)}
+            if result.field == "redemption_terms.is_redeemable":
+                redeemability = judge_redeemability(result, llm=client)
+                resolved = resolve_redeemability_judgement(redeemability)
+                if resolved is not None:
+                    judged = {result.field: resolved}
+            else:
+                judged = {j.field: j.status for j in judge_needs_review([result], llm=client)}
         final = resolve_policy_with_judge(result.final_status, judged.get(result.field))
 
         records.append(

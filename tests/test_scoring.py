@@ -224,3 +224,46 @@ def test_resolve_policy_with_judge_only_updates_needs_review():
         resolve_policy_with_judge(FinalCheckStatus.NEEDS_REVIEW, JudgeStatus.DIFFERENT)
         == FinalCheckStatus.DIFFERENT_AFTER_NORMALIZATION
     )
+
+
+def test_ontology_policy_judge_uses_redeemability_classifier_for_boolean_field():
+    from src.scoring.evaluate import evaluate_golden_ontology_policy_judge
+
+    cases = [c for c in load_golden_master() if c.case_id in ("C015", "C027")]
+    client = _FakeRedeemabilityLLM()
+
+    records = evaluate_golden_ontology_policy_judge(
+        cases,
+        contract_pages=22,
+        im_pages=32,
+        client=client,
+    )
+    by_id = {r.case_id: r for r in records}
+
+    assert by_id["C015"].final_status == FinalCheckStatus.SAME_AFTER_NORMALIZATION.value
+    assert by_id["C027"].final_status == FinalCheckStatus.DIFFERENT_AFTER_NORMALIZATION.value
+    assert len(client.calls) == 2
+
+
+class _FakeRedeemabilityLLM:
+    def __init__(self):
+        self.calls = []
+
+    def complete_json(self, *, system_prompt: str, user_prompt: str):
+        self.calls.append((system_prompt, user_prompt))
+        if "개방형" in user_prompt:
+            im = "yes"
+            code = "different_yes_no"
+        else:
+            im = "no"
+            code = "same_no"
+        return {
+            "field": "redemption_terms.is_redeemable",
+            "contract_redeemable": "no",
+            "im_redeemable": im,
+            "confidence": "high",
+            "reason_code": code,
+            "contract_evidence": "환매를 청구할 수 없다",
+            "im_evidence": "환매 가능 여부 문구",
+            "reason": "환매 가능 여부를 양쪽에서 독립적으로 분류했다.",
+        }

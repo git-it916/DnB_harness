@@ -12,6 +12,8 @@ from src.pipelines.llm_judge import (
     JudgeStatus,
     judge_needs_review,
     judge_prompt_for_input,
+    judge_redeemability,
+    resolve_redeemability_judgement,
 )
 from src.schemas.extraction import Citation
 
@@ -120,6 +122,77 @@ def test_judge_needs_review_rejects_status_outside_same_or_different():
             ],
             llm=llm,
         )
+
+
+def test_redeemability_judge_resolves_same_no_to_same():
+    llm = FakeJudgeLLM(
+        [
+            {
+                "field": "redemption_terms.is_redeemable",
+                "contract_redeemable": "no",
+                "im_redeemable": "no",
+                "confidence": "high",
+                "reason_code": "same_no",
+                "contract_evidence": "환매를 청구할 수 없다",
+                "im_evidence": "환매가 허용되지 않는 폐쇄형",
+                "reason": "양쪽 모두 만기 전 환매 불가를 말한다.",
+            }
+        ]
+    )
+    result = _cross_check_result(
+        field="redemption_terms.is_redeemable",
+        status=CrossCheckStatus.NEEDS_REVIEW,
+        contract_raw_text="수익자는 이 투자신탁 수익증권의 환매를 청구할 수 없다.",
+        im_raw_text="본 투자신탁은 만기일 이전에는 환매가 허용되지 않는 폐쇄형 투자신탁입니다.",
+    )
+
+    judgement = judge_redeemability(result, llm=llm)
+
+    assert judgement.contract_redeemable == "no"
+    assert judgement.im_redeemable == "no"
+    assert resolve_redeemability_judgement(judgement) == JudgeStatus.SAME
+
+
+def test_redeemability_judge_resolves_no_yes_to_different():
+    llm = FakeJudgeLLM(
+        [
+            {
+                "field": "redemption_terms.is_redeemable",
+                "contract_redeemable": "no",
+                "im_redeemable": "yes",
+                "confidence": "high",
+                "reason_code": "different_yes_no",
+                "contract_evidence": "환매를 청구할 수 없다",
+                "im_evidence": "환매가 허용되는 개방형",
+                "reason": "계약서는 환매 불가, IM은 환매 가능이다.",
+            }
+        ]
+    )
+    result = _cross_check_result(
+        field="redemption_terms.is_redeemable",
+        status=CrossCheckStatus.NEEDS_REVIEW,
+        contract_raw_text="수익자는 이 투자신탁 수익증권의 환매를 청구할 수 없다.",
+        im_raw_text="본 투자신탁은 만기일 이전에도 환매가 허용되는 개방형 투자신탁입니다.",
+    )
+
+    judgement = judge_redeemability(result, llm=llm)
+
+    assert resolve_redeemability_judgement(judgement) == JudgeStatus.DIFFERENT
+
+
+def test_redeemability_judge_low_confidence_stays_review():
+    judgement = {
+        "field": "redemption_terms.is_redeemable",
+        "contract_redeemable": "no",
+        "im_redeemable": "yes",
+        "confidence": "medium",
+        "reason_code": "conditional_unclear",
+        "contract_evidence": "환매 제한",
+        "im_evidence": "환매 제한",
+        "reason": "조건부 표현이다.",
+    }
+
+    assert resolve_redeemability_judgement(judgement) is None
 
 
 class FakeJudgeLLM:
