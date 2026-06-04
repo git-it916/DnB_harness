@@ -1,41 +1,41 @@
-# Ontology Policy Canonical Harness Implementation Plan
+# 온톨로지 정책 기반 정규형 하네스 구현 계획
 
-> **For agentic workers:** REQUIRED SUB-SKILL: Use superpowers:subagent-driven-development (recommended) or superpowers:executing-plans to implement this plan task-by-task. Steps use checkbox (`- [ ]`) syntax for tracking.
+> **Agentic worker용:** 필수 sub-skill: 이 계획을 task-by-task로 구현할 때 `superpowers:subagent-driven-development`(권장) 또는 `superpowers:executing-plans`를 사용한다. 단계는 추적을 위해 checkbox(`- [ ]`) 문법을 쓴다.
 
-**Goal:** Add `ontology_policy` and `ontology_policy_judge` scoring paths that use ontology field policy plus deterministic canonical comparison before limited LLM judge fallback.
+**목표:** 제한적 LLM judge fallback 전에 온톨로지 field policy와 결정론 canonical comparison을 사용하는 `ontology_policy`, `ontology_policy_judge` scoring path를 추가한다.
 
-**Architecture:** Keep existing `baseline`, `guard`, and `harness+norm` behavior intact. Add `ontology/field_policies.yaml` as executable field policy and a new `src/canonical/` package that converts extracted evidence into canonical values, compares them, and emits `CrossCheckResult`-compatible results. `ontology_policy_judge` reuses Claude judge only for non-decisive policy-allowed fields and never calls Claude normalization.
+**아키텍처:** 기존 `baseline`, `guard`, `harness+norm` 동작은 그대로 둔다. 실행 가능한 field policy로 `ontology/field_policies.yaml`을 추가하고, 추출된 evidence를 canonical value로 변환해 비교한 뒤 `CrossCheckResult` 호환 결과를 내는 새 `src/canonical/` 패키지를 추가한다. `ontology_policy_judge`는 policy가 허용한 non-decisive 필드에 대해서만 Claude judge를 재사용하며 Claude normalization은 호출하지 않는다.
 
-**Tech Stack:** Python 3.11, Pydantic models, PyYAML via existing dependencies if available or stdlib fallback not acceptable, Typer CLI, pytest.
-
----
-
-## File Structure
-
-- Create `ontology/field_policies.yaml`: executable policy for all 14 `ExtractionResult` fields.
-- Create `src/canonical/__init__.py`: public canonical package exports.
-- Create `src/canonical/types.py`: `FieldPolicy`, `CanonicalValue`, `CanonicalComparison`, enums.
-- Create `src/canonical/policy.py`: load and validate field policy coverage.
-- Create `src/canonical/parsers.py`: deterministic percent/date/duration/boolean/absence parsers.
-- Create `src/canonical/compare.py`: compare canonical values under a field policy.
-- Create `src/canonical/pipeline.py`: build policy-based `CrossCheckResult` records from `ExtractionResult`.
-- Modify `src/pipelines/cross_check.py`: add optional canonical explanation fields to `CrossCheckResult`.
-- Modify `src/scoring/evaluate.py`: add deterministic `ontology_policy` mode and judge fallback evaluator.
-- Modify `src/cli/main.py`: accept `--mode ontology_policy`.
-- Create `scripts/score_ontology_policy.py`: final scoring path with Claude judge fallback.
-- Create tests under `tests/`: focused canonical and integration coverage.
+**기술 스택:** Python 3.11, Pydantic models, 기존 dependency로 사용 가능한 경우 PyYAML(표준 라이브러리 fallback은 허용하지 않음), Typer CLI, pytest.
 
 ---
 
-### Task 1: Extend CrossCheckResult With Canonical Evidence
+## 파일 구조
 
-**Files:**
-- Modify: `src/pipelines/cross_check.py`
-- Test: `tests/test_cross_check.py`
+- `ontology/field_policies.yaml` 생성: 14개 `ExtractionResult` 필드 전체에 대한 실행 가능 policy.
+- `src/canonical/__init__.py` 생성: canonical 패키지 public export.
+- `src/canonical/types.py` 생성: `FieldPolicy`, `CanonicalValue`, `CanonicalComparison`, enum.
+- `src/canonical/policy.py` 생성: field policy coverage 로드 및 검증.
+- `src/canonical/parsers.py` 생성: percent/date/duration/boolean/absence 결정론 parser.
+- `src/canonical/compare.py` 생성: field policy에 따라 canonical value 비교.
+- `src/canonical/pipeline.py` 생성: `ExtractionResult`에서 policy 기반 `CrossCheckResult` record 생성.
+- `src/pipelines/cross_check.py` 수정: `CrossCheckResult`에 optional canonical explanation 필드 추가.
+- `src/scoring/evaluate.py` 수정: 결정론 `ontology_policy` mode와 judge fallback evaluator 추가.
+- `src/cli/main.py` 수정: `--mode ontology_policy` 허용.
+- `scripts/score_ontology_policy.py` 생성: Claude judge fallback을 포함한 최종 scoring path.
+- `tests/` 아래 테스트 생성: focused canonical 및 integration coverage.
 
-- [ ] **Step 1: Write failing serialization test**
+---
 
-Append to `tests/test_cross_check.py`:
+### 작업 1: CrossCheckResult에 Canonical Evidence 추가
+
+**파일:**
+- 수정: `src/pipelines/cross_check.py`
+- 테스트: `tests/test_cross_check.py`
+
+- [ ] **단계 1: 실패하는 serialization test 작성**
+
+`tests/test_cross_check.py`에 추가:
 
 ```python
 def test_cross_check_result_accepts_optional_canonical_metadata():
@@ -62,19 +62,19 @@ def test_cross_check_result_accepts_optional_canonical_metadata():
     assert dumped["canonical"]["contract"]["value"] == "0.3"
 ```
 
-- [ ] **Step 2: Run the failing test**
+- [ ] **단계 2: 실패하는 테스트 실행**
 
-Run:
+실행:
 
 ```bash
 python -m pytest tests/test_cross_check.py::test_cross_check_result_accepts_optional_canonical_metadata -q
 ```
 
-Expected: fail because `CrossCheckResult` forbids extra fields.
+예상: `CrossCheckResult`가 extra field를 금지하므로 실패.
 
-- [ ] **Step 3: Add optional fields**
+- [ ] **단계 3: optional field 추가**
 
-In `src/pipelines/cross_check.py`, update `CrossCheckResult`:
+`src/pipelines/cross_check.py`에서 `CrossCheckResult` 갱신:
 
 ```python
 class CrossCheckResult(StrictResultModel):
@@ -93,17 +93,17 @@ class CrossCheckResult(StrictResultModel):
     im: CrossCheckValue
 ```
 
-- [ ] **Step 4: Run test**
+- [ ] **단계 4: 테스트 실행**
 
-Run:
+실행:
 
 ```bash
 python -m pytest tests/test_cross_check.py::test_cross_check_result_accepts_optional_canonical_metadata -q
 ```
 
-Expected: pass.
+예상: 통과.
 
-- [ ] **Step 5: Commit**
+- [ ] **단계 5: 커밋**
 
 ```bash
 git add src/pipelines/cross_check.py tests/test_cross_check.py
@@ -112,18 +112,18 @@ git commit -m "feat: add canonical metadata to cross check results"
 
 ---
 
-### Task 2: Add Field Policy File And Loader
+### 작업 2: Field Policy 파일과 Loader 추가
 
-**Files:**
-- Create: `ontology/field_policies.yaml`
-- Create: `src/canonical/__init__.py`
-- Create: `src/canonical/types.py`
-- Create: `src/canonical/policy.py`
-- Test: `tests/test_canonical_policy.py`
+**파일:**
+- 생성: `ontology/field_policies.yaml`
+- 생성: `src/canonical/__init__.py`
+- 생성: `src/canonical/types.py`
+- 생성: `src/canonical/policy.py`
+- 테스트: `tests/test_canonical_policy.py`
 
-- [ ] **Step 1: Write failing policy tests**
+- [ ] **단계 1: 실패하는 policy test 작성**
 
-Create `tests/test_canonical_policy.py`:
+`tests/test_canonical_policy.py` 생성:
 
 ```python
 from src.canonical.policy import load_field_policies
@@ -169,19 +169,19 @@ def test_entity_policy_routes_to_judge_fallback():
     assert trustee.judge_allowed is True
 ```
 
-- [ ] **Step 2: Run failing tests**
+- [ ] **단계 2: 실패하는 테스트 실행**
 
-Run:
+실행:
 
 ```bash
 python -m pytest tests/test_canonical_policy.py -q
 ```
 
-Expected: fail because `src.canonical` does not exist.
+예상: `src.canonical`이 없어서 실패.
 
-- [ ] **Step 3: Create policy YAML**
+- [ ] **단계 3: policy YAML 생성**
 
-Create `ontology/field_policies.yaml`:
+`ontology/field_policies.yaml` 생성:
 
 ```yaml
 fund.name:
@@ -302,9 +302,9 @@ redemption_terms.redemption_fee:
   range: {min: 0, max: 100}
 ```
 
-- [ ] **Step 4: Create canonical types and loader**
+- [ ] **단계 4: canonical type과 loader 생성**
 
-Create `src/canonical/types.py`:
+`src/canonical/types.py` 생성:
 
 ```python
 from __future__ import annotations
@@ -351,7 +351,7 @@ class CanonicalComparison(BaseModel):
     judge_allowed: bool
 ```
 
-Create `src/canonical/policy.py`:
+`src/canonical/policy.py` 생성:
 
 ```python
 from __future__ import annotations
@@ -375,7 +375,7 @@ def load_field_policies(path: Path = DEFAULT_POLICY_PATH) -> dict[str, FieldPoli
     }
 ```
 
-Create `src/canonical/__init__.py`:
+`src/canonical/__init__.py` 생성:
 
 ```python
 """Ontology policy canonicalization package."""
@@ -391,17 +391,17 @@ __all__ = [
 ]
 ```
 
-- [ ] **Step 5: Run tests**
+- [ ] **단계 5: 테스트 실행**
 
-Run:
+실행:
 
 ```bash
 python -m pytest tests/test_canonical_policy.py -q
 ```
 
-Expected: pass.
+예상: 통과.
 
-- [ ] **Step 6: Commit**
+- [ ] **단계 6: 커밋**
 
 ```bash
 git add ontology/field_policies.yaml src/canonical tests/test_canonical_policy.py
@@ -410,15 +410,15 @@ git commit -m "feat: add ontology field policy loader"
 
 ---
 
-### Task 3: Implement Canonical Parsers
+### 작업 3: Canonical Parser 구현
 
-**Files:**
-- Create: `src/canonical/parsers.py`
-- Test: `tests/test_canonical_parsers.py`
+**파일:**
+- 생성: `src/canonical/parsers.py`
+- 테스트: `tests/test_canonical_parsers.py`
 
-- [ ] **Step 1: Write failing parser tests**
+- [ ] **단계 1: 실패하는 parser test 작성**
 
-Create `tests/test_canonical_parsers.py`:
+`tests/test_canonical_parsers.py` 생성:
 
 ```python
 from src.canonical.parsers import (
@@ -463,19 +463,19 @@ def test_parse_boolean_korean_expressions():
     assert parse_boolean("환매할 수 없음").value == "false"
 ```
 
-- [ ] **Step 2: Run failing tests**
+- [ ] **단계 2: 실패하는 테스트 실행**
 
-Run:
+실행:
 
 ```bash
 python -m pytest tests/test_canonical_parsers.py -q
 ```
 
-Expected: fail because parsers do not exist.
+예상: parser가 없어서 실패.
 
-- [ ] **Step 3: Implement parsers**
+- [ ] **단계 3: parser 구현**
 
-Create `src/canonical/parsers.py`:
+`src/canonical/parsers.py` 생성:
 
 ```python
 from __future__ import annotations
@@ -589,17 +589,17 @@ def parse_boolean(raw: str | None) -> CanonicalValue:
     return _non_decisive("boolean_unparseable", "No supported boolean expression was found.")
 ```
 
-- [ ] **Step 4: Run tests**
+- [ ] **단계 4: 테스트 실행**
 
-Run:
+실행:
 
 ```bash
 python -m pytest tests/test_canonical_parsers.py -q
 ```
 
-Expected: pass.
+예상: 통과.
 
-- [ ] **Step 5: Commit**
+- [ ] **단계 5: 커밋**
 
 ```bash
 git add src/canonical/parsers.py tests/test_canonical_parsers.py
@@ -608,15 +608,15 @@ git commit -m "feat: add deterministic canonical parsers"
 
 ---
 
-### Task 4: Implement Policy-Based Canonical Comparison
+### 작업 4: Policy 기반 Canonical Comparison 구현
 
-**Files:**
-- Create: `src/canonical/compare.py`
-- Test: `tests/test_canonical_compare.py`
+**파일:**
+- 생성: `src/canonical/compare.py`
+- 테스트: `tests/test_canonical_compare.py`
 
-- [ ] **Step 1: Write failing comparison tests**
+- [ ] **단계 1: 실패하는 comparison test 작성**
 
-Create `tests/test_canonical_compare.py`:
+`tests/test_canonical_compare.py` 생성:
 
 ```python
 from src.canonical.compare import compare_values
@@ -665,19 +665,19 @@ def test_boolean_values_compare_different():
     assert result.final_status == "different_after_normalization"
 ```
 
-- [ ] **Step 2: Run failing tests**
+- [ ] **단계 2: 실패하는 테스트 실행**
 
-Run:
+실행:
 
 ```bash
 python -m pytest tests/test_canonical_compare.py -q
 ```
 
-Expected: fail because `src.canonical.compare` does not exist.
+예상: `src.canonical.compare`가 없어서 실패.
 
-- [ ] **Step 3: Implement comparison**
+- [ ] **단계 3: comparison 구현**
 
-Create `src/canonical/compare.py`:
+`src/canonical/compare.py` 생성:
 
 ```python
 from __future__ import annotations
@@ -808,17 +808,17 @@ def _different_reason(compare_policy: str) -> str:
     return "canonical_difference"
 ```
 
-- [ ] **Step 4: Run comparison tests**
+- [ ] **단계 4: comparison 테스트 실행**
 
-Run:
+실행:
 
 ```bash
 python -m pytest tests/test_canonical_compare.py -q
 ```
 
-Expected: pass.
+예상: 통과.
 
-- [ ] **Step 5: Commit**
+- [ ] **단계 5: 커밋**
 
 ```bash
 git add src/canonical/compare.py tests/test_canonical_compare.py
@@ -827,16 +827,16 @@ git commit -m "feat: compare canonical values by field policy"
 
 ---
 
-### Task 5: Add Derived Maturity Date And Pipeline Bridge
+### 작업 5: Derived Maturity Date와 Pipeline Bridge 추가
 
-**Files:**
-- Create: `src/canonical/pipeline.py`
-- Modify: `src/canonical/compare.py`
-- Test: `tests/test_canonical_pipeline.py`
+**파일:**
+- 생성: `src/canonical/pipeline.py`
+- 수정: `src/canonical/compare.py`
+- 테스트: `tests/test_canonical_pipeline.py`
 
-- [ ] **Step 1: Write failing pipeline tests**
+- [ ] **단계 1: 실패하는 pipeline test 작성**
 
-Create `tests/test_canonical_pipeline.py` with helper extraction builder copied from `tests/test_cross_check.py` style:
+`tests/test_cross_check.py` 스타일의 helper extraction builder를 참고해 `tests/test_canonical_pipeline.py` 생성:
 
 ```python
 from src.canonical.pipeline import cross_check_with_policy
@@ -929,19 +929,19 @@ def test_policy_cross_check_maturity_standalone_duration_is_not_decisive():
     assert result.canonical_status == "non_decisive"
 ```
 
-- [ ] **Step 2: Run failing tests**
+- [ ] **단계 2: 실패하는 테스트 실행**
 
-Run:
+실행:
 
 ```bash
 python -m pytest tests/test_canonical_pipeline.py -q
 ```
 
-Expected: fail because pipeline does not exist or derived maturity is not implemented.
+예상: pipeline이 없거나 derived maturity가 구현되지 않아 실패.
 
-- [ ] **Step 3: Implement pipeline and derived date support**
+- [ ] **단계 3: pipeline 및 derived date 지원 구현**
 
-Create `src/canonical/pipeline.py`:
+`src/canonical/pipeline.py` 생성:
 
 ```python
 from __future__ import annotations
@@ -1140,17 +1140,17 @@ def _iter_comparable_fields(extraction: ExtractionResult) -> Iterable[tuple[str,
     yield "redemption_terms.redemption_fee", extraction.redemption_terms.redemption_fee
 ```
 
-- [ ] **Step 4: Run pipeline tests**
+- [ ] **단계 4: pipeline 테스트 실행**
 
-Run:
+실행:
 
 ```bash
 python -m pytest tests/test_canonical_pipeline.py -q
 ```
 
-Expected: pass.
+예상: 통과.
 
-- [ ] **Step 5: Commit**
+- [ ] **단계 5: 커밋**
 
 ```bash
 git add src/canonical/pipeline.py tests/test_canonical_pipeline.py
@@ -1159,17 +1159,17 @@ git commit -m "feat: add ontology policy cross check pipeline"
 
 ---
 
-### Task 6: Integrate Deterministic ontology_policy Score Mode
+### 작업 6: 결정론 ontology_policy Score Mode 통합
 
-**Files:**
-- Modify: `src/scoring/evaluate.py`
-- Modify: `src/cli/main.py`
-- Test: `tests/test_scoring.py`
-- Test: `tests/test_cli.py`
+**파일:**
+- 수정: `src/scoring/evaluate.py`
+- 수정: `src/cli/main.py`
+- 테스트: `tests/test_scoring.py`
+- 테스트: `tests/test_cli.py`
 
-- [ ] **Step 1: Write failing scoring test**
+- [ ] **단계 1: 실패하는 scoring test 작성**
 
-Append to `tests/test_scoring.py`:
+`tests/test_scoring.py`에 추가:
 
 ```python
 def test_evaluate_ontology_policy_mode_uses_canonical_comparison():
@@ -1183,25 +1183,25 @@ def test_evaluate_ontology_policy_mode_uses_canonical_comparison():
     assert any(r.final_reason_code and r.final_reason_code.startswith("canonical_") for r in records)
 ```
 
-- [ ] **Step 2: Run failing scoring test**
+- [ ] **단계 2: 실패하는 scoring 테스트 실행**
 
-Run:
+실행:
 
 ```bash
 python -m pytest tests/test_scoring.py::test_evaluate_ontology_policy_mode_uses_canonical_comparison -q
 ```
 
-Expected: fail because mode is unsupported.
+예상: mode가 지원되지 않아 실패.
 
-- [ ] **Step 3: Modify evaluator**
+- [ ] **단계 3: evaluator 수정**
 
-In `src/scoring/evaluate.py`, change:
+`src/scoring/evaluate.py`에서 다음을 변경:
 
 ```python
 SUPPORTED_MODES = ("ontology", "guard", "ontology_policy")
 ```
 
-Add import inside the `evaluate_golden` function after guard handling:
+guard handling 뒤 `evaluate_golden` 함수 내부에 import 추가:
 
 ```python
         if mode == "ontology_policy":
@@ -1238,11 +1238,11 @@ Add import inside the `evaluate_golden` function after guard handling:
             continue
 ```
 
-Keep existing `ontology` and `guard` behavior unchanged.
+기존 `ontology`와 `guard` 동작은 변경하지 않는다.
 
-- [ ] **Step 4: Add CLI test**
+- [ ] **단계 4: CLI test 추가**
 
-Append to `tests/test_cli.py`:
+`tests/test_cli.py`에 추가:
 
 ```python
 def test_cli_score_ontology_policy(tmp_path):
@@ -1257,17 +1257,17 @@ def test_cli_score_ontology_policy(tmp_path):
     assert report["n_cases"] == 30
 ```
 
-- [ ] **Step 5: Run tests**
+- [ ] **단계 5: 테스트 실행**
 
-Run:
+실행:
 
 ```bash
 python -m pytest tests/test_scoring.py::test_evaluate_ontology_policy_mode_uses_canonical_comparison tests/test_cli.py::test_cli_score_ontology_policy -q
 ```
 
-Expected: pass.
+예상: 통과.
 
-- [ ] **Step 6: Commit**
+- [ ] **단계 6: 커밋**
 
 ```bash
 git add src/scoring/evaluate.py src/cli/main.py tests/test_scoring.py tests/test_cli.py
@@ -1276,16 +1276,16 @@ git commit -m "feat: add deterministic ontology policy scoring mode"
 
 ---
 
-### Task 7: Add ontology_policy_judge Script
+### 작업 7: ontology_policy_judge Script 추가
 
-**Files:**
-- Modify: `src/scoring/evaluate.py`
-- Create: `scripts/score_ontology_policy.py`
-- Test: `tests/test_scoring.py`
+**파일:**
+- 수정: `src/scoring/evaluate.py`
+- 생성: `scripts/score_ontology_policy.py`
+- 테스트: `tests/test_scoring.py`
 
-- [ ] **Step 1: Write failing pure fallback test**
+- [ ] **단계 1: 실패하는 pure fallback test 작성**
 
-Append to `tests/test_scoring.py`:
+`tests/test_scoring.py`에 추가:
 
 ```python
 from src.pipelines.llm_judge import JudgeStatus
@@ -1307,19 +1307,19 @@ def test_resolve_policy_with_judge_only_updates_needs_review():
     )
 ```
 
-- [ ] **Step 2: Run failing test**
+- [ ] **단계 2: 실패하는 테스트 실행**
 
-Run:
+실행:
 
 ```bash
 python -m pytest tests/test_scoring.py::test_resolve_policy_with_judge_only_updates_needs_review -q
 ```
 
-Expected: fail because `resolve_policy_with_judge` does not exist.
+예상: `resolve_policy_with_judge`가 없어서 실패.
 
-- [ ] **Step 3: Implement judge evaluator**
+- [ ] **단계 3: judge evaluator 구현**
 
-Add to `src/scoring/evaluate.py`:
+`src/scoring/evaluate.py`에 추가:
 
 ```python
 def resolve_policy_with_judge(final_status: FinalCheckStatus, judge_status) -> FinalCheckStatus:
@@ -1332,7 +1332,7 @@ def resolve_policy_with_judge(final_status: FinalCheckStatus, judge_status) -> F
     return FinalCheckStatus.DIFFERENT_AFTER_NORMALIZATION
 ```
 
-Add `evaluate_golden_ontology_policy_judge`:
+`evaluate_golden_ontology_policy_judge` 추가:
 
 ```python
 def evaluate_golden_ontology_policy_judge(
@@ -1385,9 +1385,9 @@ def evaluate_golden_ontology_policy_judge(
     return records
 ```
 
-- [ ] **Step 4: Create script**
+- [ ] **단계 4: script 생성**
 
-Create `scripts/score_ontology_policy.py`:
+`scripts/score_ontology_policy.py` 생성:
 
 ```python
 """ontology_policy_judge scoring: canonical policy first, Claude judge fallback only."""
@@ -1457,17 +1457,17 @@ if __name__ == "__main__":
     sys.exit(main())
 ```
 
-- [ ] **Step 5: Run pure test**
+- [ ] **단계 5: pure 테스트 실행**
 
-Run:
+실행:
 
 ```bash
 python -m pytest tests/test_scoring.py::test_resolve_policy_with_judge_only_updates_needs_review -q
 ```
 
-Expected: pass.
+예상: 통과.
 
-- [ ] **Step 6: Commit**
+- [ ] **단계 6: 커밋**
 
 ```bash
 git add src/scoring/evaluate.py scripts/score_ontology_policy.py tests/test_scoring.py
@@ -1476,56 +1476,56 @@ git commit -m "feat: add ontology policy judge scoring path"
 
 ---
 
-### Task 8: Final Verification And Docs Update
+### 작업 8: 최종 검증 및 문서 갱신
 
-**Files:**
-- Modify: `docs/runbooks/reproduce-results.md`
-- Modify: `docs/STATUS.md`
-- Test: full suite and deterministic score command
+**파일:**
+- 수정: `docs/runbooks/reproduce-results.md`
+- 수정: `docs/STATUS.md`
+- 테스트: 전체 테스트 suite 및 결정론 score command
 
-- [ ] **Step 1: Run focused canonical tests**
+- [ ] **단계 1: focused canonical 테스트 실행**
 
-Run:
+실행:
 
 ```bash
 python -m pytest tests/test_canonical_policy.py tests/test_canonical_parsers.py tests/test_canonical_compare.py tests/test_canonical_pipeline.py -q
 ```
 
-Expected: all pass.
+예상: 모두 통과.
 
-- [ ] **Step 2: Run full suite**
+- [ ] **단계 2: 전체 테스트 suite 실행**
 
-Run:
+실행:
 
 ```bash
 python -m pytest -q
 ```
 
-Expected: all tests pass.
+예상: 모든 test 통과.
 
-- [ ] **Step 3: Run deterministic ontology_policy score**
+- [ ] **단계 3: 결정론 ontology_policy score 실행**
 
-Run:
+실행:
 
 ```bash
 python -m src.cli score --mode ontology_policy --out reports/scoring/score_ontology_policy.json
 ```
 
-Expected: command exits 0 and writes score JSON with `"mode": "ontology_policy"`.
+예상: command가 exit 0으로 종료되고 `"mode": "ontology_policy"`를 포함한 score JSON을 기록.
 
-- [ ] **Step 4: Optionally run Claude fallback score**
+- [ ] **단계 4: 선택적으로 Claude fallback score 실행**
 
-Run only when `.env` has `ANTHROPIC_API_KEY`:
+`.env`에 `ANTHROPIC_API_KEY`가 있을 때만 실행:
 
 ```bash
 python scripts/score_ontology_policy.py
 ```
 
-Expected: command exits 0 and writes `reports/scoring/score_ontology_policy_judge.json`.
+예상: command가 exit 0으로 종료되고 `reports/scoring/score_ontology_policy_judge.json`을 기록.
 
-- [ ] **Step 5: Update runbook**
+- [ ] **단계 5: runbook 갱신**
 
-In `docs/runbooks/reproduce-results.md`, add a subsection after current 3-condition comparison:
+`docs/runbooks/reproduce-results.md`에서 현재 3조건 비교 뒤에 subsection 추가:
 
 ```markdown
 ## 7. Ontology Policy 비교
@@ -1541,17 +1541,17 @@ python scripts/score_ontology_policy.py
 ```
 ```
 
-- [ ] **Step 6: Update status**
+- [ ] **단계 6: status 갱신**
 
-In `docs/STATUS.md`, add a brief next-work/current-work line:
+`docs/STATUS.md`에 짧은 next-work/current-work line 추가:
 
 ```markdown
 - ontology_policy 브랜치: field policy 기반 canonical comparison 설계/구현 중. 기존 3조건은 보존하고 `ontology_policy`/`ontology_policy_judge`를 추가 비교 조건으로 둔다.
 ```
 
-- [ ] **Step 7: Commit docs and generated score only if desired**
+- [ ] **단계 7: 필요한 경우에만 docs와 generated score commit**
 
-Commit docs and source changes. Do not commit generated score JSON unless the user explicitly wants report artifacts included.
+문서와 source 변경을 commit한다. 사용자가 report artifact 포함을 명시적으로 원하지 않는 한 generated score JSON은 commit하지 않는다.
 
 ```bash
 git add docs/runbooks/reproduce-results.md docs/STATUS.md
