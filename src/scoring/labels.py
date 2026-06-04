@@ -15,47 +15,47 @@ class GoldLabel(StrEnum):
     MISSING = "missing"
 
 
-# GOLDENSET.md §7 — 이 매핑이 바뀌면 모든 점수가 바뀐다.
-GOLD_TO_FINAL: dict[GoldLabel, frozenset[FinalCheckStatus]] = {
-    GoldLabel.MATCH: frozenset(
-        {FinalCheckStatus.EXACT_MATCH, FinalCheckStatus.SAME_AFTER_NORMALIZATION}
-    ),
-    GoldLabel.MISMATCH: frozenset(
-        {FinalCheckStatus.DIFFERENT_AFTER_NORMALIZATION, FinalCheckStatus.NEEDS_REVIEW}
-    ),
-    GoldLabel.MISSING: frozenset({FinalCheckStatus.MISSING_EVIDENCE}),
-}
+class PredictedLabel(StrEnum):
+    """하네스 예측 라벨. review 는 자동 확정이 아닌 사람 검토 큐다."""
 
-# 역매핑 (final_status -> gold-style 라벨). GOLD_TO_FINAL 에서 자동 생성.
-_FINAL_TO_GOLD: dict[FinalCheckStatus, GoldLabel] = {
-    final_status: gold_label
-    for gold_label, final_statuses in GOLD_TO_FINAL.items()
-    for final_status in final_statuses
+    MATCH = "match"
+    MISMATCH = "mismatch"
+    REVIEW = "review"
+    MISSING = "missing"
+
+
+# GOLDENSET.md §7 — 하네스 final_status 를 표시용 예측 라벨로 매핑한다.
+FINAL_TO_PREDICTED: dict[FinalCheckStatus, PredictedLabel] = {
+    FinalCheckStatus.EXACT_MATCH: PredictedLabel.MATCH,
+    FinalCheckStatus.SAME_AFTER_NORMALIZATION: PredictedLabel.MATCH,
+    FinalCheckStatus.DIFFERENT_AFTER_NORMALIZATION: PredictedLabel.MISMATCH,
+    FinalCheckStatus.NEEDS_REVIEW: PredictedLabel.REVIEW,
+    FinalCheckStatus.MISSING_EVIDENCE: PredictedLabel.MISSING,
 }
 
 # FinalCheckStatus 에 새 멤버가 추가되면 즉시 잡아낸다 (조용한 KeyError 방지).
-assert set(_FINAL_TO_GOLD) == set(FinalCheckStatus), (
-    "GOLD_TO_FINAL 매핑 누락: "
-    f"{set(FinalCheckStatus) - set(_FINAL_TO_GOLD)}"
+assert set(FINAL_TO_PREDICTED) == set(FinalCheckStatus), (
+    "FINAL_TO_PREDICTED 매핑 누락: "
+    f"{set(FinalCheckStatus) - set(FINAL_TO_PREDICTED)}"
 )
 
 
 def predicted_label(
     final_status: FinalCheckStatus | str, guard_caught: bool = False
-) -> GoldLabel:
-    """하네스 출력(final_status + 가드 결과) → 예측 gold-style 라벨.
+) -> PredictedLabel:
+    """하네스 출력(final_status + 가드 결과) → 예측 라벨.
 
     Args:
         final_status: cross_check 의 FinalCheckStatus (enum 또는 문자열).
         guard_caught: 해당 필드에 가드 reject 가 있었는가.
             True 이면 가드가 문제를 '잡은' 것이므로, 측이 null화되어
             final_status 가 missing_evidence 로 나와도 mismatch 로 본다
-            (재현율 우선 — GOLDENSET.md §7).
+            가드 reject 는 자동으로 잡은 불일치로 본다.
 
     Returns:
-        GoldLabel (match | mismatch | missing).
+        PredictedLabel (match | mismatch | review | missing).
     """
     if guard_caught:
-        return GoldLabel.MISMATCH
+        return PredictedLabel.MISMATCH
     status = FinalCheckStatus(final_status)
-    return _FINAL_TO_GOLD[status]
+    return FINAL_TO_PREDICTED[status]

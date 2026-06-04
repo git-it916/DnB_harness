@@ -193,27 +193,31 @@
 
 ```python
 # src/scoring/scorer.py 가 따라야 할 매핑
-GOLD_TO_FINAL = {
+FINAL_TO_PREDICTED = {
     "match":    {"exact_match", "same_after_normalization"},
-    "mismatch": {"different_after_normalization", "needs_review"},
+    "mismatch": {"different_after_normalization"},
+    "review":   {"needs_review"},
     "missing":  {"missing_evidence"},
 }
 ```
 
-> `needs_review` 가 mismatch 에 포함되는 이유: LLM judge 가 결판 못 내고 사람에게 넘긴 경우도 "자동으로는 일치라고 못 본 케이스" 이므로 보수적으로 불일치로 카운트 → 재현율 우선 원칙([ARCHITECTURE §5](./ARCHITECTURE.md)).
+> `needs_review` 는 불일치 확정이 아니라 "모르겠다/사람 검토 필요"로 분리한다. 가드가 reject 한 필드는 `missing_evidence` 로 null화되어도 가드가 문제를 확정적으로 잡은 것이므로 `mismatch` 예측으로 본다.
 
 ### 점수 정의
 
 ```
 TP = (gold=mismatch) ∩ (pred=mismatch)
 FP = (gold=match)    ∩ (pred=mismatch)
-FN = (gold=mismatch) ∩ (pred=match)
+FN = (gold=mismatch) ∩ (pred=match | review | missing)
 TN = (gold=match)    ∩ (pred=match)
+REVIEW = (gold=match) ∩ (pred=review)
 # missing 은 분모·분자 모두 제외
 
 Precision = TP / (TP+FP)
 Recall    = TP / (TP+FN)   ← 핵심 지표
 F1        = 2PR / (P+R)
+review_count = pred=review 전체 개수
+review_rate  = review_count / 전체 케이스 수
 ```
 
 ---

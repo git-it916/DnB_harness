@@ -10,7 +10,7 @@ from collections import defaultdict
 from dataclasses import dataclass
 from typing import Callable, Sequence
 
-from src.scoring.labels import GoldLabel
+from src.scoring.labels import GoldLabel, PredictedLabel
 
 
 @dataclass(frozen=True)
@@ -23,8 +23,8 @@ class Scored:
     mutation_type: str
     harness_signal: str
     gold: GoldLabel
-    pred: GoldLabel
-    bucket: str  # "TP" | "FP" | "FN" | "TN" | "MISSING"
+    pred: PredictedLabel
+    bucket: str  # "TP" | "FP" | "FN" | "TN" | "REVIEW" | "MISSING"
     correct: bool
 
 
@@ -34,6 +34,7 @@ class Confusion:
     fp: int = 0
     fn: int = 0
     tn: int = 0
+    review: int = 0
     missing: int = 0
 
     @property
@@ -53,12 +54,12 @@ class Confusion:
 
     @property
     def accuracy(self) -> float:
-        denom = self.tp + self.tn + self.fp + self.fn
+        denom = self.tp + self.tn + self.fp + self.fn + self.review
         return (self.tp + self.tn) / denom if denom else 0.0
 
 
 def confusion_of(scored: Sequence[Scored]) -> Confusion:
-    counts = {"TP": 0, "FP": 0, "FN": 0, "TN": 0, "MISSING": 0}
+    counts = {"TP": 0, "FP": 0, "FN": 0, "TN": 0, "REVIEW": 0, "MISSING": 0}
     for item in scored:
         counts[item.bucket] += 1
     return Confusion(
@@ -66,6 +67,7 @@ def confusion_of(scored: Sequence[Scored]) -> Confusion:
         fp=counts["FP"],
         fn=counts["FN"],
         tn=counts["TN"],
+        review=counts["REVIEW"],
         missing=counts["MISSING"],
     )
 

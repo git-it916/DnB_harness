@@ -6,14 +6,15 @@
 """
 
 from src.scoring.golden import GoldenCase, load_golden_master
-from src.scoring.labels import GOLD_TO_FINAL, GoldLabel, predicted_label
+from src.scoring.labels import FINAL_TO_PREDICTED, GoldLabel, PredictedLabel, predicted_label
 from src.scoring.scorer import CaseRecord, score_cases
 
 __all__ = [
     "GoldenCase",
     "load_golden_master",
-    "GOLD_TO_FINAL",
+    "FINAL_TO_PREDICTED",
     "GoldLabel",
+    "PredictedLabel",
     "predicted_label",
     "CaseRecord",
     "score_cases",

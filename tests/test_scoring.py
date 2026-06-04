@@ -11,25 +11,25 @@ from src.pipelines.cross_check import FinalCheckStatus
 from src.pipelines.llm_judge import JudgeStatus
 from src.scoring.evaluate import evaluate_golden, resolve_policy_with_judge, resolve_with_judge
 from src.scoring.golden import GoldenCase, load_golden_master
-from src.scoring.labels import GoldLabel, predicted_label
+from src.scoring.labels import GoldLabel, PredictedLabel, predicted_label
 from src.scoring.scorer import CaseRecord, score_cases
 
 
 # ── labels ────────────────────────────────────────────────────────────────
 
 def test_predicted_label_maps_each_final_status():
-    assert predicted_label(FinalCheckStatus.EXACT_MATCH) == GoldLabel.MATCH
-    assert predicted_label(FinalCheckStatus.SAME_AFTER_NORMALIZATION) == GoldLabel.MATCH
-    assert predicted_label(FinalCheckStatus.DIFFERENT_AFTER_NORMALIZATION) == GoldLabel.MISMATCH
-    assert predicted_label(FinalCheckStatus.NEEDS_REVIEW) == GoldLabel.MISMATCH
-    assert predicted_label(FinalCheckStatus.MISSING_EVIDENCE) == GoldLabel.MISSING
+    assert predicted_label(FinalCheckStatus.EXACT_MATCH) == PredictedLabel.MATCH
+    assert predicted_label(FinalCheckStatus.SAME_AFTER_NORMALIZATION) == PredictedLabel.MATCH
+    assert predicted_label(FinalCheckStatus.DIFFERENT_AFTER_NORMALIZATION) == PredictedLabel.MISMATCH
+    assert predicted_label(FinalCheckStatus.NEEDS_REVIEW) == PredictedLabel.REVIEW
+    assert predicted_label(FinalCheckStatus.MISSING_EVIDENCE) == PredictedLabel.MISSING
 
 
 def test_predicted_label_guard_catch_overrides_to_mismatch():
     # 가드가 reject -> 측이 null화되어 missing_evidence 가 나와도 '잡은' 것이므로 mismatch
     assert (
         predicted_label(FinalCheckStatus.MISSING_EVIDENCE, guard_caught=True)
-        == GoldLabel.MISMATCH
+        == PredictedLabel.MISMATCH
     )
 
 
@@ -78,12 +78,12 @@ def _rec(case_id, gold, final, *, guards=None, difficulty="medium",
 def _synthetic_records() -> list[CaseRecord]:
     return [
         _rec("R1", "mismatch", FinalCheckStatus.DIFFERENT_AFTER_NORMALIZATION),  # TP
-        _rec("R2", "mismatch", FinalCheckStatus.NEEDS_REVIEW),                   # TP
+        _rec("R2", "mismatch", FinalCheckStatus.NEEDS_REVIEW),                   # FN + review
         _rec("R3", "mismatch", FinalCheckStatus.EXACT_MATCH),                    # FN
         _rec("R4", "mismatch", FinalCheckStatus.MISSING_EVIDENCE,
              guards=["G2:page_out_of_range"]),                                   # TP (guard)
         _rec("R5", "match", FinalCheckStatus.EXACT_MATCH),                       # TN
-        _rec("R6", "match", FinalCheckStatus.NEEDS_REVIEW),                      # FP
+        _rec("R6", "match", FinalCheckStatus.NEEDS_REVIEW),                      # review
         _rec("R7", "missing", FinalCheckStatus.MISSING_EVIDENCE),               # excluded
         _rec("R8", "missing", FinalCheckStatus.EXACT_MATCH),                    # excluded + 환각
     ]
@@ -92,15 +92,18 @@ def _synthetic_records() -> list[CaseRecord]:
 def test_score_cases_confusion_matrix():
     report = score_cases(_synthetic_records(), mode="guard")
     c = report["confusion"]
-    assert (c["tp"], c["fp"], c["fn"], c["tn"], c["missing_excluded"]) == (3, 1, 1, 1, 2)
+    assert (c["tp"], c["fp"], c["fn"], c["tn"], c["review"], c["missing_excluded"]) == (2, 0, 2, 1, 1, 2)
 
 
 def test_score_cases_metrics():
-    m = score_cases(_synthetic_records(), mode="guard")["metrics"]
-    assert math.isclose(m["precision"], 0.75, abs_tol=1e-6)
-    assert math.isclose(m["recall"], 0.75, abs_tol=1e-6)
-    assert math.isclose(m["f1"], 0.75, abs_tol=1e-6)
-    assert math.isclose(m["accuracy"], round(4 / 6, 4), abs_tol=1e-9)
+    report = score_cases(_synthetic_records(), mode="guard")
+    m = report["metrics"]
+    assert math.isclose(m["precision"], 1.0, abs_tol=1e-6)
+    assert math.isclose(m["recall"], 0.5, abs_tol=1e-6)
+    assert math.isclose(m["f1"], round(2 / 3, 4), abs_tol=1e-6)
+    assert math.isclose(m["accuracy"], 0.5, abs_tol=1e-9)
+    assert report["review"]["count"] == 2
+    assert math.isclose(report["review"]["rate"], 0.25, abs_tol=1e-6)
     # 환각률: gold=missing 인데 pred!=missing 인 비율 = 1/2
     assert math.isclose(m["hallucination_rate"], 0.5, abs_tol=1e-6)
 
@@ -117,6 +120,9 @@ def test_score_cases_envelope_and_cases():
     r4 = next(x for x in report["cases"] if x["case_id"] == "R4")
     assert r4["predicted_label"] == "mismatch"
     assert r4["correct"] is True
+    r6 = next(x for x in report["cases"] if x["case_id"] == "R6")
+    assert r6["predicted_label"] == "review"
+    assert r6["correct"] is False
     assert "by_difficulty" in report and "by_mutation" in report and "by_signal" in report
 
 

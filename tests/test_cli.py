@@ -30,6 +30,7 @@ def _fake_report(mode: str, recall: float) -> dict:
             "hallucination_rate": 0.0,
         },
         "confusion": {"tp": 1, "fp": 1, "fn": 1, "tn": 1, "missing_excluded": 4},
+        "review": {"count": 0, "rate": 0.0},
         "by_field": {},
         "by_difficulty": {
             "easy": {"n": 5, "accuracy": 1.0, "recall": 1.0},
@@ -75,7 +76,8 @@ def test_cli_score_writes_score_json(tmp_path: Path):
     report = json.loads(out.read_text(encoding="utf-8"))
     assert report["mode"] == "ontology"
     assert report["n_cases"] == 30
-    assert report["metrics"]["recall"] == 1.0  # 결정적: 변조 전부 탐지
+    assert report["review"]["count"] > 0
+    assert report["metrics"]["recall"] < 1.0
 
 
 def test_cli_score_rejects_unsupported_mode(tmp_path: Path):

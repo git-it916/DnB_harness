@@ -32,17 +32,17 @@ python -m src.cli score --mode ontology --out reports/scoring/score_ontology.jso
 python -m src.cli score --mode guard    --out reports/scoring/score_guard.json
 ```
 
-실측 출력:
+실측 출력(`needs_review`를 `review`로 분리한 현재 채점 기준):
 
 ```
-[ontology] P=0.462 R=1.000 F1=0.632 환각=0.000  ->  reports/scoring/score_ontology.json
-[guard]    P=0.462 R=1.000 F1=0.632 환각=0.000  ->  reports/scoring/score_guard.json
+[ontology] P=0.000 R=0.000 F1=0.000 모르겠다=26 환각=0.000  ->  reports/scoring/score_ontology.json
+[guard]    P=1.000 R=0.167 F1=0.286 모르겠다=24 환각=0.000  ->  reports/scoring/score_guard.json
 ```
 
 - `--contract-pages` / `--im-pages` 는 G2 출처 범위 기준(기본 22 / 32, 실제 PDF 페이지 수).
 - `by_signal` 에서 `g2_citation` · `g3_constraint+shacl` 의 `hit_rate=1.0` → C029(가짜 인용)·C030(SHACL 위반)을 가드가 정확히 잡는다.
 
-> **해석:** ontology/guard 가 동일 지표인 이유 — 결정적 cross_check 는 raw_text 가 다르면 전부 `needs_review`(=mismatch)로 본다. 그래서 변조는 전부 잡지만(R=1.0), 정규화가 필요한 정상 케이스(천분율·약칭·의미동등)를 mismatch 로 오탐해 정밀도가 0.46 에 머문다. 정밀도 개선은 normalization/judge(Claude) 단계의 몫이다 (§3 참조).
+> **해석:** `needs_review`는 더 이상 mismatch 확정이 아니라 `review`(모르겠다)로 분리한다. 따라서 ontology/guard 단독은 자동 확정이 적고 review 큐가 크다. 정규화·canonical policy·judge 단계는 이 review를 줄여 자동 확정 범위를 늘리는 역할이다.
 
 ## 2. 비교 리포트
 
@@ -200,9 +200,16 @@ python scripts/score_ontology_policy.py
 
 `ontology_policy_judge`는 canonical이 확정하지 못하고 field policy가 허용한 필드에만 Claude judge fallback을 적용한다. Claude normalization은 사용하지 않는다. 이 경로는 C021 같은 보수 단위 자릿수 함정을 LLM judge에 맡기기 전에 결정론 canonical comparison으로 먼저 확정하기 위한 추가 비교 조건이다.
 
+실측(`needs_review`를 `review`로 분리한 현재 채점 기준):
+
+| 조건 | Precision | Recall | F1 | 모르겠다 |
+|---|---:|---:|---:|---:|
+| ontology_policy | 1.000 | 0.583 | 0.737 | 13/30 |
+| ontology_policy_judge | 0.786 | 0.917 | 0.846 | 2/30 |
+
 ## 재현성 규칙
 
 - 같은 입력 PDF(`database/raw_data/`)와 같은 골든셋(`tests/golden/golden_master.csv`)을 쓴다.
 - seed · model id · 토큰 · timestamp 는 `manifest.json` 에 남는다.
 - 자동 생성 산출물(`reports/scoring/`, `database/gemma4_harness/`)은 기본적으로 커밋하지 않는다.
-- 채점 매핑(`GOLD_TO_FINAL`)이 바뀌면 모든 점수가 바뀐다 — `docs/GOLDENSET.md §7` 을 단일 진실 소스로 본다.
+- 채점 매핑(`FINAL_TO_PREDICTED`)이 바뀌면 모든 점수가 바뀐다 — `docs/GOLDENSET.md §7` 을 단일 진실 소스로 본다.

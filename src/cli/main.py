@@ -58,9 +58,10 @@ def score(
     report = score_cases(records, mode=mode, golden_version="v0.1", run_id=run_id)
     _write_json(out, report)
     m = report["metrics"]
+    review = report.get("review", {})
     typer.echo(
         f"[{mode}] P={m['precision']:.3f} R={m['recall']:.3f} F1={m['f1']:.3f} "
-        f"환각={m['hallucination_rate']:.3f}  ->  {out}"
+        f"모르겠다={review.get('count', 0)} 환각={m['hallucination_rate']:.3f}  ->  {out}"
     )
 
 

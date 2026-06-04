@@ -1,15 +1,15 @@
 # Project Status
 
-최종 갱신: 2026-06-03
+최종 갱신: 2026-06-04
 
-현재 단계: 검증 엔진 + 평가/증명 레이어 구현 완료, **3조건(non-harness/harness/harness+norm) 비교 실측 완료(잠정 골든)**. 추출·온톨로지·가드에 더해 채점(`src/scoring`)·CLI(`src/cli`)·하네스 러너(`src/harness`)·통계(`src/stats`)가 동작한다. `ontology_policy` 결정론 canonical comparison 경로가 추가되었고, `ontology_policy_judge`는 Claude normalization 없이 policy 허용 필드에만 judge fallback을 적용한다. 다음 병목은 골든셋 freeze 와 ontology_policy_judge 실측 비교.
+현재 단계: 검증 엔진 + 평가/증명 레이어 구현 완료, **3조건(non-harness/harness/harness+norm) 비교 실측 완료(잠정 골든)**. 추출·온톨로지·가드에 더해 채점(`src/scoring`)·CLI(`src/cli`)·하네스 러너(`src/harness`)·통계(`src/stats`)가 동작한다. `needs_review`는 불일치 확정이 아니라 `review`(모르겠다)로 분리되었고, `ontology_policy_judge` 실측까지 완료됐다. 다음 병목은 골든셋 freeze 와 review 케이스 축소.
 
 ## 지금 시작할 곳
 
 1. 골든셋 freeze: `tests/golden/labeler_v1_rina.csv` 수집 → κ 합의 → `golden_master.csv` 동결.
-2. ontology_policy_judge 실측: `python scripts/score_ontology_policy.py` 실행 후 harness+norm 대비 C021 및 의미동등 케이스 성능 비교.
+2. review 케이스 축소: `ontology_policy_judge`에서 남은 review 2건(C015/C027) 원인 분석.
 3. 정규화/judge 의 의미동등 오탐 4건(C002/C006/C007/C018) 프롬프트 개선.
-4. `GOLDENSET.md §7` FN/TN 정의에 `pred=missing` 포함 비준 (PM).
+4. `GOLDENSET.md §7`의 `review` 분리 채점 정의 비준 (PM).
 
 ## 모듈 상태
 
@@ -35,21 +35,22 @@
 | W2 점수 리포트 | `score.json` 산출 | 완료 |
 | W2 골든셋 freeze | 30문항 검수와 κ 합의 | 미완료 |
 | W3 3조건 실험 | baseline/ontology/guard 비교 실행 | 완료 (잠정 골든) — non-harness/harness/harness+norm 실측, `runbooks/reproduce-results.md §6` |
-| Ontology policy 비교 | field policy canonical comparison + 제한적 judge fallback | 구현 완료, judge 실측 대기 — `runbooks/reproduce-results.md §7` |
+| Ontology policy 비교 | field policy canonical comparison + 제한적 judge fallback | 구현/실측 완료 — `runbooks/reproduce-results.md §7` |
 
 ## 막힌 것
 
 | 항목 | 영향 | 필요 결정/작업 |
 |---|---|---|
 | 골든셋 freeze 미완 | 발표용 통계가 잠정값 | 라벨러 검수 + κ ≥ 0.7 합의 |
-| ontology_policy_judge 실측 미완 | 새 policy 경로가 harness+norm 대비 얼마나 개선되는지 미확정 | `ANTHROPIC_API_KEY` 환경에서 `scripts/score_ontology_policy.py` 실행 후 비교 |
+| review 2건 잔존 | 자동 확정하지 못한 케이스가 남아 운영 검토 큐 발생 | C015/C027 분석 후 policy/parser 또는 judge prompt 보강 |
 
 ## 검증 현황 (참고)
 
 - 테스트: `pytest` **108 passed** (canonical policy/parser/compare/pipeline 및 ontology_policy scoring 경로 포함).
 - 라이브 풀런: `gemma4:31b` guard 모드 174s/24,168토큰, shacl_conforms=True (`database/gemma4_harness/`).
 - 3조건 비교(잠정 골든): ① non-harness F1=0.762(R0.667) · ② harness F1=0.632(R1.000) · ③ harness+norm **F1=0.815**(R0.917). McNemar ①vs② p=0.049.
-- 결정론 ontology_policy: P=0.600 · R=1.000 · F1=0.750 (`python -m src.cli score --mode ontology_policy`).
+- 결정론 ontology_policy: P=1.000 · R=0.583 · F1=0.737 · review=13/30 (`python -m src.cli score --mode ontology_policy`).
+- ontology_policy_judge: P=0.786 · R=0.917 · F1=0.846 · review=2/30 (`python scripts/score_ontology_policy.py`).
 
 ## 문서 운영 원칙
 
