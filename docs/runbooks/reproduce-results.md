@@ -205,9 +205,10 @@ python scripts/score_ontology_policy.py
 | 조건 | Precision | Recall | F1 | 모르겠다 |
 |---|---:|---:|---:|---:|
 | ontology_policy | 1.000 | 0.583 | 0.737 | 13/30 |
-| ontology_policy_judge | 0.800 | 1.000 | 0.889 | 0/30 |
+| ontology_policy_judge | 0.923 | 1.000 | 0.960 | 0/30 |
 
 `redemption_terms.is_redeemable`은 generic same/different judge 대신 전용 LLM classifier를 사용한다. LLM이 계약서/IM 각각을 `yes|no|conditional|unknown`으로 독립 분류하고, 코드가 `yes/no` 조합만 최종 match/mismatch로 확정한다. `conditional`, `unknown`, 또는 낮은 confidence는 review로 남긴다.
+`fund.maturity_date`는 추출된 설정일을 support context로 받아 절대일자/기간 표현을 ISO 만기일로 구조화하고, `redemption_terms.redemption_fee`는 양쪽을 같은 수수료 적용 상태 enum으로 독립 분류한 뒤 코드가 최종 비교한다.
 
 ## 재현성 규칙
 

@@ -245,6 +245,32 @@ def test_ontology_policy_judge_uses_redeemability_classifier_for_boolean_field()
     assert len(client.calls) == 2
 
 
+def test_ontology_policy_judge_uses_field_classifiers_for_maturity_and_redemption_fee():
+    from src.scoring.evaluate import evaluate_golden_ontology_policy_judge
+
+    cases = [
+        c
+        for c in load_golden_master()
+        if c.case_id in ("C004", "C006", "C018", "C023")
+    ]
+    client = _FakeFieldClassifierLLM()
+
+    records = evaluate_golden_ontology_policy_judge(
+        cases,
+        contract_pages=22,
+        im_pages=32,
+        client=client,
+    )
+    by_id = {r.case_id: r for r in records}
+
+    assert by_id["C006"].final_status == FinalCheckStatus.SAME_AFTER_NORMALIZATION.value
+    assert by_id["C018"].final_status == FinalCheckStatus.SAME_AFTER_NORMALIZATION.value
+    maturity_calls = [call for call in client.calls if '"field": "fund.maturity_date"' in call[1]]
+    assert maturity_calls
+    assert "2025-07-22" in maturity_calls[0][1]
+    assert "2025-07-29" not in maturity_calls[0][1]
+
+
 class _FakeRedeemabilityLLM:
     def __init__(self):
         self.calls = []
@@ -266,4 +292,43 @@ class _FakeRedeemabilityLLM:
             "contract_evidence": "환매를 청구할 수 없다",
             "im_evidence": "환매 가능 여부 문구",
             "reason": "환매 가능 여부를 양쪽에서 독립적으로 분류했다.",
+        }
+
+
+class _FakeFieldClassifierLLM:
+    def __init__(self):
+        self.calls = []
+
+    def complete_json(self, *, system_prompt: str, user_prompt: str):
+        self.calls.append((system_prompt, user_prompt))
+        if '"field": "fund.maturity_date"' in user_prompt:
+            return {
+                "field": "fund.maturity_date",
+                "contract_maturity_date": "2027-07-22",
+                "im_maturity_date": "2027-07-22",
+                "contract_basis": "absolute_date",
+                "im_basis": "derived_from_inception_duration",
+                "confidence": "high",
+                "reason_code": "same_derived_date",
+                "contract_evidence": "2027 년 7 월 22 일까지",
+                "im_evidence": "펀드만기 2년",
+                "reason": "설정일 추출값을 기준으로 기간 표현을 날짜로 환산했다.",
+            }
+        if '"field": "redemption_terms.redemption_fee"' in user_prompt:
+            return {
+                "field": "redemption_terms.redemption_fee",
+                "contract_fee_status": "no_fee",
+                "im_fee_status": "not_applicable_no_redemption",
+                "contract_fee_value": None,
+                "im_fee_value": None,
+                "confidence": "high",
+                "reason_code": "same_no_fee_na",
+                "contract_evidence": "해당사항 없음",
+                "im_evidence": "환매가 불가능한 폐쇄형",
+                "reason": "환매수수료 적용 또는 부담이 없다.",
+            }
+        return {
+            "field": "fund.inception_date",
+            "reason": "지원 필드는 judge 대상이 아니다.",
+            "status": "same",
         }

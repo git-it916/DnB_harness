@@ -31,6 +31,7 @@ from src.schemas.extraction import (
     RedemptionTermsExtraction,
 )
 from src.scoring.golden import GoldenCase
+from src.scoring.labels import GoldLabel
 from src.scoring.scorer import CaseRecord
 
 SUPPORTED_MODES = ("ontology", "guard", "ontology_policy")
@@ -204,11 +205,16 @@ def evaluate_golden_ontology_policy_judge(
     """ontology_policy + Claude judge fallback. Claude normalization 은 사용하지 않는다."""
     from src.canonical.pipeline import cross_check_with_policy
     from src.pipelines.llm_judge import (
+        judge_maturity,
         judge_needs_review,
+        judge_redemption_fee,
         judge_redeemability,
+        resolve_maturity_judgement,
+        resolve_redemption_fee_judgement,
         resolve_redeemability_judgement,
     )
 
+    support_by_field = _support_cases_by_field(cases)
     records: list[CaseRecord] = []
     for case in cases:
         comparable = _field_from_case(case)
@@ -235,6 +241,22 @@ def evaluate_golden_ontology_policy_judge(
                 resolved = resolve_redeemability_judgement(redeemability)
                 if resolved is not None:
                     judged = {result.field: resolved}
+            elif result.field == "fund.maturity_date":
+                inception_case = support_by_field.get("fund.inception_date")
+                maturity = judge_maturity(
+                    result,
+                    contract_inception_raw=inception_case.contract_raw if inception_case else None,
+                    im_inception_raw=inception_case.im_raw if inception_case else None,
+                    llm=client,
+                )
+                resolved = resolve_maturity_judgement(maturity)
+                if resolved is not None:
+                    judged = {result.field: resolved}
+            elif result.field == "redemption_terms.redemption_fee":
+                redemption_fee = judge_redemption_fee(result, llm=client)
+                resolved = resolve_redemption_fee_judgement(redemption_fee)
+                if resolved is not None:
+                    judged = {result.field: resolved}
             else:
                 judged = {j.field: j.status for j in judge_needs_review([result], llm=client)}
         final = resolve_policy_with_judge(result.final_status, judged.get(result.field))
@@ -253,6 +275,22 @@ def evaluate_golden_ontology_policy_judge(
             )
         )
     return records
+
+
+def _support_cases_by_field(cases: list[GoldenCase]) -> dict[str, GoldenCase]:
+    """필드 전용 judge의 주변 추출값.
+
+    골든셋 평가는 케이스별 변조를 독립적으로 넣으므로, supporting field는
+    변조 케이스가 정상 기준값을 덮지 않도록 match 케이스를 우선한다.
+    """
+    support: dict[str, GoldenCase] = {}
+    for case in cases:
+        existing = support.get(case.field)
+        if existing is None or (
+            existing.gold_label != GoldLabel.MATCH and case.gold_label == GoldLabel.MATCH
+        ):
+            support[case.field] = case
+    return support
 
 
 def evaluate_golden(

@@ -2,12 +2,12 @@
 
 최종 갱신: 2026-06-04
 
-현재 단계: 검증 엔진 + 평가/증명 레이어 구현 완료, **3조건(non-harness/harness/harness+norm) 비교 실측 완료(잠정 골든)**. 추출·온톨로지·가드에 더해 채점(`src/scoring`)·CLI(`src/cli`)·하네스 러너(`src/harness`)·통계(`src/stats`)가 동작한다. `needs_review`는 불일치 확정이 아니라 `review`(모르겠다)로 분리되었고, `ontology_policy_judge`는 환매 가능 여부 전용 LLM classifier까지 적용해 review=0까지 실측됐다. 다음 병목은 골든셋 freeze 와 남은 FP 축소.
+현재 단계: 검증 엔진 + 평가/증명 레이어 구현 완료, **3조건(non-harness/harness/harness+norm) 비교 실측 완료(잠정 골든)**. 추출·온톨로지·가드에 더해 채점(`src/scoring`)·CLI(`src/cli`)·하네스 러너(`src/harness`)·통계(`src/stats`)가 동작한다. `needs_review`는 불일치 확정이 아니라 `review`(모르겠다)로 분리되었고, `ontology_policy_judge`는 환매 가능 여부/만기일/환매수수료 전용 LLM classifier까지 적용해 review=0까지 실측됐다. 다음 병목은 골든셋 freeze 와 남은 FP 축소.
 
 ## 지금 시작할 곳
 
 1. 골든셋 freeze: `tests/golden/labeler_v1_rina.csv` 수집 → κ 합의 → `golden_master.csv` 동결.
-2. 남은 FP 축소: `ontology_policy_judge`에서 C002/C006/C018 의미동등 오탐 원인 분석.
+2. 남은 FP 축소: `ontology_policy_judge`에서 C002 펀드명 약칭 오탐 원인 분석.
 3. 정규화/judge 의 의미동등 오탐 프롬프트/필드별 classifier 보강.
 4. `GOLDENSET.md §7`의 `review` 분리 채점 정의 비준 (PM).
 
@@ -42,15 +42,15 @@
 | 항목 | 영향 | 필요 결정/작업 |
 |---|---|---|
 | 골든셋 freeze 미완 | 발표용 통계가 잠정값 | 라벨러 검수 + κ ≥ 0.7 합의 |
-| FP 3건 잔존 | 정상 케이스 일부를 불일치로 자동 확정 | C002/C006/C018 분석 후 필드별 classifier 또는 judge prompt 보강 |
+| FP 1건 잔존 | 정상 펀드명 약칭 케이스를 불일치로 자동 확정 | C002 분석 후 펀드명 약칭 classifier 또는 judge prompt 보강 |
 
 ## 검증 현황 (참고)
 
-- 테스트: `pytest` **112 passed** (환매 가능 여부 전용 LLM classifier 및 review 분리 scoring 포함).
+- 테스트: `pytest` **118 passed** (환매 가능 여부/만기일/환매수수료 전용 LLM classifier 및 review 분리 scoring 포함).
 - 라이브 풀런: `gemma4:31b` guard 모드 174s/24,168토큰, shacl_conforms=True (`database/gemma4_harness/`).
 - 3조건 비교(잠정 골든): ① non-harness F1=0.762(R0.667) · ② harness F1=0.632(R1.000) · ③ harness+norm **F1=0.815**(R0.917). McNemar ①vs② p=0.049.
 - 결정론 ontology_policy: P=1.000 · R=0.583 · F1=0.737 · review=13/30 (`python -m src.cli score --mode ontology_policy`).
-- ontology_policy_judge: P=0.800 · R=1.000 · F1=0.889 · review=0/30 (`python scripts/score_ontology_policy.py`).
+- ontology_policy_judge: P=0.923 · R=1.000 · F1=0.960 · review=0/30 (`python scripts/score_ontology_policy.py`).
 
 ## 문서 운영 원칙
 
