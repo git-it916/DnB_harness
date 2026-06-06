@@ -1,0 +1,116 @@
+fund.name:
+  label: 펀드명
+  value_type: text
+  canonicalizer: none
+  compare_policy: judge_fallback
+  judge_allowed: true
+  absence_semantics: missing_evidence
+
+fund.type:
+  label: 펀드 유형
+  value_type: text
+  canonicalizer: none
+  compare_policy: judge_fallback
+  judge_allowed: true
+  absence_semantics: missing_evidence
+
+fund.inception_date:
+  label: 설정일
+  value_type: date
+  canonicalizer: date
+  compare_policy: date_equal
+  judge_allowed: false
+  absence_semantics: missing_evidence
+
+fund.maturity_date:
+  label: 만기일
+  value_type: date
+  canonicalizer: maturity_date
+  compare_policy: date_equal
+  judge_allowed: true
+  absence_semantics: missing_evidence
+  derive_from: fund.inception_date
+
+party.asset_manager:
+  label: 운용사
+  value_type: entity_name
+  canonicalizer: none
+  compare_policy: judge_fallback
+  judge_allowed: true
+  absence_semantics: missing_evidence
+
+party.trustee:
+  label: 신탁업자
+  value_type: entity_name
+  canonicalizer: none
+  compare_policy: judge_fallback
+  judge_allowed: true
+  absence_semantics: missing_evidence
+
+party.distributor:
+  label: 판매사
+  value_type: entity_name
+  canonicalizer: none
+  compare_policy: judge_fallback
+  judge_allowed: true
+  absence_semantics: missing_evidence
+
+fee_schedule.management_fee:
+  label: 운용보수
+  value_type: percent_per_year
+  canonicalizer: percent
+  compare_policy: numeric_equal
+  judge_allowed: true
+  absence_semantics: missing_evidence
+  range: {min: 0, max: 5}
+
+fee_schedule.trust_fee:
+  label: 신탁보수
+  value_type: percent_per_year
+  canonicalizer: percent
+  compare_policy: numeric_equal
+  judge_allowed: true
+  absence_semantics: missing_evidence
+  range: {min: 0, max: 2}
+
+fee_schedule.sales_fee:
+  label: 판매보수
+  value_type: percent_per_year
+  canonicalizer: percent
+  compare_policy: numeric_equal
+  judge_allowed: true
+  absence_semantics: missing_evidence
+  range: {min: 0, max: 3}
+
+redemption_terms.is_redeemable:
+  label: 환매 가능 여부
+  value_type: boolean
+  canonicalizer: boolean
+  compare_policy: boolean_equal
+  judge_allowed: true
+  absence_semantics: missing_evidence
+
+redemption_terms.lockup_period:
+  label: 락업 기간
+  value_type: duration
+  canonicalizer: duration
+  compare_policy: duration_equal
+  judge_allowed: false
+  absence_semantics: missing_evidence
+
+redemption_terms.redemption_cycle:
+  label: 환매 주기
+  value_type: text
+  canonicalizer: none
+  compare_policy: judge_fallback
+  judge_allowed: true
+  absence_semantics: missing_evidence
+
+redemption_terms.redemption_fee:
+  label: 환매수수료
+  value_type: percent_per_year
+  canonicalizer: percent
+  compare_policy: numeric_equal
+  judge_allowed: true
+  absence_semantics: zero_value
+  range: {min: 0, max: 100}

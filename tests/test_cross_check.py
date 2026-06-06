@@ -1,5 +1,7 @@
 from src.pipelines.cross_check import (
+    CrossCheckResult,
     CrossCheckStatus,
+    CrossCheckValue,
     FinalCheckStatus,
     MissingSide,
     cross_check_extraction,
@@ -150,6 +152,30 @@ def test_apply_normalization_to_cross_check_keeps_missing_evidence_final_status(
     assert result.status == CrossCheckStatus.MISSING_EVIDENCE
     assert result.final_status == FinalCheckStatus.MISSING_EVIDENCE
     assert result.normalization_status == "same_after_normalization"
+
+
+def test_cross_check_result_accepts_optional_canonical_metadata():
+    result = CrossCheckResult(
+        field="fee_schedule.sales_fee",
+        label="판매보수",
+        status=CrossCheckStatus.NEEDS_REVIEW,
+        missing_side=MissingSide.NONE,
+        final_status=FinalCheckStatus.SAME_AFTER_NORMALIZATION,
+        final_reason_code="canonical_numeric_equal",
+        final_reason="Canonical values are equal after explicit unit conversion.",
+        canonical_status="decisive",
+        canonical_reason_code="numeric_equal_after_unit_conversion",
+        canonical={
+            "contract": {"value": "0.3", "unit": "percent_per_year"},
+            "im": {"value": "0.3", "unit": "percent_per_year"},
+        },
+        contract=CrossCheckValue(raw_text="연 1,000분의 3", citation=None),
+        im=CrossCheckValue(raw_text="연 0.3%", citation=None),
+    )
+
+    dumped = result.model_dump()
+    assert dumped["canonical_status"] == "decisive"
+    assert dumped["canonical"]["contract"]["value"] == "0.3"
 
 
 def _result_by_field(results, field):

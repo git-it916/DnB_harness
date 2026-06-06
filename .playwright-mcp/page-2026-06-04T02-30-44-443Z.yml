@@ -1,0 +1,224 @@
+- generic [active] [ref=e1]:
+  - banner [ref=e2]:
+    - generic [ref=e3]:
+      - generic [ref=e4]: DnB Harness · Ontology Policy Update
+      - heading "온톨로지 기반 검증 하네스" [level=1] [ref=e5]
+      - paragraph [ref=e6]: 기존 harness+정규화가 LLM 정규화와 일반 judge에 크게 기대던 부분을, 필드 정책·canonical 비교·필드 전용 judge로 나눠 더 설명 가능한 구조로 바꿨다.
+      - navigation "문서 내 이동" [ref=e7]:
+        - link "차이 보기" [ref=e8] [cursor=pointer]:
+          - /url: "#difference"
+        - link "실측 지표" [ref=e9] [cursor=pointer]:
+          - /url: "#metrics"
+    - generic "계약서와 IM을 온톨로지 정책으로 연결하는 시각화" [ref=e10]:
+      - generic [ref=e11]:
+        - generic [ref=e13]: 신탁계약서
+        - generic [ref=e21]: 투자제안서 IM
+        - generic [ref=e30]:
+          - strong [ref=e31]: field_policies.yaml
+          - generic [ref=e32]: 14개 필드별 정규화 · 비교 · judge fallback 정책
+  - main [ref=e33]:
+    - generic [ref=e35]:
+      - generic [ref=e36]:
+        - heading "무엇이 달라졌나" [level=2] [ref=e37]
+        - paragraph [ref=e38]: 핵심 차이는 LLM에게 바로 “같냐/다르냐”를 맡기지 않고, 온톨로지 필드 정책을 먼저 실행한 뒤 필요한 필드만 제한된 judge로 넘기는 것이다.
+      - generic [ref=e39]:
+        - article [ref=e40]:
+          - generic [ref=e41]:
+            - generic [ref=e42]:
+              - heading "기존 harness+정규화" [level=3] [ref=e43]
+              - paragraph [ref=e44]: 정규화와 일반 judge가 많은 의미동등 판단을 담당했다.
+            - generic [ref=e45]: 기존
+          - list [ref=e46]:
+            - listitem [ref=e47]:
+              - generic [ref=e49]: Claude normalization이 숫자·단위·표현 차이를 한 번에 정규화했다.
+            - listitem [ref=e50]:
+              - generic [ref=e52]: 정규화 이후에도 애매하면 generic same/different judge가 최종 판단했다.
+            - listitem [ref=e53]:
+              - generic [ref=e55]: C021 판매보수 0.3% vs 0.03% 같은 단위 함정을 judge가 “동일”로 오판했다.
+            - listitem [ref=e56]:
+              - generic [ref=e58]: 왜 맞았는지/틀렸는지 필드별 정책 증거가 부족했다.
+        - article [ref=e59]:
+          - generic [ref=e60]:
+            - generic [ref=e61]:
+              - heading "새 ontology_policy_judge" [level=3] [ref=e62]
+              - paragraph [ref=e63]: 온톨로지 정책이 먼저 비교하고, LLM은 제한된 필드 추론만 한다.
+            - generic [ref=e64]: 신규
+          - list [ref=e65]:
+            - listitem [ref=e66]:
+              - generic [ref=e68]: 명시 단위, 날짜, 기간, 부재 의미를 결정론 canonical comparison으로 먼저 확정한다.
+            - listitem [ref=e69]:
+              - generic [ref=e71]: LLM judge는 non-decisive이고 policy가 허용한 필드에만 호출된다.
+            - listitem [ref=e72]:
+              - generic [ref=e74]: 환매가능여부·만기일·환매수수료는 필드 전용 classifier가 구조화하고 코드가 최종 판정한다.
+            - listitem [ref=e75]:
+              - generic [ref=e77]: needs_review는 불일치 확정이 아니라 review로 분리했다.
+    - generic [ref=e79]:
+      - generic [ref=e80]:
+        - heading "전체 온톨로지 기반 구현안" [level=2] [ref=e81]
+        - paragraph [ref=e82]: 온톨로지는 “무엇을 비교해야 하는가”를 고정하고, field policy는 “각 필드를 어떻게 비교할 것인가”를 실행 가능하게 만든다.
+      - generic [ref=e83]:
+        - generic [ref=e84]:
+          - generic [ref=e85]: 01 · Extract
+          - generic [ref=e86]:
+            - heading "LLM 추출은 14개 필드를 채운다" [level=3] [ref=e87]
+            - paragraph [ref=e88]: Fund, Party, FeeSchedule, RedemptionTerms의 계약서/IM 값을 ExtractionResult로 구조화한다.
+          - generic [ref=e89]: Pydantic schema
+        - generic [ref=e90]:
+          - generic [ref=e91]: 02 · Guard
+          - generic [ref=e92]:
+            - heading "G1/G2/G3가 형식·출처·제약을 결정론적으로 검사한다" [level=3] [ref=e93]
+            - paragraph [ref=e94]: 가짜 페이지, 보수 범위 초과, 형식 오류는 LLM 없이 reject/null 처리한다.
+          - generic [ref=e95]: deterministic
+        - generic [ref=e96]:
+          - generic [ref=e97]: 03 · Ontology
+          - generic [ref=e98]:
+            - heading "ABox와 SHACL이 구조와 규칙을 진단한다" [level=3] [ref=e99]
+            - paragraph [ref=e100]: trust_fund.ttl과 shapes.ttl이 필수 개념·범위·관계를 검증한다.
+          - generic [ref=e101]: TBox · ABox · SHACL
+        - generic [ref=e102]:
+          - generic [ref=e103]: 04 · Policy
+          - generic [ref=e104]:
+            - heading "field_policies.yaml이 필드별 비교 방식을 결정한다" [level=3] [ref=e105]
+            - paragraph [ref=e106]: percent, date, duration, boolean, absence semantics와 judge fallback 허용 여부를 14개 필드 전체에 명시한다.
+          - generic [ref=e107]: 14 field policies
+        - generic [ref=e108]:
+          - generic [ref=e109]: 05 · Canonical
+          - generic [ref=e110]:
+            - heading "결정론 canonical comparison이 먼저 결론을 낸다" [level=3] [ref=e111]
+            - paragraph [ref=e112]: "예: “연 1,000분의 8.9”와 “0.89%”는 같은 percent로, “0.3%”와 “0.03%”는 다른 값으로 확정한다."
+          - generic [ref=e113]: no LLM call
+        - generic [ref=e114]:
+          - generic [ref=e115]: 06 · Field Judge
+          - generic [ref=e116]:
+            - heading "남은 필드만 제한된 LLM classifier로 보낸다" [level=3] [ref=e117]
+            - paragraph [ref=e118]: 환매 가능 여부, 만기일, 환매수수료는 각각 전용 enum/날짜로 구조화하고 최종 판정은 코드가 한다.
+          - generic [ref=e119]: structured fallback
+        - generic [ref=e120]:
+          - generic [ref=e121]: 07 · Score
+          - generic [ref=e122]:
+            - heading "match / mismatch / review를 분리해 채점한다" [level=3] [ref=e123]
+            - paragraph [ref=e124]: needs_review는 mismatch로 뭉개지 않고 “모르겠다”로 집계한다.
+          - generic [ref=e125]: review count
+    - generic [ref=e127]:
+      - generic [ref=e128]:
+        - heading "실측 결과" [level=2] [ref=e129]
+        - paragraph [ref=e130]: 잠정 골든셋 30개 기준. 현재 ontology_policy_judge는 기존 harness+norm보다 높은 F1과 Recall을 보이며 review를 0으로 줄였다.
+      - generic [ref=e131]:
+        - generic [ref=e132]:
+          - generic [ref=e133]: "0.960"
+          - generic [ref=e134]: F1
+          - generic [ref=e135]: ontology_policy_judge
+        - generic [ref=e136]:
+          - generic [ref=e137]: "1.000"
+          - generic [ref=e138]: Recall
+          - generic [ref=e139]: 변조 12건 전부 탐지
+        - generic [ref=e140]:
+          - generic [ref=e141]: "0"
+          - generic [ref=e142]: 모르겠다
+          - generic [ref=e143]: review=0/30
+        - generic [ref=e144]:
+          - generic [ref=e145]: "1"
+          - generic [ref=e146]: 남은 FP
+          - generic [ref=e147]: C002 펀드명 약칭
+      - table [ref=e149]:
+        - rowgroup [ref=e150]:
+          - row "조건 Precision Recall F1 모르겠다 핵심 해석" [ref=e151]:
+            - columnheader "조건" [ref=e152]
+            - columnheader "Precision" [ref=e153]
+            - columnheader "Recall" [ref=e154]
+            - columnheader "F1" [ref=e155]
+            - columnheader "모르겠다" [ref=e156]
+            - columnheader "핵심 해석" [ref=e157]
+        - rowgroup [ref=e158]:
+          - row "harness+norm+judge 0.733 0.917 0.815 미분리 정규화와 일반 judge가 C021 단위 함정을 놓침." [ref=e159]:
+            - cell "harness+norm+judge" [ref=e160]
+            - cell "0.733" [ref=e161]
+            - cell "0.917" [ref=e162]
+            - cell "0.815" [ref=e163]
+            - cell "미분리" [ref=e164]
+            - cell "정규화와 일반 judge가 C021 단위 함정을 놓침." [ref=e165]
+          - row "ontology_policy 1.000 0.583 0.737 13/30 결정론 확정은 정밀하지만, 의미동등 케이스가 review로 남음." [ref=e166]:
+            - cell "ontology_policy" [ref=e167]
+            - cell "1.000" [ref=e168]
+            - cell "0.583" [ref=e169]
+            - cell "0.737" [ref=e170]
+            - cell "13/30" [ref=e171]
+            - cell "결정론 확정은 정밀하지만, 의미동등 케이스가 review로 남음." [ref=e172]
+          - row "ontology_policy_judge 0.923 1.000 0.960 0/30 필드 전용 judge로 review를 줄이고 단위 함정을 방지." [ref=e173]:
+            - cell "ontology_policy_judge" [ref=e174]:
+              - strong [ref=e175]: ontology_policy_judge
+            - cell "0.923" [ref=e176]:
+              - strong [ref=e177]: "0.923"
+            - cell "1.000" [ref=e178]:
+              - strong [ref=e179]: "1.000"
+            - cell "0.960" [ref=e180]:
+              - strong [ref=e181]: "0.960"
+            - cell "0/30" [ref=e182]:
+              - strong [ref=e183]: 0/30
+            - cell "필드 전용 judge로 review를 줄이고 단위 함정을 방지." [ref=e184]:
+              - strong [ref=e185]: 필드 전용 judge로 review를 줄이고 단위 함정을 방지.
+    - generic [ref=e187]:
+      - generic [ref=e188]:
+        - heading "이번에 수정한 것" [level=2] [ref=e189]
+        - paragraph [ref=e190]: 작업의 핵심은 “LLM을 더 많이 쓰는 것”이 아니라, LLM이 맡는 일을 필드별로 좁히고 코드가 최종 판정을 통제하도록 바꾼 것이다.
+      - generic [ref=e191]:
+        - article [ref=e192]:
+          - generic [ref=e193]: "01"
+          - heading "실행 가능한 field policy 추가" [level=3] [ref=e194]
+          - paragraph [ref=e195]: 14개 추출 필드 전체를 ontology/field_policies.yaml로 등록했다. 각 필드가 어떤 타입인지, 어떤 canonicalizer를 쓰는지, judge fallback을 허용하는지 명시했다.
+        - article [ref=e196]:
+          - generic [ref=e197]: "02"
+          - heading "canonical 패키지 추가" [level=3] [ref=e198]
+          - paragraph [ref=e199]: src/canonical/에서 percent/date/duration/boolean/absence를 결정론적으로 파싱하고 CrossCheckResult에 canonical evidence를 남긴다.
+        - article [ref=e200]:
+          - generic [ref=e201]: "03"
+          - heading "review 분리 채점" [level=3] [ref=e202]
+          - paragraph [ref=e203]: needs_review를 mismatch로 계산하지 않고 predicted_label=review로 분리했다. score.json에는 review count/rate가 추가된다.
+        - article [ref=e204]:
+          - generic [ref=e205]: "04"
+          - heading "환매 가능 여부 classifier" [level=3] [ref=e206]
+          - paragraph [ref=e207]: LLM이 양쪽을 yes/no/conditional/unknown으로 독립 분류하고, 코드는 yes/no 조합만 자동 확정한다.
+        - article [ref=e208]:
+          - generic [ref=e209]: "05"
+          - heading "만기일 classifier" [level=3] [ref=e210]
+          - paragraph [ref=e211]: 추출된 설정일을 support context로 사용해 절대일자와 “2년” 같은 기간 표현을 ISO 만기일로 비교한다.
+        - article [ref=e212]:
+          - generic [ref=e213]: "06"
+          - heading "환매수수료 classifier" [level=3] [ref=e214]
+          - paragraph [ref=e215]: 양쪽을 같은 fee status enum으로 분류한다. no_fee와 not_applicable_no_redemption은 redemption_fee 필드에서 같은 리스크 상태로 본다.
+    - generic [ref=e217]:
+      - generic [ref=e218]:
+        - generic [ref=e219]:
+          - heading "필드 전용 judge의 방식" [level=2] [ref=e220]
+          - paragraph [ref=e221]: LLM은 “최종 판정자”가 아니라 “추출값을 필드별 비교 단위로 변환하는 분류기”가 된다.
+        - list [ref=e222]:
+          - listitem [ref=e223]:
+            - generic [ref=e225]:
+              - strong [ref=e226]: "환매 가능 여부:"
+              - text: yes/no/conditional/unknown으로 분류한다.
+          - listitem [ref=e227]:
+            - generic [ref=e229]:
+              - strong [ref=e230]: "만기일:"
+              - text: 절대일자와 설정일 기준 기간을 ISO 날짜로 분류한다.
+          - listitem [ref=e231]:
+            - generic [ref=e233]:
+              - strong [ref=e234]: "환매수수료:"
+              - text: fee_specified/no_fee/not_applicable/conditional/unknown으로 분류한다.
+          - listitem [ref=e235]:
+            - generic [ref=e237]: conditional, unknown, 낮은 confidence는 자동 판정하지 않고 review로 남긴다.
+      - generic "필드 전용 judge 판정 흐름" [ref=e238]: 추출 결과 contract.raw_text im.raw_text support field if needed LLM classifier 각 side를 같은 enum으로 독립 분류 confidence와 evidence 반환 코드 판정 high confidence + 허용 조합 → match/mismatch conditional/unknown/low → review score match / mismatch / review 분리 집계
+    - generic [ref=e240]:
+      - generic [ref=e241]:
+        - heading "다른 사람에게 설명할 핵심 메시지" [level=2] [ref=e242]
+        - paragraph [ref=e243]: 이 작업은 “LLM judge를 더 믿자”가 아니라 “온톨로지 정책으로 LLM judge를 제한하자”에 가깝다.
+      - list [ref=e244]:
+        - listitem [ref=e245]:
+          - generic [ref=e247]: 온톨로지는 비교할 도메인 필드와 제약을 고정한다.
+        - listitem [ref=e248]:
+          - generic [ref=e250]: field policy는 온톨로지 개념을 실행 가능한 비교 정책으로 바꾼다.
+        - listitem [ref=e251]:
+          - generic [ref=e253]: canonical comparison은 단위·날짜·부재 의미를 LLM 없이 먼저 확정한다.
+        - listitem [ref=e254]:
+          - generic [ref=e256]: LLM fallback은 필드별 구조화 classifier로 제한한다.
+        - listitem [ref=e257]:
+          - generic [ref=e259]: 현재 남은 리스크는 C002 펀드명 약칭 1건이다.

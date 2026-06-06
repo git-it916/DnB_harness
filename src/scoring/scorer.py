@@ -3,8 +3,9 @@
 채점 정의 (GOLDENSET.md §7):
     TP = (gold=mismatch) ∩ (pred=mismatch)
     FP = (gold=match)    ∩ (pred=mismatch)
-    FN = (gold=mismatch) ∩ (pred=match | missing)
+    FN = (gold=mismatch) ∩ (pred=match | review | missing)
     TN = (gold=match)    ∩ (pred=match | missing)
+    REVIEW = (gold=match) ∩ (pred=review)
     gold=missing 은 confusion 분모·분자 모두 제외 (재현율에 페널티 안 줌).
 
     환각률(hallucination_rate) = (gold=missing 인데 pred≠missing) / (gold=missing 총수)
@@ -23,7 +24,7 @@ from src.scoring.breakdown import (
     by_signal,
     confusion_of,
 )
-from src.scoring.labels import GoldLabel, predicted_label
+from src.scoring.labels import GoldLabel, PredictedLabel, predicted_label
 
 SCHEMA_VERSION = "v0"
 
@@ -53,19 +54,17 @@ def _classify(record: CaseRecord) -> Scored:
     gold_mm = gold == GoldLabel.MISMATCH
     pred_mm = pred == GoldLabel.MISMATCH
 
-    # 이진 분류(mismatch=positive) 기준. GOLDENSET §7 은 FN/TN 를 pred=match 로만
-    # 적었으나, pred=missing(가드 미적용 시 측 결측)도 'mismatch 아님'으로 본다
-    # → gold=mismatch&pred=missing 은 FN, gold=match&pred=missing 은 TN.
-    # (이 확장 해석은 PM 비준 대상 — docs/GOLDENSET.md §7 문구 갱신 필요.)
     if gold == GoldLabel.MISSING:
         bucket = "MISSING"
-        correct = pred == GoldLabel.MISSING  # 환각하지 않으면 정답
+        correct = pred == PredictedLabel.MISSING  # 환각하지 않으면 정답
     elif gold_mm and pred_mm:
         bucket, correct = "TP", True
     elif gold_mm and not pred_mm:
         bucket, correct = "FN", False
     elif (not gold_mm) and pred_mm:
         bucket, correct = "FP", False
+    elif pred == PredictedLabel.REVIEW:
+        bucket, correct = "REVIEW", False
     else:
         bucket, correct = "TN", True
 
@@ -98,10 +97,10 @@ def score_cases(
     conf = confusion_of(scored)
 
     missing_total = sum(1 for s in scored if s.gold == GoldLabel.MISSING)
-    hallucinated = sum(
-        1 for s in scored if s.gold == GoldLabel.MISSING and s.pred != GoldLabel.MISSING
-    )
+    hallucinated = sum(1 for s in scored if s.gold == GoldLabel.MISSING and s.pred != PredictedLabel.MISSING)
     hallucination_rate = hallucinated / missing_total if missing_total else 0.0
+    review_count = sum(1 for s in scored if s.pred == PredictedLabel.REVIEW)
+    review_rate = review_count / len(scored) if scored else 0.0
 
     cases = [
         {
@@ -136,7 +135,12 @@ def score_cases(
             "fp": conf.fp,
             "fn": conf.fn,
             "tn": conf.tn,
+            "review": conf.review,
             "missing_excluded": conf.missing,
+        },
+        "review": {
+            "count": review_count,
+            "rate": _round(review_rate),
         },
         "by_field": by_field(scored),
         "by_difficulty": by_difficulty(scored),

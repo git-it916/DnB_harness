@@ -52,14 +52,16 @@ def render_compare_md(
 
     # 핵심 지표
     lines.append("## 핵심 지표\n")
-    lines.append("| 조건 | Accuracy | Precision | Recall ★ | F1 | 환각률 |")
-    lines.append("|---|--:|--:|--:|--:|--:|")
+    lines.append("| 조건 | Accuracy | Precision | Recall ★ | F1 | 모르겠다 | 환각률 |")
+    lines.append("|---|--:|--:|--:|--:|--:|--:|")
     for report in ordered:
         m = report["metrics"]
+        review = report.get("review", {})
+        review_count = review.get("count", 0)
         lines.append(
             f"| {_label(report['mode'])} "
             f"| {m['accuracy']:.3f} | {m['precision']:.3f} | {m['recall']:.3f} "
-            f"| {m['f1']:.3f} | {m['hallucination_rate']:.3f} |"
+            f"| {m['f1']:.3f} | {review_count} | {m['hallucination_rate']:.3f} |"
         )
     lines.append("")
 

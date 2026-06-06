@@ -14,15 +14,16 @@
 - `gold_label=mismatch`를 positive로 본다.
 - `gold_label=missing`은 confusion 분모·분자에서 제외한다 (재현율 페널티 없음).
 - 가드가 reject한 필드는 `final_status`가 missing_evidence여도 예측을 mismatch로 본다 (재현율 우선, `GOLDENSET §7`).
+- `final_status=needs_review`는 mismatch 확정이 아니라 `predicted_label=review`로 분리한다. `score.json`은 전체 중 모르겠다 개수/비율을 `review.count`와 `review.rate`로 기록한다.
 - 필드·난이도·변조유형·harness signal별 breakdown은 별도 함수로 분리한다.
-- `gold_label ↔ FinalCheckStatus` 매핑은 `docs/GOLDENSET.md §7`(`GOLD_TO_FINAL`)이 단일 진실 소스.
+- `FinalCheckStatus → predicted_label` 매핑은 `docs/GOLDENSET.md §7`(`FINAL_TO_PREDICTED`)이 단일 진실 소스.
 
 ## 모듈
 
 | 파일 | 역할 |
 |---|---|
 | `src/scoring/golden.py` | `golden_master.csv` 로더 (utf-8-sig) |
-| `src/scoring/labels.py` | `GOLD_TO_FINAL`, `predicted_label()` |
+| `src/scoring/labels.py` | `FINAL_TO_PREDICTED`, `predicted_label()` |
 | `src/scoring/scorer.py` | `CaseRecord`, `score_cases()` → score.json |
 | `src/scoring/breakdown.py` | by_field/difficulty/mutation/signal |
 | `src/scoring/evaluate.py` | 결정적 평가기 (골든 → 하네스 로직, LLM 불필요) |

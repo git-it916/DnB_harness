@@ -261,7 +261,13 @@ class HarnessResult(BaseModel):
     "fp": 6,
     "fn": 10,
     "tn": 22,
+    "review": 3,
     "missing_excluded": 8
+  },
+
+  "review": {
+    "count": 3,
+    "rate": 0.10
   },
   
   "by_field": {
@@ -292,10 +298,10 @@ class HarnessResult(BaseModel):
       "case_id": "C020",
       "field": "fee_schedule.trust_fee",
       "gold_label": "mismatch",
-      "predicted_label": "match",
+      "predicted_label": "review",
       "correct": false,
-      "final_status": "exact_match",
-      "reason_code": "raw_text_exact_match",
+      "final_status": "needs_review",
+      "reason_code": "canonical_not_decisive",
       "guard_rejections": [],
       "latency_ms": 1240
     }
@@ -303,7 +309,7 @@ class HarnessResult(BaseModel):
 }
 ```
 
-> **gold_label ↔ FinalCheckStatus 매핑**: `GOLDENSET.md §7` 참고.
+> **FinalCheckStatus → predicted_label 매핑**: `GOLDENSET.md §7` 참고. `needs_review` 는 `mismatch` 확정이 아니라 `review` 로 분리한다.
 
 ---
 

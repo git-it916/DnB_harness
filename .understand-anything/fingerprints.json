@@ -1,8 +1,18 @@
 {
   "version": "1.0.0",
-  "gitCommitHash": "66c9696bc044221d20dacf6a241b98888b332061",
-  "generatedAt": "2026-06-03T04:35:55.795Z",
+  "gitCommitHash": "abf97d1bc5758c14a974b567d4c3404b413fa6eb",
+  "generatedAt": "2026-06-03T09:19:14.125Z",
   "files": {
+    ".env.example": {
+      "filePath": ".env.example",
+      "contentHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 1,
+      "hasStructuralAnalysis": true
+    },
     ".understand-anything/.understandignore": {
       "filePath": ".understand-anything/.understandignore",
       "contentHash": "8546ce0b756a4c98300f55c313a9a151f119ff6905b3e71891f74e424b733c55",
@@ -13,9 +23,49 @@
       "totalLines": 109,
       "hasStructuralAnalysis": false
     },
+    ".understand-anything/fingerprints.json": {
+      "filePath": ".understand-anything/fingerprints.json",
+      "contentHash": "35c65f3860b1c5f338ba8a92c47b3546b7100d1166d82b0740f249c6b092c26f",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 5715,
+      "hasStructuralAnalysis": true
+    },
+    ".understand-anything/intermediate/scan-result.json": {
+      "filePath": ".understand-anything/intermediate/scan-result.json",
+      "contentHash": "9cb9311837a9e17a6b40313f08fa561e4008f4dd2e4e1ce4657f02907712be1e",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 1520,
+      "hasStructuralAnalysis": true
+    },
+    ".understand-anything/knowledge-graph.json": {
+      "filePath": ".understand-anything/knowledge-graph.json",
+      "contentHash": "547c5367703b45e155423d4a00a2423db7a08538e967ee5a9a1c947931f0f1bb",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 13792,
+      "hasStructuralAnalysis": true
+    },
+    ".understand-anything/meta.json": {
+      "filePath": ".understand-anything/meta.json",
+      "contentHash": "768d4896ad2f2679aae3f20bdf3efd1826cc5e0cf88e2a0252325116c149e27d",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 6,
+      "hasStructuralAnalysis": true
+    },
     "AGENTS.md": {
       "filePath": "AGENTS.md",
-      "contentHash": "eab59dde67883a9a56473706a0cbb633da23910d0fd6af0f5ff47155dcf20d4f",
+      "contentHash": "6b1a3255280e87750d056c14d3bbed920835dceeb32b0ee091bd5fac5ae7d1ad",
       "functions": [],
       "classes": [],
       "imports": [],
@@ -25,7 +75,7 @@
     },
     "database/gemma4_full/pipeline_summary.json": {
       "filePath": "database/gemma4_full/pipeline_summary.json",
-      "contentHash": "288a3aeafa71618c612763ac035e56ab30648f170981e29f4aa1105279ec9ddb",
+      "contentHash": "4208cf1b85264278be866490c7083e7e9b09978981c84da8047586eb24ad198b",
       "functions": [],
       "classes": [],
       "imports": [],
@@ -35,7 +85,7 @@
     },
     "database/gemma4_full/run_01_seed42/abox.ttl": {
       "filePath": "database/gemma4_full/run_01_seed42/abox.ttl",
-      "contentHash": "fd7944993bf1913362857190b399a3dee0cd3ea5e3ddd76a47b3d424c9b64851",
+      "contentHash": "3e29b8280d2063e63e4e170051714774dd2b080e066190d5bf8cb344afc6799a",
       "functions": [],
       "classes": [],
       "imports": [],
@@ -45,7 +95,7 @@
     },
     "database/gemma4_full/run_01_seed42/cross_check.json": {
       "filePath": "database/gemma4_full/run_01_seed42/cross_check.json",
-      "contentHash": "84c600f086bdb2e645ce4facd9f561e82df431aba70f8d555b087ecb36e06dd7",
+      "contentHash": "bb24e58e6a0446f5701afb41f53dca8bad3d2acbfc6b400fb6186cbd0a12068f",
       "functions": [],
       "classes": [],
       "imports": [],
@@ -55,7 +105,7 @@
     },
     "database/gemma4_full/run_01_seed42/extraction_after_guards.json": {
       "filePath": "database/gemma4_full/run_01_seed42/extraction_after_guards.json",
-      "contentHash": "fe95894cab0d4f57563fa8eb53749011eb71d6595de48c62d8a1350b617a6b1c",
+      "contentHash": "49844ba25681b7f9eac63e32f11502e4f602628672bc6549ef38780e9be7d7c3",
       "functions": [],
       "classes": [],
       "imports": [],
@@ -65,7 +115,7 @@
     },
     "database/gemma4_full/run_01_seed42/extraction.json": {
       "filePath": "database/gemma4_full/run_01_seed42/extraction.json",
-      "contentHash": "fe95894cab0d4f57563fa8eb53749011eb71d6595de48c62d8a1350b617a6b1c",
+      "contentHash": "49844ba25681b7f9eac63e32f11502e4f602628672bc6549ef38780e9be7d7c3",
       "functions": [],
       "classes": [],
       "imports": [],
@@ -75,7 +125,7 @@
     },
     "database/gemma4_full/run_01_seed42/guard_log.json": {
       "filePath": "database/gemma4_full/run_01_seed42/guard_log.json",
-      "contentHash": "9be1e9103177b4ebbb3801163b662e5913a813c10de31908cff573e775cdc6dd",
+      "contentHash": "1eb20074ee8e640f77ad12956aa8012ce3abaf955074ac2cc265ebb5de54c764",
       "functions": [],
       "classes": [],
       "imports": [],
@@ -85,7 +135,7 @@
     },
     "database/gemma4_full/run_01_seed42/meta.json": {
       "filePath": "database/gemma4_full/run_01_seed42/meta.json",
-      "contentHash": "4a5324295dd3939306e4e140e77bb4ce53d4a019d6b043548aa69e17844875ee",
+      "contentHash": "054b374760a71b71a13c56f9736ba97ab6123203b7ded1e1115fcbfd435515a9",
       "functions": [],
       "classes": [],
       "imports": [],
@@ -95,7 +145,7 @@
     },
     "database/gemma4_full/run_01_seed42/shacl_report.txt": {
       "filePath": "database/gemma4_full/run_01_seed42/shacl_report.txt",
-      "contentHash": "4d83fbfef17dc0841bf4a82e0e82bbbedb0bed7283467fb1be959416c19de8c2",
+      "contentHash": "77debc800e6c973b66475968bdf71e2e667df8f4108e7f5299fe1651e6606dc9",
       "functions": [],
       "classes": [],
       "imports": [],
@@ -105,7 +155,7 @@
     },
     "database/gemma4_full/run_01_seed42/shacl_validation.json": {
       "filePath": "database/gemma4_full/run_01_seed42/shacl_validation.json",
-      "contentHash": "303c9c0ac78ed007bd56563170f7ce1af863d5e8fefb66132f5e87ed8f988b18",
+      "contentHash": "779b1bd2127a1a1c370cfa043639459b0fb1e139a03c238327e2c321ea9b8e33",
       "functions": [],
       "classes": [],
       "imports": [],
@@ -113,9 +163,49 @@
       "totalLines": 3,
       "hasStructuralAnalysis": true
     },
+    "database/gemma4_harness/run_live_guard_seed42/abox.ttl": {
+      "filePath": "database/gemma4_harness/run_live_guard_seed42/abox.ttl",
+      "contentHash": "3e29b8280d2063e63e4e170051714774dd2b080e066190d5bf8cb344afc6799a",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 44,
+      "hasStructuralAnalysis": false
+    },
+    "database/gemma4_harness/run_live_guard_seed42/harness_result.json": {
+      "filePath": "database/gemma4_harness/run_live_guard_seed42/harness_result.json",
+      "contentHash": "c8657279a005798bfa983f30e6c6e4d617d9235aeb4044a11ac4202f4a22623f",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 908,
+      "hasStructuralAnalysis": true
+    },
+    "database/gemma4_harness/run_live_guard_seed42/manifest.json": {
+      "filePath": "database/gemma4_harness/run_live_guard_seed42/manifest.json",
+      "contentHash": "8d1de9754245ffe7a0970fc6e4e6907f22b4a2e8d02c1e040ccdfe631204566b",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 31,
+      "hasStructuralAnalysis": true
+    },
+    "database/gemma4_harness/run_live_guard_seed42/shacl_report.txt": {
+      "filePath": "database/gemma4_harness/run_live_guard_seed42/shacl_report.txt",
+      "contentHash": "77debc800e6c973b66475968bdf71e2e667df8f4108e7f5299fe1651e6606dc9",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 3,
+      "hasStructuralAnalysis": false
+    },
     "database/gemma4_v2_t0_d200/run_A_seed42_t0_d200/extraction_after_guards.json": {
       "filePath": "database/gemma4_v2_t0_d200/run_A_seed42_t0_d200/extraction_after_guards.json",
-      "contentHash": "d84b27041c2845ede905a95ddf5da480b273b81bdf7f18882648be47691afb5c",
+      "contentHash": "c9094bfe5669702b2d2dc1c50251ddab4a0ca8810d9bdaf6ad17dd6e03e25e61",
       "functions": [],
       "classes": [],
       "imports": [],
@@ -125,7 +215,7 @@
     },
     "database/gemma4_v2_t0_d200/run_A_seed42_t0_d200/extraction.json": {
       "filePath": "database/gemma4_v2_t0_d200/run_A_seed42_t0_d200/extraction.json",
-      "contentHash": "d84b27041c2845ede905a95ddf5da480b273b81bdf7f18882648be47691afb5c",
+      "contentHash": "c9094bfe5669702b2d2dc1c50251ddab4a0ca8810d9bdaf6ad17dd6e03e25e61",
       "functions": [],
       "classes": [],
       "imports": [],
@@ -135,7 +225,7 @@
     },
     "database/gemma4_v2_t0_d200/run_A_seed42_t0_d200/guard_log.json": {
       "filePath": "database/gemma4_v2_t0_d200/run_A_seed42_t0_d200/guard_log.json",
-      "contentHash": "9cb18423e956b59562f29cd96eb1b0c08b1c983e7d6e5025e6888fb136f39a92",
+      "contentHash": "058a5bcb4fa2887242793f5c291290990ac1d662b6d2ab83023f71f24606692d",
       "functions": [],
       "classes": [],
       "imports": [],
@@ -145,7 +235,7 @@
     },
     "database/gemma4_v2_t0_d200/run_A_seed42_t0_d200/meta.json": {
       "filePath": "database/gemma4_v2_t0_d200/run_A_seed42_t0_d200/meta.json",
-      "contentHash": "303be4ab5da1b8e51ce674f36f91d75a989234f7f3124046cca87a88c057d48f",
+      "contentHash": "26fc497a57178270e63114fc07265de9b3069c4676b7cb0b3401cf2f7811b5a3",
       "functions": [],
       "classes": [],
       "imports": [],
@@ -155,7 +245,7 @@
     },
     "database/gemma4_v2_t0_d200/run_B_seed42_t0_d200/extraction_after_guards.json": {
       "filePath": "database/gemma4_v2_t0_d200/run_B_seed42_t0_d200/extraction_after_guards.json",
-      "contentHash": "fe95894cab0d4f57563fa8eb53749011eb71d6595de48c62d8a1350b617a6b1c",
+      "contentHash": "49844ba25681b7f9eac63e32f11502e4f602628672bc6549ef38780e9be7d7c3",
       "functions": [],
       "classes": [],
       "imports": [],
@@ -165,7 +255,7 @@
     },
     "database/gemma4_v2_t0_d200/run_B_seed42_t0_d200/extraction.json": {
       "filePath": "database/gemma4_v2_t0_d200/run_B_seed42_t0_d200/extraction.json",
-      "contentHash": "fe95894cab0d4f57563fa8eb53749011eb71d6595de48c62d8a1350b617a6b1c",
+      "contentHash": "49844ba25681b7f9eac63e32f11502e4f602628672bc6549ef38780e9be7d7c3",
       "functions": [],
       "classes": [],
       "imports": [],
@@ -175,7 +265,7 @@
     },
     "database/gemma4_v2_t0_d200/run_B_seed42_t0_d200/guard_log.json": {
       "filePath": "database/gemma4_v2_t0_d200/run_B_seed42_t0_d200/guard_log.json",
-      "contentHash": "53bc962141ded60cb3691dc31287c0eebcd9c173d016af22b25081ec6986a708",
+      "contentHash": "8c1671536141fd37ca2cfb730c07102c01c2c034223bef081214a2853a625434",
       "functions": [],
       "classes": [],
       "imports": [],
@@ -185,7 +275,7 @@
     },
     "database/gemma4_v2_t0_d200/run_B_seed42_t0_d200/meta.json": {
       "filePath": "database/gemma4_v2_t0_d200/run_B_seed42_t0_d200/meta.json",
-      "contentHash": "52625baa79229eb5dcd1f0a52b48addf6aa4b7c2bed571b336e6d7d7e551d02d",
+      "contentHash": "0c35495fa0efd3e39d1f9316169d3e2195da2ae7d684c917814bb24882491c3e",
       "functions": [],
       "classes": [],
       "imports": [],
@@ -195,7 +285,7 @@
     },
     "database/gemma4/run_01_seed42/extraction_after_guards.json": {
       "filePath": "database/gemma4/run_01_seed42/extraction_after_guards.json",
-      "contentHash": "e9d82cd553c4bbd566e85688c5f07d6ad604c2f088eb38c2303a3aee211fb0b4",
+      "contentHash": "d9d0957f31593f3857793816d180ac90af999f61030533fe9bb11769e019a258",
       "functions": [],
       "classes": [],
       "imports": [],
@@ -205,7 +295,7 @@
     },
     "database/gemma4/run_01_seed42/extraction.json": {
       "filePath": "database/gemma4/run_01_seed42/extraction.json",
-      "contentHash": "e9d82cd553c4bbd566e85688c5f07d6ad604c2f088eb38c2303a3aee211fb0b4",
+      "contentHash": "d9d0957f31593f3857793816d180ac90af999f61030533fe9bb11769e019a258",
       "functions": [],
       "classes": [],
       "imports": [],
@@ -215,7 +305,7 @@
     },
     "database/gemma4/run_01_seed42/guard_log.json": {
       "filePath": "database/gemma4/run_01_seed42/guard_log.json",
-      "contentHash": "2f944ddd7a24777beddf120fce9eeab255f7eb44f75aad96f9db152c863154e3",
+      "contentHash": "4a90297bb8d55735eda8f9bab2a1ef4be95a1766a9030316505de87fcacde2b8",
       "functions": [],
       "classes": [],
       "imports": [],
@@ -225,7 +315,7 @@
     },
     "database/gemma4/run_01_seed42/meta.json": {
       "filePath": "database/gemma4/run_01_seed42/meta.json",
-      "contentHash": "15287713b0c2742b91698bb84a55ea80fce77762d00bb2c3fdf25d06256fdeb3",
+      "contentHash": "693499b75c8e9fa624c5a862800ccaf762ab6b93cb07156a244537d190450ee9",
       "functions": [],
       "classes": [],
       "imports": [],
@@ -235,7 +325,7 @@
     },
     "database/gemma4/run_02_seed1/extraction_after_guards.json": {
       "filePath": "database/gemma4/run_02_seed1/extraction_after_guards.json",
-      "contentHash": "c1672fab4e01df5497f0b44052cf4ae6175c2b7044ed5e950fd84bfe6328e562",
+      "contentHash": "2c2cfe3773487354a10be0f566efa5ac2a0bf416963f53417cd08a0abdd93786",
       "functions": [],
       "classes": [],
       "imports": [],
@@ -245,7 +335,7 @@
     },
     "database/gemma4/run_02_seed1/extraction.json": {
       "filePath": "database/gemma4/run_02_seed1/extraction.json",
-      "contentHash": "c1672fab4e01df5497f0b44052cf4ae6175c2b7044ed5e950fd84bfe6328e562",
+      "contentHash": "2c2cfe3773487354a10be0f566efa5ac2a0bf416963f53417cd08a0abdd93786",
       "functions": [],
       "classes": [],
       "imports": [],
@@ -255,7 +345,7 @@
     },
     "database/gemma4/run_02_seed1/guard_log.json": {
       "filePath": "database/gemma4/run_02_seed1/guard_log.json",
-      "contentHash": "8784afd230710b45c34ed85c3cf6cec84b80687bce55d450c39263f4bb1a9898",
+      "contentHash": "e9fdc0e58cb4e16eb3d9b5a8015bb534b3dc8d7d7b2179f35653709dddff83cc",
       "functions": [],
       "classes": [],
       "imports": [],
@@ -265,7 +355,7 @@
     },
     "database/gemma4/run_02_seed1/meta.json": {
       "filePath": "database/gemma4/run_02_seed1/meta.json",
-      "contentHash": "053b26207811e1bc3f445d2d93331dfcbe5de774b80fc0e3e3fe910a62108103",
+      "contentHash": "c54bf0e01df5a57d10a998cc028b784b018d2ec51e36f31fee75c9a8d0581841",
       "functions": [],
       "classes": [],
       "imports": [],
@@ -275,7 +365,7 @@
     },
     "database/gemma4/run_03_seed2/extraction_after_guards.json": {
       "filePath": "database/gemma4/run_03_seed2/extraction_after_guards.json",
-      "contentHash": "3e518cb19aa321ce7d8caee72c916825e4fc2dac848fc9bd2028820d83a5fb51",
+      "contentHash": "cd732549a82594d46a7121755e16ca591d00c345a572ed0aefedfd0a7d94ba86",
       "functions": [],
       "classes": [],
       "imports": [],
@@ -285,7 +375,7 @@
     },
     "database/gemma4/run_03_seed2/extraction.json": {
       "filePath": "database/gemma4/run_03_seed2/extraction.json",
-      "contentHash": "3e518cb19aa321ce7d8caee72c916825e4fc2dac848fc9bd2028820d83a5fb51",
+      "contentHash": "cd732549a82594d46a7121755e16ca591d00c345a572ed0aefedfd0a7d94ba86",
       "functions": [],
       "classes": [],
       "imports": [],
@@ -295,7 +385,7 @@
     },
     "database/gemma4/run_03_seed2/guard_log.json": {
       "filePath": "database/gemma4/run_03_seed2/guard_log.json",
-      "contentHash": "e1c35f6a7319fc181ebdc365e2d2bff4ad24869a609abb8d223b214839001797",
+      "contentHash": "5b46c1e76e1e380716cc7e631985a558483300925b2afdd6e122d7f0de330801",
       "functions": [],
       "classes": [],
       "imports": [],
@@ -305,7 +395,7 @@
     },
     "database/gemma4/run_03_seed2/meta.json": {
       "filePath": "database/gemma4/run_03_seed2/meta.json",
-      "contentHash": "71d3c4e2ae22c9a7f5b6cecebb4fed2b09d49fb48e0f0ff004a4e06fc46144fd",
+      "contentHash": "0deea0d02f97cc1bcddda38d772c4e2f4895e71ce9718aa3e8b9aae3ee888f11",
       "functions": [],
       "classes": [],
       "imports": [],
@@ -315,7 +405,7 @@
     },
     "database/gemma4/run_04_seed3/extraction_after_guards.json": {
       "filePath": "database/gemma4/run_04_seed3/extraction_after_guards.json",
-      "contentHash": "27df8a6881ac5d1a37af8db31cb42e15eb0df1f3f7a5cb4c743f1b63f2cd6554",
+      "contentHash": "15e4d7a949343f6ca8aa970d8d8a55b99a6871cb0994ab6e42f5396459c8c462",
       "functions": [],
       "classes": [],
       "imports": [],
@@ -325,7 +415,7 @@
     },
     "database/gemma4/run_04_seed3/extraction.json": {
       "filePath": "database/gemma4/run_04_seed3/extraction.json",
-      "contentHash": "27df8a6881ac5d1a37af8db31cb42e15eb0df1f3f7a5cb4c743f1b63f2cd6554",
+      "contentHash": "15e4d7a949343f6ca8aa970d8d8a55b99a6871cb0994ab6e42f5396459c8c462",
       "functions": [],
       "classes": [],
       "imports": [],
@@ -335,7 +425,7 @@
     },
     "database/gemma4/run_04_seed3/guard_log.json": {
       "filePath": "database/gemma4/run_04_seed3/guard_log.json",
-      "contentHash": "2b8d868324b6e144b585dd74cafab119fc14ea861a045340bfb91afae8b895a9",
+      "contentHash": "2e6993e4207e860f3480c1abbb97eaf1c074deca7a092127379dfce7a52bf1e1",
       "functions": [],
       "classes": [],
       "imports": [],
@@ -345,7 +435,7 @@
     },
     "database/gemma4/run_04_seed3/meta.json": {
       "filePath": "database/gemma4/run_04_seed3/meta.json",
-      "contentHash": "5c0bc254cae8b3fabee5c4124d0f80c180107296aefed8c4b376a8b61edf84b7",
+      "contentHash": "3ab0c9d4294db3aad90a13c5aeb4bb58533b17579be6b9029588b9783de2d771",
       "functions": [],
       "classes": [],
       "imports": [],
@@ -355,7 +445,7 @@
     },
     "database/gemma4/run_05_seed4/extraction_after_guards.json": {
       "filePath": "database/gemma4/run_05_seed4/extraction_after_guards.json",
-      "contentHash": "27df8a6881ac5d1a37af8db31cb42e15eb0df1f3f7a5cb4c743f1b63f2cd6554",
+      "contentHash": "15e4d7a949343f6ca8aa970d8d8a55b99a6871cb0994ab6e42f5396459c8c462",
       "functions": [],
       "classes": [],
       "imports": [],
@@ -365,7 +455,7 @@
     },
     "database/gemma4/run_05_seed4/extraction.json": {
       "filePath": "database/gemma4/run_05_seed4/extraction.json",
-      "contentHash": "27df8a6881ac5d1a37af8db31cb42e15eb0df1f3f7a5cb4c743f1b63f2cd6554",
+      "contentHash": "15e4d7a949343f6ca8aa970d8d8a55b99a6871cb0994ab6e42f5396459c8c462",
       "functions": [],
       "classes": [],
       "imports": [],
@@ -375,7 +465,7 @@
     },
     "database/gemma4/run_05_seed4/guard_log.json": {
       "filePath": "database/gemma4/run_05_seed4/guard_log.json",
-      "contentHash": "ddeb3561ae01bd3dd4e17a3947c063d7d149c647c8a61f442ef141192e0f2a60",
+      "contentHash": "f8a7b924b3f4e92cf79e0fa24fafe8c85c5c66ed55417e85c240579bf88cc2da",
       "functions": [],
       "classes": [],
       "imports": [],
@@ -385,7 +475,7 @@
     },
     "database/gemma4/run_05_seed4/meta.json": {
       "filePath": "database/gemma4/run_05_seed4/meta.json",
-      "contentHash": "d1595e9c83ed46b0d6980ef78a28dfbd5e4de4c5a1d0dbb37e57b0fc1761be8e",
+      "contentHash": "22f520791d69303a5282d2ef8aa28db65529083d785869a282edafe0d62be328",
       "functions": [],
       "classes": [],
       "imports": [],
@@ -395,7 +485,7 @@
     },
     "dnb_harness/__init__.py": {
       "filePath": "dnb_harness/__init__.py",
-      "contentHash": "b1879669126ecb5937f7906141ce06657ff7b7132f43795266745ee74c5264fe",
+      "contentHash": "28eb52970006441ecd5bec636aa515b2a1da5c667301a688887305cbf9ed7d54",
       "functions": [],
       "classes": [],
       "imports": [],
@@ -405,7 +495,7 @@
     },
     "dnb_harness/ontology/__init__.py": {
       "filePath": "dnb_harness/ontology/__init__.py",
-      "contentHash": "e2b5f296194dfd32db2bff9608541075d122fffa6a93fc2e95d579c3f6339f7b",
+      "contentHash": "d37d04b54a0d675f0153973728842029c2cd0edb8f79bd1ededc21457eee26d2",
       "functions": [],
       "classes": [],
       "imports": [],
@@ -415,7 +505,7 @@
     },
     "dnb_harness/ontology/mapping.py": {
       "filePath": "dnb_harness/ontology/mapping.py",
-      "contentHash": "6f1b7fc27e51ab86058e69e65ed5f3171b9c2d7e1a37f2df89409ade7b39a241",
+      "contentHash": "f365659bdeb61c3df67f5c78237b8590af3b9483463108c8b0014c54391d8f60",
       "functions": [
         {
           "name": "build_abox",
@@ -543,7 +633,7 @@
     },
     "dnb_harness/ontology/validate.py": {
       "filePath": "dnb_harness/ontology/validate.py",
-      "contentHash": "c2367e6bb0479d794ddfa4f59a453140cb2b9b5f59a953722a566a6cc7674a99",
+      "contentHash": "c1610e6a13a2535abc2c55dcb8f20f832cb3818519946638846514e083056e9d",
       "functions": [
         {
           "name": "validate_abox",
@@ -682,7 +772,7 @@
     },
     "docs/ARCHITECTURE.md": {
       "filePath": "docs/ARCHITECTURE.md",
-      "contentHash": "fe1e023b47a20d578509842d2b28b34cf2e7ffc9175de264a103a3da8054e649",
+      "contentHash": "bcf067f983f26f92db5155ea225d4a8b0ad390e481a560b5bc31b030e367c1a6",
       "functions": [],
       "classes": [],
       "imports": [],
@@ -692,7 +782,7 @@
     },
     "docs/archive/2026-05-29-worklog.md": {
       "filePath": "docs/archive/2026-05-29-worklog.md",
-      "contentHash": "7f0210fc90abfcdc4e988faf04fb9ec46d577190e70fbde199a7bf78a825cbb1",
+      "contentHash": "1c514fefdabf4ae1625941b766e3014c2dc4c4f5b0dc6e0e0c8a6d5e7a968788",
       "functions": [],
       "classes": [],
       "imports": [],
@@ -702,7 +792,7 @@
     },
     "docs/decisions/ADR-0001-docs-as-current-map.md": {
       "filePath": "docs/decisions/ADR-0001-docs-as-current-map.md",
-      "contentHash": "9b8b42b4ed83d71eedbf0c7da74edf8b5a0e9c9afb48d74c14b1a58e8a8f5450",
+      "contentHash": "7d58c78799e8b59b8099f844edc7cfa6b3a83a0138d21b7aba7d2895ccda2e7a",
       "functions": [],
       "classes": [],
       "imports": [],
@@ -712,7 +802,7 @@
     },
     "docs/GOLDENSET.md": {
       "filePath": "docs/GOLDENSET.md",
-      "contentHash": "bf0281dcedbf74a222018c742bfb9d4bde0ad1937ccff00dab2f6c7c330c9c0e",
+      "contentHash": "fd5a2165f411a69026b9be503cffdf167e9f7b721ffbb9ec92289a53d9d2f52f",
       "functions": [],
       "classes": [],
       "imports": [],
@@ -722,7 +812,7 @@
     },
     "docs/INTERFACES.md": {
       "filePath": "docs/INTERFACES.md",
-      "contentHash": "9c4f0be5a22a1a845255dd5184a66a9a0ef0127a5ea8eb4f5a4b4d5304dca910",
+      "contentHash": "d4ae9fb3c93e9f77712f58e87bf3b1f43ce3c92d6494ef522ecec06fdd9ff864",
       "functions": [],
       "classes": [],
       "imports": [],
@@ -732,7 +822,7 @@
     },
     "docs/ontology_prd.md": {
       "filePath": "docs/ontology_prd.md",
-      "contentHash": "0efb0bf70b2062ce1288bbe8de107f854fdb7fb61972db794efe285e74ebba34",
+      "contentHash": "3ba25cecd525b8c1e5caf1b4d0d3fc0c3408f062c7183122832fa41cce13e921",
       "functions": [],
       "classes": [],
       "imports": [],
@@ -742,17 +832,17 @@
     },
     "docs/README.md": {
       "filePath": "docs/README.md",
-      "contentHash": "df73ca844df2e482be6af75f6ef4d6f1a0aeefce5d1e6e8f0a6d766adcbdc040",
+      "contentHash": "e2c336b931517f5c96709573b74558bfe0da826735eea7bca2887a422189e8f0",
       "functions": [],
       "classes": [],
       "imports": [],
       "exports": [],
-      "totalLines": 41,
+      "totalLines": 42,
       "hasStructuralAnalysis": true
     },
     "docs/reference/extract_guard_plan.md": {
       "filePath": "docs/reference/extract_guard_plan.md",
-      "contentHash": "0a1aa141f2aa0c074a059c72579e7ddeac340459ed15f986c19054444c7d5c62",
+      "contentHash": "c6c998ff5c6fe10087b5d072f7106e1ede07aa3b33fa433c27c6daf9ed2eae21",
       "functions": [],
       "classes": [],
       "imports": [],
@@ -762,7 +852,7 @@
     },
     "docs/reference/ontology_pipeline.md": {
       "filePath": "docs/reference/ontology_pipeline.md",
-      "contentHash": "d3818ddda2e39d37a221482164ec4f5ffe593a52175a54639e450eea5759a9d1",
+      "contentHash": "416471ad401ece51dc3b5e93fca568d168d5e591594691bfbecdf17135e77d8f",
       "functions": [],
       "classes": [],
       "imports": [],
@@ -772,7 +862,7 @@
     },
     "docs/ROADMAP.md": {
       "filePath": "docs/ROADMAP.md",
-      "contentHash": "c80eb05da5ff73a820d0defc96b3e891300cd7a255d4ffcd271504e972fbeabf",
+      "contentHash": "5eec9da0e1ceeaf7b0c6bd9028448a5581352100ba8e02582f084078cc3e7e4b",
       "functions": [],
       "classes": [],
       "imports": [],
@@ -782,7 +872,7 @@
     },
     "docs/Role_Dividing.md": {
       "filePath": "docs/Role_Dividing.md",
-      "contentHash": "7be4d89f618efa00f40e413215218222adede18ececeff21c6f5aaa566f2d580",
+      "contentHash": "96aacb94c0dd07b5f4dd8cf430f7943207256adc57b5677113a71fd2182ed9a6",
       "functions": [],
       "classes": [],
       "imports": [],
@@ -792,7 +882,7 @@
     },
     "docs/runbooks/local-setup.md": {
       "filePath": "docs/runbooks/local-setup.md",
-      "contentHash": "60b8c7d219b84164f8da837c86f365e4a20f7cba8c4e91e9891a95232c9e99ae",
+      "contentHash": "ee6771e10716ebfa6d8d9443b31f85e2ba1e36767e565e41a42c554be97dc72d",
       "functions": [],
       "classes": [],
       "imports": [],
@@ -800,19 +890,29 @@
       "totalLines": 29,
       "hasStructuralAnalysis": true
     },
-    "docs/runbooks/run-experiment.md": {
-      "filePath": "docs/runbooks/run-experiment.md",
-      "contentHash": "b793cf6be62a26d0a3dcf9e5c6aa271b314b72733f8327b26c52e9bee63e8c3d",
+    "docs/runbooks/reproduce-results.md": {
+      "filePath": "docs/runbooks/reproduce-results.md",
+      "contentHash": "73f4e883f15650cf2fcb588d60027d7717445554954dd039e016404d9f22a595",
       "functions": [],
       "classes": [],
       "imports": [],
       "exports": [],
-      "totalLines": 33,
+      "totalLines": 195,
+      "hasStructuralAnalysis": true
+    },
+    "docs/runbooks/run-experiment.md": {
+      "filePath": "docs/runbooks/run-experiment.md",
+      "contentHash": "ff88c0f57a5a22d1e888cf9b45619c136a531487d45fd5ca625ea7928ae49240",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 41,
       "hasStructuralAnalysis": true
     },
     "docs/runbooks/run-extraction.md": {
       "filePath": "docs/runbooks/run-extraction.md",
-      "contentHash": "451f1048f601231d7ff12ba106313297b53986aeb5985e0a9c2b7f3518e5cd2d",
+      "contentHash": "2d8e851e7a4a4491d731fdbd28b8c67bd9489d5feb004b1326d2bbed7c1e4d18",
       "functions": [],
       "classes": [],
       "imports": [],
@@ -822,27 +922,27 @@
     },
     "docs/runbooks/scoring.md": {
       "filePath": "docs/runbooks/scoring.md",
-      "contentHash": "2f6f57b78392a06d0d1dbe1d679e86680ea52a7cc6a77c916233287d25fd7660",
+      "contentHash": "c73a0c52962fa804e4f0f2faed6bb47c91cd80a107e9bb8d950185497bb303b6",
       "functions": [],
       "classes": [],
       "imports": [],
       "exports": [],
-      "totalLines": 26,
+      "totalLines": 39,
       "hasStructuralAnalysis": true
     },
     "docs/STATUS.md": {
       "filePath": "docs/STATUS.md",
-      "contentHash": "739dcf3231495e7155bd00232889189855ef9b4e9fb6722e1864d68473da7457",
+      "contentHash": "772dffcd8f382879e041951e58b1b93d2d951c8267921c32e1a15d172ef94b45",
       "functions": [],
       "classes": [],
       "imports": [],
       "exports": [],
-      "totalLines": 50,
+      "totalLines": 57,
       "hasStructuralAnalysis": true
     },
     "docs/tree.md": {
       "filePath": "docs/tree.md",
-      "contentHash": "bae81568b70b137f8a68d645e255bc66c584f921ffe834bdbd001d0fcfcce559",
+      "contentHash": "26670f9008e1ac1f0329768d3e48a86176c6a7c9deba37f8f830690a38eb5b69",
       "functions": [],
       "classes": [],
       "imports": [],
@@ -852,7 +952,7 @@
     },
     "ontology/shapes.ttl": {
       "filePath": "ontology/shapes.ttl",
-      "contentHash": "cb9047ca6adac334577c8d023e875ea04c12402622ce92dfc4c2207874f72a8d",
+      "contentHash": "d115a4b4cbb1e90e2627287de48451129410973b703b5a9c8f683fb42136ab4d",
       "functions": [],
       "classes": [],
       "imports": [],
@@ -862,7 +962,7 @@
     },
     "ontology/trust_fund.ttl": {
       "filePath": "ontology/trust_fund.ttl",
-      "contentHash": "a0d25051f0dac054a550f445f9d526cea8d5f306e21a438a40af09796aae2b13",
+      "contentHash": "8d60232cc6d62d03ffe3973898af61ff4293b03d5c45cbe4f85a74588c1e8aea",
       "functions": [],
       "classes": [],
       "imports": [],
@@ -872,7 +972,7 @@
     },
     "prompts/v0/extract/system.md": {
       "filePath": "prompts/v0/extract/system.md",
-      "contentHash": "e76af3f17c9477c600f6f0f543857e983737bb1c05247f7ef9722dd7c19e5af3",
+      "contentHash": "2d1cc0ccca796e10e6d3da7f0e53e015ec2b993f72bca74d5624d9e54223cce0",
       "functions": [],
       "classes": [],
       "imports": [],
@@ -882,7 +982,7 @@
     },
     "prompts/v0/judge/system.md": {
       "filePath": "prompts/v0/judge/system.md",
-      "contentHash": "9a6171736dbb91c6d209b486ff2743ea0e195eb92663bfa1985002050fcd036b",
+      "contentHash": "a1a6be0c69c3e44caecb6925abe034f7d71e921727548976e46af3281f60ba64",
       "functions": [],
       "classes": [],
       "imports": [],
@@ -892,7 +992,7 @@
     },
     "prompts/v0/normalize/system.md": {
       "filePath": "prompts/v0/normalize/system.md",
-      "contentHash": "31eda6e348544502954d1c597f7b1c4d245ca8b22534a94137f768f07333a2a6",
+      "contentHash": "b3ded97755fbe6e8edb4d3a8e6237102da18663783be634e87843b7548ef6804",
       "functions": [],
       "classes": [],
       "imports": [],
@@ -902,7 +1002,7 @@
     },
     "pyproject.toml": {
       "filePath": "pyproject.toml",
-      "contentHash": "6651caeef6d772cc4f8adb83dfe44612a2bfb091692dfe7ca3a3d2e797ce502b",
+      "contentHash": "47e0bc35585d3f5822bae7e26915dfb8e5fe2844ba0d6d72665d565a51f557c0",
       "functions": [],
       "classes": [],
       "imports": [],
@@ -912,12 +1012,32 @@
     },
     "README.md": {
       "filePath": "README.md",
-      "contentHash": "5d6564c1d1d0d2a516412d14659427bd4257c9f819244b9b25ed762af247f5ca",
+      "contentHash": "41e912abe18bac258a9ad94b86e440c11f512262868f16adca2dd6e531f3a3e1",
       "functions": [],
       "classes": [],
       "imports": [],
       "exports": [],
       "totalLines": 79,
+      "hasStructuralAnalysis": true
+    },
+    "reports/_allmissing_a.json": {
+      "filePath": "reports/_allmissing_a.json",
+      "contentHash": "2275dadaecf655f47bc6da93f560a21fa1f78fcc7c0557ae8830c3de772887e3",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 1,
+      "hasStructuralAnalysis": true
+    },
+    "reports/_allmissing_b.json": {
+      "filePath": "reports/_allmissing_b.json",
+      "contentHash": "2275dadaecf655f47bc6da93f560a21fa1f78fcc7c0557ae8830c3de772887e3",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 1,
       "hasStructuralAnalysis": true
     },
     "reports/.DS_Store": {
@@ -930,9 +1050,19 @@
       "totalLines": 1,
       "hasStructuralAnalysis": false
     },
+    "reports/compare_det.md": {
+      "filePath": "reports/compare_det.md",
+      "contentHash": "7e6c588725289ad92e268ed774b0481b666ead434b80dd3b0150d5d3666fa12e",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 23,
+      "hasStructuralAnalysis": true
+    },
     "reports/manual_extract/abox.ttl": {
       "filePath": "reports/manual_extract/abox.ttl",
-      "contentHash": "8262d347e3e81811271694cbbe917c13a18b6216704e2cf2c8881a0589f98f30",
+      "contentHash": "a164bef82faac240b434619a2a72a8397d012ad3f52754d92bbff850a6275d41",
       "functions": [],
       "classes": [],
       "imports": [],
@@ -942,7 +1072,7 @@
     },
     "reports/manual_extract/cross_check.json": {
       "filePath": "reports/manual_extract/cross_check.json",
-      "contentHash": "8637f5ca93ae773250d2cb4d4111d7c3c5e0651da6c7bd61d17e12cffa37ac1b",
+      "contentHash": "765fe92f20d41c27b09b059735d669914b3d00572afee308c8eac3f087f85e8a",
       "functions": [],
       "classes": [],
       "imports": [],
@@ -952,7 +1082,7 @@
     },
     "reports/manual_extract/extraction.json": {
       "filePath": "reports/manual_extract/extraction.json",
-      "contentHash": "e06315a85618c6377ef83533d8193759138c4395d86f83b0da5ecaddc7178a67",
+      "contentHash": "e18638832ee1fc486de6087df01993b62df076caf4bd26f343f0093346ceb628",
       "functions": [],
       "classes": [],
       "imports": [],
@@ -962,7 +1092,7 @@
     },
     "reports/manual_extract/llm_judgements.json": {
       "filePath": "reports/manual_extract/llm_judgements.json",
-      "contentHash": "a5338d955b09046ec0b16f3a9625b7955c763aae07dc722e474e6078745f932f",
+      "contentHash": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570",
       "functions": [],
       "classes": [],
       "imports": [],
@@ -972,7 +1102,7 @@
     },
     "reports/manual_extract/normalization.json": {
       "filePath": "reports/manual_extract/normalization.json",
-      "contentHash": "e5fb224ff46dd40f58934e01af15b2afcd16597e21685be2d80ac65d1312cb6e",
+      "contentHash": "eca8f886a298872b5e15f1310c563e468f7a1b47aa9a5f2bc053fb6256d7bfab",
       "functions": [],
       "classes": [],
       "imports": [],
@@ -982,7 +1112,7 @@
     },
     "reports/manual_extract/ontology_mermaid.md": {
       "filePath": "reports/manual_extract/ontology_mermaid.md",
-      "contentHash": "9b8f7af826fe315a15f3a25650c372a008c6dbc05e99e81fa66c0348ac29338d",
+      "contentHash": "6ed42855de527b67ef203eb2ed468d0176bf5a9cec4506f4a07a0e1cc94917e1",
       "functions": [],
       "classes": [],
       "imports": [],
@@ -992,7 +1122,7 @@
     },
     "reports/manual_extract/shacl_report.txt": {
       "filePath": "reports/manual_extract/shacl_report.txt",
-      "contentHash": "4d83fbfef17dc0841bf4a82e0e82bbbedb0bed7283467fb1be959416c19de8c2",
+      "contentHash": "77debc800e6c973b66475968bdf71e2e667df8f4108e7f5299fe1651e6606dc9",
       "functions": [],
       "classes": [],
       "imports": [],
@@ -1002,7 +1132,7 @@
     },
     "reports/manual_extract/shacl_validation.json": {
       "filePath": "reports/manual_extract/shacl_validation.json",
-      "contentHash": "8474890e326945fcef7220fc08565a6c48bdfaeea0f80c34574000661bd16703",
+      "contentHash": "e82e38407f72cae6f3ee0e104c6e156824f73cc6a4cb8c7ee21e3c2917482eae",
       "functions": [],
       "classes": [],
       "imports": [],
@@ -1010,9 +1140,99 @@
       "totalLines": 4,
       "hasStructuralAnalysis": true
     },
+    "reports/scoring/cli_guard.json": {
+      "filePath": "reports/scoring/cli_guard.json",
+      "contentHash": "60ffd193905d0161ea363011dfb94d31b5849962272b6fe7f052201946e4f51b",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 594,
+      "hasStructuralAnalysis": true
+    },
+    "reports/scoring/cli_ontology.json": {
+      "filePath": "reports/scoring/cli_ontology.json",
+      "contentHash": "6939615b947ec67f3e9f7dd48acfca4914a5f6a08f57c20c839b2f8af14ad1ec",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 590,
+      "hasStructuralAnalysis": true
+    },
+    "reports/scoring/score_baseline.json": {
+      "filePath": "reports/scoring/score_baseline.json",
+      "contentHash": "5924ea332c15bac8dafce997db2e79562a7d6775bc0b55076f5e96d256dac853",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 590,
+      "hasStructuralAnalysis": true
+    },
+    "reports/scoring/score_guard.json": {
+      "filePath": "reports/scoring/score_guard.json",
+      "contentHash": "c39e3a6301ac5c3ef664f5ace093dfa289e2907ebaab33af77d42a64eaff8dde",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 594,
+      "hasStructuralAnalysis": true
+    },
+    "reports/scoring/score_harness_norm.json": {
+      "filePath": "reports/scoring/score_harness_norm.json",
+      "contentHash": "ad4b2b579c97d28bed7c20a164496057fb5eed788fa71403562fe4753a4d216e",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 594,
+      "hasStructuralAnalysis": true
+    },
+    "reports/scoring/score_ontology.json": {
+      "filePath": "reports/scoring/score_ontology.json",
+      "contentHash": "7d52ba1fff234ffb1330476197ad27676555d508360bef5c4dfb4ca62853481b",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 590,
+      "hasStructuralAnalysis": true
+    },
+    "reports/stats_base_vs_full.json": {
+      "filePath": "reports/stats_base_vs_full.json",
+      "contentHash": "8af147c1d2b083a8ce48360affe2bdc0f5e7c25fd46bbd1514ed9d0fe678353e",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 20,
+      "hasStructuralAnalysis": true
+    },
+    "reports/stats_det.json": {
+      "filePath": "reports/stats_det.json",
+      "contentHash": "d2d57c4a12b3d22d0ff25f09382bde9e6913b912803d1f5a74c652a0b5d507b4",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 20,
+      "hasStructuralAnalysis": true
+    },
+    "reports/stats_off_vs_on.json": {
+      "filePath": "reports/stats_off_vs_on.json",
+      "contentHash": "e2ebe31d1a3ec17f44e883bffeb3a378e864a1ff9674553380d52e10bb858af0",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 20,
+      "hasStructuralAnalysis": true
+    },
     "requirements.txt": {
       "filePath": "requirements.txt",
-      "contentHash": "bfb875e1e6b5d5cf05c633437cbd01f969390e302e7cd5a8dc3a1befa111723f",
+      "contentHash": "92d6399ac989c74dd93503bd486afe6740d39aaa0b1ea7475e3929268cc7ee0a",
       "functions": [],
       "classes": [],
       "imports": [],
@@ -1022,12 +1242,87 @@
     },
     "scripts/__init__.py": {
       "filePath": "scripts/__init__.py",
-      "contentHash": "991661e9de7487216d22923013fc6f81372446129489cd470792b018e6159bdd",
+      "contentHash": "3adffeb24fa28271b264cb47a387fd05459996f400fe112f6aca4cbbdee107c9",
       "functions": [],
       "classes": [],
       "imports": [],
       "exports": [],
       "totalLines": 2,
+      "hasStructuralAnalysis": true
+    },
+    "scripts/baseline_judge.py": {
+      "filePath": "scripts/baseline_judge.py",
+      "contentHash": "336311b1719b06eafd07d0cd2b6f95a80d34db59633079e3c0f736b40486e1a5",
+      "functions": [
+        {
+          "name": "main",
+          "params": [],
+          "returnType": "int",
+          "exported": true,
+          "lineCount": 34
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "argparse",
+          "specifiers": [
+            "argparse"
+          ]
+        },
+        {
+          "source": "json",
+          "specifiers": [
+            "json"
+          ]
+        },
+        {
+          "source": "sys",
+          "specifiers": [
+            "sys"
+          ]
+        },
+        {
+          "source": "time",
+          "specifiers": [
+            "time"
+          ]
+        },
+        {
+          "source": "pathlib",
+          "specifiers": [
+            "Path"
+          ]
+        },
+        {
+          "source": "src.client.ollama_client",
+          "specifiers": [
+            "OllamaClient"
+          ]
+        },
+        {
+          "source": "src.scoring.baseline",
+          "specifiers": [
+            "evaluate_baseline"
+          ]
+        },
+        {
+          "source": "src.scoring.golden",
+          "specifiers": [
+            "load_golden_master"
+          ]
+        },
+        {
+          "source": "src.scoring.scorer",
+          "specifiers": [
+            "score_cases"
+          ]
+        }
+      ],
+      "exports": [
+        "main"
+      ],
+      "totalLines": 65,
       "hasStructuralAnalysis": true
     },
     "scripts/extract_5_runs.py": {
@@ -1324,6 +1619,91 @@
       "totalLines": 127,
       "hasStructuralAnalysis": true
     },
+    "scripts/harness_run.py": {
+      "filePath": "scripts/harness_run.py",
+      "contentHash": "aac2d6658b9fd144f69b291e1d691d35c78f64569ffb88226de8e025c51af202",
+      "functions": [
+        {
+          "name": "_iso_now",
+          "params": [],
+          "returnType": "str",
+          "exported": true,
+          "lineCount": 2
+        },
+        {
+          "name": "main",
+          "params": [],
+          "returnType": "int",
+          "exported": true,
+          "lineCount": 81
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "argparse",
+          "specifiers": [
+            "argparse"
+          ]
+        },
+        {
+          "source": "json",
+          "specifiers": [
+            "json"
+          ]
+        },
+        {
+          "source": "sys",
+          "specifiers": [
+            "sys"
+          ]
+        },
+        {
+          "source": "time",
+          "specifiers": [
+            "time"
+          ]
+        },
+        {
+          "source": "datetime",
+          "specifiers": [
+            "datetime",
+            "timezone"
+          ]
+        },
+        {
+          "source": "pathlib",
+          "specifiers": [
+            "Path"
+          ]
+        },
+        {
+          "source": "src.client.ollama_client",
+          "specifiers": [
+            "OllamaClient"
+          ]
+        },
+        {
+          "source": "src.harness.manifest",
+          "specifiers": [
+            "build_manifest"
+          ]
+        },
+        {
+          "source": "src.harness.pipeline",
+          "specifiers": [
+            "guard_config_for",
+            "run_harness"
+          ]
+        }
+      ],
+      "exports": [
+        "_iso_now",
+        "main"
+      ],
+      "totalLines": 120,
+      "hasStructuralAnalysis": true
+    },
     "scripts/hello_gemma.py": {
       "filePath": "scripts/hello_gemma.py",
       "contentHash": "63f70b9f89de22ffa6dc87602aec10f9ae1245535df6e97c08eac5a18fa7bacb",
@@ -1428,7 +1808,7 @@
     },
     "scripts/render_figma_ontology_svg.py": {
       "filePath": "scripts/render_figma_ontology_svg.py",
-      "contentHash": "5adf20ba9b115f2fb7ad87a9c23b4b6012d8b41b4092d928c5e34a7beb41b755",
+      "contentHash": "e5ad14bd45deefe509978baf48d5a7d6a34d856ee64a273a61ecc692259984d0",
       "functions": [
         {
           "name": "render_figma_svg",
@@ -1581,7 +1961,7 @@
     },
     "scripts/render_mermaid.py": {
       "filePath": "scripts/render_mermaid.py",
-      "contentHash": "fadcb22b7d04c4ce44c0f5b297f2ef9b416f0b6ba0ef02901177377682e1715d",
+      "contentHash": "9399a299537eb0511742d4d0804be4e2adb644eafa117b63075032ec8ac604fa",
       "functions": [
         {
           "name": "render_mermaid",
@@ -1702,7 +2082,7 @@
     },
     "scripts/render_ontology_graph.py": {
       "filePath": "scripts/render_ontology_graph.py",
-      "contentHash": "49988ec29cbf63eb484a448faf544f7431c0ecdddfe9e9e4be09791f3b4b54e4",
+      "contentHash": "affe776bb28da11295b8decebf9e6cbf0739f3706d38e0ca9e3a9cd59dcefc8a",
       "functions": [
         {
           "name": "render_graphs",
@@ -1958,7 +2338,7 @@
     },
     "scripts/run_extract_once.py": {
       "filePath": "scripts/run_extract_once.py",
-      "contentHash": "aa6d6a8180a0b9d46490327b3ade89494512b540a4d2d3b67ada233fcf44d194",
+      "contentHash": "284a88974067f09ac1ddc254c88aed5698e768b450ddfb96b1cee562ab54a79e",
       "functions": [
         {
           "name": "main",
@@ -2109,6 +2489,87 @@
       "totalLines": 172,
       "hasStructuralAnalysis": true
     },
+    "scripts/score_harness_norm.py": {
+      "filePath": "scripts/score_harness_norm.py",
+      "contentHash": "de7ff5f0097a7b6fd058a8f4a01385455457543f1e07d2b1b07db6428fd631d2",
+      "functions": [
+        {
+          "name": "main",
+          "params": [],
+          "returnType": "int",
+          "exported": true,
+          "lineCount": 37
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "argparse",
+          "specifiers": [
+            "argparse"
+          ]
+        },
+        {
+          "source": "json",
+          "specifiers": [
+            "json"
+          ]
+        },
+        {
+          "source": "sys",
+          "specifiers": [
+            "sys"
+          ]
+        },
+        {
+          "source": "time",
+          "specifiers": [
+            "time"
+          ]
+        },
+        {
+          "source": "pathlib",
+          "specifiers": [
+            "Path"
+          ]
+        },
+        {
+          "source": "dotenv",
+          "specifiers": [
+            "load_dotenv"
+          ]
+        },
+        {
+          "source": "src.client.anthropic_client",
+          "specifiers": [
+            "AnthropicJSONClient"
+          ]
+        },
+        {
+          "source": "src.scoring.evaluate",
+          "specifiers": [
+            "evaluate_golden_full"
+          ]
+        },
+        {
+          "source": "src.scoring.golden",
+          "specifiers": [
+            "load_golden_master"
+          ]
+        },
+        {
+          "source": "src.scoring.scorer",
+          "specifiers": [
+            "score_cases"
+          ]
+        }
+      ],
+      "exports": [
+        "main"
+      ],
+      "totalLines": 73,
+      "hasStructuralAnalysis": true
+    },
     "scripts/smoke_temp0.py": {
       "filePath": "scripts/smoke_temp0.py",
       "contentHash": "fcea6b535529b50b5dca671488577d39cfda2bf82da80377c71ade10bfbe8ae4",
@@ -2225,7 +2686,7 @@
     },
     "src/__init__.py": {
       "filePath": "src/__init__.py",
-      "contentHash": "83ac4be8591bbdb4820947b98c206b1cf65ff25f970b064d8910e4cf2589a11a",
+      "contentHash": "e423dd456d16405f2c806cfaf2652224c4ace08b3c297d329757edc935f9a695",
       "functions": [],
       "classes": [],
       "imports": [],
@@ -2233,9 +2694,197 @@
       "totalLines": 2,
       "hasStructuralAnalysis": true
     },
+    "src/cli/__init__.py": {
+      "filePath": "src/cli/__init__.py",
+      "contentHash": "edf4d916f421f64bbc99de7c7d745c0aff8eb8509480c0f35b51de864141b103",
+      "functions": [],
+      "classes": [],
+      "imports": [
+        {
+          "source": "src.cli.main",
+          "specifiers": [
+            "app"
+          ]
+        }
+      ],
+      "exports": [],
+      "totalLines": 13,
+      "hasStructuralAnalysis": true
+    },
+    "src/cli/__main__.py": {
+      "filePath": "src/cli/__main__.py",
+      "contentHash": "1112b83ed4d259f3d7edd67f83979a3a14e0d64ae92475d4af2dc7154ebf2968",
+      "functions": [],
+      "classes": [],
+      "imports": [
+        {
+          "source": "src.cli.main",
+          "specifiers": [
+            "app"
+          ]
+        }
+      ],
+      "exports": [],
+      "totalLines": 7,
+      "hasStructuralAnalysis": true
+    },
+    "src/cli/main.py": {
+      "filePath": "src/cli/main.py",
+      "contentHash": "461767f036c2c9fe2ab394314602be3c516a25a859c2aa885a87a693fa842147",
+      "functions": [
+        {
+          "name": "_write_json",
+          "params": [
+            "path",
+            "payload"
+          ],
+          "returnType": "None",
+          "exported": true,
+          "lineCount": 3
+        },
+        {
+          "name": "score",
+          "params": [
+            "out",
+            "mode",
+            "golden",
+            "contract_pages",
+            "im_pages",
+            "run_id"
+          ],
+          "returnType": "None",
+          "exported": true,
+          "lineCount": 27
+        },
+        {
+          "name": "compare",
+          "params": [
+            "scores",
+            "out",
+            "model",
+            "seed"
+          ],
+          "returnType": "None",
+          "exported": true,
+          "lineCount": 17
+        },
+        {
+          "name": "stats",
+          "params": [
+            "score_a",
+            "score_b",
+            "out",
+            "n_boot",
+            "seed"
+          ],
+          "returnType": "None",
+          "exported": true,
+          "lineCount": 49
+        },
+        {
+          "name": "run",
+          "params": [
+            "seeds",
+            "model",
+            "with_normalize",
+            "with_judge"
+          ],
+          "returnType": "None",
+          "exported": true,
+          "lineCount": 14
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "json",
+          "specifiers": [
+            "json"
+          ]
+        },
+        {
+          "source": "subprocess",
+          "specifiers": [
+            "subprocess"
+          ]
+        },
+        {
+          "source": "sys",
+          "specifiers": [
+            "sys"
+          ]
+        },
+        {
+          "source": "pathlib",
+          "specifiers": [
+            "Path"
+          ]
+        },
+        {
+          "source": "typer",
+          "specifiers": [
+            "typer"
+          ]
+        },
+        {
+          "source": "src.scoring.compare",
+          "specifiers": [
+            "render_compare_md"
+          ]
+        },
+        {
+          "source": "src.scoring.evaluate",
+          "specifiers": [
+            "SUPPORTED_MODES",
+            "evaluate_golden"
+          ]
+        },
+        {
+          "source": "src.scoring.golden",
+          "specifiers": [
+            "DEFAULT_GOLDEN_PATH",
+            "load_golden_master"
+          ]
+        },
+        {
+          "source": "src.scoring.scorer",
+          "specifiers": [
+            "score_cases"
+          ]
+        },
+        {
+          "source": "src.stats.bootstrap",
+          "specifiers": [
+            "bootstrap_f1_ci"
+          ]
+        },
+        {
+          "source": "src.stats.mcnemar",
+          "specifiers": [
+            "mcnemar_test"
+          ]
+        },
+        {
+          "source": "src.stats.paired",
+          "specifiers": [
+            "aligned_correctness",
+            "mismatch_arrays"
+          ]
+        }
+      ],
+      "exports": [
+        "_write_json",
+        "score",
+        "compare",
+        "stats",
+        "run"
+      ],
+      "totalLines": 158,
+      "hasStructuralAnalysis": true
+    },
     "src/client/__init__.py": {
       "filePath": "src/client/__init__.py",
-      "contentHash": "498f233a02b5f81499384763c15778a8096db7c8eb2f2cc776c31a392ae2e44b",
+      "contentHash": "d395dbd05f2e660b942377a10b178bd322e40c238091f0edaa1261adf4fff2df",
       "functions": [],
       "classes": [],
       "imports": [],
@@ -2245,7 +2894,7 @@
     },
     "src/client/anthropic_client.py": {
       "filePath": "src/client/anthropic_client.py",
-      "contentHash": "c1b2b160d3ec3d271046e13cab1f1064764867f43d33f962db44276cd6c3aff7",
+      "contentHash": "1817121d84327d97802cbdfd933891ac2625d3c2fa933db2ac10f51299c1251e",
       "functions": [
         {
           "name": "_message_text",
@@ -2988,7 +3637,7 @@
     },
     "src/guards/g3_constraint.py": {
       "filePath": "src/guards/g3_constraint.py",
-      "contentHash": "b613feeff535f95ec238574416ba9d881b68b647c454c148efd242002b41de07",
+      "contentHash": "23fba55fa90df8bdddca8f7a8b89c6f2aec29f38b1c5794b68a3c661b4c71052",
       "functions": [
         {
           "name": "check_constraints",
@@ -3037,7 +3686,7 @@
           ],
           "returnType": "float | None",
           "exported": true,
-          "lineCount": 18
+          "lineCount": 20
         },
         {
           "name": "_try_parse_date",
@@ -3108,12 +3757,12 @@
         "_to_percent",
         "_try_parse_date"
       ],
-      "totalLines": 238,
+      "totalLines": 240,
       "hasStructuralAnalysis": true
     },
     "src/guards/registry.py": {
       "filePath": "src/guards/registry.py",
-      "contentHash": "cbdfcc532e5559f1fb69214c88f97c9f76ab22068571e056774ffe126b1b4d38",
+      "contentHash": "7111d09fa720e8f74af289ec7a3b839ce45d66e5f7e6b74a4708c5a001961dbc",
       "functions": [
         {
           "name": "apply_guards",
@@ -3182,6 +3831,259 @@
         "summarize_events"
       ],
       "totalLines": 94,
+      "hasStructuralAnalysis": true
+    },
+    "src/harness/__init__.py": {
+      "filePath": "src/harness/__init__.py",
+      "contentHash": "15bb1b4233b4376834b9ab7d074e3dc9586bcb982881a2d5572e9aef92cbbeef",
+      "functions": [],
+      "classes": [],
+      "imports": [
+        {
+          "source": "src.harness.manifest",
+          "specifiers": [
+            "build_manifest"
+          ]
+        },
+        {
+          "source": "src.harness.pipeline",
+          "specifiers": [
+            "build_harness_result",
+            "run_harness"
+          ]
+        },
+        {
+          "source": "src.harness.result",
+          "specifiers": [
+            "HarnessMode",
+            "HarnessResult"
+          ]
+        }
+      ],
+      "exports": [],
+      "totalLines": 17,
+      "hasStructuralAnalysis": true
+    },
+    "src/harness/manifest.py": {
+      "filePath": "src/harness/manifest.py",
+      "contentHash": "13bff00df78c791243f77cbec0e651c92d95a9f5d08e7417ede2363c58d6c736",
+      "functions": [
+        {
+          "name": "build_manifest",
+          "params": [
+            "run_id",
+            "mode",
+            "guard_config",
+            "backend",
+            "inputs",
+            "started_at",
+            "ended_at",
+            "total_latency_s",
+            "llm_call_count",
+            "llm_total_tokens",
+            "cost_usd",
+            "golden_version"
+          ],
+          "returnType": "dict",
+          "exported": true,
+          "lineCount": 35
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "src.guards.base",
+          "specifiers": [
+            "GuardConfig"
+          ]
+        }
+      ],
+      "exports": [
+        "build_manifest"
+      ],
+      "totalLines": 45,
+      "hasStructuralAnalysis": true
+    },
+    "src/harness/pipeline.py": {
+      "filePath": "src/harness/pipeline.py",
+      "contentHash": "2f2c7d4fac49a5f7cc41a20b291561fb9854a91928a874879f773a37afc093cc",
+      "functions": [
+        {
+          "name": "guard_config_for",
+          "params": [
+            "mode"
+          ],
+          "returnType": "GuardConfig",
+          "exported": true,
+          "lineCount": 6
+        },
+        {
+          "name": "build_harness_result",
+          "params": [
+            "extraction",
+            "mode",
+            "ctx",
+            "raw_extraction_json",
+            "total_latency_ms",
+            "llm_call_count",
+            "llm_total_tokens",
+            "llm_total_cost_usd"
+          ],
+          "returnType": "HarnessResult",
+          "exported": true,
+          "lineCount": 65
+        },
+        {
+          "name": "run_harness",
+          "params": [
+            "client",
+            "contract_pdf",
+            "im_pdf",
+            "mode"
+          ],
+          "returnType": "tuple[HarnessResult, ExtractionRun]",
+          "exported": true,
+          "lineCount": 42
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "pathlib",
+          "specifiers": [
+            "Path"
+          ]
+        },
+        {
+          "source": "src.client.ollama_client",
+          "specifiers": [
+            "OllamaClient"
+          ]
+        },
+        {
+          "source": "src.extraction.extractor",
+          "specifiers": [
+            "ExtractionRun",
+            "extract_from_pdfs"
+          ]
+        },
+        {
+          "source": "src.guards.base",
+          "specifiers": [
+            "GuardConfig",
+            "GuardContext"
+          ]
+        },
+        {
+          "source": "src.guards.registry",
+          "specifiers": [
+            "apply_guards"
+          ]
+        },
+        {
+          "source": "src.harness.result",
+          "specifiers": [
+            "HarnessMode",
+            "HarnessResult"
+          ]
+        },
+        {
+          "source": "src.ontology.mapping",
+          "specifiers": [
+            "extraction_to_graph"
+          ]
+        },
+        {
+          "source": "src.ontology.validate",
+          "specifiers": [
+            "validate_graph"
+          ]
+        },
+        {
+          "source": "src.pipelines.cross_check",
+          "specifiers": [
+            "cross_check_extraction"
+          ]
+        },
+        {
+          "source": "src.schemas.extraction",
+          "specifiers": [
+            "ExtractionResult"
+          ]
+        }
+      ],
+      "exports": [
+        "guard_config_for",
+        "build_harness_result",
+        "run_harness"
+      ],
+      "totalLines": 141,
+      "hasStructuralAnalysis": true
+    },
+    "src/harness/result.py": {
+      "filePath": "src/harness/result.py",
+      "contentHash": "f3a00b46fb81fffaaf6344560548448b63f7741c3212856d30ccf869c7a69ee9",
+      "functions": [],
+      "classes": [
+        {
+          "name": "HarnessResult",
+          "methods": [],
+          "properties": [
+            "mode",
+            "extraction",
+            "guard_log",
+            "g1_fatal",
+            "abox_ttl",
+            "shacl_conforms",
+            "shacl_report_text",
+            "cross_check",
+            "total_latency_ms",
+            "llm_call_count",
+            "llm_total_tokens",
+            "llm_total_cost_usd"
+          ],
+          "exported": true,
+          "lineCount": 27
+        }
+      ],
+      "imports": [
+        {
+          "source": "typing",
+          "specifiers": [
+            "Literal"
+          ]
+        },
+        {
+          "source": "pydantic",
+          "specifiers": [
+            "BaseModel",
+            "ConfigDict",
+            "Field"
+          ]
+        },
+        {
+          "source": "src.guards.base",
+          "specifiers": [
+            "GuardEvent"
+          ]
+        },
+        {
+          "source": "src.pipelines.cross_check",
+          "specifiers": [
+            "CrossCheckResult"
+          ]
+        },
+        {
+          "source": "src.schemas.extraction",
+          "specifiers": [
+            "ExtractionResult"
+          ]
+        }
+      ],
+      "exports": [
+        "HarnessResult"
+      ],
+      "totalLines": 46,
       "hasStructuralAnalysis": true
     },
     "src/ingest/__init__.py": {
@@ -3392,7 +4294,7 @@
     },
     "src/ontology/__init__.py": {
       "filePath": "src/ontology/__init__.py",
-      "contentHash": "e2b5f296194dfd32db2bff9608541075d122fffa6a93fc2e95d579c3f6339f7b",
+      "contentHash": "d37d04b54a0d675f0153973728842029c2cd0edb8f79bd1ededc21457eee26d2",
       "functions": [],
       "classes": [],
       "imports": [],
@@ -3402,7 +4304,7 @@
     },
     "src/ontology/mapping.py": {
       "filePath": "src/ontology/mapping.py",
-      "contentHash": "ffa9982d80c5f1ef1c0fadf8f9b2b690c5e8868d3945aaae0978e4b8ff7ff36b",
+      "contentHash": "cad234b162cd49e26c771f3f52f635e84c48229539c4f5bb7ba5098fed5c8a11",
       "functions": [
         {
           "name": "extraction_to_graph",
@@ -3471,7 +4373,7 @@
     },
     "src/ontology/validate.py": {
       "filePath": "src/ontology/validate.py",
-      "contentHash": "229d81a82b68223c788e83987bffee9d773f61751339da543fbf4536b133468a",
+      "contentHash": "19b6cd93c90d3a863a9199e7862046982d0c0b047821a79ca11010eae755030b",
       "functions": [
         {
           "name": "validate_graph",
@@ -3533,7 +4435,7 @@
     },
     "src/pipelines/__init__.py": {
       "filePath": "src/pipelines/__init__.py",
-      "contentHash": "cb43edba7f60d5d91358266d448ea34e14e60354e0489a9f36074d4e268ece88",
+      "contentHash": "2870cf4bed1e24feb27eb889c353cc2bcb7e1c6328d4d04254efb787dc58580d",
       "functions": [],
       "classes": [],
       "imports": [],
@@ -3543,7 +4445,7 @@
     },
     "src/pipelines/cross_check.py": {
       "filePath": "src/pipelines/cross_check.py",
-      "contentHash": "713d4681f5e2ac901df57f765e2dfd035b5649e3fcaf05d46bc97c278dc9a70f",
+      "contentHash": "a71aff2235ea8c4be9e0d31bb49ab24dfcb15b3b1f382b4149838b7fdc4424d8",
       "functions": [
         {
           "name": "cross_check_extraction",
@@ -3758,7 +4660,7 @@
     },
     "src/pipelines/extract.py": {
       "filePath": "src/pipelines/extract.py",
-      "contentHash": "8d6168a68b128c984b3cda1999e896d971f0f22760a0fc8db44ec0c13325e248",
+      "contentHash": "126559bd1b8555c11bd5ab1ca357c0cc9f2f155ddda7ebaa209ef9c59ee7b125",
       "functions": [
         {
           "name": "extract_from_documents",
@@ -3884,7 +4786,7 @@
     },
     "src/pipelines/llm_judge.py": {
       "filePath": "src/pipelines/llm_judge.py",
-      "contentHash": "6712a756aba8c2e597322df9b79a903b9e58e622002ff724c4917ab1d63d8cb5",
+      "contentHash": "5709c6289cd91160051143ac21988e2cf0e6ed5f420466be79f19bd5b03f89ec",
       "functions": [
         {
           "name": "judge_needs_review",
@@ -4017,7 +4919,7 @@
     },
     "src/pipelines/normalize.py": {
       "filePath": "src/pipelines/normalize.py",
-      "contentHash": "616d5eca95b9de846d8d3284cbaef6cec33d6535384bdd75daa2e61fae27da13",
+      "contentHash": "35cf26567fb5c1b30b4f02ac7296aa5bd12cfa9a66743c40e5c7bf9df529f0d0",
       "functions": [
         {
           "name": "normalize_extraction",
@@ -4441,7 +5343,7 @@
     },
     "src/schemas/__init__.py": {
       "filePath": "src/schemas/__init__.py",
-      "contentHash": "a3a463512f568924ed68b6181fc937daac26144bbc6a15e6c002cef0ec7340f3",
+      "contentHash": "695f400d2e1236ba7d74e94253d085eaef775cd657e4f3ec34a7ceeafad6facf",
       "functions": [],
       "classes": [],
       "imports": [],
@@ -4451,7 +5353,7 @@
     },
     "src/schemas/extraction.py": {
       "filePath": "src/schemas/extraction.py",
-      "contentHash": "fe5ed311fd57e4f1a00109dbaa4565977b7fdef7548a37e9c082a7fcb99095c7",
+      "contentHash": "3aa21de684fad9296d2a1a3a7d5fa6ed14d47c0b03f555b331f326816442bbb7",
       "functions": [],
       "classes": [
         {
@@ -4587,9 +5489,993 @@
       "totalLines": 68,
       "hasStructuralAnalysis": true
     },
+    "src/scoring/__init__.py": {
+      "filePath": "src/scoring/__init__.py",
+      "contentHash": "23fc23f1c8ef289d6208ecd80a353d4abb38a9e4bfcaa780b1e4f7ae4da251f8",
+      "functions": [],
+      "classes": [],
+      "imports": [
+        {
+          "source": "src.scoring.golden",
+          "specifiers": [
+            "GoldenCase",
+            "load_golden_master"
+          ]
+        },
+        {
+          "source": "src.scoring.labels",
+          "specifiers": [
+            "GOLD_TO_FINAL",
+            "GoldLabel",
+            "predicted_label"
+          ]
+        },
+        {
+          "source": "src.scoring.scorer",
+          "specifiers": [
+            "CaseRecord",
+            "score_cases"
+          ]
+        }
+      ],
+      "exports": [],
+      "totalLines": 21,
+      "hasStructuralAnalysis": true
+    },
+    "src/scoring/baseline.py": {
+      "filePath": "src/scoring/baseline.py",
+      "contentHash": "8f18472d70b979cc029e9315dee3e94193767f75bde5c279eaca1d481f94f951",
+      "functions": [
+        {
+          "name": "verdict_to_final_status",
+          "params": [
+            "verdict"
+          ],
+          "returnType": "FinalCheckStatus",
+          "exported": true,
+          "lineCount": 3
+        },
+        {
+          "name": "_parse_verdict",
+          "params": [
+            "text"
+          ],
+          "returnType": "BaselineVerdict",
+          "exported": true,
+          "lineCount": 12
+        },
+        {
+          "name": "judge_case",
+          "params": [
+            "client",
+            "case"
+          ],
+          "returnType": "BaselineVerdict",
+          "exported": true,
+          "lineCount": 9
+        },
+        {
+          "name": "evaluate_baseline",
+          "params": [
+            "client",
+            "cases"
+          ],
+          "returnType": "list[CaseRecord]",
+          "exported": true,
+          "lineCount": 19
+        }
+      ],
+      "classes": [
+        {
+          "name": "BaselineVerdict",
+          "methods": [],
+          "properties": [],
+          "exported": true,
+          "lineCount": 4
+        }
+      ],
+      "imports": [
+        {
+          "source": "json",
+          "specifiers": [
+            "json"
+          ]
+        },
+        {
+          "source": "enum",
+          "specifiers": [
+            "StrEnum"
+          ]
+        },
+        {
+          "source": "src.client.ollama_client",
+          "specifiers": [
+            "OllamaClient"
+          ]
+        },
+        {
+          "source": "src.pipelines.cross_check",
+          "specifiers": [
+            "FinalCheckStatus"
+          ]
+        },
+        {
+          "source": "src.scoring.golden",
+          "specifiers": [
+            "GoldenCase"
+          ]
+        },
+        {
+          "source": "src.scoring.scorer",
+          "specifiers": [
+            "CaseRecord"
+          ]
+        }
+      ],
+      "exports": [
+        "BaselineVerdict",
+        "verdict_to_final_status",
+        "_parse_verdict",
+        "judge_case",
+        "evaluate_baseline"
+      ],
+      "totalLines": 105,
+      "hasStructuralAnalysis": true
+    },
+    "src/scoring/breakdown.py": {
+      "filePath": "src/scoring/breakdown.py",
+      "contentHash": "4cf0f2cb714f40c9ec4f16476d3de8808aab52550111dcdd8d870527639e1513",
+      "functions": [
+        {
+          "name": "confusion_of",
+          "params": [
+            "scored"
+          ],
+          "returnType": "Confusion",
+          "exported": true,
+          "lineCount": 11
+        },
+        {
+          "name": "_group",
+          "params": [
+            "scored",
+            "key_fn"
+          ],
+          "returnType": "dict[str, list[Scored]]",
+          "exported": true,
+          "lineCount": 5
+        },
+        {
+          "name": "_round",
+          "params": [
+            "value",
+            "digits"
+          ],
+          "returnType": "float",
+          "exported": true,
+          "lineCount": 2
+        },
+        {
+          "name": "by_field",
+          "params": [
+            "scored"
+          ],
+          "returnType": "dict[str, dict]",
+          "exported": true,
+          "lineCount": 11
+        },
+        {
+          "name": "by_difficulty",
+          "params": [
+            "scored"
+          ],
+          "returnType": "dict[str, dict]",
+          "exported": true,
+          "lineCount": 10
+        },
+        {
+          "name": "by_mutation",
+          "params": [
+            "scored"
+          ],
+          "returnType": "dict[str, dict]",
+          "exported": true,
+          "lineCount": 10
+        },
+        {
+          "name": "by_signal",
+          "params": [
+            "scored"
+          ],
+          "returnType": "dict[str, dict]",
+          "exported": true,
+          "lineCount": 11
+        }
+      ],
+      "classes": [
+        {
+          "name": "Scored",
+          "methods": [],
+          "properties": [
+            "case_id",
+            "field",
+            "difficulty",
+            "mutation_type",
+            "harness_signal",
+            "gold",
+            "pred",
+            "bucket",
+            "correct"
+          ],
+          "exported": true,
+          "lineCount": 12
+        },
+        {
+          "name": "Confusion",
+          "methods": [
+            "precision",
+            "recall",
+            "f1",
+            "accuracy"
+          ],
+          "properties": [
+            "tp",
+            "fp",
+            "fn",
+            "tn",
+            "missing"
+          ],
+          "exported": true,
+          "lineCount": 26
+        }
+      ],
+      "imports": [
+        {
+          "source": "collections",
+          "specifiers": [
+            "defaultdict"
+          ]
+        },
+        {
+          "source": "dataclasses",
+          "specifiers": [
+            "dataclass"
+          ]
+        },
+        {
+          "source": "typing",
+          "specifiers": [
+            "Callable",
+            "Sequence"
+          ]
+        },
+        {
+          "source": "src.scoring.labels",
+          "specifiers": [
+            "GoldLabel"
+          ]
+        }
+      ],
+      "exports": [
+        "Scored",
+        "Confusion",
+        "confusion_of",
+        "_group",
+        "_round",
+        "by_field",
+        "by_difficulty",
+        "by_mutation",
+        "by_signal"
+      ],
+      "totalLines": 132,
+      "hasStructuralAnalysis": true
+    },
+    "src/scoring/compare.py": {
+      "filePath": "src/scoring/compare.py",
+      "contentHash": "eac3fd1d7cfdb8115f8bba399bf38933bd6b991078efdc2db0ad79cc75bac9ed",
+      "functions": [
+        {
+          "name": "_label",
+          "params": [
+            "mode"
+          ],
+          "returnType": "str",
+          "exported": true,
+          "lineCount": 2
+        },
+        {
+          "name": "_sorted_reports",
+          "params": [
+            "reports"
+          ],
+          "returnType": "list[dict]",
+          "exported": true,
+          "lineCount": 2
+        },
+        {
+          "name": "_difficulties",
+          "params": [
+            "reports"
+          ],
+          "returnType": "list[str]",
+          "exported": true,
+          "lineCount": 7
+        },
+        {
+          "name": "render_compare_md",
+          "params": [
+            "reports",
+            "model",
+            "seed"
+          ],
+          "returnType": "str",
+          "exported": true,
+          "lineCount": 52
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "typing",
+          "specifiers": [
+            "Sequence"
+          ]
+        }
+      ],
+      "exports": [
+        "_label",
+        "_sorted_reports",
+        "_difficulties",
+        "render_compare_md"
+      ],
+      "totalLines": 88,
+      "hasStructuralAnalysis": true
+    },
+    "src/scoring/evaluate.py": {
+      "filePath": "src/scoring/evaluate.py",
+      "contentHash": "347fb37c9ad0dbb4883ad63b7ffd946c287772d68d4804ab8865d3a8ffbcf4bf",
+      "functions": [
+        {
+          "name": "_empty_value",
+          "params": [],
+          "returnType": "DocumentValue",
+          "exported": true,
+          "lineCount": 2
+        },
+        {
+          "name": "_empty_field",
+          "params": [],
+          "returnType": "ComparableField",
+          "exported": true,
+          "lineCount": 2
+        },
+        {
+          "name": "_doc_value",
+          "params": [
+            "raw",
+            "page",
+            "role"
+          ],
+          "returnType": "DocumentValue",
+          "exported": true,
+          "lineCount": 11
+        },
+        {
+          "name": "_field_from_case",
+          "params": [
+            "case"
+          ],
+          "returnType": "ComparableField",
+          "exported": true,
+          "lineCount": 5
+        },
+        {
+          "name": "_build_extraction",
+          "params": [
+            "field_path",
+            "comparable"
+          ],
+          "returnType": "ExtractionResult",
+          "exported": true,
+          "lineCount": 19
+        },
+        {
+          "name": "_rejections_for_field",
+          "params": [
+            "events",
+            "field_path"
+          ],
+          "returnType": "list[str]",
+          "exported": true,
+          "lineCount": 9
+        },
+        {
+          "name": "resolve_with_judge",
+          "params": [
+            "final_status",
+            "judge_status"
+          ],
+          "returnType": "FinalCheckStatus",
+          "exported": true,
+          "lineCount": 13
+        },
+        {
+          "name": "evaluate_golden_full",
+          "params": [
+            "cases",
+            "contract_pages",
+            "im_pages",
+            "client"
+          ],
+          "returnType": "list[CaseRecord]",
+          "exported": true,
+          "lineCount": 59
+        },
+        {
+          "name": "evaluate_golden",
+          "params": [
+            "cases",
+            "mode",
+            "contract_pages",
+            "im_pages"
+          ],
+          "returnType": "list[CaseRecord]",
+          "exported": true,
+          "lineCount": 63
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "pathlib",
+          "specifiers": [
+            "Path"
+          ]
+        },
+        {
+          "source": "src.guards.base",
+          "specifiers": [
+            "GuardConfig",
+            "GuardContext",
+            "GuardDecision"
+          ]
+        },
+        {
+          "source": "src.guards.registry",
+          "specifiers": [
+            "apply_guards"
+          ]
+        },
+        {
+          "source": "src.pipelines.cross_check",
+          "specifiers": [
+            "FinalCheckStatus",
+            "cross_check_extraction"
+          ]
+        },
+        {
+          "source": "src.schemas.extraction",
+          "specifiers": [
+            "Citation",
+            "ComparableField",
+            "DocumentRole",
+            "DocumentValue",
+            "ExtractionResult",
+            "FeeScheduleExtraction",
+            "FundExtraction",
+            "PartyExtraction",
+            "RedemptionTermsExtraction"
+          ]
+        },
+        {
+          "source": "src.scoring.golden",
+          "specifiers": [
+            "GoldenCase"
+          ]
+        },
+        {
+          "source": "src.scoring.scorer",
+          "specifiers": [
+            "CaseRecord"
+          ]
+        }
+      ],
+      "exports": [
+        "_empty_value",
+        "_empty_field",
+        "_doc_value",
+        "_field_from_case",
+        "_build_extraction",
+        "_rejections_for_field",
+        "resolve_with_judge",
+        "evaluate_golden_full",
+        "evaluate_golden"
+      ],
+      "totalLines": 248,
+      "hasStructuralAnalysis": true
+    },
+    "src/scoring/golden.py": {
+      "filePath": "src/scoring/golden.py",
+      "contentHash": "8d900adc7c7da8456267db7b5dc780cee3e35f5a0a1d01d9eae3f8ca83f2faca",
+      "functions": [
+        {
+          "name": "_blank_to_none",
+          "params": [
+            "value"
+          ],
+          "returnType": "str | None",
+          "exported": true,
+          "lineCount": 5
+        },
+        {
+          "name": "_page",
+          "params": [
+            "value"
+          ],
+          "returnType": "int | None",
+          "exported": true,
+          "lineCount": 3
+        },
+        {
+          "name": "load_golden_master",
+          "params": [
+            "path"
+          ],
+          "returnType": "list[GoldenCase]",
+          "exported": true,
+          "lineCount": 48
+        }
+      ],
+      "classes": [
+        {
+          "name": "GoldenCase",
+          "methods": [],
+          "properties": [
+            "case_id",
+            "category",
+            "field",
+            "label",
+            "gold_label",
+            "mutation_type",
+            "difficulty",
+            "contract_raw",
+            "contract_page",
+            "im_raw",
+            "im_page",
+            "harness_signal",
+            "weak_model_pitfall",
+            "note"
+          ],
+          "exported": true,
+          "lineCount": 19
+        }
+      ],
+      "imports": [
+        {
+          "source": "csv",
+          "specifiers": [
+            "csv"
+          ]
+        },
+        {
+          "source": "pathlib",
+          "specifiers": [
+            "Path"
+          ]
+        },
+        {
+          "source": "pydantic",
+          "specifiers": [
+            "BaseModel",
+            "ConfigDict"
+          ]
+        },
+        {
+          "source": "src.pipelines.cross_check",
+          "specifiers": [
+            "FIELD_LABELS"
+          ]
+        },
+        {
+          "source": "src.scoring.labels",
+          "specifiers": [
+            "GoldLabel"
+          ]
+        }
+      ],
+      "exports": [
+        "GoldenCase",
+        "_blank_to_none",
+        "_page",
+        "load_golden_master"
+      ],
+      "totalLines": 119,
+      "hasStructuralAnalysis": true
+    },
+    "src/scoring/labels.py": {
+      "filePath": "src/scoring/labels.py",
+      "contentHash": "0cdcaeea6df72b3dcba6cc87c0443cce775b1243a8479efbf61035c2af120256",
+      "functions": [
+        {
+          "name": "predicted_label",
+          "params": [
+            "final_status",
+            "guard_caught"
+          ],
+          "returnType": "GoldLabel",
+          "exported": true,
+          "lineCount": 19
+        }
+      ],
+      "classes": [
+        {
+          "name": "GoldLabel",
+          "methods": [],
+          "properties": [],
+          "exported": true,
+          "lineCount": 6
+        }
+      ],
+      "imports": [
+        {
+          "source": "enum",
+          "specifiers": [
+            "StrEnum"
+          ]
+        },
+        {
+          "source": "src.pipelines.cross_check",
+          "specifiers": [
+            "FinalCheckStatus"
+          ]
+        }
+      ],
+      "exports": [
+        "GoldLabel",
+        "predicted_label"
+      ],
+      "totalLines": 62,
+      "hasStructuralAnalysis": true
+    },
+    "src/scoring/scorer.py": {
+      "filePath": "src/scoring/scorer.py",
+      "contentHash": "3c2c89637be452e14f6580784b37328de7576b2f5950fe58be61d19b930496bf",
+      "functions": [
+        {
+          "name": "_classify",
+          "params": [
+            "record"
+          ],
+          "returnType": "Scored",
+          "exported": true,
+          "lineCount": 35
+        },
+        {
+          "name": "_round",
+          "params": [
+            "value",
+            "digits"
+          ],
+          "returnType": "float",
+          "exported": true,
+          "lineCount": 2
+        },
+        {
+          "name": "score_cases",
+          "params": [
+            "records",
+            "mode",
+            "golden_version",
+            "run_id"
+          ],
+          "returnType": "dict",
+          "exported": true,
+          "lineCount": 58
+        }
+      ],
+      "classes": [
+        {
+          "name": "CaseRecord",
+          "methods": [],
+          "properties": [
+            "case_id",
+            "field",
+            "gold_label",
+            "difficulty",
+            "mutation_type",
+            "harness_signal",
+            "final_status",
+            "final_reason_code",
+            "guard_rejections",
+            "latency_ms"
+          ],
+          "exported": true,
+          "lineCount": 15
+        }
+      ],
+      "imports": [
+        {
+          "source": "pydantic",
+          "specifiers": [
+            "BaseModel",
+            "ConfigDict",
+            "Field"
+          ]
+        },
+        {
+          "source": "src.scoring.breakdown",
+          "specifiers": [
+            "Scored",
+            "by_difficulty",
+            "by_field",
+            "by_mutation",
+            "by_signal",
+            "confusion_of"
+          ]
+        },
+        {
+          "source": "src.scoring.labels",
+          "specifiers": [
+            "GoldLabel",
+            "predicted_label"
+          ]
+        }
+      ],
+      "exports": [
+        "CaseRecord",
+        "_classify",
+        "_round",
+        "score_cases"
+      ],
+      "totalLines": 147,
+      "hasStructuralAnalysis": true
+    },
+    "src/stats/__init__.py": {
+      "filePath": "src/stats/__init__.py",
+      "contentHash": "2b83d649b063ed01b902414b9bc48b19796be00bb546d359403b035c6946c841",
+      "functions": [],
+      "classes": [],
+      "imports": [
+        {
+          "source": "src.stats.bootstrap",
+          "specifiers": [
+            "BootstrapCI",
+            "bootstrap_f1_ci"
+          ]
+        },
+        {
+          "source": "src.stats.mcnemar",
+          "specifiers": [
+            "McNemarResult",
+            "mcnemar_test"
+          ]
+        },
+        {
+          "source": "src.stats.paired",
+          "specifiers": [
+            "aligned_correctness",
+            "mismatch_arrays",
+            "write_stats_csv"
+          ]
+        }
+      ],
+      "exports": [],
+      "totalLines": 22,
+      "hasStructuralAnalysis": true
+    },
+    "src/stats/bootstrap.py": {
+      "filePath": "src/stats/bootstrap.py",
+      "contentHash": "8d279d8ed4aa312d2b773632baf7e8779dbbc9188c57dd0a3529021709ab9ee2",
+      "functions": [
+        {
+          "name": "_f1",
+          "params": [
+            "gold",
+            "pred"
+          ],
+          "returnType": "float",
+          "exported": true,
+          "lineCount": 7
+        },
+        {
+          "name": "bootstrap_f1_ci",
+          "params": [
+            "gold",
+            "pred",
+            "n_boot",
+            "ci",
+            "seed"
+          ],
+          "returnType": "BootstrapCI",
+          "exported": true,
+          "lineCount": 38
+        }
+      ],
+      "classes": [
+        {
+          "name": "BootstrapCI",
+          "methods": [],
+          "properties": [
+            "point",
+            "lo",
+            "hi",
+            "n_boot",
+            "ci"
+          ],
+          "exported": true,
+          "lineCount": 6
+        }
+      ],
+      "imports": [
+        {
+          "source": "dataclasses",
+          "specifiers": [
+            "dataclass"
+          ]
+        },
+        {
+          "source": "typing",
+          "specifiers": [
+            "Sequence"
+          ]
+        },
+        {
+          "source": "numpy",
+          "specifiers": [
+            "np"
+          ]
+        }
+      ],
+      "exports": [
+        "BootstrapCI",
+        "_f1",
+        "bootstrap_f1_ci"
+      ],
+      "totalLines": 70,
+      "hasStructuralAnalysis": true
+    },
+    "src/stats/mcnemar.py": {
+      "filePath": "src/stats/mcnemar.py",
+      "contentHash": "7c519908265a9a731fc0511d9eddeef8dcbeaf546e1fb6b206fbec8eb420f586",
+      "functions": [
+        {
+          "name": "mcnemar_test",
+          "params": [
+            "correct_a",
+            "correct_b",
+            "exact"
+          ],
+          "returnType": "McNemarResult",
+          "exported": true,
+          "lineCount": 34
+        }
+      ],
+      "classes": [
+        {
+          "name": "McNemarResult",
+          "methods": [],
+          "properties": [
+            "b",
+            "c",
+            "n_discordant",
+            "statistic",
+            "p_value",
+            "method"
+          ],
+          "exported": true,
+          "lineCount": 16
+        }
+      ],
+      "imports": [
+        {
+          "source": "dataclasses",
+          "specifiers": [
+            "dataclass"
+          ]
+        },
+        {
+          "source": "typing",
+          "specifiers": [
+            "Sequence"
+          ]
+        },
+        {
+          "source": "scipy.stats",
+          "specifiers": [
+            "binomtest",
+            "chi2"
+          ]
+        }
+      ],
+      "exports": [
+        "McNemarResult",
+        "mcnemar_test"
+      ],
+      "totalLines": 67,
+      "hasStructuralAnalysis": true
+    },
+    "src/stats/paired.py": {
+      "filePath": "src/stats/paired.py",
+      "contentHash": "0d6472dec61ab77bc2e48e900652c095ddb133bffd88ba8400a3be8e567f8f25",
+      "functions": [
+        {
+          "name": "_cases_by_id",
+          "params": [
+            "report"
+          ],
+          "returnType": "dict[str, dict]",
+          "exported": true,
+          "lineCount": 2
+        },
+        {
+          "name": "aligned_correctness",
+          "params": [
+            "report_a",
+            "report_b"
+          ],
+          "returnType": "tuple[list[bool], list[bool]]",
+          "exported": true,
+          "lineCount": 8
+        },
+        {
+          "name": "mismatch_arrays",
+          "params": [
+            "report"
+          ],
+          "returnType": "tuple[list[bool], list[bool]]",
+          "exported": true,
+          "lineCount": 10
+        },
+        {
+          "name": "write_stats_csv",
+          "params": [
+            "reports_by_mode",
+            "path"
+          ],
+          "returnType": "Path",
+          "exported": true,
+          "lineCount": 31
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "csv",
+          "specifiers": [
+            "csv"
+          ]
+        },
+        {
+          "source": "logging",
+          "specifiers": [
+            "logging"
+          ]
+        },
+        {
+          "source": "pathlib",
+          "specifiers": [
+            "Path"
+          ]
+        },
+        {
+          "source": "typing",
+          "specifiers": [
+            "Mapping"
+          ]
+        }
+      ],
+      "exports": [
+        "_cases_by_id",
+        "aligned_correctness",
+        "mismatch_arrays",
+        "write_stats_csv"
+      ],
+      "totalLines": 73,
+      "hasStructuralAnalysis": true
+    },
     "test_w1_ontology_pipeline.py": {
       "filePath": "test_w1_ontology_pipeline.py",
-      "contentHash": "649ba5675c28b45e39b74160c38c97033b29afa42af6105aee9e945b7806f0ec",
+      "contentHash": "c910d62e28932f7ab32032b3a874306115d734af95b94b4953455c842839c548",
       "functions": [],
       "classes": [
         {
@@ -4658,7 +6544,7 @@
     },
     "tests/golden/golden_master.csv": {
       "filePath": "tests/golden/golden_master.csv",
-      "contentHash": "fbef60988013d67bec02c5a781429bfc56857a9591ef409f3cfb5611b4e07448",
+      "contentHash": "a1f2c68e8410e94ced499b648bc984c235b7092d2203f480f949c709856fc68a",
       "functions": [],
       "classes": [],
       "imports": [],
@@ -4668,7 +6554,7 @@
     },
     "tests/test_anthropic_client.py": {
       "filePath": "tests/test_anthropic_client.py",
-      "contentHash": "7210247dd46b4f3403d230c314da03b72d21d335134a22465bb71c3e9a7459c8",
+      "contentHash": "e9c08967c060a26c232fe8eecb643a07e198cfb17168af96e7982c9307a24795",
       "functions": [
         {
           "name": "test_parse_json_response_accepts_markdown_json_fence",
@@ -4711,9 +6597,159 @@
       "totalLines": 17,
       "hasStructuralAnalysis": true
     },
+    "tests/test_baseline.py": {
+      "filePath": "tests/test_baseline.py",
+      "contentHash": "1a311a6687779a30b72914a1757cd1e0c498a1c02088018f63530db8bcf60481",
+      "functions": [
+        {
+          "name": "test_verdict_to_final_status_mapping",
+          "params": [],
+          "exported": true,
+          "lineCount": 4
+        },
+        {
+          "name": "test_parse_verdict_reads_clean_json",
+          "params": [],
+          "exported": true,
+          "lineCount": 2
+        },
+        {
+          "name": "test_parse_verdict_keyword_fallback_on_bad_json",
+          "params": [],
+          "exported": true,
+          "lineCount": 2
+        },
+        {
+          "name": "test_parse_verdict_defaults_missing_when_unreadable",
+          "params": [],
+          "exported": true,
+          "lineCount": 2
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "src.pipelines.cross_check",
+          "specifiers": [
+            "FinalCheckStatus"
+          ]
+        },
+        {
+          "source": "src.scoring.baseline",
+          "specifiers": [
+            "BaselineVerdict",
+            "_parse_verdict",
+            "verdict_to_final_status"
+          ]
+        }
+      ],
+      "exports": [
+        "test_verdict_to_final_status_mapping",
+        "test_parse_verdict_reads_clean_json",
+        "test_parse_verdict_keyword_fallback_on_bad_json",
+        "test_parse_verdict_defaults_missing_when_unreadable"
+      ],
+      "totalLines": 25,
+      "hasStructuralAnalysis": true
+    },
+    "tests/test_cli.py": {
+      "filePath": "tests/test_cli.py",
+      "contentHash": "506ff4756d134d78f690be69d2f7a042926ad26bf21a202b6920540b1d8f31d8",
+      "functions": [
+        {
+          "name": "_fake_report",
+          "params": [
+            "mode",
+            "recall"
+          ],
+          "returnType": "dict",
+          "exported": true,
+          "lineCount": 24
+        },
+        {
+          "name": "test_render_compare_md_has_metric_rows_per_mode",
+          "params": [],
+          "exported": true,
+          "lineCount": 12
+        },
+        {
+          "name": "test_cli_help_lists_subcommands",
+          "params": [],
+          "exported": true,
+          "lineCount": 5
+        },
+        {
+          "name": "test_cli_score_writes_score_json",
+          "params": [
+            "tmp_path"
+          ],
+          "exported": true,
+          "lineCount": 12
+        },
+        {
+          "name": "test_cli_score_rejects_unsupported_mode",
+          "params": [
+            "tmp_path"
+          ],
+          "exported": true,
+          "lineCount": 6
+        },
+        {
+          "name": "test_cli_compare_writes_markdown",
+          "params": [
+            "tmp_path"
+          ],
+          "exported": true,
+          "lineCount": 10
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "json",
+          "specifiers": [
+            "json"
+          ]
+        },
+        {
+          "source": "pathlib",
+          "specifiers": [
+            "Path"
+          ]
+        },
+        {
+          "source": "typer.testing",
+          "specifiers": [
+            "CliRunner"
+          ]
+        },
+        {
+          "source": "src.cli.main",
+          "specifiers": [
+            "app"
+          ]
+        },
+        {
+          "source": "src.scoring.compare",
+          "specifiers": [
+            "render_compare_md"
+          ]
+        }
+      ],
+      "exports": [
+        "_fake_report",
+        "test_render_compare_md_has_metric_rows_per_mode",
+        "test_cli_help_lists_subcommands",
+        "test_cli_score_writes_score_json",
+        "test_cli_score_rejects_unsupported_mode",
+        "test_cli_compare_writes_markdown"
+      ],
+      "totalLines": 99,
+      "hasStructuralAnalysis": true
+    },
     "tests/test_cross_check.py": {
       "filePath": "tests/test_cross_check.py",
-      "contentHash": "42ea824d343f42e38bfd2e60ca6625e4bbc51f674f224541b0cde319714d2e36",
+      "contentHash": "b7815b7c2172d4b5c37540c19cdf26c509070987a6f542cd2cd63b5c907ba8fd",
       "functions": [
         {
           "name": "test_cross_check_returns_all_w1_fields",
@@ -4853,7 +6889,7 @@
     },
     "tests/test_extract_pipeline.py": {
       "filePath": "tests/test_extract_pipeline.py",
-      "contentHash": "4f6cdb74488f82879aacb97ef8d1e55230930dd3f20692f710797f6ee23757a9",
+      "contentHash": "c1bdc20af4df3ae76e26ee66fc013fb36de34422a37b9ccc05cfdd467d9dee44",
       "functions": [
         {
           "name": "test_build_extraction_content_uses_pdf_document_blocks",
@@ -4917,7 +6953,7 @@
     },
     "tests/test_extraction_schema.py": {
       "filePath": "tests/test_extraction_schema.py",
-      "contentHash": "ca8bd4dbe56ec5477855c1c7c8ec5a3ba9594d0f9b2a3c1015546797f02abddc",
+      "contentHash": "7b9a2e11b35953f017aa5e636cead7acace83308cccdda121378e6059faf522f",
       "functions": [
         {
           "name": "test_document_value_requires_citation_when_raw_text_exists",
@@ -4999,7 +7035,7 @@
     },
     "tests/test_guards.py": {
       "filePath": "tests/test_guards.py",
-      "contentHash": "366fecdbb64082b4291281ebdc2a73d6eb9e11ff8ee3d067498dc3ec1f57f8fc",
+      "contentHash": "5b7a2009e245d9293af22baa006c288ea8cc9618f86886d11386742e6f018830",
       "functions": [
         {
           "name": "test_g3_shacl_delegation_emits_reject_event_when_enabled",
@@ -5068,9 +7104,150 @@
       "totalLines": 79,
       "hasStructuralAnalysis": true
     },
+    "tests/test_harness.py": {
+      "filePath": "tests/test_harness.py",
+      "contentHash": "1cdb28a9cb46d974a99a5c5c02c1e02a3f45eb734408fcf0569152f17aa13827",
+      "functions": [
+        {
+          "name": "_v",
+          "params": [
+            "raw",
+            "page",
+            "role"
+          ],
+          "returnType": "DocumentValue",
+          "exported": true,
+          "lineCount": 6
+        },
+        {
+          "name": "_cf",
+          "params": [
+            "c",
+            "i",
+            "cp",
+            "ip"
+          ],
+          "returnType": "ComparableField",
+          "exported": true,
+          "lineCount": 2
+        },
+        {
+          "name": "_sample_extraction",
+          "params": [],
+          "returnType": "ExtractionResult",
+          "exported": true,
+          "lineCount": 20
+        },
+        {
+          "name": "_ctx",
+          "params": [],
+          "returnType": "GuardContext",
+          "exported": true,
+          "lineCount": 8
+        },
+        {
+          "name": "test_baseline_mode_has_only_extraction",
+          "params": [],
+          "exported": true,
+          "lineCount": 7
+        },
+        {
+          "name": "test_ontology_mode_runs_abox_shacl_crosscheck_without_guards",
+          "params": [],
+          "exported": true,
+          "lineCount": 6
+        },
+        {
+          "name": "test_guard_mode_records_guard_events",
+          "params": [],
+          "exported": true,
+          "lineCount": 7
+        },
+        {
+          "name": "test_guard_mode_requires_ctx",
+          "params": [],
+          "exported": true,
+          "lineCount": 3
+        },
+        {
+          "name": "test_invalid_mode_raises",
+          "params": [],
+          "exported": true,
+          "lineCount": 3
+        },
+        {
+          "name": "test_build_manifest_has_required_keys",
+          "params": [],
+          "exported": true,
+          "lineCount": 18
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "pathlib",
+          "specifiers": [
+            "Path"
+          ]
+        },
+        {
+          "source": "pytest",
+          "specifiers": [
+            "pytest"
+          ]
+        },
+        {
+          "source": "src.guards.base",
+          "specifiers": [
+            "GuardConfig",
+            "GuardContext"
+          ]
+        },
+        {
+          "source": "src.harness.manifest",
+          "specifiers": [
+            "build_manifest"
+          ]
+        },
+        {
+          "source": "src.harness.pipeline",
+          "specifiers": [
+            "build_harness_result",
+            "guard_config_for"
+          ]
+        },
+        {
+          "source": "src.schemas.extraction",
+          "specifiers": [
+            "Citation",
+            "ComparableField",
+            "DocumentValue",
+            "ExtractionResult",
+            "FeeScheduleExtraction",
+            "FundExtraction",
+            "PartyExtraction",
+            "RedemptionTermsExtraction"
+          ]
+        }
+      ],
+      "exports": [
+        "_v",
+        "_cf",
+        "_sample_extraction",
+        "_ctx",
+        "test_baseline_mode_has_only_extraction",
+        "test_ontology_mode_runs_abox_shacl_crosscheck_without_guards",
+        "test_guard_mode_records_guard_events",
+        "test_guard_mode_requires_ctx",
+        "test_invalid_mode_raises",
+        "test_build_manifest_has_required_keys"
+      ],
+      "totalLines": 122,
+      "hasStructuralAnalysis": true
+    },
     "tests/test_llm_judge.py": {
       "filePath": "tests/test_llm_judge.py",
-      "contentHash": "4202ae266b07927f4400f95ecfe0e0bd06ccd84315d23ff82b826f18177d8a41",
+      "contentHash": "dd174f4e56b910c1a25d76345c290e5ff2b1befc81934b71214758c1b13bf895",
       "functions": [
         {
           "name": "test_judge_prompt_contains_only_field_label_and_raw_text",
@@ -5172,7 +7349,7 @@
     },
     "tests/test_normalization.py": {
       "filePath": "tests/test_normalization.py",
-      "contentHash": "9cf980467f4cb2f3f415165c4d44234131ceb3184515b13785cc2a6475f4a13f",
+      "contentHash": "4dbaa33a061b42a791fd7535dbc8f66067d403d269f0cba4cbb1fb0b0ebd44fe",
       "functions": [
         {
           "name": "test_normalize_extraction_returns_all_fields_and_computes_statuses",
@@ -5292,7 +7469,7 @@
     },
     "tests/test_ontology_mapping.py": {
       "filePath": "tests/test_ontology_mapping.py",
-      "contentHash": "a03a4cc622722d64990383ea6ca479a28f0c7c40005220fa3fdf130b1b4dce77",
+      "contentHash": "9ec40235bdc8b2f0070eb20f85639530f49db2127cbe770445d700eb6c78cee2",
       "functions": [
         {
           "name": "test_extraction_to_graph_creates_document_scoped_nodes",
@@ -5372,7 +7549,7 @@
     },
     "tests/test_ontology_validate.py": {
       "filePath": "tests/test_ontology_validate.py",
-      "contentHash": "02196eddf000393673539770012653aaf111b8dcb12d5c34c591294bf10c7fb4",
+      "contentHash": "93c44f7dc97a8aa0c0af0c6ee9c8263b182b4bf8e0af0d42ad100c581716c337",
       "functions": [
         {
           "name": "test_trust_fund_ttl_parses",
@@ -5532,7 +7709,7 @@
     },
     "tests/test_render_figma_ontology_svg.py": {
       "filePath": "tests/test_render_figma_ontology_svg.py",
-      "contentHash": "177a3ef8103935d4825c11b923076c0e674a846410e23fab207504c3091f6a8a",
+      "contentHash": "b3efa3a9724a25ef196f7cd756c2da6b620ae2b1aa27c1d129ec361b514ad30f",
       "functions": [
         {
           "name": "test_render_figma_svg_writes_importable_svg",
@@ -5566,7 +7743,7 @@
     },
     "tests/test_render_mermaid.py": {
       "filePath": "tests/test_render_mermaid.py",
-      "contentHash": "e5eede7f099bf2b9e916300bb82f310bd0172398cd870dddf9beba50405167e9",
+      "contentHash": "9b7fb7c720663fd7cf75fe793c4e50429894894f14e8c239fb38190865b43f0e",
       "functions": [
         {
           "name": "test_render_mermaid_writes_schema_and_abox_diagrams",
@@ -5600,7 +7777,7 @@
     },
     "tests/test_render_ontology_graph.py": {
       "filePath": "tests/test_render_ontology_graph.py",
-      "contentHash": "9eef7d0d62c0edcb7de1b1bc7b014ae9c5d193b0448a0ec349ed1acbdb3bf276",
+      "contentHash": "406b9090d444fc957ef3fa66c6b7a91e9bd4cf3c20f664d7ecc8273387366ca5",
       "functions": [
         {
           "name": "test_render_graphs_writes_schema_and_abox_html",
@@ -5634,7 +7811,7 @@
     },
     "tests/test_run_extract_once.py": {
       "filePath": "tests/test_run_extract_once.py",
-      "contentHash": "af3cbef7c400426172cb83de841e47f3e379fdaf24f9378d88b73f18ef6d2b3a",
+      "contentHash": "4dc047e7ac4ec432d7c0b10ac0fae287df39393c279a914eb0588b3d135163bb",
       "functions": [
         {
           "name": "test_write_run_outputs_writes_extraction_and_cross_check",
@@ -5709,6 +7886,296 @@
         "_valid_extraction"
       ],
       "totalLines": 143,
+      "hasStructuralAnalysis": true
+    },
+    "tests/test_scoring.py": {
+      "filePath": "tests/test_scoring.py",
+      "contentHash": "55a0f2f3916b4f5688db418fabfe1db8a331ebefddd315aaa5a5964527602e8d",
+      "functions": [
+        {
+          "name": "test_predicted_label_maps_each_final_status",
+          "params": [],
+          "exported": true,
+          "lineCount": 6
+        },
+        {
+          "name": "test_predicted_label_guard_catch_overrides_to_mismatch",
+          "params": [],
+          "exported": true,
+          "lineCount": 6
+        },
+        {
+          "name": "test_load_golden_master_reads_30_cases",
+          "params": [],
+          "exported": true,
+          "lineCount": 4
+        },
+        {
+          "name": "test_load_golden_master_parses_types_and_blanks",
+          "params": [],
+          "exported": true,
+          "lineCount": 16
+        },
+        {
+          "name": "_rec",
+          "params": [
+            "case_id",
+            "gold",
+            "final",
+            "guards",
+            "difficulty",
+            "mutation",
+            "signal",
+            "field"
+          ],
+          "returnType": "CaseRecord",
+          "exported": true,
+          "lineCount": 12
+        },
+        {
+          "name": "_synthetic_records",
+          "params": [],
+          "returnType": "list[CaseRecord]",
+          "exported": true,
+          "lineCount": 12
+        },
+        {
+          "name": "test_score_cases_confusion_matrix",
+          "params": [],
+          "exported": true,
+          "lineCount": 4
+        },
+        {
+          "name": "test_score_cases_metrics",
+          "params": [],
+          "exported": true,
+          "lineCount": 8
+        },
+        {
+          "name": "test_score_cases_envelope_and_cases",
+          "params": [],
+          "exported": true,
+          "lineCount": 13
+        },
+        {
+          "name": "_records_by_id",
+          "params": [
+            "mode"
+          ],
+          "returnType": "dict[str, CaseRecord]",
+          "exported": true,
+          "lineCount": 4
+        },
+        {
+          "name": "test_evaluate_ontology_mode_produces_record_per_case",
+          "params": [],
+          "exported": true,
+          "lineCount": 3
+        },
+        {
+          "name": "test_evaluate_missing_cases_are_missing_evidence",
+          "params": [],
+          "exported": true,
+          "lineCount": 5
+        },
+        {
+          "name": "test_evaluate_fake_citation_caught_only_in_guard_mode",
+          "params": [],
+          "exported": true,
+          "lineCount": 6
+        },
+        {
+          "name": "test_evaluate_shacl_violation_caught_by_g3_in_guard_mode",
+          "params": [],
+          "exported": true,
+          "lineCount": 4
+        },
+        {
+          "name": "test_evaluate_guard_does_not_false_reject_normal_fee_cases",
+          "params": [],
+          "exported": true,
+          "lineCount": 5
+        },
+        {
+          "name": "test_resolve_with_judge_only_touches_needs_review",
+          "params": [],
+          "exported": true,
+          "lineCount": 6
+        },
+        {
+          "name": "test_resolve_with_judge_same_and_different",
+          "params": [],
+          "exported": true,
+          "lineCount": 9
+        },
+        {
+          "name": "test_resolve_with_judge_none_keeps_needs_review",
+          "params": [],
+          "exported": true,
+          "lineCount": 5
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "math",
+          "specifiers": [
+            "math"
+          ]
+        },
+        {
+          "source": "src.pipelines.cross_check",
+          "specifiers": [
+            "FinalCheckStatus"
+          ]
+        },
+        {
+          "source": "src.pipelines.llm_judge",
+          "specifiers": [
+            "JudgeStatus"
+          ]
+        },
+        {
+          "source": "src.scoring.evaluate",
+          "specifiers": [
+            "evaluate_golden",
+            "resolve_with_judge"
+          ]
+        },
+        {
+          "source": "src.scoring.golden",
+          "specifiers": [
+            "GoldenCase",
+            "load_golden_master"
+          ]
+        },
+        {
+          "source": "src.scoring.labels",
+          "specifiers": [
+            "GoldLabel",
+            "predicted_label"
+          ]
+        },
+        {
+          "source": "src.scoring.scorer",
+          "specifiers": [
+            "CaseRecord",
+            "score_cases"
+          ]
+        }
+      ],
+      "exports": [
+        "test_predicted_label_maps_each_final_status",
+        "test_predicted_label_guard_catch_overrides_to_mismatch",
+        "test_load_golden_master_reads_30_cases",
+        "test_load_golden_master_parses_types_and_blanks",
+        "_rec",
+        "_synthetic_records",
+        "test_score_cases_confusion_matrix",
+        "test_score_cases_metrics",
+        "test_score_cases_envelope_and_cases",
+        "_records_by_id",
+        "test_evaluate_ontology_mode_produces_record_per_case",
+        "test_evaluate_missing_cases_are_missing_evidence",
+        "test_evaluate_fake_citation_caught_only_in_guard_mode",
+        "test_evaluate_shacl_violation_caught_by_g3_in_guard_mode",
+        "test_evaluate_guard_does_not_false_reject_normal_fee_cases",
+        "test_resolve_with_judge_only_touches_needs_review",
+        "test_resolve_with_judge_same_and_different",
+        "test_resolve_with_judge_none_keeps_needs_review"
+      ],
+      "totalLines": 190,
+      "hasStructuralAnalysis": true
+    },
+    "tests/test_stats.py": {
+      "filePath": "tests/test_stats.py",
+      "contentHash": "b1e4dc3b37e2f270518b2ff192687d2aa191a0060f9e638b09fd784e8a03b231",
+      "functions": [
+        {
+          "name": "test_mcnemar_no_difference_high_pvalue",
+          "params": [],
+          "exported": true,
+          "lineCount": 6
+        },
+        {
+          "name": "test_mcnemar_guard_improves_counts_discordant",
+          "params": [],
+          "exported": true,
+          "lineCount": 7
+        },
+        {
+          "name": "test_mcnemar_length_mismatch_raises",
+          "params": [],
+          "exported": true,
+          "lineCount": 5
+        },
+        {
+          "name": "test_bootstrap_f1_ci_brackets_point_and_is_deterministic",
+          "params": [],
+          "exported": true,
+          "lineCount": 8
+        },
+        {
+          "name": "test_bootstrap_perfect_predictions_ci_is_one",
+          "params": [],
+          "exported": true,
+          "lineCount": 5
+        },
+        {
+          "name": "_report",
+          "params": [
+            "cases"
+          ],
+          "returnType": "dict",
+          "exported": true,
+          "lineCount": 2
+        },
+        {
+          "name": "test_aligned_correctness_matches_by_case_id",
+          "params": [],
+          "exported": true,
+          "lineCount": 11
+        },
+        {
+          "name": "test_mismatch_arrays_excludes_missing",
+          "params": [],
+          "exported": true,
+          "lineCount": 9
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "src.stats.bootstrap",
+          "specifiers": [
+            "bootstrap_f1_ci"
+          ]
+        },
+        {
+          "source": "src.stats.mcnemar",
+          "specifiers": [
+            "mcnemar_test"
+          ]
+        },
+        {
+          "source": "src.stats.paired",
+          "specifiers": [
+            "aligned_correctness",
+            "mismatch_arrays"
+          ]
+        }
+      ],
+      "exports": [
+        "test_mcnemar_no_difference_high_pvalue",
+        "test_mcnemar_guard_improves_counts_discordant",
+        "test_mcnemar_length_mismatch_raises",
+        "test_bootstrap_f1_ci_brackets_point_and_is_deterministic",
+        "test_bootstrap_perfect_predictions_ci_is_one",
+        "_report",
+        "test_aligned_correctness_matches_by_case_id",
+        "test_mismatch_arrays_excludes_missing"
+      ],
+      "totalLines": 83,
       "hasStructuralAnalysis": true
     }
   }
