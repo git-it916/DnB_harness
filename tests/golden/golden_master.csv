@@ -29,3 +29,53 @@ C027,변조,redemption_terms.is_redeemable,"환매가능여부(부울 flip)",mis
 C028,변조,redemption_terms.redemption_fee,"환매수수료(환각 신설)",mismatch,invent_clause,hard,"제36조(환매수수료) (해당사항 없음)",17,"환매수수료: 90일 미만 환매 시 환매금액의 90% 차감",9,cross_check+llm_judge,"계약서에 없는 조항을 IM이 만들어내도 그럴듯하면 합격","폐쇄형이라 수수료 N/A인데 환매수수료 환각 신설"
 C029,변조,fund.name,"펀드명(가짜 인용)",mismatch,fake_citation,hard,"이 집합투자기구의 명칭은 '이지스블랙 ON 일반사모투자신탁제 1 호'라 한다.",2,"이지스블랙ON 일반사모투자신탁제1호",999,g2_citation,"값이 정답과 같으니 페이지 검증 없이 합격 — cross_check만으로는 못 잡음","IM에 없는 999페이지 인용. G2 출처 가드 전용 테스트 케이스"
 C030,변조,fee_schedule.management_fee,"운용보수(SHACL 위반)",mismatch,shacl_violation,hard,"집합투자업자보수율 : 연 1,000분의 8.9",15,"[운용] 연[ 8.9 ] %",9,g3_constraint+shacl,"계약서 '8.9'와 IM '8.9' 숫자가 같아 단위 무시하고 합격","IM 8.9%는 사모펀드 보수 범위 초과(>5%) — ② ontology는 SHACL 진단, ③ guard는 G3/SHACL로 reject"
+C031,정상,fund.name,펀드명(전각),match,format_diff,easy,이지스블랙 ON 일반사모투자신탁제 1 호,2,이지스블랙ＯＮ 일반사모투자신탁제１호,9,normalization,"전각 영문/숫자(ＯＮ,１)를 다른 문자로 인식",합성 — 전각 정규화 테스트
+C032,변조,fund.name,펀드명(상품라인 혼동),mismatch,char_typo,hard,이 집합투자기구는 일반 사모집합투자기구로서 집합투자기구의 명칭은 '이지스블랙 ON 일반사모투자신탁제 1 호'라 한다.,2,이지스밸류ON 일반사모투자신탁제1호,9,cross_check+llm_judge,동일 운용사의 다른 상품라인(블랙→밸류)을 같은 펀드로 오인,블랙ON↔밸류ON 혼동
+C033,정상,fund.name,펀드명(괄호 부기),match,semantic_equivalent,medium,이 집합투자기구는 일반 사모집합투자기구로서 집합투자기구의 명칭은 '이지스블랙 ON 일반사모투자신탁제 1 호'라 한다.,2,이지스블랙ON 일반사모투자신탁제1호(전문투자형),9,llm_judge,괄호 부기(전문투자형)를 다른 펀드로 분리,핵심 명칭 동일·부기만 추가. 합성
+C034,변조,fund.type,펀드유형(개방형 반전),mismatch,bool_flip,hard,이 집합투자기구는 다음 각호의 형태를 갖는 집합투자기구로 한다. 1. 투자신탁 2. 폐쇄형 3. 단위형 4. 사모형 5. 혼합자산형 6. 일반 사모집합투자기구,2,"일반사모집합투자기구, 투자신탁형, 혼합자산형, 단위형, 개방형, 사모형",9,llm_judge,유형목록 속 폐쇄형→개방형 반전을 놓침(환매구조 핵심),폐쇄형→개방형 단일 치환
+C035,변조,fund.type,펀드유형(자산유형 교체),mismatch,entity_swap,medium,이 집합투자기구는 다음 각호의 형태를 갖는 집합투자기구로 한다. 1. 투자신탁 2. 폐쇄형 3. 단위형 4. 사모형 5. 혼합자산형 6. 일반 사모집합투자기구,2,"일반사모집합투자기구, 투자신탁형, 증권형, 단위형, 폐쇄형, 사모형",9,llm_judge,자산유형(혼합자산형→증권형)을 순서차로 오인,혼합자산형→증권형
+C036,변조,fund.type,펀드유형(공모 반전),mismatch,bool_flip,hard,이 집합투자기구는 다음 각호의 형태를 갖는 집합투자기구로 한다. 1. 투자신탁 2. 폐쇄형 3. 단위형 4. 사모형 5. 혼합자산형 6. 일반 사모집합투자기구,2,"일반사모집합투자기구, 투자신탁형, 혼합자산형, 단위형, 폐쇄형, 공모형",9,llm_judge,사모→공모 반전(모집방식 규제구분)을 놓침,사모형→공모형
+C037,정상,fund.inception_date,설정일(점 구분),match,format_diff,easy,제 1 조(시행일) 이 신탁계약은 2025 년 7 월 22 일부터 시행한다.,22,펀드설정일(예정) 2025.07.22,9,normalization,점 구분 날짜를 하이픈과 다른 표기로 오인,2025.07.22=2025-07-22
+C038,변조,fund.inception_date,설정일(연도 시프트),mismatch,date_shift,hard,제 1 조(시행일) 이 신탁계약은 2025 년 7 월 22 일부터 시행한다.,22,펀드설정일(예정) 2024년7월22일,9,cross_check,연도 1년(2025→2024) 차이를 표기차로 오인,정답 2025 vs 변조 2024
+C039,변조,fund.inception_date,설정일(월 시프트),mismatch,date_shift,medium,제 1 조(시행일) 이 신탁계약은 2025 년 7 월 22 일부터 시행한다.,22,펀드설정일(예정) 2025년8월22일,9,cross_check,월(7→8) 차이를 놓침,정답 7월 vs 변조 8월
+C040,정상,fund.maturity_date,만기일(24개월 동치),match,unit_conversion,medium,이 투자신탁의 계약기간은 투자신탁의 최초설정일로부터 2027 년 7 월 22 일까지로 한다.,4,펀드만기 24개월 (수익자 동의 하에 조기청산 가능),9,normalization,24개월=2년 환산 누락,설정일+24개월=2027-07-22
+C041,변조,fund.maturity_date,만기일(25개월),mismatch,date_shift,hard,이 투자신탁의 계약기간은 투자신탁의 최초설정일로부터 2027 년 7 월 22 일까지로 한다.,4,펀드만기 25개월,9,llm_judge,25개월을 2년으로 반올림해 합격,24개월(정답) vs 25개월
+C042,변조,fund.maturity_date,만기일(1일 시프트),mismatch,date_shift,hard,이 투자신탁의 계약기간은 투자신탁의 최초설정일로부터 2027 년 7 월 22 일까지로 한다.,4,만기 2027년 7월 21일,9,cross_check,만기 1일(22→21) 차이를 놓침,정답 2027-07-22 vs 2027-07-21
+C043,정상,party.asset_manager,운용사(법인격 생략),match,format_diff,easy,이지스자산운용 주식회사,22,이지스자산운용,24,normalization,법인격(주식회사) 생략을 다른 회사로 오인,법인격 생략
+C044,변조,party.asset_manager,운용사(엔티티 교체),mismatch,entity_swap,medium,집합투자업자 이지스자산운용 주식회사,22,집합투자업자 미래에셋자산운용 주식회사,24,cross_check,운용사 완전교체를 회사명 존재만으로 합격,이지스→미래에셋
+C045,변조,party.trustee,신탁업자(증→즈),mismatch,char_typo,hard,신탁업자 엔에이치투자증권 주식회사 서울특별시 영등포구 여의대로 108 파크원 NH 금융타워(타워 2) 대표이사 윤병운,22,신탁업자 엔에이치투자즈권 주식회사,24,cross_check+llm_judge,'증→즈' 1글자 차이를 OCR노이즈로 오인,엔에이치투자증권 vs 투자즈권. 합성 IM
+C046,변조,party.trustee,신탁업자(가짜 인용),mismatch,fake_citation,hard,신탁업자 엔에이치투자증권 주식회사 서울특별시 영등포구 여의대로 108 파크원 NH 금융타워(타워 2) 대표이사 윤병운,22,신탁업자 엔에이치투자증권 주식회사,999,g2_citation,값이 맞으니 페이지 검증없이 합격,합성 — 가짜 인용(999). G2 출처 가드 전용
+C047,변조,party.distributor,판매사(환각 신설),mismatch,invent_clause,medium,,,판매회사 삼성증권 주식회사,24,cross_check,계약서에 없는 판매사를 IM이 신설해도 합격,계약서 판매사 부재인데 IM 일방 신설. 라벨 논의 — PM 확정. 합성
+C048,변조,fee_schedule.management_fee,운용보수(자릿수 과소),mismatch,decimal_shift,hard,"집합투자업자보수율 : 연 1,000분의 8.9",15,[운용] 연[ 0.089 ] %,9,normalization+cross_check,0.89 vs 0.089 자릿수 함정(과소보수),10배 과소
+C049,변조,fee_schedule.management_fee,운용보수(자리바꿈),mismatch,digit_swap,medium,"집합투자업자보수율 : 연 1,000분의 8.9",15,[운용] 연[ 0.98 ] %,9,cross_check,0.89↔0.98 자리바꿈을 놓침,정답 0.89 vs 0.98
+C050,변조,fee_schedule.management_fee,운용보수(bp 함정),mismatch,unit_conversion,hard,"집합투자업자보수율 : 연 1,000분의 8.9",15,[운용] 연 8.9bp,9,normalization+cross_check,8.9bp=0.089%인데 89bp(0.89%)와 혼동해 합격,bp+소수점 복합: 8.9bp=0.089%≠0.89%
+C051,변조,fee_schedule.trust_fee,신탁보수(자리바꿈),mismatch,digit_swap,medium,"신탁업자보수율 : 연 1,000분의 0.5",16,[신탁] 연[ 0.08 ] %,9,cross_check,초소수 보수 0.05 vs 0.08 차이를 놓침,정답 0.05 vs 0.08
+C052,변조,fee_schedule.trust_fee,신탁보수(범위 위반),mismatch,shacl_violation,hard,"신탁업자보수율 : 연 1,000분의 0.5",16,[신탁] 연[ 3.5 ] %,9,g3_constraint+shacl,3.5%가 신탁보수 상한(2%) 초과인데 단위만 보고 합격,신탁보수 SHACL 0~2% 위반. 합성
+C053,정상,fee_schedule.sales_fee,판매보수(bp 표기),match,unit_conversion,hard,"판매회사보수율 : 연 1,000분의 0.3",16,[판매] 연 3bp,9,normalization,bp 미이해로 3과 0.03을 다르다고 판단,3bp=0.03%. 합성 — IM 원본에 없음
+C054,변조,fee_schedule.sales_fee,판매보수(범위 위반),mismatch,shacl_violation,hard,"판매회사보수율 : 연 1,000분의 0.3",16,[판매] 연[ 5 ] %,9,g3_constraint+shacl,판매보수 상한(3%) 초과를 놓침,판매보수 SHACL 0~3% 위반. 합성
+C055,정상,redemption_terms.is_redeemable,환매가능(중도환매 불가),match,semantic_equivalent,medium,수익자는 이 투자신탁 수익증권의 환매를 청구할 수 없다.,12,본 펀드는 중도환매가 불가합니다.,3,llm_judge,'중도환매 불가'를 C015과 다른 표현이라 별개 처리,둘 다 환매불가(false). 합성 표현
+C056,변조,redemption_terms.is_redeemable,환매가능(동사 반전),mismatch,bool_flip,medium,수익자는 이 투자신탁 수익증권의 환매를 청구할 수 없다.,12,수익자는 이 투자신탁 수익증권의 환매를 청구할 수 있다.,3,llm_judge,동사 한글자(없다↔있다) 반전을 놓침,정답 불가 vs 변조 가능
+C057,변조,redemption_terms.is_redeemable,환매가능(분기환매 신설),mismatch,invent_clause,hard,수익자는 이 투자신탁 수익증권의 환매를 청구할 수 없다.,12,수익자는 매 분기말 환매를 청구할 수 있습니다.,3,llm_judge,폐쇄형인데 분기환매 조건을 IM이 신설,조건부 환매 환각 신설
+C058,변조,redemption_terms.lockup_period,락업기간(환각 신설),mismatch,invent_clause,hard,,,환매금지기간(락업) 1년,9,cross_check+llm_judge,폐쇄형은 락업 N/A인데 IM이 1년 락업 신설,락업 부재가 정상인데 IM 환각. 라벨 논의. 합성
+C059,변조,redemption_terms.redemption_cycle,환매주기(환각 신설),mismatch,invent_clause,medium,,,환매주기: 매 분기(분기 1회),9,cross_check+llm_judge,폐쇄형은 주기 N/A인데 IM이 분기주기 신설,주기 부재가 정상인데 IM 환각. 합성
+C060,정상,redemption_terms.redemption_fee,환매수수료(없음 동치),match,semantic_equivalent,medium,제36조(환매수수료) (해당사항 없음),17,환매수수료 없음,9,llm_judge,'없음'과 '해당사항 없음'을 별개 정보로 분리,둘 다 수수료 부재. 합성 표현
+C061,변조,redemption_terms.redemption_fee,환매수수료(부과 신설),mismatch,invent_clause,hard,제36조(환매수수료) (해당사항 없음),17,환매수수료 0.5%,9,cross_check,수수료 없는 폐쇄형에 0.5% 부과를 신설,해당없음(0) vs 0.5%. 합성
+C062,변조,redemption_terms.redemption_fee,환매수수료(가짜 인용),mismatch,fake_citation,hard,제36조(환매수수료) (해당사항 없음),17,환매수수료 해당사항 없음,999,g2_citation,값은 맞지만 인용 페이지가 가짜,합성 — 가짜 인용(999). G2 전용
+C063,정상,fund.name,펀드명(공백 전제거),match,whitespace_normalize,easy,이지스블랙 ON 일반사모투자신탁제 1 호,2,이지스블랙ON일반사모투자신탁제1호,9,normalization,공백 완전 제거를 다른 펀드로 오인,공백 전(全) 제거
+C064,정상,fund.inception_date,설정일(슬래시),match,format_diff,easy,제1조(시행일) 이 신탁계약은 2025년 7월 22일부터 시행한다.,22,펀드설정일(예정) 2025/07/22,9,normalization,슬래시 구분 날짜를 다른 표기로 오인,2025/07/22=2025-07-22
+C065,변조,fund.maturity_date,만기일(1년),mismatch,date_shift,medium,이 투자신탁의 계약기간은 투자신탁의 최초설정일로부터 2027 년 7 월 22 일까지로 한다.,4,펀드만기 1년,9,llm_judge,만기 절반(1년)을 2년으로 오인,12개월(변조) vs 24개월
+C066,정상,fund.inception_date,설정일(영점 패딩),match,format_diff,easy,제1조(시행일) 이 신탁계약은 2025년 7월 22일부터 시행한다.,22,설정일 : 2025년 07월 22일,9,normalization,월 0 패딩(07월)을 다른 값으로 오인,07월=7월
+C067,정상,fee_schedule.trust_fee,신탁보수(bp 표기),match,unit_conversion,medium,"신탁업자보수율 : 연 1,000분의 0.5",16,[신탁] 연 5bp,9,normalization,5bp=0.05% 환산 누락,5bp=0.05%. 합성 — IM 원본에 없음
+C068,변조,fee_schedule.sales_fee,판매보수(자릿수 과소),mismatch,decimal_shift,hard,"판매회사보수율 : 연 1,000분의 0.3",16,[판매] 연[ 0.003 ] %,9,normalization+cross_check,0.03 vs 0.003 자릿수(과소),10배 과소
+C069,변조,party.asset_manager,운용사(운용→운영),mismatch,char_typo,hard,집합투자업자 이지스자산운용 주식회사,22,집합투자업자 이지스자산운영,24,cross_check+llm_judge,'운용→운영' 1글자 오기를 OCR노이즈로 오인,C007과 달리 실제 오기. 합성 IM
+C070,정상,redemption_terms.is_redeemable,환매가능(서술 제한),match,semantic_equivalent,hard,수익자는 이 투자신탁 수익증권의 환매를 청구할 수 없다.,12,만기 시 일시상환되는 폐쇄형으로 중도환매가 제한됩니다.,3,llm_judge,긴 서술 속 '중도환매 제한'을 환매가능으로 오인,환매불가(false). 합성 표현
+C071,정상,fee_schedule.management_fee,운용보수(콤마없는 천분율),match,unit_conversion,medium,"집합투자업자보수율 : 연 1,000분의 8.9",15,[운용] 연 1000분의 8.9,9,normalization,콤마 없는 천분율 표기 차이,1000분의 8.9=0.89%
+C072,변조,fee_schedule.management_fee,운용보수(천분율 자리오류),mismatch,digit_swap,hard,"집합투자업자보수율 : 연 1,000분의 8.9",15,"[운용] 연 1,000분의 8.8",9,normalization+cross_check,천분율 표기(8.8/1000)에서 8.9와의 차이를 놓침,천분율 경로 변조: 8.8/1000=0.88%≠0.89%
+C073,정상,fee_schedule.trust_fee,신탁보수(콤마없는 천분율),match,unit_conversion,medium,"신탁업자보수율 : 연 1,000분의 0.5",16,[신탁] 연 1000분의 0.5,9,normalization,콤마 없는 천분율 표기 차이,1000분의 0.5=0.05%
+C074,변조,fee_schedule.sales_fee,판매보수(자리바꿈),mismatch,digit_swap,medium,"판매회사보수율 : 연 1,000분의 0.3",16,[판매] 연[ 0.05 ] %,9,cross_check,0.03 vs 0.05 차이를 놓침,정답 0.03 vs 0.05
+C075,변조,fee_schedule.management_fee,운용보수(가짜 인용),mismatch,fake_citation,hard,"집합투자업자보수율 : 연 1,000분의 8.9",15,[운용] 연[ 0.89 ] %,999,g2_citation,값은 맞지만 인용 페이지가 가짜,합성 — 가짜 인용(999). G2 전용
+C076,변조,fund.inception_date,설정일(가짜 인용),mismatch,fake_citation,hard,제1조(시행일) 이 신탁계약은 2025년 7월 22일부터 시행한다.,22,펀드설정일(예정) 2025년7월22일,999,g2_citation,값은 맞지만 인용 페이지가 가짜,합성 — 가짜 인용(999). G2 전용
+C077,정상,fund.maturity_date,만기일(절대일자 동치),match,semantic_equivalent,medium,이 투자신탁의 계약기간은 투자신탁의 최초설정일로부터 2027 년 7 월 22 일까지로 한다.,4,만기 2027년 7월 22일,9,llm_judge,절대일자 표기를 기간(2년)과 별개로 오인,2027-07-22=설정일+2년. 합성
+C078,변조,fund.name,펀드명(호수 1→2),mismatch,digit_swap,hard,이 집합투자기구는 일반 사모집합투자기구로서 집합투자기구의 명칭은 '이지스블랙 ON 일반사모투자신탁제 1 호'라 한다.,2,이지스블랙ON 일반사모투자신탁제2호,9,cross_check,제1호↔제2호(자매펀드) 차이를 놓침,C026(제11호 삽입)과 다른 자리바꿈
+C079,변조,fee_schedule.trust_fee,신탁보수(자릿수 과소),mismatch,decimal_shift,hard,"신탁업자보수율 : 연 1,000분의 0.5",16,[신탁] 연[ 0.005 ] %,9,normalization+cross_check,0.05 vs 0.005 자릿수(과소),10배 과소
+C080,정상,fund.type,펀드유형(구분자),match,list_reorder,medium,이 집합투자기구는 다음 각호의 형태를 갖는 집합투자기구로 한다. 1. 투자신탁 2. 폐쇄형 3. 단위형 4. 사모형 5. 혼합자산형 6. 일반 사모집합투자기구,2,투자신탁/폐쇄형/단위형/사모형/혼합자산형/일반사모집합투자기구,9,llm_judge,슬래시 구분·순서 차이를 다른 집합으로 오인,집합 동치(구분자만 다름)

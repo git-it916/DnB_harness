@@ -28,6 +28,26 @@ from src.scoring.labels import GoldLabel, PredictedLabel, predicted_label
 
 SCHEMA_VERSION = "v0"
 
+# 업무 효율성 점수(EI) 상수 (평가지표 스펙).
+# EI(%) = (1 - (T_AI + FP * T_REVIEW) / T_MANUAL) * 100
+# 헛알람 = FP(gold=match 인데 pred=mismatch). 실무자가 열어 대조하는 시간 비용을 반영.
+T_MANUAL_MIN = 180.0  # 인간이 문서 3종을 수작업 대조하는 시간
+T_AI_MIN = 2.5  # AI 파이프라인 구동·리포트 추출 시간
+T_REVIEW_MIN = 2.0  # 헛알람(FP) 1건을 실무자가 재확인하는 시간
+
+
+def efficiency_index(
+    false_alarms: int,
+    *,
+    t_manual: float = T_MANUAL_MIN,
+    t_ai: float = T_AI_MIN,
+    t_review: float = T_REVIEW_MIN,
+) -> float:
+    """업무 효율성 점수 EI(%). 순수 함수."""
+    if t_manual <= 0:
+        return 0.0
+    return (1 - (t_ai + false_alarms * t_review) / t_manual) * 100
+
 
 class CaseRecord(BaseModel):
     """한 골든 케이스에 대한 하네스 예측 (채점기 입력 단위)."""
@@ -128,6 +148,8 @@ def score_cases(
             "precision": _round(conf.precision),
             "recall": _round(conf.recall),
             "f1": _round(conf.f1),
+            "f2": _round(conf.f2),  # 메인 지표 (재현율 2배 가중)
+            "efficiency_index_pct": _round(efficiency_index(conf.fp), 2),
             "hallucination_rate": _round(hallucination_rate),
         },
         "confusion": {
@@ -141,6 +163,14 @@ def score_cases(
         "review": {
             "count": review_count,
             "rate": _round(review_rate),
+        },
+        "efficiency": {
+            "index_pct": _round(efficiency_index(conf.fp), 2),
+            "false_alarms": conf.fp,
+            "t_manual_min": T_MANUAL_MIN,
+            "t_ai_min": T_AI_MIN,
+            "t_review_min": T_REVIEW_MIN,
+            "ai_plus_review_min": _round(T_AI_MIN + conf.fp * T_REVIEW_MIN, 2),
         },
         "by_field": by_field(scored),
         "by_difficulty": by_difficulty(scored),

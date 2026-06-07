@@ -45,8 +45,8 @@ def main() -> int:
     report = score_cases(
         records,
         mode="ontology_policy_judge",
-        golden_version="v0.1",
-        run_id="ontology_policy_judge_live",
+        golden_version="v0.2",
+        run_id="vf_0607",
     )
     args.out.parent.mkdir(parents=True, exist_ok=True)
     args.out.write_text(json.dumps(report, ensure_ascii=False, indent=2), encoding="utf-8")

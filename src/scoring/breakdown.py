@@ -53,6 +53,13 @@ class Confusion:
         return 2 * p * r / (p + r) if (p + r) else 0.0
 
     @property
+    def f2(self) -> float:
+        """재현율에 2배 가중(β=2). F2 = 5PR / (4P + R). 메인 지표."""
+        p, r = self.precision, self.recall
+        denom = 4 * p + r
+        return 5 * p * r / denom if denom else 0.0
+
+    @property
     def accuracy(self) -> float:
         denom = self.tp + self.tn + self.fp + self.fn + self.review
         return (self.tp + self.tn) / denom if denom else 0.0

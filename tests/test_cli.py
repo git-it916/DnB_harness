@@ -75,7 +75,7 @@ def test_cli_score_writes_score_json(tmp_path: Path):
     assert out.exists()
     report = json.loads(out.read_text(encoding="utf-8"))
     assert report["mode"] == "ontology"
-    assert report["n_cases"] == 30
+    assert report["n_cases"] == 80
     assert report["review"]["count"] > 0
     assert report["metrics"]["recall"] < 1.0
 
@@ -97,7 +97,7 @@ def test_cli_score_ontology_policy(tmp_path: Path):
     assert result.exit_code == 0
     report = json.loads(out.read_text(encoding="utf-8"))
     assert report["mode"] == "ontology_policy"
-    assert report["n_cases"] == 30
+    assert report["n_cases"] == 80
 
 
 def test_cli_compare_writes_markdown(tmp_path: Path):

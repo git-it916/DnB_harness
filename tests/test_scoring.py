@@ -11,8 +11,46 @@ from src.pipelines.cross_check import FinalCheckStatus
 from src.pipelines.llm_judge import JudgeStatus
 from src.scoring.evaluate import evaluate_golden, resolve_policy_with_judge, resolve_with_judge
 from src.scoring.golden import GoldenCase, load_golden_master
+from src.scoring.breakdown import Confusion
 from src.scoring.labels import GoldLabel, PredictedLabel, predicted_label
-from src.scoring.scorer import CaseRecord, score_cases
+from src.scoring.scorer import CaseRecord, efficiency_index, score_cases
+
+
+# ── F2 / EI 지표 (평가지표 스펙) ─────────────────────────────────────────────
+
+def test_f2_score_weights_recall_double():
+    # ③ 예시: TP=12,FP=4,FN=0 -> P=0.75, R=1.0, F2=0.9375
+    conf = Confusion(tp=12, fp=4, fn=0, tn=14)
+    assert math.isclose(conf.precision, 0.75, abs_tol=1e-4)
+    assert math.isclose(conf.recall, 1.0, abs_tol=1e-4)
+    assert math.isclose(conf.f2, 0.9375, abs_tol=1e-4)
+    # ② 예시: TP=12,FP=14 -> F2≈0.8108
+    assert math.isclose(Confusion(tp=12, fp=14).f2, 0.8108, abs_tol=1e-3)
+    # ① 예시: TP=8,FP=1,FN=4 -> F2≈0.7019
+    assert math.isclose(Confusion(tp=8, fp=1, fn=4, tn=13).f2, 0.7019, abs_tol=1e-3)
+
+
+def test_efficiency_index_matches_spec():
+    # EI = (1 - (T_AI + FP*T_REVIEW)/T_MANUAL)*100, 기본 180/2.5/2.0
+    assert math.isclose(efficiency_index(1), 97.5, abs_tol=1e-2)   # ①
+    assert math.isclose(efficiency_index(14), 83.06, abs_tol=1e-2)  # ②
+    assert math.isclose(efficiency_index(4), 94.17, abs_tol=1e-2)   # ③
+
+
+def test_score_cases_emits_f2_and_efficiency():
+    records = [
+        CaseRecord(case_id="X1", field="fund.name", gold_label=GoldLabel.MISMATCH,
+                   difficulty="hard", mutation_type="digit_swap", harness_signal="cross_check",
+                   final_status="different_after_normalization"),
+        CaseRecord(case_id="X2", field="fund.name", gold_label=GoldLabel.MATCH,
+                   difficulty="easy", mutation_type="format_diff", harness_signal="normalization",
+                   final_status="different_after_normalization"),  # FP
+    ]
+    out = score_cases(records, mode="ontology_policy")
+    assert "f2" in out["metrics"]
+    assert "efficiency_index_pct" in out["metrics"]
+    assert out["efficiency"]["false_alarms"] == 1
+    assert math.isclose(out["metrics"]["efficiency_index_pct"], efficiency_index(1), abs_tol=1e-2)
 
 
 # ── labels ────────────────────────────────────────────────────────────────
@@ -35,9 +73,9 @@ def test_predicted_label_guard_catch_overrides_to_mismatch():
 
 # ── golden loader ───────────────────────────────────────────────────────────
 
-def test_load_golden_master_reads_30_cases():
+def test_load_golden_master_reads_all_cases():
     cases = load_golden_master()
-    assert len(cases) == 30
+    assert len(cases) == 80
     assert all(isinstance(c, GoldenCase) for c in cases)
 
 
@@ -136,7 +174,7 @@ def _records_by_id(mode: str) -> dict[str, CaseRecord]:
 
 def test_evaluate_ontology_mode_produces_record_per_case():
     records = _records_by_id("ontology")
-    assert len(records) == 30
+    assert len(records) == len(load_golden_master())
 
 
 def test_evaluate_missing_cases_are_missing_evidence():
@@ -168,13 +206,14 @@ def test_evaluate_guard_does_not_false_reject_normal_fee_cases():
 
 
 def test_evaluate_ontology_policy_mode_uses_canonical_comparison():
+    cases = load_golden_master()
     records = evaluate_golden(
-        load_golden_master(),
+        cases,
         mode="ontology_policy",
         contract_pages=22,
         im_pages=32,
     )
-    assert len(records) == 30
+    assert len(records) == len(cases)
     assert any(
         r.final_reason_code and r.final_reason_code.startswith("canonical_")
         for r in records
