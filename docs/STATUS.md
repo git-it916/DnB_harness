@@ -1,8 +1,8 @@
 # Project Status
 
-최종 갱신: 2026-06-04
+최종 갱신: 2026-07-23
 
-현재 단계: 검증 엔진 + 평가/증명 레이어 구현 완료, **3조건(non-harness/harness/harness+norm) 비교 실측 완료(잠정 골든)**. 추출·온톨로지·가드에 더해 채점(`src/scoring`)·CLI(`src/cli`)·하네스 러너(`src/harness`)·통계(`src/stats`)가 동작한다. `needs_review`는 불일치 확정이 아니라 `review`(모르겠다)로 분리되었고, `ontology_policy_judge`는 환매 가능 여부/만기일/환매수수료 전용 LLM classifier까지 적용해 review=0까지 실측됐다. 다음 병목은 골든셋 freeze 와 남은 FP 축소.
+현재 단계: 검증 엔진 + 평가/증명 레이어에 더해 **로컬 사용자 검토 웹 MVP**가 구현됐다. 계약서·IM 업로드, Anthropic 기반 14필드 추출, 비동기 실행 상태, 결과·근거 확인, 사용자 판정, 승인 Alias 재사용이 동작한다. 웹 UI는 2026-07-23에 기능 계약을 유지한 채 작업면 계층, 반응형 레이아웃, 상태 피드백, 접근성 미디어 쿼리를 정비했다. 연구용 `CrossCheckResult`는 보존하고 운영 상태는 `ReviewResult`로 감쌌다. 연구 측 다음 병목은 골든셋 freeze와 남은 FP 축소이며, 웹 측 다음 단계는 실제 신규 PDF로 표준 검토 풀런 QA다.
 
 ## 지금 시작할 곳
 
@@ -10,6 +10,7 @@
 2. 남은 FP 축소: `ontology_policy_judge`에서 C002 펀드명 약칭 오탐 원인 분석.
 3. 정규화/judge 의 의미동등 오탐 프롬프트/필드별 classifier 보강.
 4. `GOLDENSET.md §7`의 `review` 분리 채점 정의 비준 (PM).
+5. 로컬 웹 실제 PDF QA: `docs/runbooks/local-web.md`에 따라 업로드→판정→Alias 재사용 확인.
 
 ## 모듈 상태
 
@@ -24,6 +25,7 @@
 | 하네스 러너 (3조건) | 완료 | 건/PM | baseline 라이브 채점 | `docs/INTERFACES.md` §4 |
 | 통계 | 완료 | 승훈/건 | baseline vs guard McNemar | `docs/runbooks/reproduce-results.md` |
 | 골든셋 | 검수 중 | 리나/승훈 | 라벨러 검수, κ 합의, freeze | `docs/GOLDENSET.md` |
+| 로컬 검토 웹 | MVP + UI 정비 완료 | 종현 | 실제 신규 PDF 풀런·사용자 세션 QA | `docs/runbooks/local-web.md` |
 
 ## 완료로 보는 것
 
@@ -36,6 +38,7 @@
 | W2 골든셋 freeze | 30문항 검수와 κ 합의 | 미완료 |
 | W3 3조건 실험 | baseline/ontology/guard 비교 실행 | 완료 (잠정 골든) — non-harness/harness/harness+norm 실측, `runbooks/reproduce-results.md §6` |
 | Ontology policy 비교 | field policy canonical comparison + 제한적 judge fallback | 구현/실측 완료 — `runbooks/reproduce-results.md §7` |
+| 로컬 검토 웹 MVP | 업로드·상태·결과·근거·사용자 판정·Alias 재사용 | 완료 |
 
 ## 막힌 것
 
@@ -46,7 +49,7 @@
 
 ## 검증 현황 (참고)
 
-- 테스트: `pytest` **118 passed** (환매 가능 여부/만기일/환매수수료 전용 LLM classifier 및 review 분리 scoring 포함).
+- 테스트: `pytest` **126 passed** (웹 Anthropic 추출·Judge 자동 확정 회귀 테스트 포함), TypeScript 컴파일·Vite 프로덕션 빌드 통과, 1280×720/390×844 브라우저 시각 QA 및 콘솔 오류 없음.
 - 라이브 풀런: `gemma4:31b` guard 모드 174s/24,168토큰, shacl_conforms=True (`database/gemma4_harness/`).
 - 3조건 비교(잠정 골든): ① non-harness F1=0.762(R0.667) · ② harness F1=0.632(R1.000) · ③ harness+norm **F1=0.815**(R0.917). McNemar ①vs② p=0.049.
 - 결정론 ontology_policy: P=1.000 · R=0.583 · F1=0.737 · review=13/30 (`python -m src.cli score --mode ontology_policy`).

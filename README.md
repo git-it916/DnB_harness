@@ -65,6 +65,18 @@ uv run pytest
 
 > ⚠️ `database/*.pdf`(펀드 자료)와 `.env`는 **절대 커밋·외부 업로드 금지**.
 
+## 로컬 검토 웹
+
+```bash
+cd web && pnpm install && pnpm build && cd ..
+uv run python -m src.web_api
+```
+
+`http://127.0.0.1:8000`에서 계약서와 IM을 업로드해 14개 필드 판정, 원문 근거,
+가드·canonical 경로를 확인할 수 있다. 약칭·엔티티명처럼 자동 확정하기 어려운 항목은
+사용자가 `같음 / 다름 / 판단 보류`로 결정하며, 명시적으로 선택한 경우에만 로컬 Alias로
+기억한다. 상세 절차는 [`docs/runbooks/local-web.md`](./docs/runbooks/local-web.md)를 따른다.
+
 ---
 
 ## 팀

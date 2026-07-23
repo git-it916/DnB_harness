@@ -380,4 +380,58 @@ class HarnessResult(BaseModel):
 
 | 버전 | 날짜 | 변경 | 작성 |
 |---|---|---|---|
+| v0.2 | 2026-07-18 | 로컬 웹 `ReviewResult`·사용자 판정·Alias Registry 계약 추가 | Codex |
 | v0.1 | 2026-05-29 | 초안 — 7개 인터페이스 freeze | 승훈 |
+
+---
+
+## 11. 로컬 웹 검토 계약
+
+웹 계층은 기존 `ExtractionResult`, `GuardEvent`, `CrossCheckResult`를 수정하지 않고
+`src/application/review_models.py`의 `ReviewResult`로 감싼다.
+
+웹 검토의 추출 provider는 기존 CLI 경로와 동일한 `AnthropicJSONClient`다. 두 PDF를
+Anthropic의 문서 입력으로 한 번에 전달해 `prompts/v0/extract/system.md`의 `ExtractionResult`
+스키마를 채운 뒤, 동일 provider를 선택적 Judge에 재사용한다. 기본 모델은
+`claude-sonnet-4-6`이며 `ANTHROPIC_MODEL`로 덮어쓸 수 있다. Anthropic은 Ollama처럼
+모델 digest를 제공하지 않으므로 웹 `ReviewResult.model_digest`에는
+`"unavailable"`을 기록한다. 결정론 가드·정책 비교와 사용자 판정 경계는 변경하지 않는다.
+
+### 운영 판정 상태
+
+| `effective_status` | 의미 |
+|---|---|
+| `match` | 결정론·Alias·전용 Judge·사용자 중 하나가 일치로 확정 |
+| `mismatch` | 결정론·전용 Judge·사용자 중 하나가 불일치로 확정 |
+| `needs_human_review` | 규칙과 보조 Judge로 확정하지 못해 사용자 확인 필요 |
+| `missing_evidence` | 한쪽 또는 양쪽 원문 근거 부족 |
+
+`system_status`는 하네스의 원판정이며 사용자 확인 뒤에도 변경하지 않는다.
+사용자 확인은 `human_decision`에 별도로 기록하고, UI에 표시되는 최종 상태만
+`effective_status`와 `resolution_source=human`으로 오버레이한다.
+
+`ontology_policy_judge`에서는 Judge가 `same` 또는 `different`를 반환한 일반 의미 필드도
+`effective_status`를 자동 확정하고 `resolution_source=llm_judge`로 기록한다. Judge가
+호출되지 않았거나 호출에 실패했거나, 전문 Judge가 고신뢰 결론을 내리지 못한 경우에만
+`needs_human_review`를 유지한다. Alias Registry 저장은 자동 확정과 별개로 사용자가
+명시적으로 선택해야 한다.
+
+### Alias Registry
+
+- 대상 필드: `fund.name`, `party.asset_manager`, `party.trustee`, `party.distributor`.
+- 사용자가 `same`을 선택하고 `remember_alias=true`를 명시한 경우에만 저장한다.
+- 골든셋·온톨로지 정책 파일은 사용자 판정으로 수정하지 않는다.
+- 펀드 호수(`제1호`/`제2호`)가 서로 다르면 Alias 저장을 거부한다.
+- Alias 적용 전후의 시스템 판정과 사용자 판정은 모두 실행 이력에 보존한다.
+
+### 로컬 API v1
+
+| Method | Path | 역할 |
+|---|---|---|
+| `POST` | `/api/v1/runs` | 계약서·IM 업로드 후 비동기 검토 생성 |
+| `GET` | `/api/v1/runs` | 최근 검토 이력 |
+| `GET` | `/api/v1/runs/{run_id}` | 진행 상태와 `ReviewResult` 조회 |
+| `GET` | `/api/v1/runs/{run_id}/documents/{role}` | 로컬 PDF 근거 열기 |
+| `POST` | `/api/v1/runs/{run_id}/fields/{field}/decision` | 사용자 판정·Alias 선택 기록 |
+
+서버는 기본적으로 `127.0.0.1`에만 바인딩하며 PDF와 실행 결과는 `var/`에 저장한다.
