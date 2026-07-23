@@ -24,6 +24,7 @@ class AnthropicJSONClient:
         self.max_tokens = max_tokens
         self.temperature = temperature
         self._client = None
+        self.last_usage: dict[str, int] = {"input_tokens": 0, "output_tokens": 0}
 
     def complete_json(self, *, system_prompt: str, user_prompt: str) -> dict[str, Any]:
         return self.complete_json_with_content(
@@ -45,6 +46,7 @@ class AnthropicJSONClient:
             system=system_prompt,
             messages=[{"role": "user", "content": content}],
         )
+        self._record_usage(message)
         return _parse_json_response(_message_text(message))
 
     def complete_text_with_content(
@@ -61,7 +63,15 @@ class AnthropicJSONClient:
             system=system_prompt,
             messages=[{"role": "user", "content": content}],
         )
+        self._record_usage(message)
         return _message_text(message)
+
+    def _record_usage(self, message) -> None:
+        usage = getattr(message, "usage", None)
+        if usage is None:
+            return
+        for key in self.last_usage:
+            self.last_usage[key] += int(getattr(usage, key, 0) or 0)
 
     def _anthropic_client(self):
         if self._client is None:

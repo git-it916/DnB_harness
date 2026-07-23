@@ -2,6 +2,10 @@
 __pycache__/
 *.py[codz]
 *$py.class
+.DS_Store
+node_modules/
+.pnpm-store/
+tmp/pdfs/
 
 # C extensions
 *.so
